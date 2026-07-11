@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "entity": "roadmap",
+    "updated": "2026-07-11",
+    "provenance": "Extracted from Khelo_Bharat_Visual_Blueprint.html. Sequencing is Proposed; month ranges are planning estimates, not committed dates. No government timeline has been approved."
+  },
+  "principle": "Registries before workflows, workflows before benefits, benefits before AI. Each phase ends with a measurable gate that must pass before the next begins.",
+  "phases": [
+    {
+      "id": "P0", "name": "Foundation", "sequence": 1, "indicativeMonths": "0–3",
+      "activities": [
+        "NSRS identity integration",
+        "Sports Organisation Directory (M1)",
+        "Federation registry seed (M2)",
+        "Design system + DPDP consent framework",
+        "Data evaluation #1 through the M20 framework"
+      ],
+      "gate": "Master registries live; first data MoU signed or declined with reasons.",
+      "modules": ["M1", "M2", "M20"], "evidence": "proposed"
+    },
+    {
+      "id": "P1", "name": "MVP", "sequence": 2, "indicativeMonths": "3–9",
+      "activities": [
+        "Athlete 360 (M7)",
+        "Schemes & file tracking (M3)",
+        "Facility registry (M10) + grievance (M4)",
+        "School App pilot in 2 states (M5, M6)",
+        "Basic dashboards (M19)"
+      ],
+      "gate": "50,000 verified profiles; scheme cycle time −30%; pilot screening covers >80% of schools.",
+      "modules": ["M7", "M3", "M10", "M4", "M5", "M6", "M19"], "evidence": "proposed"
+    },
+    {
+      "id": "P2", "name": "Benefits & Scale", "sequence": 3, "indicativeMonths": "9–18",
+      "activities": [
+        "Sports Card launch (M14)",
+        "Jobs aggregator (M15)",
+        "Events (M8) + CSR exchange (M17)",
+        "Coaches registry (M9) + asset tracking (M11)",
+        "National School App rollout"
+      ],
+      "gate": "1 lakh+ cards issued; 500+ jobs listed; all national events on platform.",
+      "modules": ["M14", "M15", "M8", "M17", "M9", "M11"], "evidence": "proposed"
+    },
+    {
+      "id": "P3", "name": "Intelligence", "sequence": 4, "indicativeMonths": "18–30",
+      "activities": [
+        "AI talent engine at full strength",
+        "State Excellence Index (M19)",
+        "Marks for Sports pilot (M16)",
+        "Academy accreditation (M12)",
+        "Injury network (M13) + open data"
+      ],
+      "gate": "Index published quarterly; marks pilot with ≥2 boards; AI shortlists adopted by selection committees.",
+      "modules": ["M19", "M16", "M12", "M13"], "evidence": "proposed"
+    }
+  ],
+  "scoreboardMonth30": [
+    { "value": "20L+", "label": "children screened per year" },
+    { "value": "5L+", "label": "active sports cards" },
+    { "value": "5,000+", "label": "sports-quota hires" },
+    { "value": "₹500Cr+", "label": "CSR matched & tracked" },
+    { "value": "−50%", "label": "scheme approval time" }
+  ],
+  "immediateMoves": [
+    { "n": 1, "move": "Request the SAI organisation structure — org chart, sanctioned posts and nodal officers.", "seeds": "M1" },
+    { "n": 2, "move": "Seed the federation registry — load the MYAS recognised-NSF list and NSF portal data.", "seeds": "M2" },
+    { "n": 3, "move": "Run data evaluation #1 — the pro bono offer through the M20 framework: sample under NDA, pilot decision in 4–6 weeks.", "seeds": "M20" },
+    { "n": 4, "move": "Open the NPCI conversation — concept note for the co-branded RuPay card; shortlist issuing banks; draft benefit MoUs.", "seeds": "M14" },
+    { "n": 5, "move": "Prepare the Summit pack — the Marks for Sports policy note plus the Jobs for Sports pledge programme.", "seeds": "M15, M16" },
+    { "n": 6, "move": "Pick pilot geographies — two states + two high-performing KIRTI districts for the screening and scout pilots.", "seeds": "M5, M6" },
+    { "n": 7, "move": "Stand up the design system — approve the visual identity and component library.", "seeds": "All modules" }
+  ]
+}

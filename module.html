@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module — Khelo Bharat Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main">
+  <div id="mod-root">
+    <div class="wrap"><section>
+      <div class="state" role="status"><b>Loading module…</b>Reading the module blueprint.</div>
+    </section></div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  KB.mountChrome("modules.html");
+  const root = document.getElementById("mod-root");
+  const id = (KB.param("m") || "").toUpperCase();
+
+  let pillars, modules, systems, questions, roadmap;
+  try {
+    [pillars, modules, systems, questions, roadmap] = (await Promise.all(
+      ["pillars", "modules", "systems", "questions", "roadmap"].map(KB.data)
+    ));
+  } catch (e) {
+    root.innerHTML = `<div class="wrap"><section>${KB.stateBlock("error", "Could not load module data", e.message)}</section></div>`;
+    return;
+  }
+
+  const mod = modules.modules.find(m => m.id === id);
+  if (!mod) {
+    root.innerHTML = `<div class="wrap"><section>
+      ${KB.stateBlock("error", "Unknown module" + (id ? ` “${id}”` : ""), "Choose a module from the catalogue.")}
+      <p style="margin-top:16px"><a href="modules.html">← Back to the module catalogue</a></p>
+    </section></div>`;
+    document.title = "Unknown module — Khelo Bharat Platform";
+    return;
+  }
+
+  const pillar = pillars.pillars.find(p => p.id === mod.pillar);
+  document.title = `${mod.id} · ${mod.title} — Khelo Bharat Platform`;
+
+  const modSystems = systems.systems.filter(s => s.usedByModules.includes(mod.id) || s.usedByModules.includes("ALL"));
+  const modQuestions = questions.questions.filter(q => q.module === mod.id || q.module === "ALL");
+  const phase = roadmap.phases.find(ph => ph.modules.includes(mod.id));
+  const related = modules.modules.filter(m =>
+    m.id !== mod.id && (m.pillar === mod.pillar ||
+      systems.systems.some(s => s.usedByModules.includes(m.id) && s.usedByModules.includes(mod.id)))
+  ).slice(0, 6);
+
+  const planned = (title, detail) => `
+    <div class="card" style="border-style:dashed">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <h4 class="mt-0">${KB.esc(title)}</h4>${KB.chip("planned")}
+      </div>
+      <p class="muted small" style="margin-top:6px">${KB.esc(detail)} Tracked in the <a href="questions.html">question &amp; decision register</a>.</p>
+    </div>`;
+
+  root.innerHTML = `
+  <div class="mod-hero">
+    <div class="wrap">
+      <div class="meta-row">
+        ${KB.modCode(mod.id, pillar.color)}
+        <span class="pillar-chip" style="color:#F5A54A">Pillar ${pillar.id} · ${KB.esc(pillar.name)} — ${KB.esc(pillar.tag)}</span>
+        ${mod.isNew ? '<span class="chip chip--new-module">New module</span>' : ""}
+        ${KB.chip(mod.evidence)}
+      </div>
+      <h1>${KB.esc(mod.title)}</h1>
+      <p class="lede">${KB.esc(mod.what)}</p>
+      ${mod.origin ? `<p class="small" style="color:#9FB4CF;margin-top:12px">Origin: ${KB.esc(mod.origin)}</p>` : ""}
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div id="crumbs"></div>
+
+    <section class="mod-section" aria-labelledby="s-purpose">
+      <h2 id="s-purpose"><span class="section-num">01–05</span>Purpose, Problem &amp; Beneficiaries</h2>
+      <p><strong>Why this module exists:</strong> ${KB.esc(mod.why)}</p>
+      <p class="muted" style="margin-top:10px"><strong>Key partners &amp; stakeholders named so far:</strong> ${mod.partners.map(KB.esc).join(" · ")} <span class="small">(full stakeholder map with roles and approval responsibilities is authored in Phase 2)</span></p>
+    </section>
+
+    <section class="mod-section" aria-labelledby="s-layers">
+      <h2 id="s-layers"><span class="section-num">08–11</span>The Three-Layer Framework</h2>
+      <div class="kv-grid">
+        <div class="kv"><b>Layer 1 — Existing Ecosystem</b><span>Which government systems already do part of this job, and how Khelo Bharat connects without replacing what works.</span></div>
+        <div class="kv"><b>Layer 2 — Approvals &amp; Data</b><span>The stakeholders, approvals and module-specific datasets government must provide.</span></div>
+        <div class="kv"><b>Layer 3 — Questions &amp; Decisions</b><span>The practical gaps that must be answered before build — with owners and status.</span></div>
+      </div>
+
+      <h3 style="margin:26px 0 10px">Layer 1 · Existing systems this module touches</h3>
+      ${modSystems.length ? `
+      <div class="table-scroll"><table>
+        <caption class="visually-hidden">Existing government systems relevant to ${KB.esc(mod.id)}</caption>
+        <thead><tr><th scope="col">System</th><th scope="col">Owner</th><th scope="col">Proposed relationship</th><th scope="col">Verification</th></tr></thead>
+        <tbody>${modSystems.map(s => `
+          <tr>
+            <td><b>${KB.esc(s.name)}</b><br><span class="muted small">${KB.esc(s.relationshipNote)}</span></td>
+            <td class="small">${KB.esc(s.owner)}</td>
+            <td class="small">${KB.esc(s.proposedRelationship)}</td>
+            <td>${KB.chip(s.verificationStatus)}</td>
+          </tr>`).join("")}
+        </tbody>
+      </table></div>
+      <p class="small muted" style="margin-top:8px">No API is assumed to exist merely because a portal exists. Every relationship above is a proposed design, not an approved integration.</p>`
+      : planned("Integration register", "The existing-system register for this module has not been authored yet.")}
+
+      <h3 style="margin:26px 0 10px">Layer 2 · Approvals &amp; module-specific data catalogue</h3>
+      ${planned("Approvals catalogue & data catalogue", "The module-specific approval list (approving entity, prerequisites, risk-if-delayed) and dataset catalogue (fields, owner, sensitivity, consent, update frequency) are authored in Phase 2 of this blueprint programme.")}
+
+      <h3 style="margin:26px 0 10px">Layer 3 · Open questions for this module</h3>
+      ${modQuestions.length ? `
+      <div class="table-scroll"><table>
+        <caption class="visually-hidden">Open questions for ${KB.esc(mod.id)}</caption>
+        <thead><tr><th scope="col">ID</th><th scope="col">Question</th><th scope="col">Stakeholder</th><th scope="col">Priority</th><th scope="col">Status</th></tr></thead>
+        <tbody>${modQuestions.map(q => `
+          <tr>
+            <td><b>${KB.esc(q.id)}</b>${q.blocking ? '<br><span class="chip chip--decision-required" style="margin-top:4px">Blocking</span>' : ""}</td>
+            <td class="small">${KB.esc(q.question)}<br><span class="muted">Impact: ${KB.esc(q.impact)}</span></td>
+            <td class="small">${KB.esc(q.stakeholder)}</td>
+            <td class="small">${KB.esc(q.priority)}</td>
+            <td class="small">${KB.esc(q.status)}</td>
+          </tr>`).join("")}
+        </tbody>
+      </table></div>
+      <p class="small muted" style="margin-top:8px">Module-specific question banks grow in Phase 2. See the <a href="questions.html">master register</a>.</p>`
+      : planned("Question bank", "No questions recorded against this module yet — the module-specific bank is authored in Phase 2.")}
+    </section>
+
+    <section class="mod-section" aria-labelledby="s-flow">
+      <h2 id="s-flow"><span class="section-num">12</span>End-to-End Workflow</h2>
+      <ol class="flow-list">${mod.flow.map(step => `<li>${KB.escKeepBold(step)}</li>`).join("")}</ol>
+    </section>
+
+    <section class="mod-section" aria-labelledby="s-caps">
+      <h2 id="s-caps"><span class="section-num">—</span>Key Capabilities &amp; Screens</h2>
+      <div class="kv-grid">${mod.features.map(f => `<div class="kv"><b>${KB.esc(f.title)}</b><span>${KB.esc(f.detail)}</span></div>`).join("")}</div>
+      ${mod.screens.length ? `
+      <h3 style="margin:22px 0 10px">Screens to build <span class="small muted">(pattern: ${KB.esc(mod.pattern)})</span></h3>
+      <div class="kv-grid">${mod.screens.map(s => `<div class="kv"><b>${KB.esc(s.name)}</b><span>${KB.esc(s.description)}</span></div>`).join("")}</div>` : ""}
+    </section>
+
+    <section class="mod-section" aria-labelledby="s-risks">
+      <h2 id="s-risks"><span class="section-num">20</span>Risks &amp; Answers</h2>
+      <div style="display:grid;gap:12px">${mod.risks.map(r => `
+        <div class="risk-pair">
+          <div class="risk"><b>Risk</b>${KB.esc(r.risk)}</div>
+          <div class="answer"><b>Answer</b>${KB.esc(r.answer)}</div>
+        </div>`).join("")}</div>
+    </section>
+
+    <section class="mod-section" aria-labelledby="s-status">
+      <h2 id="s-status"><span class="section-num">18 · 21 · 24</span>Roadmap Position, Success &amp; Status</h2>
+      ${phase ? `<p><strong>Roadmap phase:</strong> ${KB.esc(phase.id)} · ${KB.esc(phase.name)} <span class="muted small">(indicative months ${KB.esc(phase.indicativeMonths)} — sequencing proposed, no dates committed)</span></p>
+      <p class="muted small" style="margin:6px 0 12px"><strong>Phase gate:</strong> ${KB.esc(phase.gate)}</p>` :
+      `<p class="muted">This module is not pinned to a roadmap phase yet.</p>`}
+      <div class="outcome-band"><span class="label">What success looks like</span><span>${KB.esc(mod.outcome)}</span></div>
+      <p class="small muted" style="margin-top:12px"><strong>Current status:</strong> Concept blueprint — ${KB.chip(mod.evidence)} design, awaiting government validation. Monitoring indicators, governance matrix and document evidence are authored in Phase 2.</p>
+    </section>
+
+    <section class="mod-section" aria-labelledby="s-related">
+      <h2 id="s-related"><span class="section-num">26</span>Related Modules</h2>
+      <div class="card-grid">${related.map(m => {
+        const p = pillars.pillars.find(x => x.id === m.pillar);
+        return `<a class="card card-link" href="module.html?m=${m.id}">
+          <div style="display:flex;gap:10px;align-items:center">${KB.modCode(m.id, p.color)}<span class="pillar-chip" style="color:${p.color}">${KB.esc(p.name)}</span></div>
+          <h4 style="margin-top:8px">${KB.esc(m.title)}</h4></a>`;
+      }).join("")}</div>
+      <p style="margin-top:18px"><a href="modules.html">← All twenty modules</a></p>
+    </section>
+  </div>`;
+
+  document.getElementById("crumbs").innerHTML = KB.breadcrumbs([
+    { href: "index.html", label: "Home" },
+    { href: "modules.html", label: "Modules" },
+    { label: `${mod.id} · ${mod.title}` }
+  ]);
+});
+</script>
+</body>
+</html>

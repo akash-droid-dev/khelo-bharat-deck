@@ -1,0 +1,89 @@
+{
+  "_meta": {
+    "entity": "pillar",
+    "updated": "2026-07-11",
+    "provenance": "Extracted from Khelo_Bharat_Visual_Blueprint.html (concept work, July 2026). Label: Proposed."
+  },
+  "pillars": [
+    {
+      "id": 1,
+      "code": "P1",
+      "name": "GOVERN",
+      "tag": "rules & money",
+      "color": "var(--p1)",
+      "description": "The administrative backbone: who is who, which federation is recognised, how schemes and files move, and how grievances get resolved.",
+      "modules": [
+        "M1",
+        "M2",
+        "M3",
+        "M4"
+      ]
+    },
+    {
+      "id": 2,
+      "code": "P2",
+      "name": "DISCOVER",
+      "tag": "find talent",
+      "color": "var(--p2)",
+      "description": "The talent machine: screening games in every school, rewarded teacher-scouts, one lifetime athlete profile, and events that feed it automatically.",
+      "modules": [
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    },
+    {
+      "id": 3,
+      "code": "P3",
+      "name": "DEVELOP",
+      "tag": "grow talent",
+      "color": "var(--p3)",
+      "description": "Everything a discovered athlete needs to grow: coaches, facilities, equipment, quality academies and injury care.",
+      "modules": [
+        "M9",
+        "M10",
+        "M11",
+        "M12",
+        "M13"
+      ]
+    },
+    {
+      "id": 4,
+      "code": "P4",
+      "name": "SUPPORT",
+      "tag": "the benefits engine",
+      "color": "var(--p4)",
+      "description": "The adoption engine: a card in the pocket, a job after sport, marks in education, and CSR support where it is needed most.",
+      "modules": [
+        "M14",
+        "M15",
+        "M16",
+        "M17"
+      ]
+    },
+    {
+      "id": 5,
+      "code": "P5",
+      "name": "SHOWCASE",
+      "tag": "tell the story",
+      "color": "var(--p5)",
+      "description": "The verified public face of Indian sport: stories, galleries, laurels and the Hall of Fame.",
+      "modules": [
+        "M18"
+      ]
+    },
+    {
+      "id": 6,
+      "code": "P6",
+      "name": "INTELLIGENCE",
+      "tag": "decide better",
+      "color": "var(--p6)",
+      "description": "The decision cockpit: national analytics, the State Sports Excellence Index, and a safe framework for data partnerships.",
+      "modules": [
+        "M19",
+        "M20"
+      ]
+    }
+  ]
+}

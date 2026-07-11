@@ -1,0 +1,21 @@
+{
+  "_meta": {
+    "entity": "user-group",
+    "updated": "2026-07-11",
+    "provenance": "Extracted from Khelo_Bharat_Visual_Blueprint.html (concept work). Access levels are Proposed and require government confirmation."
+  },
+  "userGroups": [
+    { "id": "U1", "name": "MYAS / National Sports Board", "level": "central", "uses": "National command view: talent, funds, infrastructure, federation compliance, state rankings.", "proposedAccess": "Full national dashboards; policy and approval actions; no direct edit of athlete data.", "evidence": "proposed" },
+    { "id": "U2", "name": "SAI (HQ, Regional Centres, NCOEs, STCs)", "level": "central", "uses": "Run schemes, camps and assessments; manage centres, coaches and assets.", "proposedAccess": "Scheme workflows, centre and asset management, assessment data entry.", "evidence": "proposed" },
+    { "id": "U3", "name": "State Sports Departments / SPOCs", "level": "state", "uses": "State dashboards, scheme processing, facility updates, district monitoring.", "proposedAccess": "State-scoped dashboards and workflow approvals.", "evidence": "proposed" },
+    { "id": "U4", "name": "District Sports Officers (DSOs) & District Education Officers (DEOs)", "level": "district", "uses": "Run screening games, verify school data, first-level approvals, facility inspection.", "proposedAccess": "District-scoped verification, approvals and inspections.", "evidence": "proposed" },
+    { "id": "U5", "name": "PT Teachers", "level": "institutional", "uses": "Register students, conduct standard tests, upload scores and videos, earn scout recognition.", "proposedAccess": "School-scoped capture via offline-first School App.", "evidence": "proposed" },
+    { "id": "U6", "name": "Athletes & guardians", "level": "public", "uses": "Own their profile; apply to schemes, events and jobs; use the sports card; control consent.", "proposedAccess": "Own-profile read/write, consent centre, applications.", "evidence": "proposed" },
+    { "id": "U7", "name": "Coaches, physios, experts, officials", "level": "institutional", "uses": "Verified profiles, assignments, scheme applications, certification renewals.", "proposedAccess": "Own-profile management; assigned-athlete views per consent.", "evidence": "proposed" },
+    { "id": "U8", "name": "National Sports Federations (NSFs)", "level": "federation", "uses": "Compliance filings, athlete verification, event sanctioning, results, selections.", "proposedAccess": "Federation-scoped filings, sanctioning and results workflows.", "evidence": "proposed" },
+    { "id": "U9", "name": "Schools, colleges, academies", "level": "institutional", "uses": "Register talent, host screening games, request facility linkage.", "proposedAccess": "Institution-scoped registration and requests.", "evidence": "proposed" },
+    { "id": "U10", "name": "CSR corporates & donors", "level": "partner", "uses": "Browse verified needs, fund projects, track impact publicly.", "proposedAccess": "Need bank browsing, funding workflows, public impact views.", "evidence": "proposed" },
+    { "id": "U11", "name": "Banks / NPCI / benefit partners", "level": "partner", "uses": "Issue sports cards, honour benefits, settle discounts.", "proposedAccess": "Card verification API, benefit settlement views.", "evidence": "proposed" },
+    { "id": "U12", "name": "Public", "level": "public", "uses": "Open dashboards, laurels, stories, event calendar, federation status.", "proposedAccess": "Read-only public views; aggregates only for minors.", "evidence": "proposed" }
+  ]
+}

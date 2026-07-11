@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twenty Modules — Khelo Bharat Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+    <div id="crumbs"></div>
+    <section>
+      <span class="kicker">Module catalogue</span>
+      <h1>Twenty Modules, Six Pillars</h1>
+      <p class="sub">Every module below is a <strong>proposed</strong> Khelo Bharat capability, built on the three-layer framework: how it connects to the existing ecosystem, what it needs from government, and which questions must be answered before it can be built. Select any module for its full blueprint.</p>
+
+      <div class="filter-row" role="group" aria-label="Filter modules by pillar" id="pillar-filters"></div>
+      <div class="filter-row">
+        <label class="visually-hidden" for="mod-search">Search modules</label>
+        <input class="search-input" id="mod-search" type="search" placeholder="Search modules — title, purpose, partner…">
+        <button class="filter-btn" id="new-only" aria-pressed="false">New modules only</button>
+      </div>
+
+      <div id="mod-grid" class="card-grid" aria-live="polite">
+        <div class="state" role="status"><b>Loading modules…</b>Reading the module catalogue.</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  KB.mountChrome("modules.html");
+  document.getElementById("crumbs").innerHTML = KB.breadcrumbs([
+    { href: "index.html", label: "Home" }, { label: "Modules" }
+  ]);
+
+  const grid = document.getElementById("mod-grid");
+  let pillars, modules;
+  try {
+    const [p, m] = await Promise.all([KB.data("pillars"), KB.data("modules")]);
+    pillars = p.pillars; modules = m.modules;
+  } catch (e) {
+    grid.innerHTML = KB.stateBlock("error", "Could not load the module catalogue", "The data layer failed to load. If you opened this file directly, serve it over HTTP. " + e.message);
+    return;
+  }
+
+  const byId = Object.fromEntries(pillars.map(p => [p.id, p]));
+  let filter = 0, query = "", newOnly = false;
+
+  const filtersEl = document.getElementById("pillar-filters");
+  filtersEl.innerHTML = [0, ...pillars.map(p => p.id)].map(id => {
+    const label = id === 0 ? "All 20" : `${id} · ${byId[id].name}`;
+    return `<button class="filter-btn" data-pillar="${id}" aria-pressed="${id === 0}">${KB.esc(label)}</button>`;
+  }).join("");
+
+  filtersEl.addEventListener("click", e => {
+    const btn = e.target.closest("[data-pillar]");
+    if (!btn) return;
+    filter = +btn.dataset.pillar;
+    filtersEl.querySelectorAll("[data-pillar]").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.pillar === filter)));
+    render();
+  });
+
+  document.getElementById("mod-search").addEventListener("input", e => { query = e.target.value.toLowerCase(); render(); });
+  const newBtn = document.getElementById("new-only");
+  newBtn.addEventListener("click", () => { newOnly = !newOnly; newBtn.setAttribute("aria-pressed", String(newOnly)); render(); });
+
+  function matches(m) {
+    if (filter && m.pillar !== filter) return false;
+    if (newOnly && !m.isNew) return false;
+    if (!query) return true;
+    const hay = [m.id, m.title, m.what, m.why, m.outcome, ...(m.partners || [])].join(" ").toLowerCase();
+    return hay.includes(query);
+  }
+
+  function render() {
+    const list = modules.filter(matches);
+    if (!list.length) {
+      grid.innerHTML = KB.stateBlock("empty", "No modules match", "Try clearing the search or choosing a different pillar.");
+      return;
+    }
+    grid.innerHTML = list.map(m => {
+      const p = byId[m.pillar];
+      return `
+        <a class="card card-link" href="module.html?m=${m.id}">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            ${KB.modCode(m.id, p.color)}
+            <span class="pillar-chip" style="color:${p.color}">${KB.esc(p.name)}</span>
+            ${m.isNew ? '<span class="chip chip--new-module">New</span>' : ""}
+          </div>
+          <h3 style="margin-top:10px;font-size:17px">${KB.esc(m.title)}</h3>
+          <p class="muted small" style="margin-top:4px">${KB.esc(m.tag || m.outcome)}</p>
+        </a>`;
+    }).join("");
+  }
+
+  render();
+});
+</script>
+</body>
+</html>

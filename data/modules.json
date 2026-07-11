@@ -1,0 +1,1496 @@
+{
+  "_meta": {
+    "entity": "module",
+    "updated": "2026-07-11",
+    "provenance": "Extracted from Khelo_Bharat_Visual_Blueprint.html (concept work, July 2026). All module designs are Proposed KHELO BHARAT features, not existing systems."
+  },
+  "modules": [
+    {
+      "id": "M1",
+      "pillar": 1,
+      "isNew": true,
+      "title": "Sports Organisation Directory (Live Org Structure)",
+      "pattern": "registry",
+      "origin": "Leadership idea 1.1 — “Organisation structure: try to get from SAI.”",
+      "what": "A living, searchable map of India's entire sports administration: MYAS, the National Sports Board and National Sports Tribunal (under the National Sports Governance Act, 2025), SAI headquarters, Regional Centres, National Centres of Excellence, SAI Training Centres, state sports departments, district sports offices and university sports boards — with names, roles, jurisdictions and contacts.",
+      "why": "Today nobody can answer “who is responsible for X in district Y” from one screen. Every workflow on the platform — approvals, escalations, inspections, screening games — needs to route work to the right officer automatically. This directory is the routing table of the whole platform. Build it first.",
+      "tag": null,
+      "flow": [
+        "<b>Collect:</b> formally request the official organisation structure and sanctioned-posts list from SAI Administration and MYAS.",
+        "<b>Structure:</b> load it as a hierarchy — Ministry → NSB/SAI → Regional Centre → State → District → Facility/Centre.",
+        "<b>Attach roles:</b> every node gets a role (e.g., DSO Pune, SPOC Maharashtra, NCOE Head Bhopal) linked to a real officer with official contact details.",
+        "<b>Handle transfers:</b> when an officer moves, only the person changes — the role keeps its pending work, so nothing is lost in handovers.",
+        "<b>Serve everyone:</b> every other module queries this directory to decide who approves, who inspects, who receives an escalation."
+      ],
+      "features": [
+        {
+          "title": "Interactive org chart",
+          "detail": "Click from Ministry down to a single training centre; see roles, people and contacts."
+        },
+        {
+          "title": "Jurisdiction map",
+          "detail": "Each officer's geographic and functional area — used for automatic work routing."
+        },
+        {
+          "title": "Succession log",
+          "detail": "Transfers and charge handovers recorded; pending tasks travel with the role."
+        },
+        {
+          "title": "Vacancy view",
+          "detail": "Sanctioned versus filled posts, so leadership sees capacity gaps."
+        },
+        {
+          "title": "Directory API",
+          "detail": "Other modules ask: “who approves this district's application for this scheme?”"
+        }
+      ],
+      "screens": [
+        {
+          "name": "Org chart explorer",
+          "description": "A zoomable tree from Ministry to centre; click a node to open its role card with officer, contact and pending workload."
+        },
+        {
+          "name": "Role card",
+          "description": "Photo, designation, jurisdiction, current charge-holder, tenure, and the live queue of tasks sitting with this role."
+        },
+        {
+          "name": "Vacancy dashboard",
+          "description": "Dashboard pattern: sanctioned vs filled posts by state and level, with longest-vacant roles flagged."
+        }
+      ],
+      "partners": [
+        "SAI Administration",
+        "MYAS",
+        "National Sports Board",
+        "State sports departments"
+      ],
+      "risks": [
+        {
+          "risk": "SAI structure changes or data goes stale",
+          "answer": "Quarterly confirmation cycle by each nodal officer; self-service updates with approval."
+        },
+        {
+          "risk": "Officers reluctant to be listed",
+          "answer": "Roles are public; personal contacts visible only to authorised users."
+        }
+      ],
+      "outcome": "Any user, anywhere, can find the right responsible officer in under 10 seconds — and every workflow routes itself.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M2",
+      "pillar": 1,
+      "isNew": false,
+      "title": "Federation Registry & Compliance",
+      "pattern": "registry",
+      "origin": "Leadership idea 1.2 — “Listing of Federations.”",
+      "what": "The authoritative registry of all National Sports Federations and their state/district associations: recognition status (per the annual MYAS recognised list and the National Sports Governance Act, 2025), office bearers, elections, athlete commissions, safe-sport compliance, disciplinary cases and the full affiliation tree.",
+      "why": "Federation recognition drives everything: whose results count, who can select athletes, who receives grants. The 2025 Act creates the National Sports Board, the National Sports Tribunal and mandatory athlete commissions — all of which need a digital compliance backbone. This module is that backbone.",
+      "tag": null,
+      "flow": [
+        "<b>Seed:</b> load the MYAS recognised-NSF list and NSF portal data; every federation gets a Federation ID.",
+        "<b>Profile:</b> each federation files its constitution, office bearers, election dates, audited accounts, athlete commission and safe-sport policy.",
+        "<b>Score:</b> the National Sports Board view shows a compliance scorecard per federation — green, amber, red.",
+        "<b>Map affiliations:</b> every state and district association links to its NSF, so any event result can be traced to a recognised body.",
+        "<b>Propagate:</b> recognition changes (granted, suspended, withdrawn) flow instantly into eligibility rules across the whole platform."
+      ],
+      "features": [
+        {
+          "title": "Recognition status board",
+          "detail": "Live list: recognised, provisional, suspended, derecognised — with dates and orders."
+        },
+        {
+          "title": "Compliance scorecard",
+          "detail": "Election timeliness, filings, athlete commission, safe-sport policy — traffic-light view."
+        },
+        {
+          "title": "Office bearer register",
+          "detail": "Current officials, tenure limits and cooling-off tracking per the Act."
+        },
+        {
+          "title": "Disciplinary & disputes log",
+          "detail": "Cases before the National Sports Tribunal or internal panels, with status."
+        },
+        {
+          "title": "Affiliation tree",
+          "detail": "NSF → state association → district association, each with its own ID."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Federation registry",
+          "description": "Registry pattern: search all federations, filter by status; each card shows the traffic-light compliance score."
+        },
+        {
+          "name": "Federation profile",
+          "description": "Profile pattern: identity card, compliance timeline, office bearers tab, disputes tab."
+        },
+        {
+          "name": "NSB compliance console",
+          "description": "Dashboard pattern: how many federations compliant, elections due this quarter, open disputes."
+        }
+      ],
+      "partners": [
+        "MYAS",
+        "National Sports Board",
+        "National Sports Tribunal",
+        "NSFs",
+        "Indian Olympic Association"
+      ],
+      "risks": [
+        {
+          "risk": "Two factions claim one federation",
+          "answer": "Display only the position per official MYAS/NSB orders; mark disputes as sub judice."
+        },
+        {
+          "risk": "Stale office-bearer data",
+          "answer": "Annual mandatory e-filing tied to recognition renewal."
+        }
+      ],
+      "outcome": "One trusted answer to “is this federation recognised, and is it compliant?” — for government, athletes and courts alike.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M3",
+      "pillar": 1,
+      "isNew": false,
+      "title": "Schemes, Grants & File Tracking (eGovernance)",
+      "pattern": "workflow",
+      "origin": "Concept PPT + module report — fast-track grants and 15-day SOP progress updates.",
+      "what": "A sports-specific scheme and approval management system: a catalogue of every scheme for athletes, coaches, experts, academies and federations; auto-checked eligibility; online application; district → state → SAI/MYAS approval paths; file tracking mirrored from eOffice; and money tracking linked to PFMS.",
+      "why": "Fast-tracking grants was a founding goal of the concept. An athlete should never need to know which office holds their file — the platform shows the desk, the days pending and the next action. And leadership should see exactly where money slows down.",
+      "tag": null,
+      "flow": [
+        "<b>Catalogue:</b> every scheme is listed with its rules coded in — age, sport, level, income, state.",
+        "<b>Auto-eligibility:</b> the athlete's verified profile is checked against all rules; the platform says “you qualify for these 4 schemes” instead of the athlete guessing.",
+        "<b>Apply:</b> application with documents pulled from DigiLocker; submitted from a phone in minutes.",
+        "<b>Route & track:</b> the application moves through the approval hierarchy (from M1); file status is mirrored from eOffice — never bypassed.",
+        "<b>Pay & prove:</b> sanction and release amounts come from PFMS; utilisation certificates are tracked to closure.",
+        "<b>Learn:</b> delay analytics show which desks and stages slow things down — so process, not people, gets fixed."
+      ],
+      "features": [
+        {
+          "title": "Scheme catalogue + eligibility engine",
+          "detail": "One list of all schemes; automatic “am I eligible” answers from profile data."
+        },
+        {
+          "title": "Application workflow",
+          "detail": "Apply, upload from DigiLocker, track, resubmit corrections — from a phone."
+        },
+        {
+          "title": "File tracking",
+          "detail": "File number, current desk, days pending, remarks, escalation clock."
+        },
+        {
+          "title": "Fund tracking (PFMS)",
+          "detail": "Sanctioned, released, utilised, balance, overdue utilisation certificates."
+        },
+        {
+          "title": "Delay analytics",
+          "detail": "Bottleneck view by desk and stage for leadership."
+        }
+      ],
+      "screens": [
+        {
+          "name": "“Schemes for me” list",
+          "description": "The athlete sees only schemes they qualify for, each with an Apply button and required documents listed."
+        },
+        {
+          "name": "Application tracker",
+          "description": "Workflow pattern: stepper (Applied → Verified → Approval → Paid), current desk, days waiting, next action."
+        },
+        {
+          "name": "Officer queue",
+          "description": "The approver's inbox: pending applications sorted by age, one-tap approve/return with remarks."
+        },
+        {
+          "name": "Fund dashboard",
+          "description": "Dashboard pattern: state-wise sanction vs release vs utilisation; overdue certificates flagged red."
+        }
+      ],
+      "partners": [
+        "MYAS",
+        "SAI",
+        "State departments",
+        "PFMS",
+        "eOffice",
+        "DigiLocker"
+      ],
+      "risks": [
+        {
+          "risk": "Conflicts with the official file process",
+          "answer": "Khelo Bharat mirrors eOffice status; it never creates unofficial approvals — the sanctioned process stays supreme."
+        },
+        {
+          "risk": "Officers bypass the system",
+          "answer": "File movement visible to leadership; SLA breaches auto-escalate."
+        }
+      ],
+      "outcome": "Scheme approval time cut in half, every rupee traceable, and zero athletes lost in paperwork.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M4",
+      "pillar": 1,
+      "isNew": false,
+      "title": "Connect & Resolve (Communication + Grievance)",
+      "pattern": "workflow",
+      "origin": "Concept PPT — government communication with sporting bodies plus grievance redressal with case status.",
+      "what": "The official communication channel — circulars, notices, targeted alerts to SPOCs, federations, athletes and schools — plus a sports grievance desk with case IDs, SLAs, evidence, an escalation matrix and CPGRAMS alignment.",
+      "why": "Athletes and sports bodies need one trusted channel they actually check; the government needs to reach exactly the right audience (say, all boxing coaches in Haryana) in one click. And grievances need a path that ends in resolution, not silence.",
+      "tag": null,
+      "flow": [
+        "<b>Target:</b> announcements are addressed using the identity registry — by role, sport, state and level; delivery and read receipts tracked.",
+        "<b>File:</b> a grievance is submitted with category and evidence; triage rules filter duplicates, non-sports and sub-judice matters before any officer sees it.",
+        "<b>Route:</b> valid cases go to the responsible officer (from M1) with an SLA clock ticking.",
+        "<b>Escalate:</b> SLA breach moves the case up automatically — district → state → SAI/MYAS → CPGRAMS or Tribunal path where applicable.",
+        "<b>Learn:</b> category heatmaps by state and federation show systemic problems, not just individual cases."
+      ],
+      "features": [
+        {
+          "title": "Targeted messaging",
+          "detail": "Send to precise groups; delivery and read receipts."
+        },
+        {
+          "title": "Case management",
+          "detail": "Grievance ID, assigned officer, SLA, status, hearing notes."
+        },
+        {
+          "title": "Validity filter",
+          "detail": "Duplicate, false, RTI, service-matter and sub-judice screening."
+        },
+        {
+          "title": "Escalation matrix",
+          "detail": "Automatic upward movement when the SLA is breached."
+        },
+        {
+          "title": "Heatmap analytics",
+          "detail": "Pending, overdue and category-wise views by state and federation."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Broadcast composer",
+          "description": "Pick audience by role/sport/state, preview reach count, send; see delivery and read stats."
+        },
+        {
+          "name": "My grievance",
+          "description": "Workflow pattern for the citizen: case ID, status stepper, officer assigned, SLA countdown."
+        },
+        {
+          "name": "Grievance command board",
+          "description": "Dashboard pattern: pending/overdue by category and state, with the oldest cases on top."
+        }
+      ],
+      "partners": [
+        "CPGRAMS",
+        "MYAS",
+        "SAI",
+        "State departments",
+        "National Sports Tribunal"
+      ],
+      "risks": [
+        {
+          "risk": "Noise floods the system",
+          "answer": "Triage rules, duplicate detection and category filters keep officer queues clean."
+        },
+        {
+          "risk": "Cases quietly expire",
+          "answer": "SLA clocks and auto-escalation make silence impossible."
+        }
+      ],
+      "outcome": "More than 90% of grievances resolved within SLA — and a communication channel people trust enough to read.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M5",
+      "pillar": 2,
+      "isNew": true,
+      "title": "School Screening Games Network",
+      "pattern": "capture",
+      "origin": "Leadership idea 1.7 — “Have the DEO, DSO and PT teachers conduct screening games for talent hunt at school/college level to get data, rather than us going to them to collect it.”",
+      "what": "A standing, decentralised talent-screening machine: DEOs, DSOs and PT teachers run simple, standardised “screening games” — sprints, jumps, throws, agility, sport-specific mini-drills — at schools and colleges on a fixed calendar. Scores, photos and short videos are captured on a mobile app and flow straight into the platform.",
+      "why": "This reverses the data-collection problem. Instead of teams travelling to collect data (slow, costly, incomplete), the field workforce that already exists — India's PT teachers and district officers — generates the data as part of normal work. KIRTI targets lakhs of assessments through centres; the school network multiplies that reach to every school with a teacher and a phone.",
+      "tag": null,
+      "flow": [
+        "<b>Standardise:</b> MYAS/SAI notify a short, sport-science-approved test battery per age band (9–11, 12–14, 15–18) — the same tests everywhere so scores are comparable.",
+        "<b>Schedule:</b> the academic calendar gets two screening windows per year; DEOs schedule schools, DSOs supervise districts.",
+        "<b>Capture:</b> the PT teacher registers students (school UDISE code + guardian consent), runs the tests, and enters scores in the offline-capable School App with photo/video proof.",
+        "<b>Benchmark:</b> the app compares each child to national age norms instantly and flags “potential” cases to the DSO.",
+        "<b>Progress:</b> flagged children are invited to district screening games; top performers go to KIRTI assessment centres and SAI trials — every step recorded on the same profile.",
+        "<b>Enrich:</b> Fit India school fitness data flows in as an additional early signal."
+      ],
+      "features": [
+        {
+          "title": "Standard test battery",
+          "detail": "Same simple tests nationwide; age- and gender-wise national benchmarks."
+        },
+        {
+          "title": "School App (offline-first)",
+          "detail": "Register students, capture scores, photos, 30-second videos; syncs when network returns."
+        },
+        {
+          "title": "Auto-flagging",
+          "detail": "Children above benchmark thresholds surface automatically on DSO dashboards."
+        },
+        {
+          "title": "Screening calendar",
+          "detail": "Twice-yearly windows; completion tracked school by school."
+        },
+        {
+          "title": "Funnel view",
+          "detail": "School screen → district games → KIRTI/SAI trial → academy induction, on one timeline."
+        },
+        {
+          "title": "Consent-first",
+          "detail": "Guardian consent captured before any child data is recorded (DPDP compliant)."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Run Test screen",
+          "description": "Capture pattern: one test per screen, big timer/counter, auto-saved result, optional 30-second video, swipe to next student. A teacher finishes a class in one period."
+        },
+        {
+          "name": "School completion board",
+          "description": "The DEO's view: which schools completed the window, which are pending, one-tap reminders."
+        },
+        {
+          "name": "DSO flag inbox",
+          "description": "Auto-flagged children ranked by percentile, with video proof attached — invite to district games in one tap."
+        }
+      ],
+      "partners": [
+        "State school education departments",
+        "DEOs · DSOs · PT teachers",
+        "KIRTI",
+        "Fit India",
+        "SAI",
+        "CBSE & state boards"
+      ],
+      "risks": [
+        {
+          "risk": "Fake or careless scores",
+          "answer": "Random DSO re-tests, video proof for flagged cases, and teacher accuracy scores (see M6)."
+        },
+        {
+          "risk": "Teacher workload resistance",
+          "answer": "The battery fits in one class period; participation earns recognition through M6."
+        },
+        {
+          "risk": "Child data privacy",
+          "answer": "Aggregate-only public data; personal data visible only to authorised roles with guardian consent."
+        }
+      ],
+      "outcome": "Every district screening every year — 20 lakh+ children assessed annually, with talent flagged within days, not years.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M6",
+      "pillar": 2,
+      "isNew": true,
+      "title": "PT Teacher Scout Recognition Programme",
+      "pattern": "profile",
+      "origin": "Leadership idea 1.8 — “Gratification for PT teachers in the form of certificates or other perks for uploading videos and other data.”",
+      "what": "A recognition and reward ladder that makes PT teachers the celebrated front line of Indian talent scouting: points for every verified upload, digital certificates, badges, an annual “Khelo Bharat Talent Scout” award, and tangible perks — priority seats in coaching courses, event invitations, and recognition letters for service records (with state education department concurrence).",
+      "why": "M5 works only if teachers participate willingly and honestly. Recognition costs little but changes behaviour. Crucially, rewards are tied to quality — verified data and discoveries that progress — not raw volume, so the incentive drives accuracy, not spam.",
+      "tag": null,
+      "flow": [
+        "<b>Enrol:</b> every PT teacher gets a Scout Profile linked to their school and the students they screen.",
+        "<b>Earn:</b> points accrue for completed screening windows, verified uploads and quality videos — with the biggest weight on students who progress to district, KIRTI or academy level.",
+        "<b>Level up:</b> Scout → Silver Scout → Gold Scout → National Talent Scout, each with a QR-verifiable certificate signed by SAI/MYAS.",
+        "<b>Celebrate:</b> annual awards at district, state and national level; national awardees invited to the Khelo India Games.",
+        "<b>Reward:</b> a perks catalogue — fee-waived NIS/e-Khel Pathshala seats, event passes, training kits, appreciation letters for service records.",
+        "<b>Protect quality:</b> an accuracy score (based on DSO re-test agreement) gates rewards — low accuracy pauses points and triggers retraining."
+      ],
+      "features": [
+        {
+          "title": "Scout profile & points",
+          "detail": "A transparent point ledger for every upload and discovery."
+        },
+        {
+          "title": "Certificate engine",
+          "detail": "Auto-generated, QR-verifiable digital certificates at each level."
+        },
+        {
+          "title": "Discovery credit",
+          "detail": "A teacher stays credited on an athlete's timeline forever — “first scouted by”."
+        },
+        {
+          "title": "Leaderboards",
+          "detail": "District and state scout leaderboards, celebrated on the public portal."
+        },
+        {
+          "title": "Accuracy gate",
+          "detail": "Rewards tied to verified quality, not quantity."
+        }
+      ],
+      "screens": [
+        {
+          "name": "My Scout profile",
+          "description": "Profile pattern: level badge, point ledger, certificates wallet, my discovered athletes and where they reached."
+        },
+        {
+          "name": "Scout leaderboard",
+          "description": "Registry pattern: district and state rankings with filters; public celebration page."
+        },
+        {
+          "name": "Accuracy report",
+          "description": "A private quality view: my uploads vs DSO re-test agreement, with tips when accuracy drops."
+        }
+      ],
+      "partners": [
+        "State education departments",
+        "SAI — NIS Patiala · e-Khel Pathshala",
+        "MYAS",
+        "CBSE & state boards"
+      ],
+      "risks": [
+        {
+          "risk": "Gaming the points with bulk junk uploads",
+          "answer": "Outcomes weigh more than volume; the accuracy gate plus random audits stop spam."
+        },
+        {
+          "risk": "Service-record recognition needs approvals",
+          "answer": "Sign MoUs with states; start with certificates and course perks, which need none."
+        }
+      ],
+      "outcome": "A motivated national scout force of lakhs of teachers — and the phrase “first scouted by” becoming a badge of honour.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M7",
+      "pillar": 2,
+      "isNew": false,
+      "title": "Athlete 360 Profile & AI Talent Engine",
+      "pattern": "profile",
+      "origin": "Concept PPT + module report — the core module, on the NSRS ID.",
+      "what": "The heart of the platform: one lifetime profile per athlete on the NSRS ID — identity and KYC, screening scores, event results, fitness and skill trials, medical and sports-science records, achievements, certifications, camps, grants received — plus an explainable AI talent score reviewed by human committees.",
+      "why": "Every other module reads or writes this profile. A verified Athlete 360 makes eligibility automatic (schemes, card tiers, jobs, marks) and makes talent decisions evidence-based instead of connection-based.",
+      "tag": null,
+      "flow": [
+        "<b>Create once:</b> the profile is born at first contact — a school screening, an event entry or self-registration — anchored to an NSRS ID with DigiLocker/Aadhaar-offline verification.",
+        "<b>Append forever:</b> every event result, test score, camp and grant automatically adds to the timeline with its source and verifier.",
+        "<b>Enrich:</b> KIRTI assessment data and Fit India fitness data flow in as inputs.",
+        "<b>Score:</b> the AI engine computes sport-wise potential scores with visible factors — speed percentile, growth trend, competition level — refreshed as new data arrives.",
+        "<b>Decide:</b> talent committees see ranked shortlists with explanations; their decisions and reasons are recorded back into the profile."
+      ],
+      "features": [
+        {
+          "title": "Lifetime timeline",
+          "detail": "Year-wise growth: results, tests, camps, injuries, grants — one scrollable story."
+        },
+        {
+          "title": "Verification badges",
+          "detail": "Each data point shows who verified it: school, federation, SAI or the event system."
+        },
+        {
+          "title": "AI talent score (advisory)",
+          "detail": "Explainable score with factors; committees decide, with reasons logged."
+        },
+        {
+          "title": "Medical & sports-science vault",
+          "detail": "Injury history, clearances, nutrition and psychology notes — strictly access-controlled."
+        },
+        {
+          "title": "Doping/compliance flag",
+          "detail": "NADA status shown to authorised roles only, per legal permissions."
+        },
+        {
+          "title": "Consent centre",
+          "detail": "The athlete or guardian controls who sees what."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Athlete 360 profile",
+          "description": "Profile pattern: identity card with tier and verified badges on the left, lifetime timeline in the centre, tabs for documents, sealed medical vault and consents."
+        },
+        {
+          "name": "Committee shortlist",
+          "description": "Ranked candidates with the AI score broken into visible factors; approve/override with mandatory reasons."
+        },
+        {
+          "name": "Consent centre",
+          "description": "Simple toggles: who can see my data — with guardian controls for minors."
+        }
+      ],
+      "partners": [
+        "NSRS",
+        "KIRTI",
+        "Fit India",
+        "NADA",
+        "NSFs",
+        "SAI sports science centres"
+      ],
+      "risks": [
+        {
+          "risk": "AI becomes the selector",
+          "answer": "It never does: AI shortlists and explains; committees decide; every override is recorded."
+        },
+        {
+          "risk": "Duplicate or fake profiles",
+          "answer": "NSRS ID as the single key, document hash dedupe, and manual merge approval."
+        }
+      ],
+      "outcome": "One athlete, one story, zero repeated paperwork — and selection decisions that can be explained to anyone.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M8",
+      "pillar": 2,
+      "isNew": true,
+      "title": "Event & Competition Management",
+      "pattern": "registry",
+      "origin": "New module added in this blueprint — the missing data engine.",
+      "what": "A national event backbone: every competition — school, district, state, national, federation, university — is created on the platform with sanction status, entries, draws, officials, results and records. Results publish once and update every athlete's profile automatically.",
+      "why": "Most athlete achievements are born at events. If events run outside the platform, results arrive late, unverified or never. If events run on the platform, the Athlete 360, laurels, eligibility and AI engine all stay current with zero extra data entry. This module makes the whole ecosystem self-feeding.",
+      "tag": null,
+      "flow": [
+        "<b>Create:</b> a recognised body creates an event; sanction is checked automatically against the Federation Registry (M2).",
+        "<b>Enter:</b> athletes enter with their NSRS ID from the app; eligibility (age, sport, level) is auto-checked from the profile.",
+        "<b>Staff:</b> technical officials are assigned from the registry (M9), building their professional records too.",
+        "<b>Score:</b> results are entered live or bulk-uploaded from timing systems.",
+        "<b>Publish once:</b> on publication, results write simultaneously to athlete profiles, laurels, rankings and the analytics layer — records are flagged automatically."
+      ],
+      "features": [
+        {
+          "title": "Event creation & sanction check",
+          "detail": "Only recognised bodies host ranked events; others are visibly marked “unsanctioned”."
+        },
+        {
+          "title": "Online entries",
+          "detail": "Apply from the app; automatic eligibility check; entry fees where applicable."
+        },
+        {
+          "title": "Results engine",
+          "detail": "Live scoring or upload; instant profile updates; records flagged automatically."
+        },
+        {
+          "title": "Officials assignment",
+          "detail": "Officials booked from the registry, with their own track record building."
+        },
+        {
+          "title": "National calendar",
+          "detail": "One searchable calendar for every level — exactly as the concept PPT envisioned."
+        }
+      ],
+      "screens": [
+        {
+          "name": "National event calendar",
+          "description": "Registry pattern: search by sport, state, level, date; each event card shows sanction status and entry deadline."
+        },
+        {
+          "name": "Event console",
+          "description": "For organisers: entries, draws, officials, live results entry, publish button with validation."
+        },
+        {
+          "name": "My entries",
+          "description": "The athlete's view: upcoming events, entry status, results history feeding the timeline."
+        }
+      ],
+      "partners": [
+        "NSFs and affiliates",
+        "School Games Federation",
+        "University sports boards",
+        "Khelo India Games",
+        "Timing-system vendors"
+      ],
+      "risks": [
+        {
+          "risk": "Unsanctioned events pollute records",
+          "answer": "Sanction check against M2; unsanctioned results never count for eligibility or marks."
+        },
+        {
+          "risk": "Organisers resist new tools",
+          "answer": "Simple bulk-upload option and real value: free entries management and instant publication."
+        }
+      ],
+      "outcome": "Every sanctioned result in India lands on the right athlete's profile within minutes of the finish line.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M9",
+      "pillar": 3,
+      "isNew": false,
+      "title": "Coaches, Experts & Officials Registry",
+      "pattern": "registry",
+      "origin": "Concept PPT — a ready directory of coaches, trainers, physios, dietitians, SMEs and technical officials.",
+      "what": "The National Sports Human Resource Registry: coaches by sport and certification, trainers, physiotherapists, dietitians, psychologists, technical officials and subject-matter experts — with verified credentials, availability, assignments and outcome track records. Coaches and support staff apply for their own schemes here too.",
+      "why": "Talent without coaching is wasted. Matching verified experts to athletes, academies and events — and letting experts grow through schemes and courses — completes the development loop. It also becomes the career-transition destination for retiring athletes (from M15).",
+      "tag": null,
+      "flow": [
+        "<b>Verify:</b> every expert registers with certifications (NIS, NSF, international); credentials are verified with issuing bodies and background checks completed.",
+        "<b>Publish availability:</b> state, district, travel willingness, online/offline support.",
+        "<b>Match:</b> the assignment engine pairs coach/expert supply with athlete, facility, camp and event demand.",
+        "<b>Track outcomes:</b> athletes trained and their progress build the expert's living CV.",
+        "<b>Grow:</b> experts apply for training schemes, grants and higher certifications directly; renewals are tracked with reminders."
+      ],
+      "features": [
+        {
+          "title": "Verified expert profile",
+          "detail": "Certifications, validity, renewals, background checks."
+        },
+        {
+          "title": "Availability & assignment engine",
+          "detail": "Match supply to demand across athletes, facilities, camps and events."
+        },
+        {
+          "title": "Outcome linkage",
+          "detail": "Athletes trained and their progress — a coach's living CV."
+        },
+        {
+          "title": "Scheme access",
+          "detail": "Coaches and support staff apply for eligible schemes and grants directly."
+        },
+        {
+          "title": "Safe-sport compliance",
+          "detail": "Code-of-conduct flags aligned with the 2025 Act's requirements."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Find an expert",
+          "description": "Registry pattern: search by sport, role, place, certification level; map toggle for nearby experts."
+        },
+        {
+          "name": "Expert profile",
+          "description": "Profile pattern: credentials with verification badges, athletes trained, outcomes, availability calendar."
+        },
+        {
+          "name": "Assignment board",
+          "description": "For SAI/state admins: open needs (camp needs a physio) matched against available verified experts."
+        }
+      ],
+      "partners": [
+        "SAI",
+        "NIS Patiala",
+        "LNIPE / LNCPE",
+        "National Sports University",
+        "NSFs",
+        "e-Khel Pathshala"
+      ],
+      "risks": [
+        {
+          "risk": "Fake certifications",
+          "answer": "Verification with issuing bodies before the badge appears; expiry auto-flags."
+        },
+        {
+          "risk": "Safe-sport violations",
+          "answer": "Background checks at entry; misconduct flags per the 2025 Act suspend visibility."
+        }
+      ],
+      "outcome": "Every serious athlete within reach of a verified coach — and every good coach visible, busy and growing.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M10",
+      "pillar": 3,
+      "isNew": false,
+      "title": "Infrastructure GIS & Utilization Registry",
+      "pattern": "registry",
+      "origin": "Concept PPT + module report — map every facility; link playground-less schools to the nearest usable one.",
+      "what": "The national sports infrastructure map: every facility with a Facility ID, GIS location, ownership, sports supported, readiness score, equipment, booking calendar, maintenance status and accessibility. Includes the flagship school–facility linkage: schools without playgrounds are mapped to the nearest usable facility with reserved slots.",
+      "why": "Facilities exist but sit unused — because nobody knows they exist, or they are unusable and nobody is accountable. A live registry with utilisation data and a named responsible officer per facility changes both.",
+      "tag": null,
+      "flow": [
+        "<b>Register:</b> every facility gets a Facility ID with location, owner, managing body, sports, capacity and condition.",
+        "<b>Score readiness:</b> usable / partly usable / under repair / upcoming / closed — with geo-tagged photo proof and inspection dates.",
+        "<b>Open bookings:</b> slot calendars for athletes, schools, academies and events; utilisation is measured, not guessed.",
+        "<b>Link schools:</b> playground-less schools are matched to the nearest usable facility with reserved school-hours slots.",
+        "<b>Maintain:</b> work orders, AMC and repairs tracked with photos and fund linkage; stale data triggers reminders and shows on the state scorecard."
+      ],
+      "features": [
+        {
+          "title": "Facility master + GIS",
+          "detail": "Search the nearest usable facility by sport — from village to national level."
+        },
+        {
+          "title": "Readiness score",
+          "detail": "Five clear statuses with photo proof and inspection dates."
+        },
+        {
+          "title": "Booking & utilisation",
+          "detail": "Slot booking and real utilisation analytics."
+        },
+        {
+          "title": "School–facility linkage",
+          "detail": "Reserved slots for linked schools — the concept PPT's “exciting feature”, delivered."
+        },
+        {
+          "title": "Maintenance & accountability",
+          "detail": "Work orders, AMC, repair status — and a named responsible officer per facility."
+        },
+        {
+          "title": "Accessibility status",
+          "detail": "Divyangjan access, lighting, washrooms, safety, medical room."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Facility finder",
+          "description": "Registry pattern with map-first view: nearest usable facilities by sport, readiness colour-coded."
+        },
+        {
+          "name": "Facility profile",
+          "description": "Profile pattern: readiness, equipment, booking calendar, linked schools, responsible officer, inspection photos."
+        },
+        {
+          "name": "Inspection capture",
+          "description": "Capture pattern for field officers: checklist + geo-tagged photos, works offline."
+        }
+      ],
+      "partners": [
+        "SAI",
+        "State departments",
+        "PM GatiShakti GIS",
+        "Local bodies",
+        "School education departments"
+      ],
+      "risks": [
+        {
+          "risk": "Facility status goes stale",
+          "answer": "Mandatory periodic updates, QR-based inspection, and reminders that escalate to the state scorecard."
+        },
+        {
+          "risk": "Booking conflicts with local control",
+          "answer": "Local managers keep control of calendars; the platform adds visibility and accountability."
+        }
+      ],
+      "outcome": "95% of facilities with fresh data, utilisation up 40% — and no school child without a ground to play on.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M11",
+      "pillar": 3,
+      "isNew": false,
+      "title": "Asset Lifecycle Tracking",
+      "pattern": "capture",
+      "origin": "Concept PPT — track allocated inventory and status across facilities.",
+      "what": "QR/RFID-tagged tracking of sports equipment and inventory funded by government, CSR or events: registry, allocation, condition, movement, audits and a loss/damage workflow — with each asset linked to its facility, funding source and responsible officer.",
+      "why": "Equipment bought with public or CSR money routinely disappears, breaks silently or sits in the wrong place. Tagged assets with a chain of custody end audit objections and keep equipment where athletes are.",
+      "tag": null,
+      "flow": [
+        "<b>Tag:</b> every major asset gets a QR/RFID identity at purchase, linked to its funding source (grant file or CSR project).",
+        "<b>Allocate:</b> assets are assigned to a facility, coach, team or athlete — with a named responsible person.",
+        "<b>Move with record:</b> issue, transfer, return and disposal are all logged scans.",
+        "<b>Audit:</b> periodic physical verification with geo-tagged photos; missing or condemned items enter a formal workflow.",
+        "<b>Close the loop:</b> loss/damage triggers report → inquiry → recovery or replacement, visible to the funder."
+      ],
+      "features": [
+        {
+          "title": "Asset registry + QR tag",
+          "detail": "Every major asset scannable; source of funds recorded."
+        },
+        {
+          "title": "Allocation & movement log",
+          "detail": "Issue, transfer, return, disposal — full chain of custody."
+        },
+        {
+          "title": "Condition & audit",
+          "detail": "Periodic verification with photo proof; missing/condemned workflow."
+        },
+        {
+          "title": "Funding linkage",
+          "detail": "Each asset ties back to the grant file or CSR project that paid for it."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Scan & act",
+          "description": "Capture pattern: scan a QR, see the asset's story, record an action (issue/return/condition) in two taps."
+        },
+        {
+          "name": "Facility asset board",
+          "description": "All assets at a facility with condition colours and last-audit dates."
+        },
+        {
+          "name": "Audit mode",
+          "description": "Guided stock verification: scan everything, the app lists what's missing."
+        }
+      ],
+      "partners": [
+        "SAI centres",
+        "State facilities",
+        "CSR partners",
+        "GeM (procurement reference)"
+      ],
+      "risks": [
+        {
+          "risk": "Assets shifted without record",
+          "answer": "Scan-to-move policy; unscanned moves surface at the next audit with the responsible officer named."
+        },
+        {
+          "risk": "Tagging burden",
+          "answer": "Tag only assets above a value threshold; bulk consumables tracked by stock count."
+        }
+      ],
+      "outcome": "Every significant asset findable in seconds, every audit clean — and funders seeing exactly where their equipment lives.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M12",
+      "pillar": 3,
+      "isNew": true,
+      "title": "Academy Accreditation & Marketplace",
+      "pattern": "registry",
+      "origin": "New module added in this blueprint.",
+      "what": "A star-rated national registry of private and public sports academies: verified coaches, facilities, safety and child-safeguarding standards, fees and outcomes. Parents choose academies with confidence; the government channels residential placements and scholarships to accredited ones.",
+      "why": "Private academies train a huge share of Indian athletes but are unregulated and invisible to the state. Accreditation raises standards; the marketplace connects discovered talent (M5/M7) to quality training near home.",
+      "tag": null,
+      "flow": [
+        "<b>Apply:</b> an academy applies with facilities, coaches (verified via M9), safety and safeguarding documentation.",
+        "<b>Inspect:</b> field inspection (using M10's capture tools) verifies claims with photos.",
+        "<b>Rate:</b> a transparent star rating across coaching, facilities, safety and outcomes; renewable periodically.",
+        "<b>List:</b> the academy appears on the public marketplace with rating, fees and verified reviews.",
+        "<b>Place & track:</b> scholarship athletes are placed in accredited academies; their progress feeds the academy's outcome score."
+      ],
+      "features": [
+        {
+          "title": "Accreditation workflow",
+          "detail": "Apply, inspect, star-rate, renew — standards for safety, coaching and child protection."
+        },
+        {
+          "title": "Public marketplace",
+          "detail": "Search academies by sport, place, rating and fees; verified reviews only."
+        },
+        {
+          "title": "Placement pipeline",
+          "detail": "Scholarship athletes placed in accredited academies with outcome tracking."
+        },
+        {
+          "title": "Continuous compliance",
+          "detail": "Coach verification (M9) and facility standards (M10) checked automatically, not just at renewal."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Academy marketplace",
+          "description": "Registry pattern: search and compare academies; star ratings and outcome data upfront."
+        },
+        {
+          "name": "Academy profile",
+          "description": "Profile pattern: rating breakdown, verified coaches, facilities, fees, alumni outcomes, reviews."
+        },
+        {
+          "name": "Accreditation console",
+          "description": "For inspectors and SAI: applications, inspection reports, rating decisions, renewals due."
+        }
+      ],
+      "partners": [
+        "SAI",
+        "NSFs",
+        "State departments",
+        "Private academy associations"
+      ],
+      "risks": [
+        {
+          "risk": "Rating disputes",
+          "answer": "Transparent published criteria; appeal process; ratings backed by inspection evidence."
+        },
+        {
+          "risk": "Fake reviews",
+          "answer": "Only verified, platform-placed athletes and guardians can review."
+        }
+      ],
+      "outcome": "Parents choose with confidence, good academies grow, and public money flows only to accredited quality.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M13",
+      "pillar": 3,
+      "isNew": true,
+      "title": "Sports Science & Injury Network",
+      "pattern": "profile",
+      "origin": "New module added in this blueprint.",
+      "what": "A national network of sports medicine and science support: injury reporting and recovery tracking on the athlete profile, tele-consultation with SAI sports-science centres, physiotherapy and rehab protocols, nutrition guidance, and injury analytics that drive prevention programmes.",
+      "why": "Injuries silently end more careers than lack of talent. Early reporting, guided rehab and a referral network protect the state's investment in every athlete — and injury data by sport and region tells the system where prevention is needed.",
+      "tag": null,
+      "flow": [
+        "<b>Report early:</b> an athlete or coach logs an injury in the app; a triage question set suggests urgency.",
+        "<b>Connect:</b> tele-consultation links district athletes to SAI sports-science centres and empanelled experts.",
+        "<b>Guide:</b> standard rehab and strength protocols by sport and injury, in simple language and video.",
+        "<b>Track return:</b> recovery milestones and return-to-play clearance recorded on the sealed medical vault.",
+        "<b>Prevent:</b> anonymised injury heatmaps by sport, age, surface and season drive prevention campaigns and facility fixes."
+      ],
+      "features": [
+        {
+          "title": "Injury log & recovery tracker",
+          "detail": "Report, treat, track return-to-play; visible to authorised medical staff only."
+        },
+        {
+          "title": "Tele-sports-science",
+          "detail": "Remote consultations connecting districts to SAI centres and empanelled experts."
+        },
+        {
+          "title": "Protocol library",
+          "detail": "Standard rehab and strength protocols by sport and injury — simple language, video-first."
+        },
+        {
+          "title": "Prevention analytics",
+          "detail": "Injury heatmaps driving prevention campaigns and infrastructure fixes."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Report injury",
+          "description": "Capture pattern: what happened, where it hurts, since when — with urgency triage and next-step guidance."
+        },
+        {
+          "name": "Recovery tracker",
+          "description": "Timeline of treatment, milestones and clearance status — sealed to medical roles."
+        },
+        {
+          "name": "Prevention heatmap",
+          "description": "For sports-science leadership: injuries by sport, region, age and season."
+        }
+      ],
+      "partners": [
+        "SAI sports science centres",
+        "National Sports University",
+        "Empanelled hospitals",
+        "NSF medical panels"
+      ],
+      "risks": [
+        {
+          "risk": "Athletes hide injuries fearing deselection",
+          "answer": "Reporting never auto-affects selection; clear policy plus sealed medical data builds trust."
+        },
+        {
+          "risk": "Health-data sensitivity",
+          "answer": "The strictest access tier on the platform; aggregate-only analytics."
+        }
+      ],
+      "outcome": "Careers saved by early care — and a country that finally knows where and why its athletes get hurt.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M14",
+      "pillar": 4,
+      "isNew": true,
+      "title": "Khelo Bharat Sports Card",
+      "pattern": "profile",
+      "origin": "Leadership idea 1.4 — “Launch a sports card for trainers, coaches and athletes. RuPay or any CC tie-up. Benefits: airport lounges, public transport discounts, NHAI toll, free entry to sports complexes, army canteen tie-up, sports goods discounts, BCCI tie-up.”",
+      "what": "A co-branded RuPay card — prepaid/debit first, a credit variant for eligible seniors — issued to verified athletes, coaches and trainers, doubling as the physical Khelo Bharat identity. One card = identity + benefits + payments. The card tier is driven automatically by the verified profile level: Blue (registered) → Silver (state) → Gold (national) → Platinum (international).",
+      "why": "The card solves three problems at once: it gives athletes tangible daily value (adoption), it gives partners a verified audience (no fake “athletes” claiming benefits), and it carries scholarship/DBT payments so support money reaches athletes directly and visibly.",
+      "tag": null,
+      "flow": [
+        "<b>Partner:</b> NPCI partnership creates the co-branded RuPay programme; one or more public-sector banks issue the cards.",
+        "<b>Issue by trust:</b> eligibility and tier come straight from the platform — only fully verified profiles get cards; tiers upgrade automatically with achievements.",
+        "<b>Verify anywhere:</b> the card's QR/chip links to the digital ID, so a sports-complex gate, a lounge desk or a stadium turnstile verifies the holder in one scan.",
+        "<b>Contract benefits:</b> every benefit is a signed MoU with a partner — lounges, transport, toll, facilities, stores, BCCI. (Important: NPCI has been trimming default RuPay lounge perks, so nothing relies on network defaults — all benefits are independently negotiated and funded.)",
+        "<b>Pay support through it:</b> scholarships, stipends, TA/DA and prize money land on the card via DBT with PFMS linkage.",
+        "<b>Protect:</b> renewal is automatic while the profile stays active and verified; fake identity or card transfer suspends it instantly."
+      ],
+      "features": [
+        {
+          "title": "Tiered cards",
+          "detail": "Blue → Silver → Gold → Platinum; tier auto-updates with verified achievements."
+        },
+        {
+          "title": "Identity + payments in one",
+          "detail": "QR-verifiable sports ID plus a full RuPay payment card."
+        },
+        {
+          "title": "DBT rails",
+          "detail": "Scholarships and stipends land on the card — visible, traceable support."
+        },
+        {
+          "title": "Benefits wallet",
+          "detail": "In-app list of active benefits, partner locations and usage history."
+        },
+        {
+          "title": "Family add-on (minors)",
+          "detail": "Guardian-controlled variant for under-18 athletes."
+        }
+      ],
+      "screens": [
+        {
+          "name": "My Card",
+          "description": "The athlete's card screen: tier, balance, recent DBT credits, and the benefits wallet with nearby partner locations."
+        },
+        {
+          "name": "Gate verification",
+          "description": "Partner-side scan screen: green tick with photo and tier — nothing else shared."
+        },
+        {
+          "name": "Card programme console",
+          "description": "For the programme office: issuance pipeline, tier changes, benefit usage by partner, misuse flags."
+        }
+      ],
+      "partners": [
+        "NPCI (RuPay)",
+        "Public-sector banks",
+        "AAI / lounge operators",
+        "State transport & railways (concession MoUs)",
+        "NHAI (FASTag-linked concession for teams in transit)",
+        "SAI & state facilities",
+        "CSD canteen (policy ask — access is normally restricted to defence personnel; pursue as a government decision or deliver an equivalent brand-discount programme)",
+        "Sports goods brands & e-commerce",
+        "BCCI (tickets, stadium access, mentorship days)"
+      ],
+      "risks": [
+        {
+          "risk": "Benefit partners drop out or underfund",
+          "answer": "Multi-year MoUs with minimum commitments; CSR funds can sponsor benefit pools."
+        },
+        {
+          "risk": "CSD canteen access is legally restricted",
+          "answer": "Pursue as a policy ask; meanwhile deliver equivalent discounts via brand tie-ups."
+        },
+        {
+          "risk": "Card issued on a fake identity",
+          "answer": "Cards issue only from fully verified profiles — KYC plus federation/school verification."
+        },
+        {
+          "risk": "Default RuPay perks change",
+          "answer": "Never rely on network defaults; every benefit is separately contracted."
+        }
+      ],
+      "outcome": "5 lakh+ athletes and coaches carrying daily, visible proof that the nation backs them — and a verified audience partners can trust.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M15",
+      "pillar": 4,
+      "isNew": true,
+      "title": "Jobs for Sports",
+      "pattern": "registry",
+      "origin": "Leadership idea 1.6 — “Jobs for sports: have a job in PSUs / corporates.”",
+      "what": "A national sports employment exchange: every sports-quota vacancy in Railways, defence, banks, police and PSUs (ONGC, BPCL, SAIL and more) aggregated in one place; corporate hiring pledges; an auto-generated verified “Sports CV” from Athlete 360; application tracking; and career-transition support into coaching, officiating and sports management.",
+      "why": "The strongest message to a parent in a small town is: sport can secure a job. Sports-quota recruitment already exists — but it is scattered across dozens of notification PDFs. Aggregation plus verified Sports CVs cuts certificate fraud, widens access, and gives recruiters a searchable, pre-verified talent pool.",
+      "tag": null,
+      "flow": [
+        "<b>Aggregate:</b> MoUs with major recruiters (Railway RRCs, ONGC, banks, state police) bring every sports-quota vacancy onto one board.",
+        "<b>Build the CV once:</b> the Sports CV is generated from verified profile data — achievements can be trusted without chasing paper certificates.",
+        "<b>Alert & apply:</b> athletes get alerts for vacancies matching their sport and level; one-click apply with the verified CV.",
+        "<b>Verify instantly:</b> recruiters scan a certificate QR or query an NSRS ID to confirm achievements in seconds — ending fake-certificate recruitment fraud.",
+        "<b>Pledge:</b> corporates commit hiring slots or sports-friendly policies (flexible hours for training) and are recognised publicly; pledges are tracked to actual hires.",
+        "<b>Transition:</b> retiring athletes are guided into coaching (NIS via M9), officiating, management and entrepreneurship tracks."
+      ],
+      "features": [
+        {
+          "title": "Vacancy aggregator",
+          "detail": "All sports-quota jobs, one search: sport, level, location, employer."
+        },
+        {
+          "title": "Verified Sports CV",
+          "detail": "Auto-built from the profile; QR-verifiable by any employer."
+        },
+        {
+          "title": "Employer verification API",
+          "detail": "Instant authenticity checks on any claimed achievement."
+        },
+        {
+          "title": "Corporate pledge board",
+          "detail": "Public commitments tracked to real hires."
+        },
+        {
+          "title": "Career transition hub",
+          "detail": "Coaching, officiating, management and skilling pathways."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Jobs board",
+          "description": "Registry pattern: vacancies filtered by my sport and level; “you match” badges; deadlines upfront."
+        },
+        {
+          "name": "My Sports CV",
+          "description": "Auto-generated, always current; share as QR or PDF; every line carries its verifier."
+        },
+        {
+          "name": "Recruiter console",
+          "description": "Post vacancies, search the verified pool, scan-verify claims, track applications."
+        }
+      ],
+      "partners": [
+        "Ministry of Railways",
+        "Department of Public Enterprises",
+        "PSUs — ONGC · BPCL · SAIL · banks",
+        "State police forces",
+        "Private employers",
+        "National Career Service portal"
+      ],
+      "risks": [
+        {
+          "risk": "Employers slow to change processes",
+          "answer": "Start with listing + verification only (no process change needed); deepen integration later."
+        },
+        {
+          "risk": "Verification disputes",
+          "answer": "Only platform-verified achievements appear on the CV; disputed items are excluded until resolved."
+        }
+      ],
+      "outcome": "5,000+ verified sports-quota hires through the platform — and “sport secures a future” becoming a fact parents believe.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M16",
+      "pillar": 4,
+      "isNew": true,
+      "title": "Marks for Sports (Education Credit Framework)",
+      "pattern": "workflow",
+      "origin": "Leadership idea 1.5 — “Marks for Sports initiative: add to Summit.” This module ships with a ready policy note for the Summit agenda, as directed.",
+      "what": "A policy-plus-platform initiative: verified sporting achievement earns recognised academic value — attendance relaxation for camps and competitions, credits under the National Credit Framework (which NEP 2020 enables for sports), admission weightage in colleges and universities, and bonus marks or grade weightage in board assessments.",
+      "why": "Parents pull children out of sport because it “costs marks”. Flipping that equation is the single biggest cultural unlock for grassroots sport. Honest note: today CBSE has no bonus-marks policy for sports (grace marks exist only for borderline passing) — so this is genuine policy reform, and the platform is what makes it feasible, because boards will only give academic value for achievements they can verify instantly.",
+      "tag": null,
+      "flow": [
+        "<b>Table it:</b> present the framework at the Summit, jointly owned by MYAS and the Ministry of Education.",
+        "<b>Define the ladder:</b> start with what needs least approval — (1) attendance relaxation, (2) NCrF credits, (3) admission weightage, (4) bonus marks — and climb as trust builds.",
+        "<b>Calibrate:</b> an achievement-to-credit table — e.g., district participation = Level 1, state medal = Level 2, national representation = Level 3 — agreed with boards.",
+        "<b>Anchor trust:</b> the platform issues QR-verifiable Sports Achievement Certificates only from sanctioned event results (M8) — forgery-proof.",
+        "<b>Verify in seconds:</b> boards and universities check claims through the API during results processing and admissions.",
+        "<b>Pilot, then scale:</b> CBSE plus 2–3 willing state boards and a university group first; expand after evaluation."
+      ],
+      "features": [
+        {
+          "title": "Achievement-to-credit table",
+          "detail": "One national table mapping verified achievement to marks, credits and weightage."
+        },
+        {
+          "title": "QR-verified certificates",
+          "detail": "Every certificate traceable to a sanctioned event result."
+        },
+        {
+          "title": "Board/university API",
+          "detail": "Instant verification during results and admissions."
+        },
+        {
+          "title": "Attendance shield",
+          "detail": "Auto-generated camp/competition attendance certificates for schools."
+        },
+        {
+          "title": "Summit agenda pack",
+          "detail": "A ready policy note travels with this module."
+        }
+      ],
+      "screens": [
+        {
+          "name": "My certificates",
+          "description": "The athlete's wallet of QR-verified achievement certificates, each showing its academic value."
+        },
+        {
+          "name": "Board verification portal",
+          "description": "Paste an ID or scan a QR → instant confirmation with the source event and result."
+        },
+        {
+          "name": "Policy dashboard",
+          "description": "For MYAS/MoE: claims verified, credits granted, board-wise adoption of the ladder."
+        }
+      ],
+      "partners": [
+        "Ministry of Education",
+        "CBSE & state boards",
+        "UGC / AICTE",
+        "National Credit Framework",
+        "Universities",
+        "School Games Federation"
+      ],
+      "risks": [
+        {
+          "risk": "Boards resist bonus marks",
+          "answer": "Offer the mild end of the ladder first; let evidence from the pilot carry the argument."
+        },
+        {
+          "risk": "Fake achievements chasing marks",
+          "answer": "Only platform-verified, sanctioned-event results count; unsanctioned events earn nothing."
+        }
+      ],
+      "outcome": "A parent's sentence changes from “sport will cost you marks” to “sport will earn you marks” — nationwide.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M17",
+      "pillar": 4,
+      "isNew": false,
+      "title": "CSR & Sponsorship Exchange",
+      "pattern": "registry",
+      "origin": "Concept PPT + module report — enlist corporates with sports CSR budgets and channel funds transparently.",
+      "what": "A sports CSR matchmaking and monitoring exchange: a registry of corporates with sports CSR budgets, a verified “need bank” (athletes, facilities, equipment and programmes needing support), a matching engine, project workflow with DPRs and approvals, and a transparency dashboard from pledge to geo-tagged completion proof. Aligned with the National CSR eXchange as the corporate reference layer.",
+      "why": "Corporates want to fund sport but cannot find verified needs; needs exist but cannot find funders. The exchange closes the loop with full transparency — and CSR can also fund sports-card benefit pools (M14) and academy scholarships (M12).",
+      "tag": null,
+      "flow": [
+        "<b>Register:</b> corporates list CSR focus areas, budget ranges, preferred geographies and sports.",
+        "<b>Verify needs:</b> DSOs, SAI centres, schools and NSFs submit needs; each is verified and priority-scored before entering the need bank — no wish lists.",
+        "<b>Match:</b> the engine pairs corporate interest with verified needs; proposals carry DPRs, budgets, KPIs and timelines.",
+        "<b>Approve & fund:</b> a project approval committee clears matches; MoUs and fund releases are recorded.",
+        "<b>Prove:</b> utilisation certificates, CA certificates and geo-tagged completion photos close each project publicly.",
+        "<b>Tell the story:</b> completed projects flow to the Showcase pillar with data-backed impact."
+      ],
+      "features": [
+        {
+          "title": "Corporate registry",
+          "detail": "CSR focus, budget range, preferred geography and sport."
+        },
+        {
+          "title": "Verified need bank",
+          "detail": "Vetted needs with objective priority scores."
+        },
+        {
+          "title": "Matching engine",
+          "detail": "Corporate interest matched to verified needs, with full proposals."
+        },
+        {
+          "title": "Transparency dashboard",
+          "detail": "Pledged → sanctioned → released → utilised → completed, publicly visible."
+        },
+        {
+          "title": "Impact stories",
+          "detail": "Completed projects showcased with real numbers."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Need bank",
+          "description": "Registry pattern: verified needs by sport, region and cost, priority-scored, with evidence attached."
+        },
+        {
+          "name": "Corporate console",
+          "description": "Browse matches, fund projects, track every rupee to completion proof."
+        },
+        {
+          "name": "Public impact wall",
+          "description": "Every completed project with photos, spend and outcomes — trust built in public."
+        }
+      ],
+      "partners": [
+        "National CSR eXchange",
+        "MCA (Schedule VII)",
+        "Corporates",
+        "Implementing agencies",
+        "State departments"
+      ],
+      "risks": [
+        {
+          "risk": "Funds drift to non-priority areas",
+          "answer": "Objective priority scores plus an approval committee decide, not lobbying."
+        },
+        {
+          "risk": "Impact claims without proof",
+          "answer": "Geo-tagged completion photos and CA certificates are mandatory for closure."
+        }
+      ],
+      "outcome": "₹500 crore+ of sports CSR matched to verified needs — with every rupee publicly traceable to a photo of the result.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M18",
+      "pillar": 5,
+      "isNew": false,
+      "title": "Media, Stories & Laurels",
+      "pattern": "registry",
+      "origin": "Concept PPT — DD Sports capsules, feeds, galleries; plus federation laurels and international athletes.",
+      "what": "The verified public face of Indian sport: athlete media profiles, event galleries, DD Sports capsules and official content, CSR impact stories, the national laurels register (international athletes, medals, records) and a Hall of Fame — all consent-managed and moderated.",
+      "why": "Rising athletes need visibility to attract sponsors and inspire their districts; the government needs a trusted channel to showcase programmes; and a public laurels register builds pride and accountability at once.",
+      "tag": null,
+      "flow": [
+        "<b>Gather:</b> event galleries and official DD Sports content are tagged by sport, event and athlete automatically from M8.",
+        "<b>Consent:</b> nothing about a minor publishes without guardian consent; every athlete controls their public page.",
+        "<b>Moderate:</b> an approval workflow clears every item before it goes public.",
+        "<b>Honour:</b> international representation, medals and national records enter the laurels register straight from sanctioned results.",
+        "<b>Connect:</b> brands browse rising verified athletes by sport, region and story — visibility becomes sponsorship."
+      ],
+      "features": [
+        {
+          "title": "Athlete media profile",
+          "detail": "Verified photos, videos, interviews and achievement posts — a shareable public page."
+        },
+        {
+          "title": "Event galleries & DD Sports",
+          "detail": "Official capsules and highlights, searchably tagged."
+        },
+        {
+          "title": "Laurels register",
+          "detail": "International representation, medals, national records — the authoritative list."
+        },
+        {
+          "title": "Consent & moderation",
+          "detail": "Guardian consent for minors; approval before anything publishes."
+        },
+        {
+          "title": "Sponsor discovery",
+          "detail": "Brands find rising verified athletes worth backing."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Public athlete page",
+          "description": "A clean, shareable story page: verified achievements, media, and a sponsor-contact route."
+        },
+        {
+          "name": "Laurels & Hall of Fame",
+          "description": "The nation's honour roll, filterable by sport, state and era."
+        },
+        {
+          "name": "Moderation queue",
+          "description": "For content teams: pending items, consent status, approve/reject with reasons."
+        }
+      ],
+      "partners": [
+        "DD Sports / Prasar Bharati",
+        "NSFs",
+        "Event organisers",
+        "PIB",
+        "CSR partners"
+      ],
+      "risks": [
+        {
+          "risk": "Publishing without consent",
+          "answer": "Consent is a technical gate, not a checkbox — the publish button stays disabled without it."
+        },
+        {
+          "risk": "Content quality drift",
+          "answer": "Moderation workflow plus official sourcing keeps the channel trusted."
+        }
+      ],
+      "outcome": "Every rising athlete discoverable and celebrated — and sponsors finding them before the podium, not after.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M19",
+      "pillar": 6,
+      "isNew": true,
+      "title": "National Analytics Command Centre & State Sports Excellence Index",
+      "pattern": "dashboard",
+      "origin": "Module report analytics layer + new: a published index, inspired by how public rankings move administrations.",
+      "what": "The decision cockpit: live national dashboards for talent supply, funding flows, infrastructure utilisation, CSR coverage, grievance health and federation compliance — plus a published State Sports Excellence Index ranking states and districts on participation, talent production, infrastructure readiness, data compliance and outcomes.",
+      "why": "What gets measured and ranked gets improved. The Aspirational Districts experience showed that public indices move administrations. A sports index creates the same healthy competition among states — and gives leadership one honest scoreboard.",
+      "tag": null,
+      "flow": [
+        "<b>Aggregate:</b> every module streams its numbers into the analytics layer continuously — no manual reporting.",
+        "<b>Serve by role:</b> the Minister, the SAI DG, a State Secretary and a DSO each see the same shapes at their own level.",
+        "<b>Rank:</b> the index formula is published openly; scores compute quarterly from live platform data, not self-reported claims.",
+        "<b>Spotlight gaps:</b> maps show where talent is dense but coaching or infrastructure is missing — investment targeting, not guesswork.",
+        "<b>Predict:</b> podium-pathway projections for 2030/2036 goals and early-warning signals on athlete dropouts.",
+        "<b>Open up:</b> aggregate, anonymised datasets are published for researchers and startups."
+      ],
+      "features": [
+        {
+          "title": "Command dashboards",
+          "detail": "Role-wise views from Minister to DSO — same design, right altitude."
+        },
+        {
+          "title": "State Sports Excellence Index",
+          "detail": "Published rankings with transparent formulas; quarterly refresh."
+        },
+        {
+          "title": "Gap maps",
+          "detail": "Talent density vs infrastructure and coaching supply."
+        },
+        {
+          "title": "Predictive views",
+          "detail": "Podium projections and dropout early warnings."
+        },
+        {
+          "title": "Open data",
+          "detail": "Aggregate datasets for the ecosystem."
+        }
+      ],
+      "screens": [
+        {
+          "name": "National command view",
+          "description": "Dashboard pattern: six KPI cards, the India heatmap, and the “needs action” list — the Minister's morning screen."
+        },
+        {
+          "name": "Index leaderboard",
+          "description": "States and districts ranked with score breakdowns; every number clickable to its source."
+        },
+        {
+          "name": "Gap explorer",
+          "description": "Cross two layers (talent × facilities) on a map and see exactly where to invest next."
+        }
+      ],
+      "partners": [
+        "MYAS",
+        "NITI Aayog (index methodology)",
+        "States",
+        "SAI"
+      ],
+      "risks": [
+        {
+          "risk": "States dispute rankings",
+          "answer": "Formulas are public and every score traces to verifiable platform data."
+        },
+        {
+          "risk": "Dashboards nobody uses",
+          "answer": "Dashboards carry actions, not just charts — the “needs your action” list is the point."
+        }
+      ],
+      "outcome": "Decisions made on live evidence, states competing to climb a public index — and one honest scoreboard for Indian sport.",
+      "evidence": "proposed"
+    },
+    {
+      "id": "M20",
+      "pillar": 6,
+      "isNew": true,
+      "title": "Data Partnership & Open Sports Data Framework",
+      "pattern": "workflow",
+      "origin": "Leadership idea 1.3 — “Evaluate Swaminathan sir team collaboration with Anshul team. They are ready to share data with us pro bono.” This framework is built to run that evaluation as case #1.",
+      "what": "A standing framework for taking in external datasets (like the pro bono offer on the table) and for publishing open sports data out — with a standard evaluation gate, legal templates and technical onboarding, so every partnership is fast but safe.",
+      "why": "Pro bono data can jump-start modules — talent histories, event archives, fitness datasets — but only if quality, legality and privacy are checked first. A standard framework means each new partner takes weeks, not months, and no partnership creates legal risk.",
+      "tag": null,
+      "flow": [
+        "<b>Week 1 — Discover:</b> what data does the partner hold — fields, volume, coverage, freshness; a sample is shared under NDA.",
+        "<b>Week 2 — Evaluate:</b> quality score (completeness, accuracy vs known records), legal right to share, consent basis under the DPDP Act, and uniqueness vs data we already hold.",
+        "<b>Week 3 — Agree:</b> MoU from the standard template — purpose limitation, no onward sharing, retention, attribution, exit clause. Pro bono still needs a contract.",
+        "<b>Weeks 4–6 — Pilot:</b> load into a sandbox, match against NSRS IDs, measure uplift: how many profiles enriched, which decisions improve.",
+        "<b>Decide:</b> full onboarding, partial (specific fields only), or a polite decline with reasons — recorded in the partnership register either way."
+      ],
+      "features": [
+        {
+          "title": "Evaluation scorecard",
+          "detail": "A standard 10-point check: quality, legality, consent, uniqueness, integration cost, uplift."
+        },
+        {
+          "title": "MoU template library",
+          "detail": "Pro bono, commercial and research variants, pre-cleared with legal."
+        },
+        {
+          "title": "Sandbox onboarding",
+          "detail": "Partner data tested in isolation before touching production records."
+        },
+        {
+          "title": "Partnership register",
+          "detail": "Every partner, scope and review date — auditable."
+        },
+        {
+          "title": "Open data out",
+          "detail": "The same framework governs what Khelo Bharat publishes for the ecosystem."
+        }
+      ],
+      "screens": [
+        {
+          "name": "Evaluation tracker",
+          "description": "Workflow pattern: the 6-week pipeline per partner with scores filling in as checks complete."
+        },
+        {
+          "name": "Scorecard",
+          "description": "The 10-point evaluation on one screen — the go/no-go conversation happens here."
+        },
+        {
+          "name": "Partnership register",
+          "description": "Every data relationship, its scope, review date and status — nothing informal."
+        }
+      ],
+      "partners": [
+        "The proposed pro bono partner teams (evaluation case #1)",
+        "Research institutions",
+        "Sports-tech startups",
+        "MeitY (data governance alignment)"
+      ],
+      "risks": [
+        {
+          "risk": "Pro bono data has unclear consent origins",
+          "answer": "The DPDP-basis check is a hard gate; decline politely if consent lineage cannot be shown."
+        },
+        {
+          "risk": "Partnerships drift without ownership",
+          "answer": "A named platform-side owner per partnership, with quarterly reviews."
+        }
+      ],
+      "outcome": "The pro bono offer evaluated and decided within 6 weeks — and a repeatable, safe doorway for every future data partner.",
+      "evidence": "proposed"
+    }
+  ]
+}
