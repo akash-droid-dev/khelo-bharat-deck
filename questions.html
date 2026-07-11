@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Question &amp; Decision Register — Khelo Bharat Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+    <div id="crumbs"></div>
+    <section>
+      <span class="kicker">Master register</span>
+      <h1>Questions &amp; Decisions</h1>
+      <p class="sub">Every practical gap between the proposed platform and the real Indian sports ecosystem, tracked with a priority, a stakeholder and a status. <strong>Blocking</strong> questions must be answered before the affected module can be built. This register grows as module-specific banks are authored in Phase 2.</p>
+
+      <div class="filter-row" role="group" aria-label="Filter questions" id="q-filters">
+        <button class="filter-btn" data-f="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-f="blocking" aria-pressed="false">Blocking only</button>
+        <button class="filter-btn" data-f="critical" aria-pressed="false">Critical</button>
+        <button class="filter-btn" data-f="high" aria-pressed="false">High</button>
+        <button class="filter-btn" data-f="medium" aria-pressed="false">Medium</button>
+      </div>
+
+      <div id="q-summary" class="muted small" style="margin-bottom:12px" aria-live="polite"></div>
+
+      <div id="q-list" aria-live="polite">
+        <div class="state" role="status"><b>Loading register…</b>Reading the question register.</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  KB.mountChrome("questions.html");
+  document.getElementById("crumbs").innerHTML = KB.breadcrumbs([
+    { href: "index.html", label: "Home" }, { label: "Questions & Decisions" }
+  ]);
+
+  const listEl = document.getElementById("q-list");
+  const summaryEl = document.getElementById("q-summary");
+  let questions;
+  try {
+    questions = (await KB.data("questions")).questions;
+  } catch (e) {
+    listEl.innerHTML = KB.stateBlock("error", "Could not load the question register", e.message);
+    return;
+  }
+
+  let filter = "all";
+  const filters = document.getElementById("q-filters");
+  filters.addEventListener("click", e => {
+    const btn = e.target.closest("[data-f]");
+    if (!btn) return;
+    filter = btn.dataset.f;
+    filters.querySelectorAll("[data-f]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === filter)));
+    render();
+  });
+
+  const match = q =>
+    filter === "all" ? true :
+    filter === "blocking" ? q.blocking :
+    q.priority === filter;
+
+  function render() {
+    const list = questions.filter(match);
+    const blocking = questions.filter(q => q.blocking).length;
+    summaryEl.textContent = `${questions.length} questions on the register · ${blocking} blocking · showing ${list.length}`;
+    if (!list.length) {
+      listEl.innerHTML = KB.stateBlock("empty", "No questions match this filter", "Try another filter.");
+      return;
+    }
+    listEl.innerHTML = `
+    <div class="table-scroll"><table>
+      <caption class="visually-hidden">Master question and decision register</caption>
+      <thead><tr>
+        <th scope="col">ID</th><th scope="col">Question &amp; impact</th><th scope="col">Module</th>
+        <th scope="col">Stakeholder</th><th scope="col">Priority</th><th scope="col">Status</th><th scope="col">Raised</th>
+      </tr></thead>
+      <tbody>${list.map(q => `
+        <tr>
+          <td><b>${KB.esc(q.id)}</b>${q.blocking ? '<br><span class="chip chip--decision-required" style="margin-top:4px">Blocking</span>' : ""}</td>
+          <td class="small">${KB.esc(q.question)}<br><span class="muted">Impact: ${KB.esc(q.impact)}</span></td>
+          <td class="small">${q.module === "ALL" ? "Platform-wide" : `<a href="module.html?m=${KB.esc(q.module)}">${KB.esc(q.module)}</a>`}</td>
+          <td class="small">${KB.esc(q.stakeholder)}<br><span class="muted">owner: ${KB.esc(q.owner)}</span></td>
+          <td class="small">${KB.esc(q.priority)}</td>
+          <td class="small">${KB.esc(q.status)}</td>
+          <td class="small">${KB.esc(q.dateRaised)}</td>
+        </tr>`).join("")}
+      </tbody>
+    </table></div>`;
+  }
+
+  render();
+});
+</script>
+</body>
+</html>

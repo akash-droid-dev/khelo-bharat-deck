@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ecosystem Integration Hub — Khelo Bharat Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+    <div id="crumbs"></div>
+    <section>
+      <span class="kicker">Ecosystem integration hub</span>
+      <h1>Existing Systems, Verified</h1>
+      <p class="sub">Khelo Bharat unifies — it does not replace working government platforms. Every system below was verified against the cited official sources on the access date shown. <strong>Proposed relationships are Khelo Bharat design, not approved integrations</strong>, and no API is assumed to exist merely because a portal exists.</p>
+
+      <div class="filter-row" role="group" aria-label="Filter systems" id="sys-filters">
+        <button class="filter-btn" data-f="all" aria-pressed="true">All systems</button>
+        <button class="filter-btn" data-f="verified" aria-pressed="false">Verified</button>
+        <button class="filter-btn" data-f="partially-verified" aria-pressed="false">Partially verified</button>
+        <button class="filter-btn" data-f="api" aria-pressed="false">Public API documented</button>
+      </div>
+
+      <div id="sys-list" style="display:grid;gap:16px" aria-live="polite">
+        <div class="state" role="status"><b>Loading register…</b>Reading the verified systems register.</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  KB.mountChrome("systems.html");
+  document.getElementById("crumbs").innerHTML = KB.breadcrumbs([
+    { href: "index.html", label: "Home" }, { label: "Integration Hub" }
+  ]);
+
+  const listEl = document.getElementById("sys-list");
+  let systems, modules;
+  try {
+    const [s, m] = await Promise.all([KB.data("systems"), KB.data("modules")]);
+    systems = s.systems; modules = m.modules;
+  } catch (e) {
+    listEl.innerHTML = KB.stateBlock("error", "Could not load the systems register", e.message);
+    return;
+  }
+
+  let filter = "all";
+  const filters = document.getElementById("sys-filters");
+  filters.addEventListener("click", e => {
+    const btn = e.target.closest("[data-f]");
+    if (!btn) return;
+    filter = btn.dataset.f;
+    filters.querySelectorAll("[data-f]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === filter)));
+    render();
+  });
+
+  function match(s) {
+    if (filter === "all") return true;
+    if (filter === "api") return !!s.apiConfirmed;
+    return s.verificationStatus === filter;
+  }
+
+  function render() {
+    const list = systems.filter(match);
+    if (!list.length) {
+      listEl.innerHTML = KB.stateBlock("empty", "No systems match this filter", "Try another filter.");
+      return;
+    }
+    listEl.innerHTML = list.map(s => {
+      const mods = s.usedByModules.filter(x => x !== "ALL");
+      const modLinks = mods.length
+        ? mods.map(id => `<a href="module.html?m=${id}">${id}</a>`).join(" · ")
+        : "Platform-wide (all modules)";
+      return `
+      <article class="card">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <h3 style="margin:0">${KB.esc(s.name)}</h3>
+          ${KB.chip(s.verificationStatus)}
+          ${s.apiConfirmed ? '<span class="chip chip--verified">Public API documented</span>' : ""}
+        </div>
+        <p class="muted small" style="margin:4px 0 10px"><strong>Owner:</strong> ${KB.esc(s.owner)} · <strong>Purpose:</strong> ${KB.esc(s.purpose)}</p>
+        ${(s.facts || []).length ? `<ul class="small" style="margin:0 0 10px 18px;display:grid;gap:4px">${s.facts.map(f => `<li>${KB.esc(f)}</li>`).join("")}</ul>` : ""}
+        <p class="small" style="margin-bottom:10px"><strong>Proposed relationship</strong> ${KB.chip("proposed")} <code>${KB.esc(s.proposedRelationship)}</code> — ${KB.esc(s.relationshipNote)}</p>
+        <p class="small muted" style="margin-bottom:10px"><strong>Used by:</strong> ${modLinks}</p>
+        ${(s.sources || []).length
+          ? `<p class="small muted"><strong>Sources:</strong> ${s.sources.map(src => `<a href="${src.url}" rel="noopener">${KB.esc(src.title)}</a> (${KB.esc(src.org)}, accessed ${KB.esc(src.accessed)})`).join(" · ")}</p>`
+          : `<p class="small muted"><strong>Sources:</strong> none recorded yet — verification pending.</p>`}
+      </article>`;
+    }).join("");
+  }
+
+  render();
+});
+</script>
+</body>
+</html>

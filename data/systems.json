@@ -2,27 +2,575 @@
   "_meta": {
     "entity": "existing-system",
     "updated": "2026-07-11",
-    "provenance": "Register of existing government systems referenced by the concept. Every entry is pending source verification (see verificationStatus). Integration relationships are Proposed KHELO BHARAT design — none are approved. No API should be assumed to exist merely because a portal exists.",
-    "integrationClasses": ["direct-integration", "data-exchange", "federated-access", "single-sign-on", "referral", "workflow-coordination", "reporting-consolidation", "manual-import", "future-integration", "none"]
+    "provenance": "Register of existing government systems referenced by the concept. System existence, ownership and purpose were verified against the cited sources on 2026-07-11. Proposed relationships remain KHELO BHARAT design proposals — none are approved integrations. apiConfirmed is true only where public API documentation was found (DigiLocker only).",
+    "integrationClasses": [
+      "direct-integration",
+      "data-exchange",
+      "federated-access",
+      "single-sign-on",
+      "referral",
+      "workflow-coordination",
+      "reporting-consolidation",
+      "manual-import",
+      "future-integration",
+      "none"
+    ]
   },
   "systems": [
-    { "id": "S1", "name": "NSRS — National Sports Repository System", "owner": "Ministry of Youth Affairs & Sports (MYAS) / Sports Authority of India (SAI)", "purpose": "National registry of athletes, coaches, academies and support personnel with unique IDs.", "usedByModules": ["M7", "M5", "M9", "M14", "M15", "M18"], "proposedRelationship": "direct-integration", "relationshipNote": "Proposed as the identity backbone — every KHELO BHARAT record attaches to an NSRS ID.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S2", "name": "PFMS — Public Financial Management System", "owner": "Controller General of Accounts, Ministry of Finance", "purpose": "Tracks central fund flows: sanction, release, utilisation; DBT payment rails.", "usedByModules": ["M3", "M14", "M17"], "proposedRelationship": "data-exchange", "relationshipNote": "Proposed mirror of sanction-to-utilisation status against scheme applications.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S3", "name": "eOffice", "owner": "National Informatics Centre (NIC)", "purpose": "Government electronic file movement and workflow.", "usedByModules": ["M3"], "proposedRelationship": "data-exchange", "relationshipNote": "Proposed read-only mirror of file status for scheme applications.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S4", "name": "KIRTI — Khelo India Rising Talent Identification", "owner": "MYAS / SAI (Khelo India)", "purpose": "Talent assessment programme for school-age children.", "usedByModules": ["M5", "M7"], "proposedRelationship": "data-exchange", "relationshipNote": "Assessment results proposed to land on the Athlete 360 timeline.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S5", "name": "DigiLocker", "owner": "MeitY / NeGD", "purpose": "Citizen document wallet with issued-document APIs.", "usedByModules": ["M3", "M15", "M16"], "proposedRelationship": "direct-integration", "relationshipNote": "Proposed for document submission and QR-verified certificate issuance.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S6", "name": "CPGRAMS — Centralised Public Grievance Redress and Monitoring System", "owner": "DARPG", "purpose": "National grievance portal.", "usedByModules": ["M4"], "proposedRelationship": "workflow-coordination", "relationshipNote": "Sports grievances proposed to interoperate rather than duplicate.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S7", "name": "NADA — National Anti-Doping Agency systems", "owner": "NADA India", "purpose": "Anti-doping testing, results management, athlete whereabouts.", "usedByModules": ["M7", "M13"], "proposedRelationship": "federated-access", "relationshipNote": "Doping flags proposed to follow NADA permissions strictly; no local copy.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S8", "name": "UDISE+ — Unified District Information System for Education", "owner": "Ministry of Education", "purpose": "School registry and education statistics; school codes.", "usedByModules": ["M5", "M10"], "proposedRelationship": "data-exchange", "relationshipNote": "School identity proposed to anchor screening-games capture.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S9", "name": "Fit India", "owner": "MYAS", "purpose": "National fitness movement; school fitness assessments.", "usedByModules": ["M5"], "proposedRelationship": "workflow-coordination", "relationshipNote": "Screening games proposed to align with Fit India assessments to avoid duplicate testing.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S10", "name": "PM GatiShakti National Master Plan (GIS)", "owner": "DPIIT / BISAG-N", "purpose": "National GIS platform for infrastructure planning.", "usedByModules": ["M10"], "proposedRelationship": "data-exchange", "relationshipNote": "Facility layer proposed on national GIS base.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S11", "name": "NPCI / RuPay", "owner": "National Payments Corporation of India", "purpose": "Payment network; co-branded card rails.", "usedByModules": ["M14"], "proposedRelationship": "direct-integration", "relationshipNote": "Proposed co-branded Khelo Bharat Sports Card with issuing banks.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S12", "name": "DBT — Direct Benefit Transfer", "owner": "DBT Mission, Cabinet Secretariat", "purpose": "Direct transfer of scheme benefits to beneficiaries.", "usedByModules": ["M3", "M14"], "proposedRelationship": "data-exchange", "relationshipNote": "Scholarships/stipends proposed to land on the Sports Card via DBT rails.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S13", "name": "NCrF — National Credit Framework", "owner": "UGC / NCVET / Ministry of Education", "purpose": "Credit framework spanning school, higher and vocational education.", "usedByModules": ["M16"], "proposedRelationship": "workflow-coordination", "relationshipNote": "Sport achievement-to-credit ladder proposed to map to NCrF levels. Requires MoE policy decision.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S14", "name": "Aadhaar / APAAR", "owner": "UIDAI / Ministry of Education", "purpose": "Foundational identity; student lifetime academic ID (APAAR).", "usedByModules": ["M7", "M5", "M16"], "proposedRelationship": "federated-access", "relationshipNote": "Identity de-duplication proposed via consented Aadhaar/APAAR linkage. Consent and DPDP review mandatory.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S15", "name": "MeitY-empanelled cloud hosting", "owner": "Ministry of Electronics & IT", "purpose": "Empanelled cloud service providers for government workloads.", "usedByModules": ["ALL"], "proposedRelationship": "none", "relationshipNote": "Hosting requirement, not a data integration.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S16", "name": "DPDP Act 2023 — Digital Personal Data Protection Act", "owner": "MeitY (legislation)", "purpose": "Personal data protection law: consent, purpose limitation, children's data.", "usedByModules": ["ALL"], "proposedRelationship": "none", "relationshipNote": "Compliance obligation across every module; consent vault and guardian consent are design responses.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S17", "name": "National Sports Governance Act 2025 (National Sports Board, National Sports Tribunal)", "owner": "MYAS (legislation)", "purpose": "Governance framework for federations: recognition, elections, tribunals, athlete commissions.", "usedByModules": ["M2", "M9"], "proposedRelationship": "none", "relationshipNote": "M2 is proposed as the Act's digital compliance backbone. Statutory details require verification against the gazette text.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] },
-    { "id": "S18", "name": "Khelo India / TOPS / NCOE / STC programmes", "owner": "MYAS / SAI", "purpose": "Flagship schemes: Khelo India games & scholarships, Target Olympic Podium Scheme, National Centres of Excellence, SAI Training Centres.", "usedByModules": ["M3", "M7", "M8", "M12"], "proposedRelationship": "data-exchange", "relationshipNote": "Scheme and centre data proposed to consolidate into registries and Athlete 360.", "apiConfirmed": false, "verificationStatus": "requires-confirmation", "sources": [] }
+    {
+      "id": "S1",
+      "name": "NSRS — National Sports Repository System",
+      "owner": "Ministry of Youth Affairs & Sports (MYAS) / Sports Authority of India (SAI)",
+      "purpose": "National registry of athletes, coaches, academies and support personnel with unique IDs.",
+      "usedByModules": [
+        "M7",
+        "M5",
+        "M9",
+        "M14",
+        "M15",
+        "M18"
+      ],
+      "proposedRelationship": "direct-integration",
+      "relationshipNote": "Proposed as the identity backbone — every KHELO BHARAT record attaches to an NSRS ID.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "National Sports Repository System (portal)",
+          "org": "SAI / MYAS",
+          "url": "https://nsrs.kheloindia.gov.in/",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "NSRS — About",
+          "org": "SAI / MYAS",
+          "url": "https://nsrsold.kheloindia.gov.in/home/about",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "NSRS (nsrs.kheloindia.gov.in) is operated by SAI under MYAS as part of the Khelo India scheme; athletes, coaches and academies self-register.",
+        "On registration NSRS issues a unique Khelo India ID (KID) — the concept's term 'NSRS ID' must be reconciled with this (tracked as Q13).",
+        "An NSRS mobile app exists (active development) and DigiLocker integration has been announced as upcoming; no public API documentation found."
+      ]
+    },
+    {
+      "id": "S2",
+      "name": "PFMS — Public Financial Management System",
+      "owner": "Controller General of Accounts, Ministry of Finance",
+      "purpose": "Tracks central fund flows: sanction, release, utilisation; DBT payment rails.",
+      "usedByModules": [
+        "M3",
+        "M14",
+        "M17"
+      ],
+      "proposedRelationship": "data-exchange",
+      "relationshipNote": "Proposed mirror of sanction-to-utilisation status against scheme applications.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "Public Financial Management System",
+          "org": "CGA, Ministry of Finance",
+          "url": "https://pfms.nic.in/",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "Public Financial Management System (PFMS) overview",
+          "org": "EnsureIAS (secondary)",
+          "url": "https://www.ensureias.com/blog/current-affairs/public-financial-management-system-pfms",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "PFMS (pfms.nic.in) is run by the Controller General of Accounts, Ministry of Finance; launched 2009, DBT-enabled since 2013.",
+        "Public 'Know Your Payment' tracking exposes payment stages: Validated → Approved → Payment Initiated → Success/Failed."
+      ]
+    },
+    {
+      "id": "S3",
+      "name": "eOffice",
+      "owner": "National Informatics Centre (NIC), MeitY; procedural owner DARPG (CSMOP)",
+      "purpose": "Government electronic file movement and workflow.",
+      "usedByModules": [
+        "M3"
+      ],
+      "proposedRelationship": "data-exchange",
+      "relationshipNote": "Proposed read-only mirror of file status for scheme applications.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "eOffice project page",
+          "org": "National Informatics Centre",
+          "url": "https://www.nic.gov.in/project/eoffice/",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "eOffice Workshop presentation",
+          "org": "DARPG / NIC",
+          "url": "https://darpg.gov.in/sites/default/files/eOffice%20Workshop%20-%20Presentation%20by%20NIC_0.pdf",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "eOffice is a Mission Mode Project under the National e-Governance Plan, built by NIC; electronic files are authoritative per DARPG's amended CSMOP.",
+        "Since April 2020 all central ministries in New Delhi process files through eOffice."
+      ]
+    },
+    {
+      "id": "S4",
+      "name": "KIRTI — Khelo India Rising Talent Identification",
+      "owner": "MYAS / SAI (Khelo India)",
+      "purpose": "Talent assessment programme for school-age children.",
+      "usedByModules": [
+        "M5",
+        "M7"
+      ],
+      "proposedRelationship": "data-exchange",
+      "relationshipNote": "Assessment results proposed to land on the Athlete 360 timeline.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "KIRTI programme launch",
+          "org": "PIB, Government of India",
+          "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2013801",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "KIRTI Program fresh boost (Phase 2)",
+          "org": "PIB, Government of India",
+          "url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2034000",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "KIRTI launched 12 March 2024 in Chandigarh (Phase 2: 19 July 2024) for children aged 9–18; assessments run through notified Talent Assessment Centres.",
+        "Target of 20 lakh assessments/year across 11 disciplines; Phase 1 saw 3.6 lakh registrations across 70 centres and ~51,000 assessments in 28 states/UTs."
+      ]
+    },
+    {
+      "id": "S5",
+      "name": "DigiLocker",
+      "owner": "MeitY / NeGD",
+      "purpose": "Citizen document wallet with issued-document APIs.",
+      "usedByModules": [
+        "M3",
+        "M15",
+        "M16"
+      ],
+      "proposedRelationship": "direct-integration",
+      "relationshipNote": "Proposed for document submission and QR-verified certificate issuance.",
+      "apiConfirmed": true,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "DigiLocker on API Setu",
+          "org": "MeitY / NeGD",
+          "url": "https://apisetu.gov.in/digilocker",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "DigiLocker Issuer API Specification v1.13",
+          "org": "NeGD",
+          "url": "https://cf-media.api-setu.in/resources/DigiLocker-Issuer-APISpecification-v1-13.pdf",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "DigiLocker has publicly documented Issuer and Authorized-Partner APIs published through API Setu (MeitY/NeGD), with a formal partner-onboarding SOP.",
+        "This is the only system in this register with confirmed public API documentation — integration is technically credible, subject to onboarding approval."
+      ]
+    },
+    {
+      "id": "S6",
+      "name": "CPGRAMS — Centralised Public Grievance Redress and Monitoring System",
+      "owner": "DARPG",
+      "purpose": "National grievance portal.",
+      "usedByModules": [
+        "M4"
+      ],
+      "proposedRelationship": "workflow-coordination",
+      "relationshipNote": "Sports grievances proposed to interoperate rather than duplicate.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "CPGRAMS portal — About Us",
+          "org": "DARPG",
+          "url": "https://pgportal.gov.in/Home/AboutUs",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "CPGRAMS (pgportal.gov.in) is run by DARPG and connects 92 central ministries/departments and 36 states/UTs with role-based access and nodal officers.",
+        "A sports grievance channel must interoperate with (not duplicate) this national system."
+      ]
+    },
+    {
+      "id": "S7",
+      "name": "NADA — National Anti-Doping Agency systems",
+      "owner": "NADA India",
+      "purpose": "Anti-doping testing, results management, athlete whereabouts.",
+      "usedByModules": [
+        "M7",
+        "M13"
+      ],
+      "proposedRelationship": "federated-access",
+      "relationshipNote": "Doping flags proposed to follow NADA permissions strictly; no local copy.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "NADA India — Athlete Testing",
+          "org": "NADA India / MYAS",
+          "url": "https://nadaindia.yas.gov.in/athlete-testing/",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "NADA India (nadaindia.yas.gov.in) is an autonomous body under MYAS; athlete whereabouts and testing records flow through WADA's ADAMS system, not a NADA-owned database.",
+        "Any doping-flag view in Khelo Bharat therefore depends on NADA/WADA permissions — stricter than a normal data-exchange."
+      ]
+    },
+    {
+      "id": "S8",
+      "name": "UDISE+ — Unified District Information System for Education",
+      "owner": "Ministry of Education",
+      "purpose": "School registry and education statistics; school codes.",
+      "usedByModules": [
+        "M5",
+        "M10"
+      ],
+      "proposedRelationship": "data-exchange",
+      "relationshipNote": "School identity proposed to anchor screening-games capture.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "UDISE+ portal",
+          "org": "Ministry of Education",
+          "url": "https://udiseplus.gov.in/",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "UDISE+ (udiseplus.gov.in, Ministry of Education) assigns every recognised school an 11-digit code (state-district-block-school) with public school lookup.",
+        "A stable national school identifier for the screening-games network is confirmed to exist."
+      ]
+    },
+    {
+      "id": "S9",
+      "name": "Fit India",
+      "owner": "MYAS",
+      "purpose": "National fitness movement; school fitness assessments.",
+      "usedByModules": [
+        "M5"
+      ],
+      "proposedRelationship": "workflow-coordination",
+      "relationshipNote": "Screening games proposed to align with Fit India assessments to avoid duplicate testing.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "Fit India portal",
+          "org": "MYAS",
+          "url": "https://fitindia.gov.in/",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "Fit India school registration",
+          "org": "MYAS",
+          "url": "https://fitindia.gov.in/fit-india-school-registration",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "Fit India (fitindia.gov.in) is MYAS-nodal; the Fit India Mobile App (Aug 2021) runs fitness assessments on the age-appropriate 'GOALS' protocols (Sept 2020).",
+        "Schools already conduct annual fitness assessments and can register for Fit India certification — the screening-games test battery must align, not compete."
+      ]
+    },
+    {
+      "id": "S10",
+      "name": "PM GatiShakti National Master Plan (GIS)",
+      "owner": "DPIIT / BISAG-N",
+      "purpose": "National GIS platform for infrastructure planning.",
+      "usedByModules": [
+        "M10"
+      ],
+      "proposedRelationship": "data-exchange",
+      "relationshipNote": "Facility layer proposed on national GIS base.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "PM GatiShakti",
+          "org": "Digital India / MeitY",
+          "url": "https://www.digitalindia.gov.in/initiative/gati-shakti/",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "PM GatiShakti National Master Plan",
+          "org": "pmgatishakti.gov.in",
+          "url": "https://pmgatishakti.gov.in/pmgatishakti/login",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "PM GatiShakti NMP (launched 13 Oct 2021) is a BISAG-N-built GIS platform with 1,450+ data layers and ISRO imagery, spanning ministries' infrastructure.",
+        "A sports-facility layer is NOT confirmed to exist — placing one on this platform is a Khelo Bharat proposal requiring DPIIT/BISAG-N engagement."
+      ]
+    },
+    {
+      "id": "S11",
+      "name": "NPCI / RuPay",
+      "owner": "National Payments Corporation of India",
+      "purpose": "Payment network; co-branded card rails.",
+      "usedByModules": [
+        "M14"
+      ],
+      "proposedRelationship": "direct-integration",
+      "relationshipNote": "Proposed co-branded Khelo Bharat Sports Card with issuing banks.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "ICICI Bank partners with NPCI to launch RuPay credit cards",
+          "org": "ICICI Bank",
+          "url": "https://www.icicibank.com/about-us/article/news-icici-bank-partners-with-npci-to-launch-rupay-credit-cards",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "RuPay",
+          "org": "Wikipedia (secondary)",
+          "url": "https://en.wikipedia.org/wiki/RuPay",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "Co-branded RuPay card programmes with issuing banks are an established NPCI model (e.g., ICICI Coral RuPay; PNB–Patanjali co-brand; SBI Card–Paytm).",
+        "Precedent confirms the Sports Card's co-branded model is commercially standard; a government-athlete co-brand still needs NPCI + issuing-bank agreements."
+      ]
+    },
+    {
+      "id": "S12",
+      "name": "DBT — Direct Benefit Transfer",
+      "owner": "DBT Mission, Cabinet Secretariat",
+      "purpose": "Direct transfer of scheme benefits to beneficiaries.",
+      "usedByModules": [
+        "M3",
+        "M14"
+      ],
+      "proposedRelationship": "data-exchange",
+      "relationshipNote": "Scholarships/stipends proposed to land on the Sports Card via DBT rails.",
+      "apiConfirmed": false,
+      "verificationStatus": "partially-verified",
+      "sources": [
+        {
+          "title": "PFMS — single platform for payments and DBT",
+          "org": "CGA, Ministry of Finance",
+          "url": "https://pfms.nic.in/",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "DBT rails run through PFMS (confirmed via PFMS sources); the DBT Mission sits under the Cabinet Secretariat.",
+        "Direct confirmation from dbtbharat.gov.in pending — treated as partially verified."
+      ]
+    },
+    {
+      "id": "S13",
+      "name": "NCrF — National Credit Framework",
+      "owner": "UGC / NCVET / Ministry of Education",
+      "purpose": "Credit framework spanning school, higher and vocational education.",
+      "usedByModules": [
+        "M16"
+      ],
+      "proposedRelationship": "workflow-coordination",
+      "relationshipNote": "Sport achievement-to-credit ladder proposed to map to NCrF levels. Requires MoE policy decision.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "National Credit Framework (NCrF)",
+          "org": "UGC",
+          "url": "https://www.ugc.gov.in/KeyInitiative?ID=zTPDjUIHVSxLuFL%2FKq4EXA%3D%3D",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "NCrF Gazette Notification / Report",
+          "org": "NIELIT (hosting UGC notification)",
+          "url": "https://www.nielit.gov.in/sites/default/files/headquarter/pdf/NCrF_Gazette_Notification.pdf",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "NCrF was notified by UGC on 10 April 2023 and explicitly covers creditisation of sports, games and experiential learning across school, higher and vocational education.",
+        "Delhi schools have already granted credits for inter-school sports (50,000+ students in 2022-23) — a working precedent for Marks for Sports (M16)."
+      ]
+    },
+    {
+      "id": "S14",
+      "name": "Aadhaar / APAAR",
+      "owner": "UIDAI / Ministry of Education",
+      "purpose": "Foundational identity; student lifetime academic ID (APAAR).",
+      "usedByModules": [
+        "M7",
+        "M5",
+        "M16"
+      ],
+      "proposedRelationship": "federated-access",
+      "relationshipNote": "Identity de-duplication proposed via consented Aadhaar/APAAR linkage. Consent and DPDP review mandatory.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "APAAR portal",
+          "org": "Ministry of Education",
+          "url": "https://apaar.education.gov.in/",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "National Conference on APAAR",
+          "org": "PIB",
+          "url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2005706",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "APAAR ('One Nation One Student ID', apaar.education.gov.in) is a 12-digit lifetime academic ID; creation requires UDISE+ PEN and Aadhaar-matching name, with parental consent (withdrawable).",
+        "APAAR already stores co-curricular achievements — overlap and linkage with the athlete profile needs an explicit MoE conversation."
+      ]
+    },
+    {
+      "id": "S15",
+      "name": "MeitY-empanelled cloud hosting",
+      "owner": "Ministry of Electronics & IT",
+      "purpose": "Empanelled cloud service providers for government workloads.",
+      "usedByModules": [
+        "ALL"
+      ],
+      "proposedRelationship": "none",
+      "relationshipNote": "Hosting requirement, not a data integration.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "GI Cloud (MeghRaj)",
+          "org": "MeitY",
+          "url": "https://www.meity.gov.in/content/gi-cloud-meghraj",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "MeitY empanels cloud providers under the GI Cloud (MeghRaj) initiative with STQC audit, India data-residency and ISO 27001/17/18 compliance; procurement via GeM.",
+        "AWS, Azure, Google Cloud and multiple Indian providers are empanelled."
+      ]
+    },
+    {
+      "id": "S16",
+      "name": "DPDP Act 2023 — Digital Personal Data Protection Act",
+      "owner": "MeitY (legislation)",
+      "purpose": "Personal data protection law: consent, purpose limitation, children's data.",
+      "usedByModules": [
+        "ALL"
+      ],
+      "proposedRelationship": "none",
+      "relationshipNote": "Compliance obligation across every module; consent vault and guardian consent are design responses.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "The Digital Personal Data Protection Act, 2023 (No. 22 of 2023)",
+          "org": "MeitY",
+          "url": "https://www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "Digital Personal Data Protection Act, 2023",
+          "org": "MeitY",
+          "url": "https://www.meity.gov.in/content/digital-personal-data-protection-act-2023",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "DPDP Act (No. 22 of 2023): Section 9(1) requires verifiable parent/guardian consent before processing personal data of anyone under 18.",
+        "Draft DPDP Rules 2025 phase in fiduciary obligations (including children's-data duties) over ~18 months — the consent-vault design must track the final rules."
+      ]
+    },
+    {
+      "id": "S17",
+      "name": "National Sports Governance Act 2025 (National Sports Board, National Sports Tribunal)",
+      "owner": "MYAS (legislation)",
+      "purpose": "Governance framework for federations: recognition, elections, tribunals, athlete commissions.",
+      "usedByModules": [
+        "M2",
+        "M9"
+      ],
+      "proposedRelationship": "none",
+      "relationshipNote": "M2 is proposed as the Act's digital compliance backbone. Statutory details require verification against the gazette text.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "The National Sports Governance Act, 2025 (Act No. 25 of 2025)",
+          "org": "India Code",
+          "url": "https://www.indiacode.nic.in/bitstream/123456789/22045/1/2025-25.pdf",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "NSGA 2025",
+          "org": "MYAS",
+          "url": "https://yas.gov.in/en/sports/nsga-2025",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "The National Sports Governance Bill, 2025 — bill track",
+          "org": "PRS Legislative Research",
+          "url": "https://prsindia.org/billtrack/the-national-sports-governance-bill-2025",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "National Sports Governance Act, 2025 (Act No. 25 of 2025) received Presidential assent 18 Aug 2025; select provisions in force from 31 Dec 2025 (S.O. 6152(E), Gazette 1 Jan 2026).",
+        "Creates the National Sports Board (recognition/regulation of sports bodies) and the National Sports Tribunal (SC-judge-led); draft Tribunal Rules published by MYAS.",
+        "M2's compliance backbone maps directly onto this statutory framework."
+      ]
+    },
+    {
+      "id": "S18",
+      "name": "Khelo India / TOPS / NCOE / STC programmes",
+      "owner": "MYAS / SAI",
+      "purpose": "Flagship schemes: Khelo India games & scholarships, Target Olympic Podium Scheme, National Centres of Excellence, SAI Training Centres.",
+      "usedByModules": [
+        "M3",
+        "M7",
+        "M8",
+        "M12"
+      ],
+      "proposedRelationship": "data-exchange",
+      "relationshipNote": "Scheme and centre data proposed to consolidate into registries and Athlete 360.",
+      "apiConfirmed": false,
+      "verificationStatus": "verified",
+      "sources": [
+        {
+          "title": "Khelo India — National Programme for Development of Sports (factsheet)",
+          "org": "PIB",
+          "url": "https://www.pib.gov.in/FactsheetDetails.aspx?Id=148571&reg=3&lang=2",
+          "accessed": "2026-07-11"
+        },
+        {
+          "title": "Target Olympic Podium Scheme",
+          "org": "Sports Authority of India",
+          "url": "https://sportsauthorityofindia.nic.in/sai_new/target-olympic-podium",
+          "accessed": "2026-07-11"
+        }
+      ],
+      "facts": [
+        "Khelo India is MYAS's flagship Central Sector Scheme (merger of RGKA, USIS and NSTSS).",
+        "TOPS has run since September 2014 with the Mission Olympic Cell (April 2016) and ₹50,000/month out-of-pocket allowance for core athletes; NCOEs operate under SAI."
+      ]
+    }
   ]
 }
