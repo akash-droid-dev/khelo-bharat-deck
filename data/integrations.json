@@ -3,23 +3,397 @@
     "entity": "integration",
     "updated": "2026-07-11",
     "provenance": "Module-specific Layer-1 integration register: how each module relates to each existing system. Every integration is a Proposed design; system facts come from the verified systems register. Modules not listed here have not been authored yet (Phase 2 in progress, pillar by pillar).",
-    "authoredModules": ["M1", "M2", "M3", "M4"]
+    "authoredModules": [
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "M6",
+      "M7",
+      "M8"
+    ]
   },
   "integrations": [
-    { "module": "M1", "system": "S1", "class": "data-exchange", "why": "Academies and training centres registered on NSRS map to directory nodes, so the org tree and the registry describe the same institutions.", "dataFlow": "NSRS institution records → directory node seeding and cross-checks (one-way, periodic).", "kbValueAdd": "NSRS lists institutions; the directory adds hierarchy, roles, jurisdictions and routing.", "gaps": "NSRS does not model administrative hierarchy, sanctioned posts or jurisdictions.", "dependencies": ["Identity reconciliation (Q13)"], "evidence": "proposed" },
-    { "module": "M1", "system": "S3", "class": "workflow-coordination", "why": "eOffice instances already encode ministry/department role hierarchies for file routing.", "dataFlow": "eOffice organisational units → cross-check of directory nodes (no live sync proposed initially).", "kbValueAdd": "One public, sports-wide directory across bodies that live in separate eOffice instances.", "gaps": "eOffice hierarchies are per-instance and not publicly queryable.", "dependencies": ["NIC cooperation via M3 integration"], "evidence": "proposed" },
-    { "module": "M1", "system": "S15", "class": "none", "why": "Hosting prerequisite for the first platform registry.", "dataFlow": "None — infrastructure requirement.", "kbValueAdd": "—", "gaps": "—", "dependencies": ["Platform hosting procurement (A-P1)"], "evidence": "proposed" },
-
-    { "module": "M2", "system": "S17", "class": "none", "why": "The NSGA 2025 is the statutory basis: recognition, elections, tenure/cooling-off, athlete commissions, Tribunal — M2 is its digital compliance backbone.", "dataFlow": "Statute → compliance rule set encoded in the registry (recognition states, filing obligations).", "kbValueAdd": "Turns a paper statute into a live, queryable compliance scorecard.", "gaps": "NSB operating procedures and register formats not yet published; select provisions only in force since 31 Dec 2025.", "dependencies": ["NSB transition timeline (Q14)"], "evidence": "proposed" },
-    { "module": "M2", "system": "S1", "class": "data-exchange", "why": "NSRS registers federations/academies; recognition status must attach to the same entities.", "dataFlow": "NSRS federation records ↔ registry entity matching (shared identifiers needed).", "kbValueAdd": "Recognition + compliance status on top of bare registration.", "gaps": "No public federation-status API on NSRS.", "dependencies": ["Entity identifier mapping"], "evidence": "proposed" },
-
-    { "module": "M3", "system": "S2", "class": "data-exchange", "why": "PFMS is the authoritative source for sanction → release → utilisation of central scheme money.", "dataFlow": "PFMS payment-stage events for sports schemes → application timeline mirror (read-only).", "kbValueAdd": "Athlete-visible fund tracking attached to the application, not buried in a finance portal.", "gaps": "No confirmed external API; state-funded grants flow outside PFMS (Q3).", "dependencies": ["CGA data-access approval (A-M3-2)"], "evidence": "proposed" },
-    { "module": "M3", "system": "S3", "class": "data-exchange", "why": "Scheme files physically move through eOffice; applicants should see desk and days-pending.", "dataFlow": "eOffice file-status events (file no. ↔ application ID) → status mirror (read-only).", "kbValueAdd": "“Where is my file” answered without RTI; delay analytics by desk.", "gaps": "No public eOffice API; mapping file numbers to applications needs ministry cooperation.", "dependencies": ["NIC + ministry integration approval (A-M3-3)"], "evidence": "proposed" },
-    { "module": "M3", "system": "S5", "class": "direct-integration", "why": "DigiLocker is the confirmed-API path for document submission and later certificate issuance.", "dataFlow": "Issued documents pulled with applicant consent; KB-issued certificates pushed as issuer (later).", "kbValueAdd": "Zero photocopies; forgery-resistant documents.", "gaps": "Requires formal partner onboarding (SOP) — not yet applied for.", "dependencies": ["NeGD onboarding (A-M3-4)"], "evidence": "proposed" },
-    { "module": "M3", "system": "S18", "class": "data-exchange", "why": "Khelo India scholarships/TOPS stipends are the highest-volume schemes to onboard first.", "dataFlow": "Scheme masters + beneficiary decisions ↔ application workflow.", "kbValueAdd": "One application front door; eligibility engine over scheme rules.", "gaps": "Scheme rules exist as documents, not structured eligibility rules.", "dependencies": ["Per-scheme integration approval (A-M3-1)"], "evidence": "proposed" },
-    { "module": "M3", "system": "S12", "class": "data-exchange", "why": "Benefit payouts ride DBT rails; status closes the loop for the applicant.", "dataFlow": "DBT payment confirmations → application timeline (read-only).", "kbValueAdd": "“Money reached the account” visible next to the approval.", "gaps": "DBT confirmation is via PFMS; direct confirmation pending (S12 partially verified).", "dependencies": ["PFMS access (A-M3-2)"], "evidence": "proposed" },
-
-    { "module": "M4", "system": "S6", "class": "workflow-coordination", "why": "CPGRAMS is the national grievance system connected to 92 ministries and 36 states/UTs — a sports channel must interoperate, not compete.", "dataFlow": "Sports cases raised in KB get CPGRAMS cross-references where applicable; category mapping agreed with DARPG.", "kbValueAdd": "Sport-specific routing (via M1 jurisdictions), SLA clocks and validity filtering in front of the generic national system.", "gaps": "Whether DARPG permits a domain front-end or requires cases to live wholly in CPGRAMS is undecided (Q19).", "dependencies": ["DARPG interoperability decision (A-M4-1)"], "evidence": "proposed" },
-    { "module": "M4", "system": "S16", "class": "none", "why": "DPDP applies to targeted messaging and grievance records (minors' safeguarding cases especially).", "dataFlow": "None — compliance constraint shaping consent and retention design.", "kbValueAdd": "—", "gaps": "Final DPDP Rules phase-in affects messaging-consent design.", "dependencies": ["Platform DPDP review (A-P2)"], "evidence": "proposed" }
+    {
+      "module": "M1",
+      "system": "S1",
+      "class": "data-exchange",
+      "why": "Academies and training centres registered on NSRS map to directory nodes, so the org tree and the registry describe the same institutions.",
+      "dataFlow": "NSRS institution records → directory node seeding and cross-checks (one-way, periodic).",
+      "kbValueAdd": "NSRS lists institutions; the directory adds hierarchy, roles, jurisdictions and routing.",
+      "gaps": "NSRS does not model administrative hierarchy, sanctioned posts or jurisdictions.",
+      "dependencies": [
+        "Identity reconciliation (Q13)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M1",
+      "system": "S3",
+      "class": "workflow-coordination",
+      "why": "eOffice instances already encode ministry/department role hierarchies for file routing.",
+      "dataFlow": "eOffice organisational units → cross-check of directory nodes (no live sync proposed initially).",
+      "kbValueAdd": "One public, sports-wide directory across bodies that live in separate eOffice instances.",
+      "gaps": "eOffice hierarchies are per-instance and not publicly queryable.",
+      "dependencies": [
+        "NIC cooperation via M3 integration"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M1",
+      "system": "S15",
+      "class": "none",
+      "why": "Hosting prerequisite for the first platform registry.",
+      "dataFlow": "None — infrastructure requirement.",
+      "kbValueAdd": "—",
+      "gaps": "—",
+      "dependencies": [
+        "Platform hosting procurement (A-P1)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M2",
+      "system": "S17",
+      "class": "none",
+      "why": "The NSGA 2025 is the statutory basis: recognition, elections, tenure/cooling-off, athlete commissions, Tribunal — M2 is its digital compliance backbone.",
+      "dataFlow": "Statute → compliance rule set encoded in the registry (recognition states, filing obligations).",
+      "kbValueAdd": "Turns a paper statute into a live, queryable compliance scorecard.",
+      "gaps": "NSB operating procedures and register formats not yet published; select provisions only in force since 31 Dec 2025.",
+      "dependencies": [
+        "NSB transition timeline (Q14)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M2",
+      "system": "S1",
+      "class": "data-exchange",
+      "why": "NSRS registers federations/academies; recognition status must attach to the same entities.",
+      "dataFlow": "NSRS federation records ↔ registry entity matching (shared identifiers needed).",
+      "kbValueAdd": "Recognition + compliance status on top of bare registration.",
+      "gaps": "No public federation-status API on NSRS.",
+      "dependencies": [
+        "Entity identifier mapping"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M3",
+      "system": "S2",
+      "class": "data-exchange",
+      "why": "PFMS is the authoritative source for sanction → release → utilisation of central scheme money.",
+      "dataFlow": "PFMS payment-stage events for sports schemes → application timeline mirror (read-only).",
+      "kbValueAdd": "Athlete-visible fund tracking attached to the application, not buried in a finance portal.",
+      "gaps": "No confirmed external API; state-funded grants flow outside PFMS (Q3).",
+      "dependencies": [
+        "CGA data-access approval (A-M3-2)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M3",
+      "system": "S3",
+      "class": "data-exchange",
+      "why": "Scheme files physically move through eOffice; applicants should see desk and days-pending.",
+      "dataFlow": "eOffice file-status events (file no. ↔ application ID) → status mirror (read-only).",
+      "kbValueAdd": "“Where is my file” answered without RTI; delay analytics by desk.",
+      "gaps": "No public eOffice API; mapping file numbers to applications needs ministry cooperation.",
+      "dependencies": [
+        "NIC + ministry integration approval (A-M3-3)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M3",
+      "system": "S5",
+      "class": "direct-integration",
+      "why": "DigiLocker is the confirmed-API path for document submission and later certificate issuance.",
+      "dataFlow": "Issued documents pulled with applicant consent; KB-issued certificates pushed as issuer (later).",
+      "kbValueAdd": "Zero photocopies; forgery-resistant documents.",
+      "gaps": "Requires formal partner onboarding (SOP) — not yet applied for.",
+      "dependencies": [
+        "NeGD onboarding (A-M3-4)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M3",
+      "system": "S18",
+      "class": "data-exchange",
+      "why": "Khelo India scholarships/TOPS stipends are the highest-volume schemes to onboard first.",
+      "dataFlow": "Scheme masters + beneficiary decisions ↔ application workflow.",
+      "kbValueAdd": "One application front door; eligibility engine over scheme rules.",
+      "gaps": "Scheme rules exist as documents, not structured eligibility rules.",
+      "dependencies": [
+        "Per-scheme integration approval (A-M3-1)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M3",
+      "system": "S12",
+      "class": "data-exchange",
+      "why": "Benefit payouts ride DBT rails; status closes the loop for the applicant.",
+      "dataFlow": "DBT payment confirmations → application timeline (read-only).",
+      "kbValueAdd": "“Money reached the account” visible next to the approval.",
+      "gaps": "DBT confirmation is via PFMS; direct confirmation pending (S12 partially verified).",
+      "dependencies": [
+        "PFMS access (A-M3-2)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M4",
+      "system": "S6",
+      "class": "workflow-coordination",
+      "why": "CPGRAMS is the national grievance system connected to 92 ministries and 36 states/UTs — a sports channel must interoperate, not compete.",
+      "dataFlow": "Sports cases raised in KB get CPGRAMS cross-references where applicable; category mapping agreed with DARPG.",
+      "kbValueAdd": "Sport-specific routing (via M1 jurisdictions), SLA clocks and validity filtering in front of the generic national system.",
+      "gaps": "Whether DARPG permits a domain front-end or requires cases to live wholly in CPGRAMS is undecided (Q19).",
+      "dependencies": [
+        "DARPG interoperability decision (A-M4-1)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M4",
+      "system": "S16",
+      "class": "none",
+      "why": "DPDP applies to targeted messaging and grievance records (minors' safeguarding cases especially).",
+      "dataFlow": "None — compliance constraint shaping consent and retention design.",
+      "kbValueAdd": "—",
+      "gaps": "Final DPDP Rules phase-in affects messaging-consent design.",
+      "dependencies": [
+        "Platform DPDP review (A-P2)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M5",
+      "system": "S9",
+      "class": "workflow-coordination",
+      "why": "Schools already run annual fitness assessments on Fit India's age-appropriate GOALS protocols — the screening games must extend this battery, not compete with it.",
+      "dataFlow": "Fit India protocol definitions → screening test battery; school registration status ← cross-checked.",
+      "kbValueAdd": "Turns a fitness-rating exercise into a talent-discovery funnel with verified results.",
+      "gaps": "Fit India assesses fitness but does not shortlist or route talent anywhere.",
+      "dependencies": [
+        "Protocol alignment sign-off (A-M5-3)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M5",
+      "system": "S8",
+      "class": "data-exchange",
+      "why": "UDISE+ gives every recognised school an 11-digit code — the stable identifier the screening network keys on.",
+      "dataFlow": "UDISE+ school records → school register seeding and yearly refresh (read-only).",
+      "kbValueAdd": "No new school registry; screening coverage is measurable against the real national school universe.",
+      "gaps": "UDISE+ has no sports data, facilities detail beyond basics, or screening history.",
+      "dependencies": [
+        "MoE data-linkage approval (A-M5-4)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M5",
+      "system": "S4",
+      "class": "workflow-coordination",
+      "why": "KIRTI's Talent Assessment Centres are the next step for children who stand out in school screening.",
+      "dataFlow": "Top-percentile shortlists → KIRTI referral queue; KIRTI assessment outcomes → child's timeline.",
+      "kbValueAdd": "KIRTI gets a pre-filtered, geography-complete funnel instead of self-selected registrations.",
+      "gaps": "KIRTI Phase 1 assessed ~51,000 of a 20-lakh target — the funnel, not the centres, is the bottleneck.",
+      "dependencies": [
+        "SAI/KIRTI referral protocol"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M5",
+      "system": "S14",
+      "class": "data-exchange",
+      "why": "APAAR is the student's lifetime education ID; linking it (with guardian consent) connects screening history to the child's education record.",
+      "dataFlow": "APAAR ID ← guardian-consented linkage at enrolment; no education data pulled without purpose.",
+      "kbValueAdd": "Screening results survive school transfers; dedupe across schools becomes trivial.",
+      "gaps": "APAAR consent is school-mediated and withdrawable — linkage must handle revocation.",
+      "dependencies": [
+        "MoE data-linkage approval (A-M5-4)",
+        "Guardian consent mechanism (A-M5-2)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M5",
+      "system": "S1",
+      "class": "direct-integration",
+      "why": "A screened child who continues in sport needs one identity from day one — the Khelo India ID issued by NSRS.",
+      "dataFlow": "Standout athletes get NSRS registration initiated (guardian-consented); KID attaches to screening history.",
+      "kbValueAdd": "The 'first scouted by' record and the elite career share one identity spine.",
+      "gaps": "NSRS self-registration assumes motivated adults; child-onboarding flow does not exist publicly.",
+      "dependencies": [
+        "NSRS integration approval (A-M7-1)",
+        "Q13 identifier reconciliation"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M6",
+      "system": "S8",
+      "class": "data-exchange",
+      "why": "Teacher–school mapping rides the same UDISE+ school codes; a scout's jurisdiction is their school.",
+      "dataFlow": "School codes → scout registration validation (teacher claims verified against school).",
+      "kbValueAdd": "A national scout force addressable by real school geography.",
+      "gaps": "UDISE+ teacher data is administrative — scout enrolment still needs education-department consent.",
+      "dependencies": [
+        "Education-department permission (A-M6-1)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M6",
+      "system": "S9",
+      "class": "workflow-coordination",
+      "why": "Fit India school registration and ratings already engage PT teachers — the scout programme is the recognition layer on the same network.",
+      "dataFlow": "Fit India school participation status → scout-programme eligibility signals.",
+      "kbValueAdd": "Teachers get named, credited and rewarded for discovery work Fit India already implies.",
+      "gaps": "Fit India recognises schools, not individual teachers.",
+      "dependencies": [
+        "Recognition policy (A-M6-2)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M6",
+      "system": "S1",
+      "class": "data-exchange",
+      "why": "NSRS registers coaches and support personnel; scouts belong on the same registry so discovery credit is portable.",
+      "dataFlow": "Scout registrations → NSRS support-personnel records (or linked profile).",
+      "kbValueAdd": "'First scouted by' becomes a permanent, verifiable career credit.",
+      "gaps": "No public scout/talent-spotter category confirmed on NSRS.",
+      "dependencies": [
+        "NSRS integration approval (A-M7-1)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M7",
+      "system": "S1",
+      "class": "direct-integration",
+      "why": "NSRS is the proposed identity backbone: every record on the 360 timeline attaches to the Khelo India ID (KID).",
+      "dataFlow": "Identity lookup/create ↔ NSRS; profile events (results, assessments, benefits) attach to KID.",
+      "kbValueAdd": "NSRS holds registrations; the 360 profile assembles the verified career timeline across all systems.",
+      "gaps": "No public API confirmed (Q1); 'NSRS ID' vs KID terminology unresolved (Q13).",
+      "dependencies": [
+        "A-M7-1 NSRS integration approval"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M7",
+      "system": "S4",
+      "class": "data-exchange",
+      "why": "KIRTI assessments are the highest-signal standardised talent data points for school-age athletes.",
+      "dataFlow": "KIRTI assessment results → 360 timeline entries (verified · SAI centre).",
+      "kbValueAdd": "Assessment results stop living in a programme silo and start following the athlete.",
+      "gaps": "KIRTI-to-NSRS identity linkage not publicly documented.",
+      "dependencies": [
+        "SAI data-sharing arrangement"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M7",
+      "system": "S14",
+      "class": "federated-access",
+      "why": "Aadhaar-backed verification (via DigiLocker) and APAAR linkage are the dedupe anchors — one person, one profile.",
+      "dataFlow": "eKYC verification events (yes/no + minimal fields) — raw Aadhaar numbers never stored.",
+      "kbValueAdd": "Duplicate and ghost profiles become detectable at registration time.",
+      "gaps": "Aadhaar usage rules for a sports platform need legal confirmation.",
+      "dependencies": [
+        "A-P2 DPDP review",
+        "UIDAI/DigiLocker onboarding (A-M3-4)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M7",
+      "system": "S7",
+      "class": "federated-access",
+      "why": "Selection committees need to know an athlete's doping status — but testing data lives in WADA's ADAMS under strict rules.",
+      "dataFlow": "Status flag only (eligible / sanctioned, with sanction window) — never test details.",
+      "kbValueAdd": "Selectors stop discovering sanctions from newspapers.",
+      "gaps": "NADA/WADA data-sharing constraints are stricter than any other integration here.",
+      "dependencies": [
+        "A-M7-3 NADA arrangement"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M7",
+      "system": "S18",
+      "class": "data-exchange",
+      "why": "Khelo India Games results and TOPS/NCOE participation are core verified timeline events.",
+      "dataFlow": "Games results + programme participation → 360 timeline (verified · source programme).",
+      "kbValueAdd": "A single career view across programmes that currently do not share screens.",
+      "gaps": "Games Management System (GMS) integration path unconfirmed (Q29).",
+      "dependencies": [
+        "SAI coordination (A-M8-2)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M7",
+      "system": "S9",
+      "class": "data-exchange",
+      "why": "Fit India assessment history gives the 360 profile its grassroots fitness baseline.",
+      "dataFlow": "School-age fitness assessments → baseline metrics on the timeline (consent-gated).",
+      "kbValueAdd": "Talent signals visible years before formal competition results exist.",
+      "gaps": "Fit India app data linkage to a sports profile is not an existing feature.",
+      "dependencies": [
+        "Guardian consent (A-M5-2)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M8",
+      "system": "S18",
+      "class": "workflow-coordination",
+      "why": "SAI already operates a Games Management System (GMS) for Khelo India Games — M8 must coordinate with it, not duplicate it.",
+      "dataFlow": "Sanctioned-event calendar ↔ GMS; Khelo India Games results → verified results feed.",
+      "kbValueAdd": "One national calendar and one results standard across events GMS does not cover (school, district, federation).",
+      "gaps": "GMS scope, availability to non-Khelo-India events, and integration path unconfirmed (Q29).",
+      "dependencies": [
+        "A-M8-2 GMS coordination"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M8",
+      "system": "S1",
+      "class": "data-exchange",
+      "why": "Event entries keyed to the athlete's KID make every start list verifiable and every result attributable.",
+      "dataFlow": "Entry validation ← NSRS identity; participation + results → athlete 360 timeline.",
+      "kbValueAdd": "No more paper entry forms with unverifiable identities; age fraud gets harder.",
+      "gaps": "Depends on the same unconfirmed NSRS API as M7.",
+      "dependencies": [
+        "A-M7-1"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M8",
+      "system": "S5",
+      "class": "direct-integration",
+      "why": "Participation and medal certificates issued straight to DigiLocker are forgery-resistant and instantly verifiable.",
+      "dataFlow": "KB as DigiLocker issuer → certificates pushed to participants' lockers.",
+      "kbValueAdd": "Certificates that scheme applications (M3) and marks-for-sports (M16) can trust without manual verification.",
+      "gaps": "Requires issuer onboarding — same SOP as M3's requester role.",
+      "dependencies": [
+        "A-M8-3 (extends A-M3-4)"
+      ],
+      "evidence": "proposed"
+    }
   ]
 }
