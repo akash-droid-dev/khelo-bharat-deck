@@ -3,27 +3,530 @@
     "entity": "approval",
     "updated": "2026-07-11",
     "provenance": "Approval catalogue: what government must approve before each module can be built or piloted. All entries are Proposed requirements identified from the module designs — none have been formally initiated. Timelines are deliberately absent (no dates invented). Modules not listed have not been authored yet.",
-    "statuses": ["not-started", "drafting-request", "submitted", "under-review", "approved", "declined", "blocked"]
+    "statuses": [
+      "not-started",
+      "drafting-request",
+      "submitted",
+      "under-review",
+      "approved",
+      "declined",
+      "blocked"
+    ]
   },
   "approvals": [
-    { "id": "A-P1", "module": "ALL", "name": "Platform hosting procurement (MeitY-empanelled cloud)", "entity": "MYAS (procurement) with MeitY empanelment list", "purpose": "Host the platform on GI-Cloud-compliant, India-resident infrastructure.", "prerequisites": ["Budget approval", "GeM procurement process"], "output": "Hosting contract with an empanelled CSP", "dependsOn": [], "status": "not-started", "riskIfDelayed": "No production environment; pilots limited to demonstrations.", "escalation": "MYAS IT division → Secretary", "evidence": "proposed" },
-    { "id": "A-P2", "module": "ALL", "name": "DPDP compliance review (platform-wide)", "entity": "MYAS legal with MeitY guidance", "purpose": "Confirm consent architecture — especially Section 9 verifiable guardian consent for minors — before any personal data is processed.", "prerequisites": ["Consent-vault design", "Data-classification of every dataset in the catalogue"], "output": "Signed-off privacy design; DPIA record", "dependsOn": [], "status": "not-started", "riskIfDelayed": "Blocks every module that touches personal data — effectively all pilots.", "escalation": "MYAS legal → MeitY DPDP office", "evidence": "proposed" },
-
-    { "id": "A-M1-1", "module": "M1", "name": "Release of SAI organisation structure & sanctioned posts", "entity": "SAI Administration / MYAS", "purpose": "Seed the directory with the official hierarchy and post list (Immediate Move #1).", "prerequisites": ["Formal request letter from the project owner"], "output": "Official org chart, sanctioned-post list, nodal officers", "dependsOn": [], "status": "not-started", "riskIfDelayed": "Directory built from public fragments — unofficial and unmaintainable.", "escalation": "SAI Secretary → DG SAI", "evidence": "proposed" },
-    { "id": "A-M1-2", "module": "M1", "name": "Publication policy for roles and contacts", "entity": "MYAS with DPDP review", "purpose": "Decide what is public (roles, jurisdictions) vs restricted (personal contact details of officers).", "prerequisites": ["A-P2"], "output": "Directory publication policy", "dependsOn": ["A-P2"], "status": "not-started", "riskIfDelayed": "Either an unusable directory (nothing public) or a privacy incident.", "escalation": "MYAS legal", "evidence": "proposed" },
-    { "id": "A-M1-3", "module": "M1", "name": "State consent to list department structures", "entity": "Each participating state sports department", "purpose": "States own their structures; listing needs their consent and a named maintainer.", "prerequisites": ["Pilot-state selection (Immediate Move #6)"], "output": "State onboarding letters (per state)", "dependsOn": ["A-M1-1"], "status": "not-started", "riskIfDelayed": "Directory covers central bodies only — routing fails for state/district work.", "escalation": "State sports secretaries via MYAS", "evidence": "proposed" },
-
-    { "id": "A-M2-1", "module": "M2", "name": "Approval to mirror the recognition register", "entity": "National Sports Board (MYAS during transition)", "purpose": "Make the platform's federation status view authoritative by mirroring the statutory register.", "prerequisites": ["NSB operating procedures published"], "output": "Data-sharing arrangement for recognition orders and status", "dependsOn": [], "status": "not-started", "riskIfDelayed": "Platform shows stale or unofficial recognition status — worse than nothing for courts and athletes.", "escalation": "NSB secretariat → chairperson", "evidence": "proposed" },
-    { "id": "A-M2-2", "module": "M2", "name": "Federation consent for compliance scorecards", "entity": "Each NSF (framework agreed with NSB)", "purpose": "Publish election, filing and safe-sport compliance as public traffic-lights.", "prerequisites": ["A-M2-1", "Scorecard methodology sign-off"], "output": "Federation onboarding agreements", "dependsOn": ["A-M2-1"], "status": "not-started", "riskIfDelayed": "Scorecards contested by federations; legal challenges under the Act.", "escalation": "NSB", "evidence": "proposed" },
-    { "id": "A-M2-3", "module": "M2", "name": "Tribunal-outcome publication scope", "entity": "National Sports Tribunal registrar", "purpose": "Define which tribunal outcomes (affecting recognition/office bearers) appear on the registry.", "prerequisites": ["Tribunal rules finalised (draft published 31 Dec 2025)"], "output": "Publication protocol", "dependsOn": ["A-M2-1"], "status": "not-started", "riskIfDelayed": "Registry silently diverges from legal reality after disputes.", "escalation": "Tribunal registrar", "evidence": "proposed" },
-
-    { "id": "A-M3-1", "module": "M3", "name": "Scheme-integration approval (per scheme, starting Khelo India scholarships)", "entity": "Owning scheme division, MYAS/SAI", "purpose": "Run application intake, eligibility and tracking for a scheme on the platform.", "prerequisites": ["Scheme rules encoded as structured eligibility criteria", "Scheme division sign-off on workflow"], "output": "Scheme onboarding order (per scheme)", "dependsOn": [], "status": "not-started", "riskIfDelayed": "Eligibility engine has nothing to run on; M3 reduces to a links page.", "escalation": "Scheme division head", "evidence": "proposed" },
-    { "id": "A-M3-2", "module": "M3", "name": "PFMS data access for sports schemes", "entity": "Office of the CGA, Ministry of Finance", "purpose": "Read sanction/release/utilisation stages for sports scheme payments.", "prerequisites": ["MYAS sponsorship of the request", "Scheme codes identified"], "output": "PFMS data-sharing arrangement", "dependsOn": ["A-M3-1"], "status": "not-started", "riskIfDelayed": "Fund tracking limited to manual updates — the transparency promise weakens.", "escalation": "CGA PFMS division via MYAS", "evidence": "proposed" },
-    { "id": "A-M3-3", "module": "M3", "name": "eOffice file-status integration", "entity": "NIC with the file-owning ministry (MYAS)", "purpose": "Mirror desk-level file status for scheme files.", "prerequisites": ["File-number ↔ application-ID mapping convention"], "output": "Technical integration agreement", "dependsOn": ["A-M3-1"], "status": "not-started", "riskIfDelayed": "“Where is my file” stays unanswerable; delay analytics impossible.", "escalation": "NIC eOffice division", "evidence": "proposed" },
-    { "id": "A-M3-4", "module": "M3", "name": "DigiLocker partner onboarding", "entity": "NeGD / MeitY", "purpose": "Pull applicant documents with consent (requester); later issue certificates (issuer).", "prerequisites": ["Partner SOP compliance", "Digital signature infrastructure"], "output": "DigiLocker partner agreement", "dependsOn": [], "status": "not-started", "riskIfDelayed": "Applicants keep uploading photocopies; document fraud risk persists.", "escalation": "NeGD partner desk", "evidence": "proposed" },
-
-    { "id": "A-M4-1", "module": "M4", "name": "CPGRAMS interoperability decision", "entity": "DARPG with MYAS", "purpose": "Agree the model: domain front-end with cross-references, or full residence in CPGRAMS with category feeds.", "prerequisites": ["Category taxonomy proposal", "Case-volume estimate"], "output": "Interoperability protocol", "dependsOn": [], "status": "not-started", "riskIfDelayed": "A duplicate national grievance channel — confusing for citizens, unacceptable to DARPG.", "escalation": "DARPG joint secretary", "evidence": "proposed" },
-    { "id": "A-M4-2", "module": "M4", "name": "SLA and escalation-matrix adoption", "entity": "MYAS (central); each state separately", "purpose": "Give the SLA clock and auto-escalation legal footing — states cannot be centrally mandated.", "prerequisites": ["M1 jurisdiction data live", "Resolver hierarchy agreed"], "output": "SLA policy orders (central + per state)", "dependsOn": ["A-M1-3"], "status": "not-started", "riskIfDelayed": "Escalations have no authority; SLA breaches carry no consequence.", "escalation": "MYAS grievance cell", "evidence": "proposed" },
-    { "id": "A-M4-3", "module": "M4", "name": "Bulk-messaging channel registration", "entity": "Telecom DLT registration via chosen provider; platform consent design per DPDP", "purpose": "Send targeted SMS/notifications lawfully (sender registration, template approval, consent records).", "prerequisites": ["A-P2"], "output": "Registered sender IDs and approved templates", "dependsOn": ["A-P2"], "status": "not-started", "riskIfDelayed": "Targeted messaging — the module's reach promise — cannot launch.", "escalation": "MYAS IT division", "evidence": "assumption" }
+    {
+      "id": "A-P1",
+      "module": "ALL",
+      "name": "Platform hosting procurement (MeitY-empanelled cloud)",
+      "entity": "MYAS (procurement) with MeitY empanelment list",
+      "purpose": "Host the platform on GI-Cloud-compliant, India-resident infrastructure.",
+      "prerequisites": [
+        "Budget approval",
+        "GeM procurement process"
+      ],
+      "output": "Hosting contract with an empanelled CSP",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "No production environment; pilots limited to demonstrations.",
+      "escalation": "MYAS IT division → Secretary",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-P2",
+      "module": "ALL",
+      "name": "DPDP compliance review (platform-wide)",
+      "entity": "MYAS legal with MeitY guidance",
+      "purpose": "Confirm consent architecture — especially Section 9 verifiable guardian consent for minors — before any personal data is processed.",
+      "prerequisites": [
+        "Consent-vault design",
+        "Data-classification of every dataset in the catalogue"
+      ],
+      "output": "Signed-off privacy design; DPIA record",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Blocks every module that touches personal data — effectively all pilots.",
+      "escalation": "MYAS legal → MeitY DPDP office",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M1-1",
+      "module": "M1",
+      "name": "Release of SAI organisation structure & sanctioned posts",
+      "entity": "SAI Administration / MYAS",
+      "purpose": "Seed the directory with the official hierarchy and post list (Immediate Move #1).",
+      "prerequisites": [
+        "Formal request letter from the project owner"
+      ],
+      "output": "Official org chart, sanctioned-post list, nodal officers",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Directory built from public fragments — unofficial and unmaintainable.",
+      "escalation": "SAI Secretary → DG SAI",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M1-2",
+      "module": "M1",
+      "name": "Publication policy for roles and contacts",
+      "entity": "MYAS with DPDP review",
+      "purpose": "Decide what is public (roles, jurisdictions) vs restricted (personal contact details of officers).",
+      "prerequisites": [
+        "A-P2"
+      ],
+      "output": "Directory publication policy",
+      "dependsOn": [
+        "A-P2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Either an unusable directory (nothing public) or a privacy incident.",
+      "escalation": "MYAS legal",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M1-3",
+      "module": "M1",
+      "name": "State consent to list department structures",
+      "entity": "Each participating state sports department",
+      "purpose": "States own their structures; listing needs their consent and a named maintainer.",
+      "prerequisites": [
+        "Pilot-state selection (Immediate Move #6)"
+      ],
+      "output": "State onboarding letters (per state)",
+      "dependsOn": [
+        "A-M1-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Directory covers central bodies only — routing fails for state/district work.",
+      "escalation": "State sports secretaries via MYAS",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M2-1",
+      "module": "M2",
+      "name": "Approval to mirror the recognition register",
+      "entity": "National Sports Board (MYAS during transition)",
+      "purpose": "Make the platform's federation status view authoritative by mirroring the statutory register.",
+      "prerequisites": [
+        "NSB operating procedures published"
+      ],
+      "output": "Data-sharing arrangement for recognition orders and status",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Platform shows stale or unofficial recognition status — worse than nothing for courts and athletes.",
+      "escalation": "NSB secretariat → chairperson",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M2-2",
+      "module": "M2",
+      "name": "Federation consent for compliance scorecards",
+      "entity": "Each NSF (framework agreed with NSB)",
+      "purpose": "Publish election, filing and safe-sport compliance as public traffic-lights.",
+      "prerequisites": [
+        "A-M2-1",
+        "Scorecard methodology sign-off"
+      ],
+      "output": "Federation onboarding agreements",
+      "dependsOn": [
+        "A-M2-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Scorecards contested by federations; legal challenges under the Act.",
+      "escalation": "NSB",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M2-3",
+      "module": "M2",
+      "name": "Tribunal-outcome publication scope",
+      "entity": "National Sports Tribunal registrar",
+      "purpose": "Define which tribunal outcomes (affecting recognition/office bearers) appear on the registry.",
+      "prerequisites": [
+        "Tribunal rules finalised (draft published 31 Dec 2025)"
+      ],
+      "output": "Publication protocol",
+      "dependsOn": [
+        "A-M2-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Registry silently diverges from legal reality after disputes.",
+      "escalation": "Tribunal registrar",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M3-1",
+      "module": "M3",
+      "name": "Scheme-integration approval (per scheme, starting Khelo India scholarships)",
+      "entity": "Owning scheme division, MYAS/SAI",
+      "purpose": "Run application intake, eligibility and tracking for a scheme on the platform.",
+      "prerequisites": [
+        "Scheme rules encoded as structured eligibility criteria",
+        "Scheme division sign-off on workflow"
+      ],
+      "output": "Scheme onboarding order (per scheme)",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Eligibility engine has nothing to run on; M3 reduces to a links page.",
+      "escalation": "Scheme division head",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M3-2",
+      "module": "M3",
+      "name": "PFMS data access for sports schemes",
+      "entity": "Office of the CGA, Ministry of Finance",
+      "purpose": "Read sanction/release/utilisation stages for sports scheme payments.",
+      "prerequisites": [
+        "MYAS sponsorship of the request",
+        "Scheme codes identified"
+      ],
+      "output": "PFMS data-sharing arrangement",
+      "dependsOn": [
+        "A-M3-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Fund tracking limited to manual updates — the transparency promise weakens.",
+      "escalation": "CGA PFMS division via MYAS",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M3-3",
+      "module": "M3",
+      "name": "eOffice file-status integration",
+      "entity": "NIC with the file-owning ministry (MYAS)",
+      "purpose": "Mirror desk-level file status for scheme files.",
+      "prerequisites": [
+        "File-number ↔ application-ID mapping convention"
+      ],
+      "output": "Technical integration agreement",
+      "dependsOn": [
+        "A-M3-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "“Where is my file” stays unanswerable; delay analytics impossible.",
+      "escalation": "NIC eOffice division",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M3-4",
+      "module": "M3",
+      "name": "DigiLocker partner onboarding",
+      "entity": "NeGD / MeitY",
+      "purpose": "Pull applicant documents with consent (requester); later issue certificates (issuer).",
+      "prerequisites": [
+        "Partner SOP compliance",
+        "Digital signature infrastructure"
+      ],
+      "output": "DigiLocker partner agreement",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Applicants keep uploading photocopies; document fraud risk persists.",
+      "escalation": "NeGD partner desk",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M4-1",
+      "module": "M4",
+      "name": "CPGRAMS interoperability decision",
+      "entity": "DARPG with MYAS",
+      "purpose": "Agree the model: domain front-end with cross-references, or full residence in CPGRAMS with category feeds.",
+      "prerequisites": [
+        "Category taxonomy proposal",
+        "Case-volume estimate"
+      ],
+      "output": "Interoperability protocol",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "A duplicate national grievance channel — confusing for citizens, unacceptable to DARPG.",
+      "escalation": "DARPG joint secretary",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M4-2",
+      "module": "M4",
+      "name": "SLA and escalation-matrix adoption",
+      "entity": "MYAS (central); each state separately",
+      "purpose": "Give the SLA clock and auto-escalation legal footing — states cannot be centrally mandated.",
+      "prerequisites": [
+        "M1 jurisdiction data live",
+        "Resolver hierarchy agreed"
+      ],
+      "output": "SLA policy orders (central + per state)",
+      "dependsOn": [
+        "A-M1-3"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Escalations have no authority; SLA breaches carry no consequence.",
+      "escalation": "MYAS grievance cell",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M4-3",
+      "module": "M4",
+      "name": "Bulk-messaging channel registration",
+      "entity": "Telecom DLT registration via chosen provider; platform consent design per DPDP",
+      "purpose": "Send targeted SMS/notifications lawfully (sender registration, template approval, consent records).",
+      "prerequisites": [
+        "A-P2"
+      ],
+      "output": "Registered sender IDs and approved templates",
+      "dependsOn": [
+        "A-P2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Targeted messaging — the module's reach promise — cannot launch.",
+      "escalation": "MYAS IT division",
+      "evidence": "assumption"
+    },
+    {
+      "id": "A-M5-1",
+      "module": "M5",
+      "name": "School-time screening approval",
+      "entity": "State education departments / boards (with MoE guidance)",
+      "purpose": "Permit screening games inside the school calendar and instruct schools to participate.",
+      "prerequisites": [
+        "Protocol document",
+        "Pilot-district selection"
+      ],
+      "output": "Education-department circulars (per state)",
+      "dependsOn": [
+        "A-M5-3"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "No lawful access to the school day — the module's entire delivery channel.",
+      "escalation": "State education secretary → MoE",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M5-2",
+      "module": "M5",
+      "name": "Verifiable guardian-consent mechanism sign-off",
+      "entity": "MYAS legal with MeitY (DPDP Section 9)",
+      "purpose": "Approve the specific mechanism for verifiable parent/guardian consent before capturing any minor's screening data.",
+      "prerequisites": [
+        "A-P2",
+        "Consent-flow prototype tested with schools"
+      ],
+      "output": "Approved consent design (answers Q7)",
+      "dependsOn": [
+        "A-P2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Blocks every school pilot — this is the platform's hardest legal gate.",
+      "escalation": "MYAS legal → MeitY DPDP office",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M5-3",
+      "module": "M5",
+      "name": "Screening-protocol alignment with Fit India GOALS",
+      "entity": "SAI / Fit India mission",
+      "purpose": "One national test battery: the screening games extend the existing GOALS protocols instead of competing with them.",
+      "prerequisites": [
+        "Draft battery mapped test-by-test to GOALS"
+      ],
+      "output": "Protocol sign-off",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Two rival test batteries in schools — confusion and double burden on PT teachers.",
+      "escalation": "SAI DG office",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M5-4",
+      "module": "M5",
+      "name": "UDISE+ / APAAR data-linkage approval",
+      "entity": "Ministry of Education",
+      "purpose": "Use UDISE+ school codes as the registry key and link APAAR IDs with guardian consent.",
+      "prerequisites": [
+        "A-M5-2",
+        "Data-minimisation spec (what is read, what is never read)"
+      ],
+      "output": "MoE data-sharing arrangement",
+      "dependsOn": [
+        "A-M5-2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Screening records fragment across schools; transfers break history.",
+      "escalation": "MoE digital education division",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M6-1",
+      "module": "M6",
+      "name": "Teacher scout-duty permission (service rules)",
+      "entity": "State education departments (teachers are a state subject)",
+      "purpose": "Permit government PT teachers to hold scout roles and log discovery activity.",
+      "prerequisites": [
+        "Scout role description",
+        "Time commitment estimate"
+      ],
+      "output": "State service-rule clarifications / circulars",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Teachers participate informally with no protection or recognition — the programme stays invisible.",
+      "escalation": "State education secretaries",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M6-2",
+      "module": "M6",
+      "name": "Scout recognition & reward policy",
+      "entity": "MYAS (financial approval required for any monetary element)",
+      "purpose": "Approve the recognition ladder: certificates, national events, career credit — and decide whether any monetary reward exists.",
+      "prerequisites": [
+        "Q25 answered (recognition-only vs monetary)"
+      ],
+      "output": "Recognition policy order",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "The incentive engine of the discovery pillar never starts.",
+      "escalation": "Joint Secretary (Sports)",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M6-3",
+      "module": "M6",
+      "name": "Scout training accreditation",
+      "entity": "SAI (NIS Patiala / e-Khel Pathshala)",
+      "purpose": "Accredit the short scout-training curriculum so certified scouts have a recognised credential.",
+      "prerequisites": [
+        "Curriculum draft aligned with screening protocol"
+      ],
+      "output": "Accredited training programme",
+      "dependsOn": [
+        "A-M5-3"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Scouts screen without standardised training — data quality suffers at the source.",
+      "escalation": "SAI academic division",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M7-1",
+      "module": "M7",
+      "name": "NSRS integration & identity-service approval",
+      "entity": "SAI (NSRS) / MYAS",
+      "purpose": "The platform's most important approval: programmatic identity lookup/create against NSRS and the right to attach records to the Khelo India ID.",
+      "prerequisites": [
+        "Q1 answered (API existence)",
+        "Q13 answered (canonical identifier)",
+        "Security assessment"
+      ],
+      "output": "NSRS integration agreement",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Every identity-dependent module (M5, M7, M8, M14–M16, M18) runs on a manual bridge — the 'one identity' promise weakens to a slogan.",
+      "escalation": "SAI DG → Secretary (Sports)",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M7-2",
+      "module": "M7",
+      "name": "AI talent-score governance policy",
+      "entity": "MYAS (AI governance board to be constituted)",
+      "purpose": "Approve the advisory-only AI policy: scores never auto-decide, explainability required, bias audit scheduled, athlete appeal path defined.",
+      "prerequisites": [
+        "Model card",
+        "Bias-audit methodology",
+        "Appeal-process design"
+      ],
+      "output": "AI governance policy order",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Either no AI (module reduces to a timeline) or ungoverned AI (selection scandals waiting to happen).",
+      "escalation": "Secretary (Sports)",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M7-3",
+      "module": "M7",
+      "name": "NADA doping-flag arrangement",
+      "entity": "NADA India (within WADA/ADAMS rules)",
+      "purpose": "Share eligibility flags (sanctioned / eligible, with window) — never test data — for selection-facing views.",
+      "prerequisites": [
+        "Legal review of WADA data rules",
+        "Flag-only data spec"
+      ],
+      "output": "Restricted data-sharing arrangement",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Selectors keep learning about sanctions from the press; an ineligible selection embarrasses everyone.",
+      "escalation": "NADA DG via MYAS",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M7-4",
+      "module": "M7",
+      "name": "Result-verification precedence rules",
+      "entity": "NSFs + state associations, ratified by NSB",
+      "purpose": "Adopt the documented precedence order for conflicting results (answers Q5) so the timeline can mark records 'verified'.",
+      "prerequisites": [
+        "Q5 decision",
+        "Federation onboarding (A-M2-2)"
+      ],
+      "output": "Verification rulebook",
+      "dependsOn": [
+        "A-M2-2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "'Verified' badge means nothing; disputes land on the platform with no rulebook.",
+      "escalation": "NSB",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M8-1",
+      "module": "M8",
+      "name": "Event-sanctioning protocol adoption",
+      "entity": "NSFs / NSB; School Games Federation and university boards for their events",
+      "purpose": "Only sanctioned events feed verified results — the protocol defines who may sanction what.",
+      "prerequisites": [
+        "M2 affiliation tree live",
+        "Sanctioning workflow design"
+      ],
+      "output": "Sanctioning protocol",
+      "dependsOn": [
+        "A-M2-2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Unsanctioned results pollute the Athlete 360 timeline; age-fraud risk rises.",
+      "escalation": "NSB",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M8-2",
+      "module": "M8",
+      "name": "GMS coordination agreement",
+      "entity": "SAI (Games Management System)",
+      "purpose": "Define the boundary: GMS runs Khelo India Games; M8 covers the long tail (school, district, federation events) and both share one calendar and results standard.",
+      "prerequisites": [
+        "Q29 answered (GMS scope and availability)"
+      ],
+      "output": "Coordination agreement",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Two games platforms with incompatible results — the exact fragmentation this platform exists to end.",
+      "escalation": "SAI games division",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M8-3",
+      "module": "M8",
+      "name": "DigiLocker issuer onboarding (certificates)",
+      "entity": "NeGD / MeitY",
+      "purpose": "Issue participation and medal certificates directly to athletes' DigiLocker accounts.",
+      "prerequisites": [
+        "A-M3-4 (partner onboarding)",
+        "Certificate schema + signing infrastructure"
+      ],
+      "output": "Issuer status for event certificates",
+      "dependsOn": [
+        "A-M3-4"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Certificates stay forgeable paper; M3 and M16 must keep verifying manually.",
+      "escalation": "NeGD partner desk",
+      "evidence": "proposed"
+    }
   ]
 }

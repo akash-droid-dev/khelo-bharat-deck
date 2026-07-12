@@ -45,7 +45,7 @@
 
     async data(name) {
       if (cache[name]) return cache[name];
-      const res = await fetch(`data/${name}.json`);
+      const res = await fetch(`data/${name}.json`, { cache: "no-cache" });
       if (!res.ok) throw new Error(`Failed to load data/${name}.json (${res.status})`);
       cache[name] = await res.json();
       return cache[name];
