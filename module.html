@@ -28,10 +28,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const root = document.getElementById("mod-root");
   const id = (KB.param("m") || "").toUpperCase();
 
-  let pillars, modules, systems, questions, roadmap;
+  let pillars, modules, systems, questions, roadmap, integrations, stakeholders, approvals, datasets;
   try {
-    [pillars, modules, systems, questions, roadmap] = (await Promise.all(
-      ["pillars", "modules", "systems", "questions", "roadmap"].map(KB.data)
+    [pillars, modules, systems, questions, roadmap, integrations, stakeholders, approvals, datasets] = (await Promise.all(
+      ["pillars", "modules", "systems", "questions", "roadmap", "integrations", "stakeholders", "approvals", "datasets"].map(KB.data)
     ));
   } catch (e) {
     root.innerHTML = `<div class="wrap"><section>${KB.stateBlock("error", "Could not load module data", e.message)}</section></div>`;
@@ -58,6 +58,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     m.id !== mod.id && (m.pillar === mod.pillar ||
       systems.systems.some(s => s.usedByModules.includes(m.id) && s.usedByModules.includes(mod.id)))
   ).slice(0, 6);
+
+  const stMap = Object.fromEntries(stakeholders.stakeholders.map(s => [s.id, s]));
+  const modIntegrations = integrations.integrations.filter(i => i.module === mod.id);
+  const modRoles = stakeholders.moduleRoles.filter(r => r.module === mod.id);
+  const modApprovals = approvals.approvals.filter(a => a.module === mod.id || a.module === "ALL");
+  const modDatasets = datasets.datasets.filter(d => d.module === mod.id);
+  const authored = integrations._meta.authoredModules.includes(mod.id);
 
   const planned = (title, detail) => `
     <div class="card" style="border-style:dashed">
@@ -88,7 +95,25 @@ document.addEventListener("DOMContentLoaded", async () => {
     <section class="mod-section" aria-labelledby="s-purpose">
       <h2 id="s-purpose"><span class="section-num">01–05</span>Purpose, Problem &amp; Beneficiaries</h2>
       <p><strong>Why this module exists:</strong> ${KB.esc(mod.why)}</p>
-      <p class="muted" style="margin-top:10px"><strong>Key partners &amp; stakeholders named so far:</strong> ${mod.partners.map(KB.esc).join(" · ")} <span class="small">(full stakeholder map with roles and approval responsibilities is authored in Phase 2)</span></p>
+      ${modRoles.length ? `
+      <h3 style="margin:22px 0 10px">Government stakeholders &amp; responsibilities</h3>
+      <div class="table-scroll"><table>
+        <caption class="visually-hidden">Stakeholder responsibilities for ${KB.esc(mod.id)}</caption>
+        <thead><tr><th scope="col">Stakeholder</th><th scope="col">Data responsibility</th><th scope="col">Approval responsibility</th><th scope="col">Operational / escalation</th><th scope="col">Proposed access</th></tr></thead>
+        <tbody>${modRoles.map(r => {
+          const st = stMap[r.stakeholder];
+          return `<tr>
+            <td><b>${KB.esc(st.name)}</b><br><span class="muted small">${KB.esc(st.level)}</span></td>
+            <td class="small">${KB.esc(r.dataResponsibility)}</td>
+            <td class="small">${KB.esc(r.approvalResponsibility)}</td>
+            <td class="small">${KB.esc(r.operationalResponsibility)}<br><span class="muted">Escalation: ${KB.esc(r.escalation)}</span></td>
+            <td class="small">${KB.esc(r.proposedAccess)}</td>
+          </tr>`;
+        }).join("")}
+        </tbody>
+      </table></div>
+      <p class="small muted" style="margin-top:8px">Roles are ${KB.chip("proposed")} Khelo Bharat design — each requires confirmation by the named organisation. See the <a href="stakeholders.html">stakeholder directory</a>.</p>`
+      : `<p class="muted" style="margin-top:10px"><strong>Key partners &amp; stakeholders named so far:</strong> ${mod.partners.map(KB.esc).join(" · ")} <span class="small">(full stakeholder map with roles and approval responsibilities is authored in Phase 2)</span></p>`}
     </section>
 
     <section class="mod-section" aria-labelledby="s-layers">
@@ -100,7 +125,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
 
       <h3 style="margin:26px 0 10px">Layer 1 · Existing systems this module touches</h3>
-      ${modSystems.length ? `
+      ${modIntegrations.length ? `
+      <div style="display:grid;gap:12px">${modIntegrations.map(i => {
+        const s = systems.systems.find(x => x.id === i.system);
+        return `<div class="card">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <h4 class="mt-0">${KB.esc(s.name)}</h4>
+            ${KB.chip(s.verificationStatus)}
+            <code class="small">${KB.esc(i.class)}</code>
+          </div>
+          <p class="small" style="margin:8px 0 0"><strong>Why for this module:</strong> ${KB.esc(i.why)}</p>
+          <p class="small" style="margin:6px 0 0"><strong>Data flow:</strong> ${KB.esc(i.dataFlow)}</p>
+          <div class="kv-grid" style="margin-top:10px">
+            <div class="kv"><b>Khelo Bharat value-add</b><span>${KB.esc(i.kbValueAdd)}</span></div>
+            <div class="kv"><b>Gaps in the existing system</b><span>${KB.esc(i.gaps)}</span></div>
+            <div class="kv"><b>Dependencies</b><span>${i.dependencies.map(KB.esc).join(" · ") || "—"}</span></div>
+          </div>
+        </div>`;
+      }).join("")}</div>
+      <p class="small muted" style="margin-top:8px">Every relationship above is ${KB.chip("proposed")} design, not an approved integration. System facts and sources live in the <a href="systems.html">integration hub</a>.</p>`
+      : modSystems.length ? `
       <div class="table-scroll"><table>
         <caption class="visually-hidden">Existing government systems relevant to ${KB.esc(mod.id)}</caption>
         <thead><tr><th scope="col">System</th><th scope="col">Owner</th><th scope="col">Proposed relationship</th><th scope="col">Verification</th></tr></thead>
@@ -113,11 +157,44 @@ document.addEventListener("DOMContentLoaded", async () => {
           </tr>`).join("")}
         </tbody>
       </table></div>
-      <p class="small muted" style="margin-top:8px">No API is assumed to exist merely because a portal exists. Every relationship above is a proposed design, not an approved integration.</p>`
+      <p class="small muted" style="margin-top:8px">No API is assumed to exist merely because a portal exists. Every relationship above is a proposed design, not an approved integration. The module-specific integration detail is authored in Phase 2.</p>`
       : planned("Integration register", "The existing-system register for this module has not been authored yet.")}
 
-      <h3 style="margin:26px 0 10px">Layer 2 · Approvals &amp; module-specific data catalogue</h3>
-      ${planned("Approvals catalogue & data catalogue", "The module-specific approval list (approving entity, prerequisites, risk-if-delayed) and dataset catalogue (fields, owner, sensitivity, consent, update frequency) are authored in Phase 2 of this blueprint programme.")}
+      <h3 style="margin:26px 0 10px">Layer 2 · Approvals required</h3>
+      ${authored && modApprovals.length ? `
+      <div class="table-scroll"><table>
+        <caption class="visually-hidden">Approvals required for ${KB.esc(mod.id)}</caption>
+        <thead><tr><th scope="col">Approval</th><th scope="col">Approving entity</th><th scope="col">Prerequisites</th><th scope="col">Risk if delayed</th><th scope="col">Status</th></tr></thead>
+        <tbody>${modApprovals.map(a => `
+          <tr>
+            <td><b>${KB.esc(a.id)}</b> · ${KB.esc(a.name)}${a.module === "ALL" ? '<br><span class="muted small">platform-wide</span>' : ""}<br><span class="muted small">${KB.esc(a.purpose)}</span></td>
+            <td class="small">${KB.esc(a.entity)}<br><span class="muted">Escalation: ${KB.esc(a.escalation)}</span></td>
+            <td class="small">${a.prerequisites.map(KB.esc).join("; ") || "—"}${a.dependsOn.length ? `<br><span class="muted">Depends on: ${a.dependsOn.map(KB.esc).join(", ")}</span>` : ""}</td>
+            <td class="small">${KB.esc(a.riskIfDelayed)}</td>
+            <td class="small">${KB.esc(a.status)}<br>${KB.chip(a.evidence)}</td>
+          </tr>`).join("")}
+        </tbody>
+      </table></div>
+      <p class="small muted" style="margin-top:8px">No timelines are shown because none are validated — sequencing only. Full catalogue in the <a href="approvals.html">approval centre</a>.</p>`
+      : planned("Approvals catalogue", "The module-specific approval list (approving entity, prerequisites, risk-if-delayed) is authored in Phase 2 of this blueprint programme.")}
+
+      <h3 style="margin:26px 0 10px">Layer 2 · Module-specific data catalogue</h3>
+      ${modDatasets.length ? `
+      <div class="table-scroll"><table>
+        <caption class="visually-hidden">Datasets required by ${KB.esc(mod.id)}</caption>
+        <thead><tr><th scope="col">Dataset</th><th scope="col">Source</th><th scope="col">Classification &amp; consent</th><th scope="col">Collection &amp; frequency</th><th scope="col">Storage &amp; access</th></tr></thead>
+        <tbody>${modDatasets.map(d => `
+          <tr>
+            <td><b>${KB.esc(d.id)}</b> · ${KB.esc(d.name)}<br><span class="muted small">${KB.esc(d.purpose)}</span><br><span class="muted small">Fields: ${d.keyFields.map(KB.esc).join(", ")}</span></td>
+            <td class="small">${KB.esc(d.sourceOrg)}<br><span class="muted">${KB.esc(d.sourceSystem)}</span></td>
+            <td class="small">${KB.esc(d.classification)} · ${KB.esc(d.sensitivity)}<br><span class="muted">Consent: ${KB.esc(d.consent)}</span></td>
+            <td class="small">${KB.esc(d.collectionMethod)} · ${KB.esc(d.updateFrequency)}<br><span class="muted">Validation: ${KB.esc(d.validation)}</span></td>
+            <td class="small">${KB.esc(d.storage)}<br><span class="muted">${KB.esc(d.accessRoles)}</span></td>
+          </tr>`).join("")}
+        </tbody>
+      </table></div>
+      <p class="small muted" style="margin-top:8px">All datasets are ${KB.chip("proposed")} requirements following the DPDP Act 2023 framing. Full catalogue in the <a href="datasets.html">data catalogue</a>.</p>`
+      : planned("Data catalogue", "The module-specific dataset catalogue (fields, owner, sensitivity, consent, update frequency) is authored in Phase 2 of this blueprint programme.")}
 
       <h3 style="margin:26px 0 10px">Layer 3 · Open questions for this module</h3>
       ${modQuestions.length ? `
