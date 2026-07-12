@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Catalogue — Khelo Bharat Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+    <div id="crumbs"></div>
+    <section>
+      <span class="kicker">Data catalogue</span>
+      <h1>Every Dataset, Governed Before Collected</h1>
+      <p class="sub">Module-specific data requirements: source, fields, classification, consent, collection method and storage. Consent notes follow the Digital Personal Data Protection (DPDP) Act 2023 — verifiable guardian consent for minors is a design constraint, not an afterthought. All entries are proposed requirements.</p>
+      <div class="filter-row" role="group" aria-label="Filter datasets" id="ds-filters">
+        <button class="filter-btn" data-f="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-f="personal" aria-pressed="false">Personal</button>
+        <button class="filter-btn" data-f="non-personal" aria-pressed="false">Non-personal</button>
+      </div>
+      <div id="ds-summary" class="muted small" style="margin-bottom:12px" aria-live="polite"></div>
+      <div id="ds-list" aria-live="polite">
+        <div class="state" role="status"><b>Loading catalogue…</b>Reading the data catalogue.</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  KB.mountChrome("datasets.html");
+  document.getElementById("crumbs").innerHTML = KB.breadcrumbs([
+    { href: "index.html", label: "Home" }, { label: "Data Catalogue" }
+  ]);
+  const listEl = document.getElementById("ds-list");
+  const sumEl = document.getElementById("ds-summary");
+  let reg;
+  try { reg = await KB.data("datasets"); }
+  catch (e) { listEl.innerHTML = KB.stateBlock("error", "Could not load the data catalogue", e.message); return; }
+
+  let filter = "all";
+  const fEl = document.getElementById("ds-filters");
+  fEl.addEventListener("click", e => {
+    const btn = e.target.closest("[data-f]"); if (!btn) return;
+    filter = btn.dataset.f;
+    fEl.querySelectorAll("[data-f]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === filter)));
+    render();
+  });
+
+  function render() {
+    const list = reg.datasets.filter(d => filter === "all" || d.classification === filter);
+    const personal = reg.datasets.filter(d => d.classification.startsWith("personal")).length;
+    sumEl.textContent = `${reg.datasets.length} datasets catalogued (modules authored so far) · ${personal} carry personal data · showing ${list.length}`;
+    if (!list.length) { listEl.innerHTML = KB.stateBlock("empty", "No datasets match", "Try another filter."); return; }
+    listEl.innerHTML = `<div class="table-scroll"><table>
+      <caption class="visually-hidden">Module-specific data catalogue</caption>
+      <thead><tr><th scope="col">Dataset</th><th scope="col">Module</th><th scope="col">Source</th><th scope="col">Classification &amp; consent</th><th scope="col">Collection &amp; validation</th><th scope="col">Storage &amp; access</th></tr></thead>
+      <tbody>${list.map(d => `
+        <tr>
+          <td><b>${KB.esc(d.id)}</b> · ${KB.esc(d.name)}<br><span class="muted small">${KB.esc(d.purpose)}</span><br><span class="muted small">Fields: ${d.keyFields.map(KB.esc).join(", ")}</span></td>
+          <td class="small"><a href="module.html?m=${KB.esc(d.module)}">${KB.esc(d.module)}</a></td>
+          <td class="small">${KB.esc(d.sourceOrg)}<br><span class="muted">${KB.esc(d.sourceSystem)}</span></td>
+          <td class="small">${KB.esc(d.classification)} · ${KB.esc(d.sensitivity)}<br><span class="muted">Consent: ${KB.esc(d.consent)}</span></td>
+          <td class="small">${KB.esc(d.collectionMethod)} · ${KB.esc(d.updateFrequency)}<br><span class="muted">${KB.esc(d.validation)}</span></td>
+          <td class="small">${KB.esc(d.storage)}<br><span class="muted">${KB.esc(d.accessRoles)}</span></td>
+        </tr>`).join("")}
+      </tbody></table></div>
+      <p class="small muted" style="margin-top:10px">Catalogues for the remaining pillars are added as their modules are authored (Phase 2, pillar by pillar). Systems of record are named per dataset to prevent data forking.</p>`;
+  }
+  render();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Master Relationship Map — Khelo Bharat Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+    <div id="crumbs"></div>
+    <section>
+      <span class="kicker">Master relationship map</span>
+      <h1>How Everything Connects</h1>
+      <p class="sub">Six pillars → twenty modules → the government systems each one touches. Filter by pillar or by system to see shared dependencies — the systems many modules rely on are the platform's true critical path. Where a module has an authored integration register, the connection carries its integration class.</p>
+      <div class="filter-row" role="group" aria-label="Filter by pillar" id="mp-pillars"></div>
+      <div class="filter-row" role="group" aria-label="Filter by system" id="mp-systems" style="margin-top:2px"></div>
+      <div id="mp-shared" style="margin:10px 0 18px"></div>
+      <div id="mp-map" style="display:grid;gap:14px" aria-live="polite">
+        <div class="state" role="status"><b>Loading map…</b>Deriving relationships from the registers.</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  KB.mountChrome("map.html");
+  document.getElementById("crumbs").innerHTML = KB.breadcrumbs([
+    { href: "index.html", label: "Home" }, { label: "Relationship Map" }
+  ]);
+  const mapEl = document.getElementById("mp-map");
+  let pillars, modules, systems, integrations;
+  try {
+    [pillars, modules, systems, integrations] = await Promise.all(
+      ["pillars", "modules", "systems", "integrations"].map(KB.data));
+  } catch (e) { mapEl.innerHTML = KB.stateBlock("error", "Could not load the registers", e.message); return; }
+
+  const intFor = (m, s) => integrations.integrations.find(i => i.module === m && i.system === s);
+  const systemsFor = m => systems.systems.filter(s => s.usedByModules.includes(m));
+
+  let pFilter = "all", sFilter = "all";
+  const pEl = document.getElementById("mp-pillars");
+  pEl.innerHTML = `<button class="filter-btn" data-f="all" aria-pressed="true">All pillars</button>` +
+    pillars.pillars.map(p => `<button class="filter-btn" data-f="${p.id}" aria-pressed="false">${p.id} · ${KB.esc(p.name)}</button>`).join("");
+  const sEl = document.getElementById("mp-systems");
+  sEl.innerHTML = `<button class="filter-btn" data-f="all" aria-pressed="true">All systems</button>` +
+    systems.systems.map(s => `<button class="filter-btn" data-f="${s.id}" aria-pressed="false">${KB.esc(s.name.split("—")[0].trim())}</button>`).join("");
+  pEl.addEventListener("click", e => {
+    const b = e.target.closest("[data-f]"); if (!b) return;
+    pFilter = b.dataset.f;
+    pEl.querySelectorAll("[data-f]").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.f === pFilter)));
+    render();
+  });
+  sEl.addEventListener("click", e => {
+    const b = e.target.closest("[data-f]"); if (!b) return;
+    sFilter = b.dataset.f;
+    sEl.querySelectorAll("[data-f]").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.f === sFilter)));
+    render();
+  });
+
+  function sharedBand() {
+    const counts = systems.systems
+      .map(s => ({ s, n: s.usedByModules.filter(m => m !== "ALL").length }))
+      .filter(x => x.n >= 3).sort((a, b) => b.n - a.n);
+    return `<div class="outcome-band"><span class="label">Shared dependencies</span><span>${
+      counts.map(x => `${KB.esc(x.s.name.split("—")[0].trim())} (${x.n} modules)`).join(" · ")
+    } — approvals for these unlock several modules at once.</span></div>`;
+  }
+
+  function render() {
+    document.getElementById("mp-shared").innerHTML = sharedBand();
+    const mods = modules.modules.filter(m =>
+      (pFilter === "all" || m.pillar === Number(pFilter)) &&
+      (sFilter === "all" || systemsFor(m.id).some(s => s.id === sFilter)));
+    if (!mods.length) { mapEl.innerHTML = KB.stateBlock("empty", "No modules match", "Try different filters."); return; }
+    mapEl.innerHTML = mods.map(m => {
+      const p = pillars.pillars.find(x => x.id === m.pillar);
+      const sys = systemsFor(m.id);
+      return `<article class="card">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          ${KB.modCode(m.id, p.color)}
+          <a href="module.html?m=${m.id}" style="font-weight:700">${KB.esc(m.title)}</a>
+          <span class="pillar-chip" style="color:${p.color}">${KB.esc(p.name)}</span>
+        </div>
+        ${sys.length ? `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">${sys.map(s => {
+          const i = intFor(m.id, s.id);
+          return `<span class="chip ${s.apiConfirmed ? "chip--verified" : "chip--proposed"}" title="${KB.esc(s.name)}">${KB.esc(s.name.split("—")[0].trim())}${i ? ` · ${KB.esc(i.class)}` : ""}</span>`;
+        }).join("")}</div>`
+        : '<p class="muted small" style="margin-top:8px">No existing-system dependency recorded — platform-native module.</p>'}
+      </article>`;
+    }).join("");
+  }
+  render();
+});
+</script>
+</body>
+</html>

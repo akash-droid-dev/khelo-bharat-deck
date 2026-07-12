@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Governance &amp; Access Model — Khelo Bharat Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+    <div id="crumbs"></div>
+    <section>
+      <span class="kicker">Governance &amp; access model</span>
+      <h1>Twelve Roles, Least Privilege</h1>
+      <p class="sub">The proposed role-based access structure. <strong>This is design, not implementation</strong> — no production authentication exists, and no prototype login should ever be mistaken for production security. Every role is scoped by geography and module, and every view of personal data is audit-logged.</p>
+      <div id="gv-principles" style="margin-bottom:22px"></div>
+      <div id="gv-roles" aria-live="polite">
+        <div class="state" role="status"><b>Loading model…</b>Reading the role register.</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  KB.mountChrome("governance.html");
+  document.getElementById("crumbs").innerHTML = KB.breadcrumbs([
+    { href: "index.html", label: "Home" }, { label: "Governance" }
+  ]);
+  const rolesEl = document.getElementById("gv-roles");
+  let reg;
+  try { reg = await KB.data("roles"); }
+  catch (e) { rolesEl.innerHTML = KB.stateBlock("error", "Could not load the role register", e.message); return; }
+
+  document.getElementById("gv-principles").innerHTML = `
+    <h2 style="margin:0 0 12px">Design principles</h2>
+    <div class="kv-grid">${reg._meta.principles.map((p, i) => `<div class="kv"><b>Principle ${i + 1}</b><span>${KB.esc(p)}</span></div>`).join("")}</div>`;
+
+  rolesEl.innerHTML = `
+    <h2 style="margin:28px 0 12px">Role &amp; permission matrix</h2>
+    <div class="table-scroll"><table>
+      <caption class="visually-hidden">Role and permission matrix</caption>
+      <thead><tr>
+        <th scope="col">Role</th><th scope="col">View</th><th scope="col">Create</th><th scope="col">Edit</th>
+        <th scope="col">Approve</th><th scope="col">Export</th><th scope="col">Scope</th><th scope="col">Audit obligations</th>
+      </tr></thead>
+      <tbody>${reg.roles.map(r => `
+        <tr>
+          <td><b>${KB.esc(r.name)}</b><br>${KB.chip(r.evidence)}</td>
+          <td class="small">${KB.esc(r.view)}</td>
+          <td class="small">${KB.esc(r.create)}</td>
+          <td class="small">${KB.esc(r.edit)}</td>
+          <td class="small">${KB.esc(r.approve)}</td>
+          <td class="small">${KB.esc(r.export)}</td>
+          <td class="small">Geo: ${KB.esc(r.geoScope)}<br>Modules: ${KB.esc(r.moduleScope)}<br>Admin: ${KB.esc(r.adminScope)}</td>
+          <td class="small">${KB.esc(r.audit)}</td>
+        </tr>`).join("")}
+      </tbody></table></div>
+    <p class="small muted" style="margin-top:10px">Delegation of approval authority always references a written order. The governance matrix per module (who owns, who approves, who escalates) lives on each module page as it is authored.</p>`;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Government Stakeholder Directory — Khelo Bharat Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+    <div id="crumbs"></div>
+    <section>
+      <span class="kicker">Stakeholder directory</span>
+      <h1>Who Government Is in This Blueprint</h1>
+      <p class="sub">Every organisation the platform depends on, grouped by level. The organisations are real; the <em>roles proposed for them</em> are Khelo Bharat design requiring their confirmation. Module-specific responsibilities appear on each module page as they are authored.</p>
+      <div class="filter-row" role="group" aria-label="Filter by level" id="st-filters"></div>
+      <div id="st-list" style="display:grid;gap:16px" aria-live="polite">
+        <div class="state" role="status"><b>Loading directory…</b>Reading the stakeholder registry.</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  KB.mountChrome("stakeholders.html");
+  document.getElementById("crumbs").innerHTML = KB.breadcrumbs([
+    { href: "index.html", label: "Home" }, { label: "Stakeholders" }
+  ]);
+  const listEl = document.getElementById("st-list");
+  let reg;
+  try { reg = await KB.data("stakeholders"); }
+  catch (e) { listEl.innerHTML = KB.stateBlock("error", "Could not load the stakeholder registry", e.message); return; }
+
+  const levels = ["all", ...reg._meta.levels.filter(l => reg.stakeholders.some(s => s.level === l))];
+  let filter = "all";
+  const fEl = document.getElementById("st-filters");
+  fEl.innerHTML = levels.map(l =>
+    `<button class="filter-btn" data-f="${l}" aria-pressed="${String(l === "all")}">${l === "all" ? "All levels" : l.replace(/-/g, " ")}</button>`).join("");
+  fEl.addEventListener("click", e => {
+    const btn = e.target.closest("[data-f]"); if (!btn) return;
+    filter = btn.dataset.f;
+    fEl.querySelectorAll("[data-f]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === filter)));
+    render();
+  });
+
+  function render() {
+    const list = reg.stakeholders.filter(s => filter === "all" || s.level === filter);
+    if (!list.length) { listEl.innerHTML = KB.stateBlock("empty", "No stakeholders at this level", "Try another filter."); return; }
+    listEl.innerHTML = list.map(s => {
+      const mods = [...new Set(reg.moduleRoles.filter(r => r.stakeholder === s.id).map(r => r.module))];
+      return `<article class="card">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <h3 style="margin:0">${KB.esc(s.name)}</h3>
+          <span class="pillar-chip" style="color:var(--saffron-deep)">${KB.esc(s.level.replace(/-/g, " "))}</span>
+          ${KB.chip(s.evidence)}
+        </div>
+        <p class="muted small" style="margin:6px 0 8px">${KB.esc(s.description)}</p>
+        <p class="small"><strong>Module responsibilities authored so far:</strong> ${mods.length ? mods.map(m => `<a href="module.html?m=${m}">${m}</a>`).join(" · ") : '<span class="muted">none yet — authored pillar by pillar in Phase 2</span>'}</p>
+      </article>`;
+    }).join("");
+  }
+  render();
+});
+</script>
+</body>
+</html>
