@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementation Roadmap — Khelo Bharat Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+    <div id="crumbs"></div>
+    <section>
+      <span class="kicker">Implementation roadmap</span>
+      <h1>Sequenced, Not Scheduled</h1>
+      <p class="sub" id="rm-principle">Phases are ordered by dependency with indicative month ranges only — no dates are committed, because none are validated with government. Each phase ends at a gate that must be passed before the next begins.</p>
+      <div id="rm-phases" style="display:grid;gap:16px" aria-live="polite">
+        <div class="state" role="status"><b>Loading roadmap…</b>Reading the phase plan.</div>
+      </div>
+      <div id="rm-extra"></div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  KB.mountChrome("roadmap.html");
+  document.getElementById("crumbs").innerHTML = KB.breadcrumbs([
+    { href: "index.html", label: "Home" }, { label: "Roadmap" }
+  ]);
+  const phEl = document.getElementById("rm-phases");
+  let rm, modules;
+  try {
+    [rm, modules] = await Promise.all([KB.data("roadmap"), KB.data("modules")]);
+  } catch (e) { phEl.innerHTML = KB.stateBlock("error", "Could not load the roadmap", e.message); return; }
+
+  if (rm.principle) document.getElementById("rm-principle").textContent = rm.principle;
+
+  phEl.innerHTML = rm.phases.map(p => `
+    <article class="card">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span class="mod-code" style="background:var(--navy)">${KB.esc(p.id)}</span>
+        <h3 style="margin:0">${KB.esc(p.name)}</h3>
+        <span class="pillar-chip" style="color:var(--saffron-deep)">Indicative months ${KB.esc(p.indicativeMonths)}</span>
+        ${KB.chip(p.evidence)}
+      </div>
+      <ul class="small" style="margin:10px 0 10px 18px;display:grid;gap:4px">${p.activities.map(a => `<li>${KB.esc(a)}</li>`).join("")}</ul>
+      <p class="small"><strong>Modules in play:</strong> ${p.modules.map(m => `<a href="module.html?m=${m}">${m}</a>`).join(" · ")}</p>
+      <div class="outcome-band" style="margin-top:10px"><span class="label">Exit gate</span><span>${KB.esc(p.gate)}</span></div>
+    </article>`).join("");
+
+  const extra = [];
+  if (rm.immediateMoves?.length) extra.push(`
+    <h2 style="margin:34px 0 12px">Immediate moves (no approvals needed to start)</h2>
+    <ol class="flow-list">${rm.immediateMoves.map(m => `<li>${KB.esc(m.move)} <span class="muted small">(seeds ${KB.esc(m.seeds)})</span></li>`).join("")}</ol>`);
+  if (rm.scoreboardMonth30?.length) extra.push(`
+    <h2 style="margin:34px 0 12px">The month-30 scoreboard</h2>
+    <p class="muted small" style="margin-bottom:12px">What the programme should be able to say if the gates are passed — targets, not promises.</p>
+    <div class="kv-grid">${rm.scoreboardMonth30.map(s => `<div class="kv"><b>${KB.esc(s.value)}</b><span>${KB.esc(s.label)}</span></div>`).join("")}</div>`);
+  document.getElementById("rm-extra").innerHTML = extra.join("");
+});
+</script>
+</body>
+</html>

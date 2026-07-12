@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approval Centre — Khelo Bharat Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main">
+  <div class="wrap">
+    <div id="crumbs"></div>
+    <section>
+      <span class="kicker">Approval centre</span>
+      <h1>What Government Must Approve</h1>
+      <p class="sub">Every approval the platform needs before build or pilot — with the approving entity, prerequisites, dependencies and the risk of delay. <strong>No timelines are shown because none are validated</strong>; entries are sequenced by dependency only. All entries are proposed requirements; none have been formally initiated.</p>
+      <div class="filter-row" role="group" aria-label="Filter approvals" id="ap-filters"></div>
+      <div id="ap-summary" class="muted small" style="margin-bottom:12px" aria-live="polite"></div>
+      <div id="ap-list" aria-live="polite">
+        <div class="state" role="status"><b>Loading catalogue…</b>Reading the approval catalogue.</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  KB.mountChrome("approvals.html");
+  document.getElementById("crumbs").innerHTML = KB.breadcrumbs([
+    { href: "index.html", label: "Home" }, { label: "Approval Centre" }
+  ]);
+  const listEl = document.getElementById("ap-list");
+  const sumEl = document.getElementById("ap-summary");
+  let reg;
+  try { reg = await KB.data("approvals"); }
+  catch (e) { listEl.innerHTML = KB.stateBlock("error", "Could not load the approval catalogue", e.message); return; }
+
+  const mods = [...new Set(reg.approvals.map(a => a.module))];
+  let filter = "all";
+  const fEl = document.getElementById("ap-filters");
+  fEl.innerHTML = ['all', ...mods].map(m =>
+    `<button class="filter-btn" data-f="${m}" aria-pressed="${String(m === "all")}">${m === "all" ? "All" : m === "ALL" ? "Platform-wide" : m}</button>`).join("");
+  fEl.addEventListener("click", e => {
+    const btn = e.target.closest("[data-f]"); if (!btn) return;
+    filter = btn.dataset.f;
+    fEl.querySelectorAll("[data-f]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === filter)));
+    render();
+  });
+
+  function render() {
+    const list = reg.approvals.filter(a => filter === "all" || a.module === filter);
+    sumEl.textContent = `${reg.approvals.length} approvals catalogued (modules authored so far) · showing ${list.length}`;
+    if (!list.length) { listEl.innerHTML = KB.stateBlock("empty", "No approvals match", "Try another filter."); return; }
+    listEl.innerHTML = `<div class="table-scroll"><table>
+      <caption class="visually-hidden">Approval catalogue</caption>
+      <thead><tr><th scope="col">Approval</th><th scope="col">Module</th><th scope="col">Approving entity</th><th scope="col">Prerequisites &amp; dependencies</th><th scope="col">Risk if delayed</th><th scope="col">Status</th></tr></thead>
+      <tbody>${list.map(a => `
+        <tr>
+          <td><b>${KB.esc(a.id)}</b> · ${KB.esc(a.name)}<br><span class="muted small">${KB.esc(a.purpose)}</span></td>
+          <td class="small">${a.module === "ALL" ? "Platform-wide" : `<a href="module.html?m=${KB.esc(a.module)}">${KB.esc(a.module)}</a>`}</td>
+          <td class="small">${KB.esc(a.entity)}<br><span class="muted">Escalation: ${KB.esc(a.escalation)}</span></td>
+          <td class="small">${a.prerequisites.map(KB.esc).join("; ") || "—"}${a.dependsOn.length ? `<br><span class="muted">Depends on: ${a.dependsOn.map(KB.esc).join(", ")}</span>` : ""}</td>
+          <td class="small">${KB.esc(a.riskIfDelayed)}</td>
+          <td class="small">${KB.esc(a.status)}<br>${KB.chip(a.evidence)}</td>
+        </tr>`).join("")}
+      </tbody></table></div>
+      <p class="small muted" style="margin-top:10px">Approvals for the remaining pillars are added as their modules are authored (Phase 2, pillar by pillar).</p>`;
+  }
+  render();
+});
+</script>
+</body>
+</html>
