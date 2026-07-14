@@ -577,6 +577,42 @@
         "Khelo India is MYAS's flagship Central Sector Scheme (merger of RGKA, USIS and NSTSS).",
         "TOPS has run since September 2014 with the Mission Olympic Cell (April 2016) and ₹50,000/month out-of-pocket allowance for core athletes; NCOEs operate under SAI."
       ]
+    },
+    {
+      "id": "S19",
+      "name": "GeM — Government e Marketplace",
+      "owner": "Department of Commerce (GeM SPV)",
+      "purpose": "Public procurement marketplace for government buyers; source of purchase metadata for sports equipment.",
+      "usedByModules": [
+        "M11"
+      ],
+      "proposedRelationship": "data-exchange",
+      "relationshipNote": "Proposed feed of sports-department purchase metadata so new assets enter the register at procurement time.",
+      "apiConfirmed": false,
+      "verificationStatus": "partially-verified",
+      "sources": [],
+      "facts": [
+        "Well-established procurement platform (gem.gov.in); referenced by the MeitY cloud-empanelment procurement route already verified in S15.",
+        "Detailed source capture pending — added to the register during M11 authoring."
+      ]
+    },
+    {
+      "id": "S20",
+      "name": "ABDM — Ayushman Bharat Digital Mission",
+      "owner": "National Health Authority (NHA)",
+      "purpose": "National digital-health framework: ABHA health IDs, consent-based health-record exchange.",
+      "usedByModules": [
+        "M13"
+      ],
+      "proposedRelationship": "federated-access",
+      "relationshipNote": "Proposed consent-based access to athlete injury/treatment records via ABHA linkage instead of building a parallel medical-records store.",
+      "apiConfirmed": false,
+      "verificationStatus": "partially-verified",
+      "sources": [],
+      "facts": [
+        "ABDM (abdm.gov.in) provides ABHA IDs and a consent-manager architecture for health-record exchange.",
+        "Detailed source capture pending — added during M13 authoring; health-data handling is stricter than DPDP baseline."
+      ]
     }
   ]
 }
