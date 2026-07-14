@@ -527,6 +527,275 @@
       "riskIfDelayed": "Certificates stay forgeable paper; M3 and M16 must keep verifying manually.",
       "escalation": "NeGD partner desk",
       "evidence": "proposed"
+    },
+    {
+      "id": "A-M9-1",
+      "module": "M9",
+      "name": "NSRS coach-registry integration",
+      "entity": "SAI (NSRS)",
+      "purpose": "Extend NSRS coach/support-personnel records with qualifications, deployments and panels under shared identity.",
+      "prerequisites": [
+        "A-M7-1 scoped to include coach records"
+      ],
+      "output": "Coach-registry integration annex",
+      "dependsOn": [
+        "A-M7-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "A second coach database appears — the exact duplication the platform exists to end.",
+      "escalation": "SAI DG office",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M9-2",
+      "module": "M9",
+      "name": "Qualification-verification protocol",
+      "entity": "SAI academic division (NIS Patiala) with LNIPE/NSU",
+      "purpose": "Agree how coaching diplomas/degrees are verified — DigiLocker issuance preferred, registry lookup as fallback.",
+      "prerequisites": [
+        "Institution list",
+        "A-M3-4 for DigiLocker path"
+      ],
+      "output": "Verification protocol + institution onboarding",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "'Verified coach' badge is unverifiable — credential fraud persists.",
+      "escalation": "SAI academic division",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M9-3",
+      "module": "M9",
+      "name": "Safe-sport vetting standard for minor-facing roles",
+      "entity": "MYAS legal with state police-verification authorities",
+      "purpose": "Define the background-check standard for coaches/scouts working with minors, and who runs it.",
+      "prerequisites": [
+        "Q31 answered",
+        "Legal review"
+      ],
+      "output": "Vetting policy order",
+      "dependsOn": [
+        "A-P2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "A safeguarding incident involving an unvetted listed coach is an existential platform risk.",
+      "escalation": "MYAS legal → Secretary",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M10-1",
+      "module": "M10",
+      "name": "GatiShakti sports-layer engagement",
+      "entity": "DPIIT / BISAG-N",
+      "purpose": "Agree whether the facility registry publishes as a layer on the NMP platform, and who maintains it.",
+      "prerequisites": [
+        "Facility data model",
+        "Q33 answered"
+      ],
+      "output": "Layer-hosting arrangement",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Sports infra stays invisible to national planning; the platform runs its own map only.",
+      "escalation": "DPIIT via MYAS",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M10-2",
+      "module": "M10",
+      "name": "Facility-data release (SAI + states)",
+      "entity": "SAI infrastructure division; each state department",
+      "purpose": "Release facility inventories with location, condition and custodianship.",
+      "prerequisites": [
+        "Facility data model",
+        "Pilot-state selection"
+      ],
+      "output": "Data-release orders",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Map launches empty or crowdsourced-only — trust never establishes.",
+      "escalation": "SAI infra division / state secretaries",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M10-3",
+      "module": "M10",
+      "name": "Public booking & access policy",
+      "entity": "MYAS with states and local bodies",
+      "purpose": "Decide which government facilities are publicly bookable, fee handling, and priority rules (athletes vs public).",
+      "prerequisites": [
+        "Q34 answered (fee treasury route)"
+      ],
+      "output": "Booking policy framework",
+      "dependsOn": [
+        "A-M10-2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Utilisation tracking without booking becomes surveillance without service.",
+      "escalation": "MYAS sports division",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M11-1",
+      "module": "M11",
+      "name": "Asset-register adoption order (QR tagging)",
+      "entity": "SAI (own centres); state departments (state facilities)",
+      "purpose": "Mandate QR tagging and scan-based custody for new purchases and phased legacy enumeration.",
+      "prerequisites": [
+        "Tagging SOP",
+        "Q36 legacy plan"
+      ],
+      "output": "Adoption orders",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Register covers a shrinking island of tagged assets; leakage continues untracked.",
+      "escalation": "SAI infra division",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M11-2",
+      "module": "M11",
+      "name": "GeM purchase-feed linkage",
+      "entity": "GeM SPV (Department of Commerce)",
+      "purpose": "Receive order metadata for sports-department purchases so assets register at procurement.",
+      "prerequisites": [
+        "Buyer-organisation mapping",
+        "S19 verification completed"
+      ],
+      "output": "Feed arrangement",
+      "dependsOn": [
+        "A-M11-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Every new asset needs manual entry — adoption dies at the data-entry desk.",
+      "escalation": "GeM SPV via MYAS",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M11-3",
+      "module": "M11",
+      "name": "Condemnation & write-off workflow alignment",
+      "entity": "MYAS finance with audit authorities",
+      "purpose": "Align the register's disposal workflow with General Financial Rules stock-verification and write-off norms.",
+      "prerequisites": [
+        "Q35 answered (GFR/audit fit)"
+      ],
+      "output": "Aligned disposal workflow",
+      "dependsOn": [
+        "A-M11-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Digital register diverges from audit reality; officials keep parallel paper stock books.",
+      "escalation": "MYAS IFD",
+      "evidence": "assumption"
+    },
+    {
+      "id": "A-M12-1",
+      "module": "M12",
+      "name": "National accreditation standard adoption",
+      "entity": "SAI with NSF technical endorsement",
+      "purpose": "One standard extending the existing Khelo India academy accreditation — criteria, scoring, validity, appeals.",
+      "prerequisites": [
+        "Q37 answered (current standards)",
+        "Per-sport criteria from NSFs"
+      ],
+      "output": "Accreditation standard + rulebook",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Competing quality labels confuse parents — the market failure M12 exists to fix.",
+      "escalation": "SAI DG office",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M12-2",
+      "module": "M12",
+      "name": "Inspection protocol & inspector authorisation",
+      "entity": "State departments (DSO inspectors); SAI for national-level academies",
+      "purpose": "Authorise who inspects academies, on what checklist, with what evidence standard.",
+      "prerequisites": [
+        "A-M12-1",
+        "Inspector training material"
+      ],
+      "output": "Inspection protocol + authorisations",
+      "dependsOn": [
+        "A-M12-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Accreditation becomes self-declared — the badge means nothing.",
+      "escalation": "State SPOCs",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M12-3",
+      "module": "M12",
+      "name": "Marketplace listing & review policy",
+      "entity": "MYAS",
+      "purpose": "Listing eligibility (accredited-only?), ranking neutrality, review moderation and academy grievance path.",
+      "prerequisites": [
+        "Q38 answered (review integrity)"
+      ],
+      "output": "Marketplace policy",
+      "dependsOn": [
+        "A-M12-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Legal exposure from rankings; review manipulation poisons trust.",
+      "escalation": "MYAS legal",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M13-1",
+      "module": "M13",
+      "name": "Sports-science protocol standardisation",
+      "entity": "SAI sports-science division with National Sports University",
+      "purpose": "Standard assessment batteries, injury classifications and return-to-play protocols across the network.",
+      "prerequisites": [
+        "Clinical working group"
+      ],
+      "output": "Protocol handbook",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Data from different centres cannot be compared; the 'network' is a label.",
+      "escalation": "SAI sports-science division",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M13-2",
+      "module": "M13",
+      "name": "ABDM linkage & health-data consent architecture",
+      "entity": "National Health Authority with MYAS legal",
+      "purpose": "Athlete injury/treatment records ride ABDM consent rails (ABHA-linked) rather than a parallel medical store; settle fiduciary roles.",
+      "prerequisites": [
+        "Q39 answered (fiduciary model)",
+        "A-P2",
+        "S20 verification completed"
+      ],
+      "output": "ABDM integration approval",
+      "dependsOn": [
+        "A-P2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Platform becomes an unlicensed medical-records silo — the highest-risk data on the platform.",
+      "escalation": "NHA via MYAS",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M13-3",
+      "module": "M13",
+      "name": "Injury-care provider empanelment",
+      "entity": "MYAS/SAI with state health departments",
+      "purpose": "Empanel hospitals/clinics for athlete injury care with agreed tariffs and data obligations.",
+      "prerequisites": [
+        "A-M13-1 protocols",
+        "Tariff framework"
+      ],
+      "output": "Empanelment framework",
+      "dependsOn": [
+        "A-M13-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Injured grassroots athletes keep falling out of sport for lack of a care pathway.",
+      "escalation": "MYAS sports division",
+      "evidence": "proposed"
     }
   ]
 }

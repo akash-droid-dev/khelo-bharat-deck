@@ -11,7 +11,12 @@
       "M5",
       "M6",
       "M7",
-      "M8"
+      "M8",
+      "M9",
+      "M10",
+      "M11",
+      "M12",
+      "M13"
     ]
   },
   "integrations": [
@@ -392,6 +397,201 @@
       "gaps": "Requires issuer onboarding — same SOP as M3's requester role.",
       "dependencies": [
         "A-M8-3 (extends A-M3-4)"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M9",
+      "system": "S1",
+      "class": "direct-integration",
+      "why": "NSRS already registers coaches and support personnel — the registry must extend those records, not duplicate them.",
+      "dataFlow": "NSRS coach/support records ↔ registry profiles (shared identity).",
+      "kbValueAdd": "Adds qualifications, deployment history, officiating panels and vetting state on top of bare registration.",
+      "gaps": "No public API (Q1); qualification fields on NSRS not publicly documented.",
+      "dependencies": [
+        "A-M7-1 NSRS integration"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M9",
+      "system": "S17",
+      "class": "none",
+      "why": "The NSGA 2025 framework makes federations accountable for officiating standards — the registry gives that accountability a roster to point at.",
+      "dataFlow": "Statutory context → panel structures per sport.",
+      "kbValueAdd": "Officials' appointments become traceable to recognised bodies.",
+      "gaps": "No statutory officials register exists yet.",
+      "dependencies": [
+        "A-M2-1"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M9",
+      "system": "S5",
+      "class": "direct-integration",
+      "why": "Coaching diplomas and degrees (NIS, LNIPE, NSU) verified via DigiLocker issued documents kill credential fraud.",
+      "dataFlow": "Issued qualification documents pulled with consent at registration.",
+      "kbValueAdd": "A 'verified credential' badge that academies and parents can trust.",
+      "gaps": "Not all sports institutions issue to DigiLocker yet.",
+      "dependencies": [
+        "A-M3-4 partner onboarding"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M10",
+      "system": "S10",
+      "class": "future-integration",
+      "why": "PM GatiShakti is the national GIS with 1,450+ layers — the right long-term home for a sports-facility layer.",
+      "dataFlow": "Facility registry → proposed sports layer on the NMP platform; base layers ← for planning views.",
+      "kbValueAdd": "Sports infrastructure becomes visible in national infrastructure planning.",
+      "gaps": "No sports layer exists today; DPIIT/BISAG-N engagement not started (Q33).",
+      "dependencies": [
+        "A-M10-1"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M10",
+      "system": "S8",
+      "class": "data-exchange",
+      "why": "UDISE+ records school infrastructure including playgrounds — the largest single inventory of grassroots sports space.",
+      "dataFlow": "School playground fields → facility registry (school-ground category).",
+      "kbValueAdd": "Grassroots access mapping, not just stadium mapping.",
+      "gaps": "UDISE+ playground data is coarse (yes/no, not condition).",
+      "dependencies": [
+        "A-M5-4 MoE linkage"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M10",
+      "system": "S18",
+      "class": "data-exchange",
+      "why": "Khelo India funds infrastructure projects — those belong on the map with their funding trail.",
+      "dataFlow": "Khelo India infrastructure project list → facility records with scheme linkage.",
+      "kbValueAdd": "Funded-vs-built visibility per district.",
+      "gaps": "Project data lives in scheme files, not a queryable registry.",
+      "dependencies": [
+        "A-M3-1 scheme onboarding"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M11",
+      "system": "S19",
+      "class": "data-exchange",
+      "why": "Assets bought on GeM carry clean purchase metadata — capturing it at source means the register starts complete.",
+      "dataFlow": "GeM order metadata (sports buyers) → asset-register intake queue.",
+      "kbValueAdd": "No retro data entry for new purchases; price benchmarks per item emerge free.",
+      "gaps": "GeM feed availability for a domain platform unconfirmed (S19 partially verified).",
+      "dependencies": [
+        "A-M11-2"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M11",
+      "system": "S18",
+      "class": "data-exchange",
+      "why": "Scheme-funded equipment (Khelo India grants) must appear as trackable assets, closing the grant→asset loop.",
+      "dataFlow": "Approved equipment grants (M3) → expected-asset records awaiting receipt confirmation.",
+      "kbValueAdd": "'Money left, equipment arrived' verification — the anti-leakage view.",
+      "gaps": "Requires M3 scheme onboarding first.",
+      "dependencies": [
+        "A-M3-1"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M11",
+      "system": "S2",
+      "class": "reporting-consolidation",
+      "why": "Utilisation certificates for equipment grants reconcile against PFMS releases.",
+      "dataFlow": "PFMS release refs ↔ asset receipt confirmations (reporting view).",
+      "kbValueAdd": "Utilisation reporting grounded in physical assets, not paper certificates.",
+      "gaps": "Same PFMS access dependency as M3.",
+      "dependencies": [
+        "A-M3-2"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M12",
+      "system": "S1",
+      "class": "data-exchange",
+      "why": "Academies self-register on NSRS (verified fact) — accreditation attaches to those same entities.",
+      "dataFlow": "NSRS academy records ↔ accreditation register (shared identity).",
+      "kbValueAdd": "Registration becomes the entry ramp; accreditation the quality signal.",
+      "gaps": "NSRS academy data fields not publicly documented.",
+      "dependencies": [
+        "A-M7-1"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M12",
+      "system": "S18",
+      "class": "workflow-coordination",
+      "why": "Khelo India already runs academy accreditation — M12 must extend the existing programme, not invent a rival standard.",
+      "dataFlow": "Existing accredited-academy list → register seed; new assessments follow the agreed standard.",
+      "kbValueAdd": "One public, searchable accreditation state with inspection history.",
+      "gaps": "Current accreditation standards and coverage need confirmation (Q37).",
+      "dependencies": [
+        "A-M12-1"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M12",
+      "system": "S5",
+      "class": "direct-integration",
+      "why": "Accreditation certificates issued to DigiLocker are tamper-proof marketing assets for academies.",
+      "dataFlow": "Platform as issuer → accreditation certificates to academy lockers.",
+      "kbValueAdd": "Parents can verify an academy's claim in seconds.",
+      "gaps": "Issuer onboarding shared with M8.",
+      "dependencies": [
+        "A-M8-3"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M13",
+      "system": "S20",
+      "class": "federated-access",
+      "why": "ABDM's consent-manager architecture is the lawful way to handle athlete medical records — better than building a parallel store.",
+      "dataFlow": "Injury/treatment records exchanged via ABHA-linked consent; platform holds care-pathway state, not raw records.",
+      "kbValueAdd": "Athletes keep one health record; sports care plugs into it.",
+      "gaps": "ABDM integration path for a sports platform unexplored (Q39); S20 partially verified.",
+      "dependencies": [
+        "A-M13-2"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M13",
+      "system": "S7",
+      "class": "referral",
+      "why": "Anti-doping safety in treatment: medication checks against the prohibited list and TUE guidance belong in the injury workflow.",
+      "dataFlow": "Reference content and referral links — no ADAMS data flows here.",
+      "kbValueAdd": "A treating physio can check a prescription's doping risk in-flow.",
+      "gaps": "Content-reuse permission needed.",
+      "dependencies": [
+        "NADA content approval"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M13",
+      "system": "S1",
+      "class": "data-exchange",
+      "why": "Injury and availability status must attach to the same athlete identity as everything else.",
+      "dataFlow": "KID ↔ care episodes (minimal-disclosure availability flag to M7).",
+      "kbValueAdd": "Selectors see 'available/rehab' without seeing diagnoses.",
+      "gaps": "Same NSRS dependency as all identity modules.",
+      "dependencies": [
+        "A-M7-1"
       ],
       "evidence": "proposed"
     }

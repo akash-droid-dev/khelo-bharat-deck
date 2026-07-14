@@ -140,6 +140,27 @@
       "level": "institutional",
       "description": "Private/institutional training ecosystem; accreditation subjects.",
       "evidence": "proposed"
+    },
+    {
+      "id": "ST19",
+      "name": "Urban local bodies & panchayats",
+      "level": "local",
+      "description": "Own and operate community grounds, parks and local sports spaces.",
+      "evidence": "verified"
+    },
+    {
+      "id": "ST20",
+      "name": "GeM SPV (Department of Commerce)",
+      "level": "public-sector-partner",
+      "description": "Operates the Government e Marketplace procurement platform.",
+      "evidence": "partially-verified"
+    },
+    {
+      "id": "ST21",
+      "name": "National Health Authority (ABDM)",
+      "level": "central",
+      "description": "Runs the Ayushman Bharat Digital Mission: ABHA IDs and consent-based health-record exchange.",
+      "evidence": "partially-verified"
     }
   ],
   "moduleRoles": [
@@ -481,6 +502,216 @@
       "operationalResponsibility": "None (platform).",
       "escalation": "NeGD partner desk",
       "proposedAccess": "API partner",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M9",
+      "stakeholder": "ST2",
+      "dataResponsibility": "NIS Patiala and SAI coaching qualifications; NSRS coach/support-personnel records.",
+      "approvalResponsibility": "Qualification-verification protocol (A-M9-2).",
+      "operationalResponsibility": "Operate the qualification source of record.",
+      "escalation": "SAI academic division",
+      "proposedAccess": "System of record (qualifications)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M9",
+      "stakeholder": "ST8",
+      "dataResponsibility": "Technical-official panels, sport-specific certifications, officiating history.",
+      "approvalResponsibility": "Adopt registry as the officials roster for sanctioned events.",
+      "operationalResponsibility": "Keep panels current per sport.",
+      "escalation": "Federation secretary → NSB",
+      "proposedAccess": "Editor (own sport panels)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M9",
+      "stakeholder": "ST5",
+      "dataResponsibility": "State coach cadres and deployments.",
+      "approvalResponsibility": "State onboarding of coach records.",
+      "operationalResponsibility": "Maintain state coach postings.",
+      "escalation": "State sports secretary",
+      "proposedAccess": "Editor (state scope)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M9",
+      "stakeholder": "ST1",
+      "dataResponsibility": "Safe-sport vetting policy for people working with minors.",
+      "approvalResponsibility": "Approve vetting standard (A-M9-3).",
+      "operationalResponsibility": "Own the vetting policy.",
+      "escalation": "MYAS legal",
+      "proposedAccess": "Policy owner",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M10",
+      "stakeholder": "ST16",
+      "dataResponsibility": "GIS platform, base layers, ISRO imagery.",
+      "approvalResponsibility": "Accept and host a sports-facility layer (A-M10-1).",
+      "operationalResponsibility": "Platform operations (BISAG-N).",
+      "escalation": "DPIIT logistics division",
+      "proposedAccess": "Platform host",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M10",
+      "stakeholder": "ST2",
+      "dataResponsibility": "SAI facility inventory: NCOEs, STCs, stadia with condition data.",
+      "approvalResponsibility": "Release facility data (A-M10-2).",
+      "operationalResponsibility": "Keep SAI facility records current.",
+      "escalation": "SAI infrastructure division",
+      "proposedAccess": "Editor (SAI facilities)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M10",
+      "stakeholder": "ST5",
+      "dataResponsibility": "State facility inventories and utilisation.",
+      "approvalResponsibility": "State data release and booking policy adoption.",
+      "operationalResponsibility": "Maintain state facility records.",
+      "escalation": "State sports secretary",
+      "proposedAccess": "Editor (state scope)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M10",
+      "stakeholder": "ST19",
+      "dataResponsibility": "Community grounds and local sports spaces.",
+      "approvalResponsibility": "Local-body listing consent.",
+      "operationalResponsibility": "Confirm ground condition annually.",
+      "escalation": "Municipal commissioner / panchayat secretary",
+      "proposedAccess": "Editor (own assets)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M10",
+      "stakeholder": "ST6",
+      "dataResponsibility": "Ground-truth verification of district facility data.",
+      "approvalResponsibility": "Verification sign-off.",
+      "operationalResponsibility": "Physical verification cycle (answers Q4).",
+      "escalation": "State SPOC",
+      "proposedAccess": "Verifier (district)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M11",
+      "stakeholder": "ST2",
+      "dataResponsibility": "Asset custody at SAI centres; QR tagging at receipt.",
+      "approvalResponsibility": "Adopt the asset-register order (A-M11-1).",
+      "operationalResponsibility": "Scan-based issue/return and condition logging.",
+      "escalation": "Centre in-charge → SAI infra division",
+      "proposedAccess": "Custodian (own centre)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M11",
+      "stakeholder": "ST20",
+      "dataResponsibility": "Purchase metadata for sports-department orders.",
+      "approvalResponsibility": "GeM feed linkage (A-M11-2).",
+      "operationalResponsibility": "None (source platform).",
+      "escalation": "GeM SPV",
+      "proposedAccess": "Data provider",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M11",
+      "stakeholder": "ST17",
+      "dataResponsibility": "CSR-donated asset declarations.",
+      "approvalResponsibility": "None.",
+      "operationalResponsibility": "Register donated assets at handover (links M17).",
+      "escalation": "—",
+      "proposedAccess": "Contributor (own donations)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M11",
+      "stakeholder": "ST5",
+      "dataResponsibility": "State facility asset registers.",
+      "approvalResponsibility": "State adoption of the register.",
+      "operationalResponsibility": "Stock verification cycles.",
+      "escalation": "State sports secretary",
+      "proposedAccess": "Custodian (state facilities)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M12",
+      "stakeholder": "ST2",
+      "dataResponsibility": "Accreditation standards and assessment records.",
+      "approvalResponsibility": "One national accreditation standard (A-M12-1).",
+      "operationalResponsibility": "Run the accreditation programme.",
+      "escalation": "SAI DG office",
+      "proposedAccess": "Accreditor",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M12",
+      "stakeholder": "ST8",
+      "dataResponsibility": "Sport-specific technical standards for academies.",
+      "approvalResponsibility": "Endorse per-sport criteria.",
+      "operationalResponsibility": "Technical assessors for their sport.",
+      "escalation": "Federation secretary",
+      "proposedAccess": "Technical assessor (own sport)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M12",
+      "stakeholder": "ST18",
+      "dataResponsibility": "Academy self-declarations: coaches, facilities, safety measures.",
+      "approvalResponsibility": "Consent to public listing and inspection.",
+      "operationalResponsibility": "Keep listings truthful and current.",
+      "escalation": "Accreditation appeals committee",
+      "proposedAccess": "Filer (own academy)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M12",
+      "stakeholder": "ST6",
+      "dataResponsibility": "Physical inspection reports.",
+      "approvalResponsibility": "Inspector authorisation (A-M12-2).",
+      "operationalResponsibility": "Inspection visits per protocol.",
+      "escalation": "State SPOC",
+      "proposedAccess": "Inspector (district)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M13",
+      "stakeholder": "ST2",
+      "dataResponsibility": "Sports-science centre assessments and injury-care records at SAI facilities.",
+      "approvalResponsibility": "Protocol standardisation (A-M13-1).",
+      "operationalResponsibility": "Operate centres; staff the network.",
+      "escalation": "SAI sports-science division",
+      "proposedAccess": "Care provider (own centres)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M13",
+      "stakeholder": "ST21",
+      "dataResponsibility": "ABHA linkage and consent-manager rails for health records.",
+      "approvalResponsibility": "ABDM integration approval (A-M13-2).",
+      "operationalResponsibility": "None (framework owner).",
+      "escalation": "NHA ABDM office",
+      "proposedAccess": "Framework provider",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M13",
+      "stakeholder": "ST8",
+      "dataResponsibility": "NSF medical panels; return-to-play sign-offs for their sport.",
+      "approvalResponsibility": "Adopt clearance protocols.",
+      "operationalResponsibility": "Panel availability at events.",
+      "escalation": "Federation medical commission",
+      "proposedAccess": "Clinician (own sport)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M13",
+      "stakeholder": "ST15",
+      "dataResponsibility": "Anti-doping education content; medication-check reference.",
+      "approvalResponsibility": "Approve education-content reuse.",
+      "operationalResponsibility": "Keep prohibited-list guidance current.",
+      "escalation": "NADA DG",
+      "proposedAccess": "Content provider",
       "evidence": "proposed"
     }
   ]
