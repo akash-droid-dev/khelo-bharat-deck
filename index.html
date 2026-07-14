@@ -1,774 +1,266 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<title>Khelo Bharat — One Nation, One Sports Platform</title>
+<meta name="description" content="The complete Khelo Bharat platform blueprint: six pillars, twenty modules, verified ecosystem integrations, approvals, data catalogues and open decisions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css?v=3">
+<script src="assets/js/site.js?v=3" defer></script>
 </head>
 <body>
-<x-dc>
-<helmet>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-  <style>
-    html { scroll-behavior: smooth; }
-    html, body { margin: 0; padding: 0; background: #071E3D; }
-    body { font-family: 'Inter', system-ui, sans-serif; }
-    a { color: #E87C1E; text-decoration: none; }
-    a:hover { color: #F5A54A; }
-    @keyframes kbFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
-    @keyframes kbOrbA { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-60px,40px) scale(1.15); } }
-    @keyframes kbOrbB { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(70px,-50px) scale(1.1); } }
-    @keyframes kbSweep { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-    @keyframes kbTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    @keyframes kbBar { 0% { transform: scaleY(.15); } 45%,60% { transform: scaleY(1); } 100% { transform: scaleY(.15); } }
-    @keyframes kbStep { 0%,15% { opacity: .25; } 25%,70% { opacity: 1; } 85%,100% { opacity: .25; } }
-    @keyframes kbDot { 0%,100% { opacity: .3; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.15); } }
-    @keyframes kbRise { 0% { opacity: 0; transform: translateY(14px); } 12%,80% { opacity: 1; transform: translateY(0); } 95%,100% { opacity: 0; } }
-    @keyframes kbTimer { 0%,100% { transform: scale(1); text-shadow: 0 0 0 rgba(245,165,74,0); } 50% { transform: scale(1.06); text-shadow: 0 0 30px rgba(245,165,74,.55); } }
-    @keyframes kbSlide { 0%,100% { transform: translateX(0); } 50% { transform: translateX(10px); } }
-    @keyframes kbCardIn { 0% { opacity: 0; transform: translateY(10px); } 15%,75% { opacity: 1; transform: translateY(0); } 90%,100% { opacity: 0; } }
-    @keyframes kbSpinSlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-  </style>
-</helmet>
+<div id="site-header"></div>
 
-<!-- NAV -->
-<nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(7,30,61,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08);">
-  <div style="max-width:1360px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:8px;height:64px;">
-    <span style="font-family:Fraunces,serif;font-weight:800;color:#FFFFFF;font-size:19px;padding-right:16px;border-right:1px solid rgba(255,255,255,.18);margin-right:10px;">Khelo <em style="font-style:normal;color:#F5A54A;">Bharat</em></span>
-    <div style="display:flex;align-items:center;gap:2px;overflow-x:auto;flex:1;scrollbar-width:none;">
-      <a href="#vision" style="color:#C9D6E8;font-size:13.5px;font-weight:600;padding:8px 12px;border-radius:8px;white-space:nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,.08);">Vision</a>
-      <a href="#gaps" style="color:#C9D6E8;font-size:13.5px;font-weight:600;padding:8px 12px;border-radius:8px;white-space:nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,.08);">The Gaps</a>
-      <a href="#arch" style="color:#C9D6E8;font-size:13.5px;font-weight:600;padding:8px 12px;border-radius:8px;white-space:nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,.08);">Architecture</a>
-      <a href="#pillars" style="color:#C9D6E8;font-size:13.5px;font-weight:600;padding:8px 12px;border-radius:8px;white-space:nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,.08);">Pillars</a>
-      <a href="#modules" style="color:#C9D6E8;font-size:13.5px;font-weight:600;padding:8px 12px;border-radius:8px;white-space:nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,.08);">20 Modules</a>
-      <a href="#journey" style="color:#C9D6E8;font-size:13.5px;font-weight:600;padding:8px 12px;border-radius:8px;white-space:nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,.08);">Journey</a>
-      <a href="#roadmap" style="color:#C9D6E8;font-size:13.5px;font-weight:600;padding:8px 12px;border-radius:8px;white-space:nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,.08);">Roadmap</a>
-      <a href="#next" style="color:#C9D6E8;font-size:13.5px;font-weight:600;padding:8px 12px;border-radius:8px;white-space:nowrap;" style-hover="color:#FFFFFF;background:rgba(255,255,255,.08);">Next Steps</a>
-      <a href="modules.html" style="color:#F5A54A;font-size:13.5px;font-weight:700;padding:8px 12px;border-radius:8px;white-space:nowrap;border:1px solid rgba(245,165,74,.45);" style-hover="color:#FFFFFF;background:rgba(245,165,74,.18);">Platform Blueprint →</a>
+<main id="main">
+  <!-- 01 · HERO -->
+  <header class="hero-dark" id="s-vision">
+    <div class="wrap">
+      <span class="kicker" style="color:#F5A54A">Complete platform blueprint · evidence-labeled</span>
+      <h1 style="max-width:820px;margin:10px 0 14px">One Nation. <em style="font-style:normal;color:#F5A54A">One Sports Platform.</em></h1>
+      <p class="sub" style="max-width:720px">Khelo Bharat unifies India's sports ecosystem — talent discovery, funding, facilities, benefits and analytics — on one verified identity. This site is the working blueprint: every module, every government touchpoint, every approval and every open decision, in one structured, navigable system.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 34px">
+        <a href="modules.html" style="background:#E87C1E;color:#fff;font-weight:700;padding:13px 28px;border-radius:26px;display:inline-block">Explore the 20 modules</a>
+        <a href="#s-ecosystem" style="background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:700;padding:13px 28px;border-radius:26px;display:inline-block">See the integration map ↓</a>
+      </div>
+      <div class="stat-tiles" id="hero-stats" style="max-width:860px"></div>
     </div>
-    <a href="Khelo Bharat Client Deck.dc.html" style="color:#071E3D;background:#F5A54A;font-size:13px;font-weight:700;padding:9px 18px;border-radius:22px;white-space:nowrap;" style-hover="background:#FFFFFF;color:#071E3D;">Presentation Deck ↗</a>
-  </div>
-</nav>
+  </header>
 
-<!-- HERO -->
-<header id="vision" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(165deg,#071E3D 0%,#0B2E59 45%,#123E75 80%,#1a5296 100%);overflow:hidden;padding:140px 28px 90px;box-sizing:border-box;">
-  <div style="position:absolute;right:-180px;top:-180px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(232,124,30,.4),transparent 62%);animation:kbOrbA 14s ease-in-out infinite;"></div>
-  <div style="position:absolute;left:-220px;bottom:-240px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(30,122,60,.35),transparent 62%);animation:kbOrbB 18s ease-in-out infinite;"></div>
-  <div style="position:absolute;left:0;right:0;top:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.012) 3px,rgba(255,255,255,.012) 4px);pointer-events:none;"></div>
-  <div style="max-width:1360px;margin:0 auto;width:100%;position:relative;">
-    <div data-reveal style="display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#F5A54A;border:1px solid rgba(245,165,74,.4);border-radius:24px;padding:9px 20px;">
-      <span style="width:8px;height:8px;border-radius:50%;background:#F5A54A;animation:kbDot 2s ease-in-out infinite;"></span>
-      <span>Complete Platform Blueprint · July 2026</span>
-    </div>
-    <h1 data-reveal data-delay="120" style="font-family:Fraunces,serif;font-size:clamp(56px,7.5vw,116px);font-weight:800;line-height:1.0;color:#FFFFFF;margin:34px 0 18px;max-width:1100px;"><span>One Nation.</span><br><em style="font-style:normal;background:linear-gradient(100deg,#F5A54A,#E87C1E 40%,#F5A54A 70%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:kbSweep 6s linear infinite;">One Sports Platform.</em></h1>
-    <p data-reveal data-delay="240" style="max-width:760px;color:#C9D6E8;font-size:19px;line-height:1.65;margin:0 0 46px;"><span>Khelo Bharat unifies India's entire sports ecosystem — twenty modules, six pillars, one verified identity — so that talent is found where it lives, funded transparently, and carried all the way from a school ground to a national podium.</span></p>
-    <div data-reveal data-delay="360" style="display:flex;gap:16px;flex-wrap:wrap;">
-      <a href="#modules" style="display:inline-block;background:#E87C1E;color:#FFFFFF;font-size:15px;font-weight:700;padding:15px 34px;border-radius:28px;box-shadow:0 10px 30px rgba(232,124,30,.35);" style-hover="background:#F5A54A;transform:translateY(-2px);">Explore the 20 Modules</a>
-      <a href="#journey" style="display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:#FFFFFF;font-size:15px;font-weight:700;padding:15px 34px;border-radius:28px;" style-hover="background:rgba(255,255,255,.16);">Follow One Athlete's Journey</a>
-    </div>
-    <div data-reveal data-delay="480" style="display:flex;gap:64px;margin-top:76px;flex-wrap:wrap;">
-      <div><b data-count="6" style="display:block;font-family:Fraunces,serif;font-size:52px;color:#FFFFFF;line-height:1;">6</b><span style="font-size:13px;color:#9FB4CF;letter-spacing:.1em;font-weight:600;">PILLARS</span></div>
-      <div><b data-count="20" style="display:block;font-family:Fraunces,serif;font-size:52px;color:#FFFFFF;line-height:1;">20</b><span style="font-size:13px;color:#9FB4CF;letter-spacing:.1em;font-weight:600;">MODULES</span></div>
-      <div><b data-count="7" style="display:block;font-family:Fraunces,serif;font-size:52px;color:#FFFFFF;line-height:1;">7</b><span style="font-size:13px;color:#9FB4CF;letter-spacing:.1em;font-weight:600;">PLATFORM LAYERS</span></div>
-      <div><b data-count="1" style="display:block;font-family:Fraunces,serif;font-size:52px;color:#FFFFFF;line-height:1;">1</b><span style="font-size:13px;color:#9FB4CF;letter-spacing:.1em;font-weight:600;">IDENTITY — NSRS ID</span></div>
-      <div><b data-count="4" style="display:block;font-family:Fraunces,serif;font-size:52px;color:#FFFFFF;line-height:1;">4</b><span style="font-size:13px;color:#9FB4CF;letter-spacing:.1em;font-weight:600;">ROLLOUT PHASES</span></div>
-    </div>
-  </div>
-  <div style="position:absolute;left:0;right:0;bottom:0;height:6px;background:linear-gradient(90deg,#E87C1E 33%,#FFFFFF 33% 66%,#1E7A3C 66%);"></div>
-</header>
+  <div id="page-nav-slot"></div>
 
-<!-- GAPS -->
-<section id="gaps" style="background:#F7F4EE;padding:110px 28px;">
-  <div style="max-width:1360px;margin:0 auto;">
-    <div data-reveal style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E87C1E;"><span>The starting point</span></div>
-    <h2 data-reveal data-delay="80" style="font-family:Fraunces,serif;font-size:clamp(34px,4vw,52px);font-weight:800;color:#0B2E59;line-height:1.08;margin:14px 0 12px;"><span>Six National Gaps, Six Platform Answers</span></h2>
-    <p data-reveal data-delay="140" style="font-size:17px;color:#5B6675;max-width:760px;line-height:1.6;margin:0 0 48px;"><span>The concept work identified six systemic gaps in Indian sport. Each one maps to a direct, buildable platform response.</span></p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(560px,1fr));gap:18px;">
-      <div data-reveal style="display:grid;grid-template-columns:1fr 1fr;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(11,46,89,.05);">
-        <div style="border-left:5px solid #A33A17;padding:22px 24px;"><b style="display:block;font-size:11.5px;letter-spacing:.12em;color:#A33A17;margin-bottom:6px;">GAP</b><span style="font-size:15.5px;color:#7a4433;line-height:1.5;">Sports data scattered across NSRS, Khelo India, KIRTI, state portals and paper files.</span></div>
-        <div style="border-left:1px dashed #E3DCCF;padding:22px 24px;background:#FBFCF9;"><b style="display:block;font-size:11.5px;letter-spacing:.12em;color:#1E7A3C;margin-bottom:6px;">ANSWER</b><span style="font-size:15.5px;color:#152233;line-height:1.5;">One identity + one aggregation layer — every record attaches to one verified ID.</span></div>
-      </div>
-      <div data-reveal data-delay="80" style="display:grid;grid-template-columns:1fr 1fr;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(11,46,89,.05);">
-        <div style="border-left:5px solid #A33A17;padding:22px 24px;"><b style="display:block;font-size:11.5px;letter-spacing:.12em;color:#A33A17;margin-bottom:6px;">GAP</b><span style="font-size:15.5px;color:#7a4433;line-height:1.5;">Government funding is hard to trace; files move invisibly.</span></div>
-        <div style="border-left:1px dashed #E3DCCF;padding:22px 24px;background:#FBFCF9;"><b style="display:block;font-size:11.5px;letter-spacing:.12em;color:#1E7A3C;margin-bottom:6px;">ANSWER</b><span style="font-size:15.5px;color:#152233;line-height:1.5;">Scheme workflows with live file tracking (eOffice) and money tracking (PFMS).</span></div>
-      </div>
-      <div data-reveal style="display:grid;grid-template-columns:1fr 1fr;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(11,46,89,.05);">
-        <div style="border-left:5px solid #A33A17;padding:22px 24px;"><b style="display:block;font-size:11.5px;letter-spacing:.12em;color:#A33A17;margin-bottom:6px;">GAP</b><span style="font-size:15.5px;color:#7a4433;line-height:1.5;">Grassroots talent doesn't know which schemes exist or how to reach them.</span></div>
-        <div style="border-left:1px dashed #E3DCCF;padding:22px 24px;background:#FBFCF9;"><b style="display:block;font-size:11.5px;letter-spacing:.12em;color:#1E7A3C;margin-bottom:6px;">ANSWER</b><span style="font-size:15.5px;color:#152233;line-height:1.5;">An eligibility engine that tells each athlete "you qualify — apply here."</span></div>
-      </div>
-      <div data-reveal data-delay="80" style="display:grid;grid-template-columns:1fr 1fr;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(11,46,89,.05);">
-        <div style="border-left:5px solid #A33A17;padding:22px 24px;"><b style="display:block;font-size:11.5px;letter-spacing:.12em;color:#A33A17;margin-bottom:6px;">GAP</b><span style="font-size:15.5px;color:#7a4433;line-height:1.5;">CSR money can't find verified needs; needs can't find funders.</span></div>
-        <div style="border-left:1px dashed #E3DCCF;padding:22px 24px;background:#FBFCF9;"><b style="display:block;font-size:11.5px;letter-spacing:.12em;color:#1E7A3C;margin-bottom:6px;">ANSWER</b><span style="font-size:15.5px;color:#152233;line-height:1.5;">A CSR exchange: verified need bank + matching + public impact tracking.</span></div>
-      </div>
-      <div data-reveal style="display:grid;grid-template-columns:1fr 1fr;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(11,46,89,.05);">
-        <div style="border-left:5px solid #A33A17;padding:22px 24px;"><b style="display:block;font-size:11.5px;letter-spacing:.12em;color:#A33A17;margin-bottom:6px;">GAP</b><span style="font-size:15.5px;color:#7a4433;line-height:1.5;">Rising athletes are invisible to media, sponsors and their own communities.</span></div>
-        <div style="border-left:1px dashed #E3DCCF;padding:22px 24px;background:#FBFCF9;"><b style="display:block;font-size:11.5px;letter-spacing:.12em;color:#1E7A3C;margin-bottom:6px;">ANSWER</b><span style="font-size:15.5px;color:#152233;line-height:1.5;">A verified, consent-managed showcase: profiles, laurels, DD Sports content.</span></div>
-      </div>
-      <div data-reveal data-delay="80" style="display:grid;grid-template-columns:1fr 1fr;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(11,46,89,.05);">
-        <div style="border-left:5px solid #A33A17;padding:22px 24px;"><b style="display:block;font-size:11.5px;letter-spacing:.12em;color:#A33A17;margin-bottom:6px;">GAP</b><span style="font-size:15.5px;color:#7a4433;line-height:1.5;">Good data brings no daily value to the athlete — so nobody maintains it.</span></div>
-        <div style="border-left:1px dashed #E3DCCF;padding:22px 24px;background:#FBFCF9;"><b style="display:block;font-size:11.5px;letter-spacing:.12em;color:#1E7A3C;margin-bottom:6px;">ANSWER</b><span style="font-size:15.5px;color:#152233;line-height:1.5;">A Benefits layer — card, jobs, marks. Value in the pocket keeps data alive.</span></div>
-      </div>
+  <!-- 02 · GAPS → ANSWERS -->
+  <section class="band" id="s-gaps" aria-labelledby="h-gaps">
+    <div class="wrap">
+      <span class="kicker">The starting point</span>
+      <h2 id="h-gaps">Six National Gaps, Six Platform Answers</h2>
+      <p class="sub">The concept work identified six systemic gaps in Indian sport. Each maps to a direct, buildable platform response — and each response became a pillar.</p>
+      <div class="tile-grid" style="margin-top:22px" id="gaps-grid"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ARCHITECTURE · 3D STACK -->
-<section id="arch" style="background:linear-gradient(180deg,#071E3D,#0B2E59);padding:120px 28px;overflow:hidden;">
-  <div style="max-width:1360px;margin:0 auto;">
-    <div data-reveal style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#F5A54A;"><span>Architecture</span></div>
-    <h2 data-reveal data-delay="80" style="font-family:Fraunces,serif;font-size:clamp(34px,4vw,52px);font-weight:800;color:#FFFFFF;line-height:1.08;margin:14px 0 12px;"><span>Seven Layers, One Job Each</span></h2>
-    <p data-reveal data-delay="140" style="font-size:17px;color:#C9D6E8;max-width:760px;line-height:1.6;margin:0 0 20px;"><span>Think of the platform as a seven-floor building. Every module plugs into these floors — that is what makes twenty modules behave like one platform instead of twenty portals.</span></p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(520px,1fr));gap:40px;align-items:center;">
-      <div data-reveal style="position:relative;height:620px;perspective:1500px;animation:kbFloat 8s ease-in-out infinite;">
-        <div style="position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;">
-          <div data-plate="6" data-base="translate(-170px,-170px) translateY(-168px) rotateX(56deg) rotateZ(-45deg)" style="position:absolute;width:340px;height:340px;border-radius:22px;background:linear-gradient(135deg,#123E75,#0B2E59);border:1px solid rgba(255,255,255,.22);transform:translate(-170px,-170px) translateY(-168px) rotateX(56deg) rotateZ(-45deg);display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 22px 44px rgba(2,10,24,.5);"><span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#F5A54A;">7</span><span style="font-size:17px;font-weight:700;color:#FFFFFF;letter-spacing:.04em;">Governance &amp; Trust</span></div>
-          <div data-plate="5" data-base="translate(-170px,-170px) translateY(-112px) rotateX(56deg) rotateZ(-45deg)" style="position:absolute;width:340px;height:340px;border-radius:22px;background:linear-gradient(135deg,#123E75,#0B2E59);border:1px solid rgba(255,255,255,.22);transform:translate(-170px,-170px) translateY(-112px) rotateX(56deg) rotateZ(-45deg);display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 22px 44px rgba(2,10,24,.5);"><span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#F5A54A;">6</span><span style="font-size:17px;font-weight:700;color:#FFFFFF;letter-spacing:.04em;">Engagement</span></div>
-          <div data-plate="4" data-base="translate(-170px,-170px) translateY(-56px) rotateX(56deg) rotateZ(-45deg)" style="position:absolute;width:340px;height:340px;border-radius:22px;background:linear-gradient(135deg,#E87C1E,#C05E12);border:1px solid rgba(255,255,255,.3);transform:translate(-170px,-170px) translateY(-56px) rotateX(56deg) rotateZ(-45deg);display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 22px 44px rgba(2,10,24,.5);"><span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#FFFFFF;">5</span><span style="font-size:17px;font-weight:700;color:#FFFFFF;letter-spacing:.04em;">Benefits — new</span></div>
-          <div data-plate="3" data-base="translate(-170px,-170px) translateY(0px) rotateX(56deg) rotateZ(-45deg)" style="position:absolute;width:340px;height:340px;border-radius:22px;background:linear-gradient(135deg,#123E75,#0B2E59);border:1px solid rgba(255,255,255,.22);transform:translate(-170px,-170px) translateY(0px) rotateX(56deg) rotateZ(-45deg);display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 22px 44px rgba(2,10,24,.5);"><span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#F5A54A;">4</span><span style="font-size:17px;font-weight:700;color:#FFFFFF;letter-spacing:.04em;">Intelligence</span></div>
-          <div data-plate="2" data-base="translate(-170px,-170px) translateY(56px) rotateX(56deg) rotateZ(-45deg)" style="position:absolute;width:340px;height:340px;border-radius:22px;background:linear-gradient(135deg,#123E75,#0B2E59);border:1px solid rgba(255,255,255,.22);transform:translate(-170px,-170px) translateY(56px) rotateX(56deg) rotateZ(-45deg);display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 22px 44px rgba(2,10,24,.5);"><span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#F5A54A;">3</span><span style="font-size:17px;font-weight:700;color:#FFFFFF;letter-spacing:.04em;">Workflow</span></div>
-          <div data-plate="1" data-base="translate(-170px,-170px) translateY(112px) rotateX(56deg) rotateZ(-45deg)" style="position:absolute;width:340px;height:340px;border-radius:22px;background:linear-gradient(135deg,#123E75,#0B2E59);border:1px solid rgba(255,255,255,.22);transform:translate(-170px,-170px) translateY(112px) rotateX(56deg) rotateZ(-45deg);display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 22px 44px rgba(2,10,24,.5);"><span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#F5A54A;">2</span><span style="font-size:17px;font-weight:700;color:#FFFFFF;letter-spacing:.04em;">Data Aggregation</span></div>
-          <div data-plate="0" data-base="translate(-170px,-170px) translateY(168px) rotateX(56deg) rotateZ(-45deg)" style="position:absolute;width:340px;height:340px;border-radius:22px;background:linear-gradient(135deg,#1E7A3C,#14606B);border:1px solid rgba(255,255,255,.3);transform:translate(-170px,-170px) translateY(168px) rotateX(56deg) rotateZ(-45deg);display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 22px 44px rgba(2,10,24,.5);"><span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#FFFFFF;">1</span><span style="font-size:17px;font-weight:700;color:#FFFFFF;letter-spacing:.04em;">Identity</span></div>
+  <!-- 03 · PILLARS -->
+  <section class="band band--alt" id="s-pillars" aria-labelledby="h-pillars">
+    <div class="wrap">
+      <span class="kicker">The structure</span>
+      <h2 id="h-pillars">Six Pillars, Twenty Modules</h2>
+      <p class="sub">Every module belongs to exactly one pillar. Select a pillar to open its modules.</p>
+      <div class="tile-grid" style="margin-top:22px" id="pillar-grid"></div>
+    </div>
+  </section>
+
+  <!-- 04 · THREE LAYERS -->
+  <section class="band" id="s-layers" aria-labelledby="h-layers">
+    <div class="wrap">
+      <span class="kicker">The method</span>
+      <h2 id="h-layers">Every Module Answers Three Layers</h2>
+      <p class="sub">This is what makes the blueprint decision-ready rather than a slideware vision: each module carries the same disciplined structure, and every claim carries an evidence label.</p>
+      <div class="tile-grid" style="margin-top:22px">
+        <div class="pillar-tile" data-reveal style="border-top-color:var(--p1)">
+          <b style="font-family:var(--font-serif);font-size:20px;color:var(--navy)">Layer 1 · Existing Ecosystem</b>
+          <span class="small" style="color:var(--grey)">Which government systems already do part of the job — NSRS, PFMS, eOffice, DigiLocker, UDISE+ and more — and how the platform connects <em>without replacing what works</em>. 63 proposed integration edges, each classified.</span>
+          <a href="systems.html" class="small" style="font-weight:700;margin-top:auto">Integration hub →</a>
+        </div>
+        <div class="pillar-tile" data-reveal style="border-top-color:var(--p2)">
+          <b style="font-family:var(--font-serif);font-size:20px;color:var(--navy)">Layer 2 · Approvals &amp; Data</b>
+          <span class="small" style="color:var(--grey)">What government must approve and supply before each module can be built: 66 catalogued approvals with prerequisites and escalation routes, and 76 datasets with DPDP-aligned consent design.</span>
+          <a href="approvals.html" class="small" style="font-weight:700;margin-top:auto">Approval centre →</a>
+        </div>
+        <div class="pillar-tile" data-reveal style="border-top-color:var(--p3)">
+          <b style="font-family:var(--font-serif);font-size:20px;color:var(--navy)">Layer 3 · Questions &amp; Decisions</b>
+          <span class="small" style="color:var(--grey)">The practical gaps between the proposed model and the real ecosystem — a tracked register with priorities, stakeholders and blocking status. Nothing is hidden behind confident language.</span>
+          <a href="questions.html" class="small" style="font-weight:700;margin-top:auto">Question register →</a>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div data-reveal data-layerrow="6" style="border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:14px;padding:15px 20px;display:grid;grid-template-columns:44px minmax(140px,200px) minmax(200px,1fr);gap:14px;align-items:center;"><span style="font-family:Fraunces,serif;font-size:22px;font-weight:800;color:#F5A54A;">7</span><b style="font-size:15.5px;color:#FFFFFF;">Governance &amp; Trust</b><span style="font-size:14px;color:#9FB4CF;line-height:1.45;">Role-based access · audit trail · DPDP consent vault · verification registry.</span></div>
-        <div data-reveal data-delay="60" data-layerrow="5" style="border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:14px;padding:15px 20px;display:grid;grid-template-columns:44px minmax(140px,200px) minmax(200px,1fr);gap:14px;align-items:center;"><span style="font-family:Fraunces,serif;font-size:22px;font-weight:800;color:#F5A54A;">6</span><b style="font-size:15.5px;color:#FFFFFF;">Engagement</b><span style="font-size:14px;color:#9FB4CF;line-height:1.45;">Athlete app · offline-first School App · field app · console · public portal · kiosks.</span></div>
-        <div data-reveal data-delay="120" data-layerrow="4" style="border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:14px;padding:15px 20px;display:grid;grid-template-columns:44px minmax(140px,200px) minmax(200px,1fr);gap:14px;align-items:center;"><span style="font-family:Fraunces,serif;font-size:22px;font-weight:800;color:#F5A54A;">5</span><b style="font-size:15.5px;color:#FFFFFF;">Benefits — the adoption engine</b><span style="font-size:14px;color:#9FB4CF;line-height:1.45;">Sports Card, jobs, marks, auto-eligibility. Real value keeps data accurate.</span></div>
-        <div data-reveal data-delay="180" data-layerrow="3" style="border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:14px;padding:15px 20px;display:grid;grid-template-columns:44px minmax(140px,200px) minmax(200px,1fr);gap:14px;align-items:center;"><span style="font-family:Fraunces,serif;font-size:22px;font-weight:800;color:#F5A54A;">4</span><b style="font-size:15.5px;color:#FFFFFF;">Intelligence</b><span style="font-size:14px;color:#9FB4CF;line-height:1.45;">AI talent scores (advisory) · fund-gap analysis · State Index · heatmaps.</span></div>
-        <div data-reveal data-delay="240" data-layerrow="2" style="border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:14px;padding:15px 20px;display:grid;grid-template-columns:44px minmax(140px,200px) minmax(200px,1fr);gap:14px;align-items:center;"><span style="font-family:Fraunces,serif;font-size:22px;font-weight:800;color:#F5A54A;">3</span><b style="font-size:15.5px;color:#FFFFFF;">Workflow</b><span style="font-size:14px;color:#9FB4CF;line-height:1.45;">Applications, approvals, file tracking, grievances, inspections — auto-routed.</span></div>
-        <div data-reveal data-delay="300" data-layerrow="1" style="border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:14px;padding:15px 20px;display:grid;grid-template-columns:44px minmax(140px,200px) minmax(200px,1fr);gap:14px;align-items:center;"><span style="font-family:Fraunces,serif;font-size:22px;font-weight:800;color:#F5A54A;">2</span><b style="font-size:15.5px;color:#FFFFFF;">Data Aggregation</b><span style="font-size:14px;color:#9FB4CF;line-height:1.45;">APIs to NSRS, PFMS, eOffice, KIRTI, GIS · bulk &amp; offline uploads · dedupe.</span></div>
-        <div data-reveal data-delay="360" data-layerrow="0" style="border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:14px;padding:15px 20px;display:grid;grid-template-columns:44px minmax(140px,200px) minmax(200px,1fr);gap:14px;align-items:center;"><span style="font-family:Fraunces,serif;font-size:22px;font-weight:800;color:#F5A54A;">1</span><b style="font-size:15.5px;color:#FFFFFF;">Identity — the foundation</b><span style="font-size:14px;color:#9FB4CF;line-height:1.45;">NSRS ID · Facility ID · Asset ID · Federation ID · UDISE. No duplicates, ever.</span></div>
-      </div>
+      <p class="small muted" style="margin-top:18px">Evidence labels used across the site:
+        <span class="chip chip--verified">Verified</span>
+        <span class="chip chip--partially-verified">Partially verified</span>
+        <span class="chip chip--proposed">Proposed</span>
+        <span class="chip chip--assumption">Assumption</span>
+        <span class="chip chip--decision-required">Decision required</span>
+      </p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PILLARS -->
-<section id="pillars" style="background:#F7F4EE;padding:110px 28px;">
-  <div style="max-width:1360px;margin:0 auto;">
-    <div data-reveal style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E87C1E;"><span>The heart of the blueprint</span></div>
-    <h2 data-reveal data-delay="80" style="font-family:Fraunces,serif;font-size:clamp(34px,4vw,52px);font-weight:800;color:#0B2E59;line-height:1.08;margin:14px 0 48px;"><span>Six Pillars, Twenty Modules</span></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:22px;">
-      <a href="#modules" data-reveal style="display:flex;flex-direction:column;gap:10px;background:#FFFFFF;border:1px solid #E3DCCF;border-top:7px solid #0B2E59;border-radius:18px;padding:30px 32px;color:inherit;transition:transform .35s cubic-bezier(.22,.61,.36,1), box-shadow .35s;" style-hover="transform:translateY(-8px);box-shadow:0 24px 50px rgba(11,46,89,.16);">
-        <span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#0B2E59;">1 · GOVERN</span>
-        <span style="font-size:12.5px;color:#C05E12;font-weight:700;letter-spacing:.1em;">RULES &amp; MONEY</span>
-        <span style="font-size:15px;color:#5B6675;line-height:1.55;">Who is who, which federation is recognised, how schemes and files move, and how grievances get resolved.</span>
-        <span style="margin-top:auto;font-size:13.5px;font-weight:700;color:#0B2E59;">M1 — M4 · Explore →</span>
-      </a>
-      <a href="#modules" data-reveal data-delay="70" style="display:flex;flex-direction:column;gap:10px;background:#FFFFFF;border:1px solid #E3DCCF;border-top:7px solid #C05E12;border-radius:18px;padding:30px 32px;color:inherit;transition:transform .35s cubic-bezier(.22,.61,.36,1), box-shadow .35s;" style-hover="transform:translateY(-8px);box-shadow:0 24px 50px rgba(11,46,89,.16);">
-        <span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#0B2E59;">2 · DISCOVER</span>
-        <span style="font-size:12.5px;color:#C05E12;font-weight:700;letter-spacing:.1em;">FIND TALENT</span>
-        <span style="font-size:15px;color:#5B6675;line-height:1.55;">Screening games in every school, rewarded teacher-scouts, one lifetime athlete profile, self-feeding events.</span>
-        <span style="margin-top:auto;font-size:13.5px;font-weight:700;color:#0B2E59;">M5 — M8 · Explore →</span>
-      </a>
-      <a href="#modules" data-reveal data-delay="140" style="display:flex;flex-direction:column;gap:10px;background:#FFFFFF;border:1px solid #E3DCCF;border-top:7px solid #1E7A3C;border-radius:18px;padding:30px 32px;color:inherit;transition:transform .35s cubic-bezier(.22,.61,.36,1), box-shadow .35s;" style-hover="transform:translateY(-8px);box-shadow:0 24px 50px rgba(11,46,89,.16);">
-        <span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#0B2E59;">3 · DEVELOP</span>
-        <span style="font-size:12.5px;color:#C05E12;font-weight:700;letter-spacing:.1em;">GROW TALENT</span>
-        <span style="font-size:15px;color:#5B6675;line-height:1.55;">Coaches and experts, facilities on a live GIS, tracked assets, accredited academies and injury care.</span>
-        <span style="margin-top:auto;font-size:13.5px;font-weight:700;color:#0B2E59;">M9 — M13 · Explore →</span>
-      </a>
-      <a href="#modules" data-reveal style="display:flex;flex-direction:column;gap:10px;background:#FFFFFF;border:1px solid #E3DCCF;border-top:7px solid #7A2E7E;border-radius:18px;padding:30px 32px;color:inherit;transition:transform .35s cubic-bezier(.22,.61,.36,1), box-shadow .35s;" style-hover="transform:translateY(-8px);box-shadow:0 24px 50px rgba(11,46,89,.16);">
-        <span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#0B2E59;">4 · SUPPORT</span>
-        <span style="font-size:12.5px;color:#C05E12;font-weight:700;letter-spacing:.1em;">THE BENEFITS ENGINE</span>
-        <span style="font-size:15px;color:#5B6675;line-height:1.55;">A card in the pocket, a job after sport, marks in education, and CSR support where it is needed most.</span>
-        <span style="margin-top:auto;font-size:13.5px;font-weight:700;color:#0B2E59;">M14 — M17 · Explore →</span>
-      </a>
-      <a href="#modules" data-reveal data-delay="70" style="display:flex;flex-direction:column;gap:10px;background:#FFFFFF;border:1px solid #E3DCCF;border-top:7px solid #B3541E;border-radius:18px;padding:30px 32px;color:inherit;transition:transform .35s cubic-bezier(.22,.61,.36,1), box-shadow .35s;" style-hover="transform:translateY(-8px);box-shadow:0 24px 50px rgba(11,46,89,.16);">
-        <span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#0B2E59;">5 · SHOWCASE</span>
-        <span style="font-size:12.5px;color:#C05E12;font-weight:700;letter-spacing:.1em;">TELL THE STORY</span>
-        <span style="font-size:15px;color:#5B6675;line-height:1.55;">The verified public face of Indian sport: stories, galleries, laurels and the Hall of Fame.</span>
-        <span style="margin-top:auto;font-size:13.5px;font-weight:700;color:#0B2E59;">M18 · Explore →</span>
-      </a>
-      <a href="#modules" data-reveal data-delay="140" style="display:flex;flex-direction:column;gap:10px;background:#FFFFFF;border:1px solid #E3DCCF;border-top:7px solid #14606B;border-radius:18px;padding:30px 32px;color:inherit;transition:transform .35s cubic-bezier(.22,.61,.36,1), box-shadow .35s;" style-hover="transform:translateY(-8px);box-shadow:0 24px 50px rgba(11,46,89,.16);">
-        <span style="font-family:Fraunces,serif;font-size:26px;font-weight:800;color:#0B2E59;">6 · INTELLIGENCE</span>
-        <span style="font-size:12.5px;color:#C05E12;font-weight:700;letter-spacing:.1em;">DECIDE BETTER</span>
-        <span style="font-size:15px;color:#5B6675;line-height:1.55;">National analytics, the State Sports Excellence Index, and a safe framework for data partnerships.</span>
-        <span style="margin-top:auto;font-size:13.5px;font-weight:700;color:#0B2E59;">M19 — M20 · Explore →</span>
-      </a>
+  <!-- 05 · ECOSYSTEM MAP -->
+  <section class="band band--dark" id="s-ecosystem" aria-labelledby="h-eco">
+    <div class="wrap">
+      <span class="kicker" style="color:#F5A54A">Overall system integration</span>
+      <h2 id="h-eco">One Platform, Twenty-Three Government Systems</h2>
+      <p class="sub" style="max-width:760px">Khelo Bharat does not replace working government platforms — it connects them. Every line below is a <strong style="color:#fff">proposed</strong> relationship, classified by integration type; systems verified against official sources carry a green dot.</p>
+      <div id="eco-map" data-reveal style="margin-top:22px"></div>
+      <p style="margin-top:14px"><a href="systems.html" style="color:#F5A54A;font-weight:700">Open the full integration hub with sources →</a></p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- MODULE EXPLORER -->
-<section id="modules" style="background:#F0EBE0;padding:110px 28px;border-top:1px solid #E3DCCF;">
-  <div style="max-width:1360px;margin:0 auto;">
-    <div data-reveal style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E87C1E;"><span>Interactive explorer</span></div>
-    <h2 data-reveal data-delay="80" style="font-family:Fraunces,serif;font-size:clamp(34px,4vw,52px);font-weight:800;color:#0B2E59;line-height:1.08;margin:14px 0 12px;"><span>Twenty Modules, Explained in Depth</span></h2>
-    <p data-reveal data-delay="140" style="font-size:17px;color:#5B6675;max-width:820px;line-height:1.6;margin:0 0 34px;"><span>Filter by pillar and select any module — the spotlight panel below shows what it is, why it matters, its key capabilities, its success definition and a live animated preview of its screen pattern. Left alone, it tours all twenty automatically.</span></p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px;">
-      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="7">
-        <button onClick="{{ t.click }}" style="font-family:Inter,sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;padding:10px 20px;border-radius:22px;cursor:pointer;background:{{ t.bg }};color:{{ t.fg }};border:1.5px solid {{ t.bd }};transition:all .25s;">{{ t.label }}</button>
-      </sc-for>
+  <!-- 06 · MODULE GALLERY -->
+  <section class="band" id="s-modules" aria-labelledby="h-mods">
+    <div class="wrap">
+      <span class="kicker">The catalogue</span>
+      <h2 id="h-mods">The Twenty Modules</h2>
+      <p class="sub">Each module page carries its journey flow, screen concepts, integration map, stakeholder matrix, approvals, data catalogue and open questions.</p>
+      <div id="module-gallery" style="margin-top:20px"></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:34px;">
-      <sc-for list="{{ mods }}" as="m" hint-placeholder-count="8">
-        <div onClick="{{ m.select }}" style="cursor:pointer;background:{{ m.cardBg }};border:1.5px solid {{ m.cardBorder }};border-left:6px solid {{ m.color }};border-radius:14px;padding:16px 18px;transition:transform .25s, box-shadow .25s;" style-hover="transform:translateY(-4px);box-shadow:0 14px 30px rgba(11,46,89,.14);">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <span style="font-family:Fraunces,serif;font-size:15px;font-weight:800;color:#FFFFFF;background:{{ m.color }};border-radius:8px;padding:3px 10px;">{{ m.code }}</span>
-            <span style="font-size:11px;font-weight:700;letter-spacing:.08em;color:{{ m.cardSub }};">{{ m.pillarName }}</span>
-            <sc-if value="{{ m.isNew }}" hint-placeholder-val="{{ false }}"><span style="font-size:10px;font-weight:800;background:#FDEBD7;color:#9A5511;border-radius:12px;padding:2px 9px;letter-spacing:.06em;">NEW</span></sc-if>
-          </div>
-          <div style="font-size:15.5px;font-weight:700;color:{{ m.cardFg }};margin-top:10px;line-height:1.35;">{{ m.title }}</div>
-          <div style="font-size:13px;color:{{ m.cardSub }};margin-top:5px;line-height:1.45;">{{ m.tag }}</div>
+  </section>
+
+  <!-- 07 · BLUEPRINT IN NUMBERS -->
+  <section class="band band--alt" id="s-insights" aria-labelledby="h-ins">
+    <div class="wrap">
+      <span class="kicker">Blueprint in numbers</span>
+      <h2 id="h-ins">Where the Work Concentrates</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;margin-top:22px">
+        <div data-reveal>
+          <h3 style="margin-bottom:12px">Approvals required, by pillar</h3>
+          <div id="chart-approvals"></div>
+          <p class="small muted" style="margin-top:10px">Every approval names its approving entity, prerequisites and risk-if-delayed — no invented timelines.</p>
         </div>
-      </sc-for>
-    </div>
-
-    <!-- SPOTLIGHT PANEL -->
-    <div id="module-panel" data-reveal style="display:grid;grid-template-columns:1.15fr 1fr;gap:0;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:22px;overflow:hidden;box-shadow:0 30px 70px rgba(11,46,89,.12);">
-      <div style="padding:44px 48px;display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:center;gap:14px;">
-          <span style="font-family:Fraunces,serif;font-size:22px;font-weight:800;color:#FFFFFF;background:{{ selColor }};border-radius:10px;padding:6px 16px;">{{ selCode }}</span>
-          <span style="font-size:12.5px;font-weight:700;letter-spacing:.14em;color:{{ selColor }};">{{ selPillar }}</span>
-          <sc-if value="{{ selNew }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:800;background:#FDEBD7;color:#9A5511;border-radius:14px;padding:3px 12px;letter-spacing:.06em;">NEW MODULE</span></sc-if>
-        </div>
-        <h3 style="font-family:Fraunces,serif;font-size:36px;font-weight:800;color:#0B2E59;line-height:1.1;margin:18px 0 12px;">{{ selTitle }}</h3>
-        <p style="font-size:16px;color:#5B6675;line-height:1.65;margin:0 0 26px;">{{ selWhy }}</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-          <sc-for list="{{ selFeatures }}" as="f" hint-placeholder-count="4">
-            <div style="background:#F7F4EE;border:1px solid #EDE6D8;border-radius:12px;padding:14px 16px;">
-              <div style="font-size:13.5px;font-weight:700;color:#0B2E59;">{{ f.t }}</div>
-              <div style="font-size:12.5px;color:#5B6675;margin-top:4px;line-height:1.45;">{{ f.d }}</div>
-            </div>
-          </sc-for>
-        </div>
-        <div style="margin-top:auto;padding-top:24px;">
-          <div style="background:linear-gradient(120deg,#0B2E59,#123E75);color:#FFFFFF;border-radius:12px;padding:16px 22px;display:flex;gap:16px;align-items:baseline;">
-            <span style="color:#F5A54A;font-size:11.5px;font-weight:800;letter-spacing:.14em;flex-shrink:0;">SUCCESS</span>
-            <span style="font-size:14.5px;line-height:1.5;">{{ selOutcome }}</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ANIMATED PATTERN PREVIEW -->
-      <div style="background:linear-gradient(160deg,#0B2E59,#071E3D);padding:40px 42px;display:flex;flex-direction:column;">
-        <div style="font-size:11.5px;font-weight:800;letter-spacing:.16em;color:#F5A54A;margin-bottom:20px;display:flex;align-items:center;gap:10px;"><span style="width:8px;height:8px;border-radius:50%;background:#F5A54A;animation:kbDot 1.6s ease-in-out infinite;"></span><span>{{ patternLabel }}</span></div>
-        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
-
-          <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ false }}">
-            <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px;">
-              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;">
-                <div style="background:rgba(255,255,255,.09);border-radius:9px;padding:12px 10px;animation:kbDot 3s ease-in-out infinite;"><div style="font-family:Fraunces,serif;font-size:20px;font-weight:800;color:#FFFFFF;">2.1L</div><div style="font-size:10px;color:#9FB4CF;">SCREENED</div></div>
-                <div style="background:rgba(255,255,255,.09);border-radius:9px;padding:12px 10px;animation:kbDot 3s .4s ease-in-out infinite;"><div style="font-family:Fraunces,serif;font-size:20px;font-weight:800;color:#FFFFFF;">86%</div><div style="font-size:10px;color:#9FB4CF;">ON TIME</div></div>
-                <div style="background:rgba(255,255,255,.09);border-radius:9px;padding:12px 10px;animation:kbDot 3s .8s ease-in-out infinite;"><div style="font-family:Fraunces,serif;font-size:20px;font-weight:800;color:#F5A54A;">14</div><div style="font-size:10px;color:#9FB4CF;">FLAGGED</div></div>
-                <div style="background:rgba(255,255,255,.09);border-radius:9px;padding:12px 10px;animation:kbDot 3s 1.2s ease-in-out infinite;"><div style="font-family:Fraunces,serif;font-size:20px;font-weight:800;color:#FFFFFF;">#3</div><div style="font-size:10px;color:#9FB4CF;">STATE RANK</div></div>
-              </div>
-              <div style="display:flex;align-items:flex-end;gap:8px;height:110px;padding:0 6px;margin-bottom:16px;">
-                <div style="flex:1;height:100%;background:linear-gradient(180deg,#F5A54A,#E87C1E);border-radius:5px 5px 0 0;transform-origin:bottom;animation:kbBar 4s ease-in-out infinite;"></div>
-                <div style="flex:1;height:76%;background:rgba(255,255,255,.3);border-radius:5px 5px 0 0;transform-origin:bottom;animation:kbBar 4s .3s ease-in-out infinite;"></div>
-                <div style="flex:1;height:88%;background:rgba(255,255,255,.3);border-radius:5px 5px 0 0;transform-origin:bottom;animation:kbBar 4s .6s ease-in-out infinite;"></div>
-                <div style="flex:1;height:58%;background:rgba(255,255,255,.3);border-radius:5px 5px 0 0;transform-origin:bottom;animation:kbBar 4s .9s ease-in-out infinite;"></div>
-                <div style="flex:1;height:70%;background:rgba(255,255,255,.3);border-radius:5px 5px 0 0;transform-origin:bottom;animation:kbBar 4s 1.2s ease-in-out infinite;"></div>
-                <div style="flex:1;height:92%;background:linear-gradient(180deg,#3AA164,#1E7A3C);border-radius:5px 5px 0 0;transform-origin:bottom;animation:kbBar 4s 1.5s ease-in-out infinite;"></div>
-              </div>
-              <div style="background:rgba(232,124,30,.16);border:1px solid rgba(245,165,74,.4);border-radius:9px;padding:11px 14px;display:flex;align-items:center;gap:10px;"><span style="width:7px;height:7px;border-radius:50%;background:#F5A54A;animation:kbDot 1.4s ease-in-out infinite;"></span><span style="font-size:12px;font-weight:600;color:#F5A54A;">Needs your action — 6 items waiting</span></div>
-            </div>
-          </sc-if>
-
-          <sc-if value="{{ isProfile }}" hint-placeholder-val="{{ false }}">
-            <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px;display:grid;grid-template-columns:120px 1fr;gap:18px;">
-              <div style="text-align:center;">
-                <div style="width:74px;height:74px;border-radius:50%;background:linear-gradient(135deg,#F5A54A,#E87C1E);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-family:Fraunces,serif;font-size:28px;font-weight:800;color:#FFFFFF;position:relative;"><span>M</span><span style="position:absolute;inset:-6px;border-radius:50%;border:2px dashed rgba(245,165,74,.5);animation:kbSpinSlow 14s linear infinite;"></span></div>
-                <div style="font-size:12.5px;font-weight:700;color:#FFFFFF;">NSRS ID</div>
-                <div style="font-size:11px;color:#9FB4CF;">KB-2214-8830</div>
-                <div style="margin-top:8px;font-size:10px;font-weight:800;color:#071E3D;background:#F5A54A;border-radius:10px;padding:3px 10px;display:inline-block;">SILVER TIER</div>
-              </div>
-              <div style="display:flex;flex-direction:column;gap:8px;">
-                <div style="background:rgba(255,255,255,.09);border-left:3px solid #1E7A3C;border-radius:8px;padding:9px 12px;animation:kbRise 6s ease-in-out infinite;"><div style="font-size:11.5px;font-weight:700;color:#FFFFFF;">State medal — 400m ✓</div><div style="font-size:10px;color:#9FB4CF;">Verified · Athletics Federation</div></div>
-                <div style="background:rgba(255,255,255,.09);border-left:3px solid #F5A54A;border-radius:8px;padding:9px 12px;animation:kbRise 6s 1.2s ease-in-out infinite;"><div style="font-size:11.5px;font-weight:700;color:#FFFFFF;">KIRTI assessment ✓</div><div style="font-size:10px;color:#9FB4CF;">Verified · SAI centre</div></div>
-                <div style="background:rgba(255,255,255,.09);border-left:3px solid #1E7A3C;border-radius:8px;padding:9px 12px;animation:kbRise 6s 2.4s ease-in-out infinite;"><div style="font-size:11.5px;font-weight:700;color:#FFFFFF;">Scholarship credited ✓</div><div style="font-size:10px;color:#9FB4CF;">DBT · PFMS ref 88410</div></div>
-                <div style="background:rgba(255,255,255,.09);border-left:3px solid #9FB4CF;border-radius:8px;padding:9px 12px;animation:kbRise 6s 3.6s ease-in-out infinite;"><div style="font-size:11.5px;font-weight:700;color:#FFFFFF;">School screening — top 2%</div><div style="font-size:10px;color:#9FB4CF;">First scouted by · R. Patil, PT</div></div>
-              </div>
-            </div>
-          </sc-if>
-
-          <sc-if value="{{ isWorkflow }}" hint-placeholder-val="{{ false }}">
-            <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:26px 22px;">
-              <div style="display:flex;align-items:center;margin-bottom:26px;">
-                <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:1;animation:kbStep 5s ease-in-out infinite;"><div style="width:34px;height:34px;border-radius:50%;background:#1E7A3C;display:flex;align-items:center;justify-content:center;font-size:15px;color:#FFFFFF;font-weight:800;">✓</div><span style="font-size:10.5px;color:#C9D6E8;font-weight:600;">APPLIED</span></div>
-                <div style="flex:1;height:2px;background:rgba(255,255,255,.25);margin-bottom:22px;"></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:1;animation:kbStep 5s .8s ease-in-out infinite;"><div style="width:34px;height:34px;border-radius:50%;background:#1E7A3C;display:flex;align-items:center;justify-content:center;font-size:15px;color:#FFFFFF;font-weight:800;">✓</div><span style="font-size:10.5px;color:#C9D6E8;font-weight:600;">VERIFIED</span></div>
-                <div style="flex:1;height:2px;background:rgba(255,255,255,.25);margin-bottom:22px;"></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:1;animation:kbStep 5s 1.6s ease-in-out infinite;"><div style="width:34px;height:34px;border-radius:50%;background:#E87C1E;display:flex;align-items:center;justify-content:center;font-size:13px;color:#FFFFFF;font-weight:800;animation:kbDot 1.6s ease-in-out infinite;">●</div><span style="font-size:10.5px;color:#F5A54A;font-weight:700;">APPROVAL</span></div>
-                <div style="flex:1;height:2px;background:rgba(255,255,255,.25);margin-bottom:22px;"></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:7px;flex:1;animation:kbStep 5s 2.4s ease-in-out infinite;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:13px;color:#9FB4CF;font-weight:800;">₹</div><span style="font-size:10.5px;color:#9FB4CF;font-weight:600;">PAID</span></div>
-              </div>
-              <div style="background:rgba(255,255,255,.09);border-radius:10px;padding:14px 16px;animation:kbSlide 4s ease-in-out infinite;">
-                <div style="font-size:12.5px;font-weight:700;color:#FFFFFF;">File KB/SCH/2214 · State desk</div>
-                <div style="font-size:11px;color:#9FB4CF;margin-top:3px;">Day 4 of SLA 7 · next action: State Sports Officer</div>
-              </div>
-              <div style="margin-top:12px;background:rgba(232,124,30,.16);border:1px solid rgba(245,165,74,.4);border-radius:9px;padding:10px 14px;font-size:11.5px;font-weight:600;color:#F5A54A;">SLA clock running — auto-escalates on breach</div>
-            </div>
-          </sc-if>
-
-          <sc-if value="{{ isRegistry }}" hint-placeholder-val="{{ false }}">
-            <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px;">
-              <div style="background:linear-gradient(90deg,rgba(255,255,255,.09) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,.09) 75%);background-size:200% 100%;animation:kbSweep 2.6s linear infinite;border-radius:9px;padding:11px 16px;font-size:12px;color:#C9D6E8;margin-bottom:14px;">⌕ &nbsp;Search — sport · state · level · status</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;">
-                <div style="background:rgba(255,255,255,.09);border-radius:9px;padding:12px;animation:kbCardIn 5.5s ease-in-out infinite;"><div style="width:26px;height:26px;border-radius:6px;background:#1E7A3C;margin-bottom:8px;"></div><div style="height:7px;border-radius:4px;background:rgba(255,255,255,.35);margin-bottom:5px;"></div><div style="height:7px;width:60%;border-radius:4px;background:rgba(255,255,255,.18);"></div></div>
-                <div style="background:rgba(255,255,255,.09);border-radius:9px;padding:12px;animation:kbCardIn 5.5s .5s ease-in-out infinite;"><div style="width:26px;height:26px;border-radius:6px;background:#E87C1E;margin-bottom:8px;"></div><div style="height:7px;border-radius:4px;background:rgba(255,255,255,.35);margin-bottom:5px;"></div><div style="height:7px;width:70%;border-radius:4px;background:rgba(255,255,255,.18);"></div></div>
-                <div style="background:rgba(255,255,255,.09);border-radius:9px;padding:12px;animation:kbCardIn 5.5s 1s ease-in-out infinite;"><div style="width:26px;height:26px;border-radius:6px;background:#14606B;margin-bottom:8px;"></div><div style="height:7px;border-radius:4px;background:rgba(255,255,255,.35);margin-bottom:5px;"></div><div style="height:7px;width:50%;border-radius:4px;background:rgba(255,255,255,.18);"></div></div>
-              </div>
-              <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.07);border-radius:10px;padding:12px 16px;">
-                <span style="width:34px;height:34px;border-radius:50%;background:radial-gradient(circle,rgba(245,165,74,.9) 25%,rgba(245,165,74,.15) 60%);animation:kbDot 2s ease-in-out infinite;flex-shrink:0;"></span>
-                <span style="font-size:12px;color:#C9D6E8;line-height:1.45;">Map view — every entry geo-located, verified badge visible, detail drawer on click.</span>
-              </div>
-            </div>
-          </sc-if>
-
-          <sc-if value="{{ isCapture }}" hint-placeholder-val="{{ false }}">
-            <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:24px 22px;">
-              <div style="font-size:11px;color:#9FB4CF;font-weight:600;margin-bottom:14px;">STUDENT 14 / 32 · MEENA K. · AGE 12 · OFFLINE-FIRST</div>
-              <div style="background:rgba(232,124,30,.14);border:1px solid rgba(245,165,74,.4);border-radius:12px;padding:22px;text-align:center;margin-bottom:14px;">
-                <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:#F5A54A;margin-bottom:8px;">30M SPRINT</div>
-                <div style="font-family:Fraunces,serif;font-size:56px;font-weight:800;color:#FFFFFF;line-height:1;animation:kbTimer 2.4s ease-in-out infinite;">5.42s</div>
-                <div style="font-size:11px;color:#9FB4CF;margin-top:8px;">auto-saved · top 2% for age band ✓</div>
-              </div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
-                <div style="background:rgba(255,255,255,.09);border-radius:9px;padding:11px;text-align:center;font-size:12px;font-weight:600;color:#C9D6E8;">＋ 30s video proof</div>
-                <div style="background:rgba(255,255,255,.09);border-radius:9px;padding:11px;text-align:center;font-size:12px;font-weight:600;color:#C9D6E8;">Retry</div>
-              </div>
-              <div style="background:#E87C1E;border-radius:9px;padding:12px;text-align:center;font-size:13px;font-weight:800;color:#FFFFFF;animation:kbSlide 3s ease-in-out infinite;">Save &amp; next student →</div>
-            </div>
-          </sc-if>
-
+        <div data-reveal>
+          <h3 style="margin-bottom:12px">Open questions, by priority</h3>
+          <div id="chart-questions"></div>
+          <p class="small muted" style="margin-top:10px">Blocking questions are the honest frontier — decisions only government can make.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- JOURNEY -->
-<section id="journey" style="background:linear-gradient(180deg,#0B2E59,#071E3D);padding:120px 28px;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div data-reveal style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#F5A54A;"><span>The golden thread</span></div>
-    <h2 data-reveal data-delay="80" style="font-family:Fraunces,serif;font-size:clamp(34px,4vw,52px);font-weight:800;color:#FFFFFF;line-height:1.08;margin:14px 0 12px;"><span>One Athlete's Journey — Meena, 12, Vidarbha</span></h2>
-    <p data-reveal data-delay="140" style="font-size:17px;color:#C9D6E8;max-width:760px;line-height:1.6;margin:0 0 56px;"><span>The real test of a "single platform" is a single story. Meena never uploads a certificate twice, never proves herself twice, never travels to be "surveyed". Data flows up from where she lives; benefits flow down to where she is.</span></p>
-    <div id="journey-track" style="position:relative;padding-left:64px;">
-      <div style="position:absolute;left:22px;top:0;bottom:0;width:3px;background:rgba(255,255,255,.1);border-radius:2px;"></div>
-      <div id="journey-line" style="position:absolute;left:22px;top:0;height:0%;width:3px;background:linear-gradient(180deg,#F5A54A,#E87C1E);border-radius:2px;transition:height .3s ease-out;box-shadow:0 0 18px rgba(232,124,30,.6);"></div>
-      <div data-reveal style="position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px 28px;margin-bottom:20px;">
-        <span style="position:absolute;left:-52px;top:26px;width:20px;height:20px;border-radius:50%;background:#0B2E59;border:3px solid #F5A54A;"></span>
-        <b style="font-family:Fraunces,serif;font-size:20px;color:#FFFFFF;">1 · Discovered at school</b>
-        <p style="font-size:15px;color:#C9D6E8;line-height:1.6;margin:8px 0 12px;">Her PT teacher runs the half-yearly screening games. Her 30m sprint lands in the top percentile for her age band — the app flags her automatically. Her teacher earns scout points for the verified upload.</p>
-        <span style="font-size:12px;font-weight:700;color:#F5A54A;letter-spacing:.06em;">M5 SCREENING GAMES · M6 SCOUT REWARDS</span>
-      </div>
-      <div data-reveal data-delay="60" style="position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px 28px;margin-bottom:20px;">
-        <span style="position:absolute;left:-52px;top:26px;width:20px;height:20px;border-radius:50%;background:#0B2E59;border:3px solid #F5A54A;"></span>
-        <b style="font-family:Fraunces,serif;font-size:20px;color:#FFFFFF;">2 · Profiled once, forever</b>
-        <p style="font-size:15px;color:#C9D6E8;line-height:1.6;margin:8px 0 12px;">With her guardian's consent, an Athlete 360 profile is created on an NSRS ID. Her school has no track — so the platform links her to a usable facility 4 km away, with slots reserved for school hours.</p>
-        <span style="font-size:12px;font-weight:700;color:#F5A54A;letter-spacing:.06em;">M7 ATHLETE 360 · M10 FACILITY LINKAGE</span>
-      </div>
-      <div data-reveal data-delay="60" style="position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px 28px;margin-bottom:20px;">
-        <span style="position:absolute;left:-52px;top:26px;width:20px;height:20px;border-radius:50%;background:#0B2E59;border:3px solid #F5A54A;"></span>
-        <b style="font-family:Fraunces,serif;font-size:20px;color:#FFFFFF;">3 · Tested and selected</b>
-        <p style="font-size:15px;color:#C9D6E8;line-height:1.6;margin:8px 0 12px;">She clears district screening games and a KIRTI assessment — every score lands on the same timeline. The eligibility engine has already confirmed her state scholarship; the DSO routes it in one tap.</p>
-        <span style="font-size:12px;font-weight:700;color:#F5A54A;letter-spacing:.06em;">M5 · M7 · M3 SCHEMES</span>
-      </div>
-      <div data-reveal data-delay="60" style="position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px 28px;margin-bottom:20px;">
-        <span style="position:absolute;left:-52px;top:26px;width:20px;height:20px;border-radius:50%;background:#0B2E59;border:3px solid #F5A54A;"></span>
-        <b style="font-family:Fraunces,serif;font-size:20px;color:#FFFFFF;">4 · Supported daily</b>
-        <p style="font-size:15px;color:#C9D6E8;line-height:1.6;margin:8px 0 12px;">Her scholarship is paid straight onto her Silver Khelo Bharat Card, which also opens the SAI facility gate and gives kit discounts. A CSR partner funds her spikes and travel through the verified need bank.</p>
-        <span style="font-size:12px;font-weight:700;color:#F5A54A;letter-spacing:.06em;">M14 SPORTS CARD · M17 CSR EXCHANGE</span>
-      </div>
-      <div data-reveal data-delay="60" style="position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px 28px;margin-bottom:20px;">
-        <span style="position:absolute;left:-52px;top:26px;width:20px;height:20px;border-radius:50%;background:#0B2E59;border:3px solid #F5A54A;"></span>
-        <b style="font-family:Fraunces,serif;font-size:20px;color:#FFFFFF;">5 · Competing, protected</b>
-        <p style="font-size:15px;color:#C9D6E8;line-height:1.6;margin:8px 0 12px;">She enters sanctioned events from her app; results update her profile, her AI score and the state index automatically. A registry-matched coach manages her load; an ankle niggle goes through the injury network, not ignored.</p>
-        <span style="font-size:12px;font-weight:700;color:#F5A54A;letter-spacing:.06em;">M8 EVENTS · M9 COACHES · M13 INJURY CARE</span>
-      </div>
-      <div data-reveal data-delay="60" style="position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px 28px;margin-bottom:20px;">
-        <span style="position:absolute;left:-52px;top:26px;width:20px;height:20px;border-radius:50%;background:#0B2E59;border:3px solid #F5A54A;"></span>
-        <b style="font-family:Fraunces,serif;font-size:20px;color:#FFFFFF;">6 · Recognised in education</b>
-        <p style="font-size:15px;color:#C9D6E8;line-height:1.6;margin:8px 0 12px;">Her state medal generates a QR-verified certificate: bonus credit in her board assessment, attendance relaxation for camps, and a story on the public portal. Her teacher is now a Gold Scout.</p>
-        <span style="font-size:12px;font-weight:700;color:#F5A54A;letter-spacing:.06em;">M16 MARKS FOR SPORTS · M18 MEDIA &amp; LAURELS</span>
-      </div>
-      <div data-reveal data-delay="60" style="position:relative;background:rgba(232,124,30,.12);border:1px solid rgba(245,165,74,.4);border-radius:16px;padding:24px 28px;">
-        <span style="position:absolute;left:-52px;top:26px;width:20px;height:20px;border-radius:50%;background:#E87C1E;border:3px solid #F5A54A;box-shadow:0 0 16px rgba(232,124,30,.7);"></span>
-        <b style="font-family:Fraunces,serif;font-size:20px;color:#FFFFFF;">7 · Secured for life</b>
-        <p style="font-size:15px;color:#C9D6E8;line-height:1.6;margin:8px 0 12px;">At 19, she browses sports-quota vacancies with a verified Sports CV built automatically from her profile — a Railways job while she trains for nationals. Later, the coaching pathway awaits.</p>
-        <span style="font-size:12px;font-weight:700;color:#F5A54A;letter-spacing:.06em;">M15 JOBS FOR SPORTS · M9 CAREER TRANSITION</span>
-      </div>
+  <!-- 08 · ROADMAP -->
+  <section class="band" id="s-roadmap" aria-labelledby="h-road">
+    <div class="wrap">
+      <span class="kicker">Sequencing</span>
+      <h2 id="h-road">The Phased Path</h2>
+      <p class="sub">Sequencing is proposed; no dates are committed. Each phase has an explicit gate before the next begins.</p>
+      <div id="roadmap-strip" data-reveal style="margin-top:22px"></div>
+      <p style="margin-top:14px"><a href="roadmap.html" style="font-weight:700">Full roadmap with activities and gates →</a></p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- TRUST -->
-<section id="trust" style="background:#F7F4EE;padding:110px 28px;">
-  <div style="max-width:1360px;margin:0 auto;">
-    <div data-reveal style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E87C1E;"><span>Data protection &amp; trust</span></div>
-    <h2 data-reveal data-delay="80" style="font-family:Fraunces,serif;font-size:clamp(34px,4vw,52px);font-weight:800;color:#0B2E59;line-height:1.08;margin:14px 0 48px;"><span>Privacy Is a Feature, Not a Page</span></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:20px;">
-      <div data-reveal style="background:#FFFFFF;border:1px solid #E3DCCF;border-radius:16px;padding:28px 30px;"><b style="display:block;font-size:18px;color:#0B2E59;margin-bottom:8px;">DPDP Act by design</b><span style="font-size:15px;color:#5B6675;line-height:1.6;">Purpose-wise consent, data minimisation, retention limits — and a consent vault every user can open and change anytime.</span></div>
-      <div data-reveal data-delay="60" style="background:#FFFFFF;border:1px solid #E3DCCF;border-radius:16px;padding:28px 30px;"><b style="display:block;font-size:18px;color:#0B2E59;margin-bottom:8px;">Children first</b><span style="font-size:15px;color:#5B6675;line-height:1.6;">Verifiable guardian consent before any minor's data is captured — screening games included. Public analytics show aggregates only.</span></div>
-      <div data-reveal data-delay="120" style="background:#FFFFFF;border:1px solid #E3DCCF;border-radius:16px;padding:28px 30px;"><b style="display:block;font-size:18px;color:#0B2E59;margin-bottom:8px;">Health data is sealed</b><span style="font-size:15px;color:#5B6675;line-height:1.6;">Medical, injury and sports-science records open only to authorised medical roles. Doping flags follow NADA permissions strictly.</span></div>
-      <div data-reveal style="background:#FFFFFF;border:1px solid #E3DCCF;border-radius:16px;padding:28px 30px;"><b style="display:block;font-size:18px;color:#0B2E59;margin-bottom:8px;">Role-based access + audit</b><span style="font-size:15px;color:#5B6675;line-height:1.6;">Every view and edit logged — who, when, what, from where — with quarterly access reviews.</span></div>
-      <div data-reveal data-delay="60" style="background:#FFFFFF;border:1px solid #E3DCCF;border-radius:16px;padding:28px 30px;"><b style="display:block;font-size:18px;color:#0B2E59;margin-bottom:8px;">Verification registry</b><span style="font-size:15px;color:#5B6675;line-height:1.6;">Every fact shows its verifier. Unverified data is visibly marked and excluded from decisions.</span></div>
-      <div data-reveal data-delay="120" style="background:#FFFFFF;border:1px solid #E3DCCF;border-radius:16px;padding:28px 30px;"><b style="display:block;font-size:18px;color:#0B2E59;margin-bottom:8px;">Security baseline</b><span style="font-size:15px;color:#5B6675;line-height:1.6;">Encryption at rest and in transit, MeitY-empanelled hosting, periodic audits, and a rehearsed breach-response plan.</span></div>
+  <!-- 09 · OPEN DECISIONS -->
+  <section class="band band--alt" id="s-decisions" aria-labelledby="h-dec">
+    <div class="wrap">
+      <span class="kicker">What we need from government</span>
+      <h2 id="h-dec">The Blocking Decisions</h2>
+      <p class="sub">These questions stop modules from being built until answered. Everything else can proceed.</p>
+      <div id="blocking-list" style="display:grid;gap:10px;margin-top:20px"></div>
+      <p style="margin-top:16px"><a href="questions.html" style="font-weight:700">All questions &amp; decisions →</a></p>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<!-- ROADMAP -->
-<section id="roadmap" style="background:#F0EBE0;padding:110px 28px;border-top:1px solid #E3DCCF;">
-  <div style="max-width:1360px;margin:0 auto;">
-    <div data-reveal style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E87C1E;"><span>Roadmap</span></div>
-    <h2 data-reveal data-delay="80" style="font-family:Fraunces,serif;font-size:clamp(34px,4vw,52px);font-weight:800;color:#0B2E59;line-height:1.08;margin:14px 0 12px;"><span>Four Phases, Strict Gates</span></h2>
-    <p data-reveal data-delay="140" style="font-size:17px;color:#5B6675;max-width:820px;line-height:1.6;margin:0 0 48px;"><span>Registries before workflows, workflows before benefits, benefits before AI. Each phase ends with a measurable gate that must pass before the next begins.</span></p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
-      <div data-reveal style="background:#FFFFFF;border:1px solid #E3DCCF;border-top:7px solid #0B2E59;border-radius:16px;padding:28px 30px;display:flex;flex-direction:column;">
-        <b style="font-size:19px;color:#0B2E59;">Phase 0 · Foundation</b>
-        <em style="font-style:normal;font-size:12.5px;color:#E87C1E;font-weight:700;margin:4px 0 14px;letter-spacing:.08em;">MONTHS 0–3</em>
-        <span style="font-size:14.5px;color:#5B6675;line-height:1.7;">NSRS identity integration · Org directory (M1) · Federation registry seed (M2) · Design system + DPDP framework · Data evaluation #1 (M20)</span>
-        <div style="margin-top:18px;background:#F1F5FA;border-radius:10px;padding:12px 14px;font-size:13px;color:#0B2E59;line-height:1.5;"><b style="color:#E87C1E;letter-spacing:.06em;">GATE:</b> master registries live; first data MoU signed or declined with reasons.</div>
-      </div>
-      <div data-reveal data-delay="70" style="background:#FFFFFF;border:1px solid #E3DCCF;border-top:7px solid #E87C1E;border-radius:16px;padding:28px 30px;display:flex;flex-direction:column;">
-        <b style="font-size:19px;color:#0B2E59;">Phase 1 · MVP</b>
-        <em style="font-style:normal;font-size:12.5px;color:#E87C1E;font-weight:700;margin:4px 0 14px;letter-spacing:.08em;">MONTHS 3–9</em>
-        <span style="font-size:14.5px;color:#5B6675;line-height:1.7;">Athlete 360 (M7) · Schemes &amp; file tracking (M3) · Facility registry (M10) + grievance (M4) · School App pilot, 2 states (M5, M6) · Basic dashboards (M19)</span>
-        <div style="margin-top:18px;background:#F1F5FA;border-radius:10px;padding:12px 14px;font-size:13px;color:#0B2E59;line-height:1.5;"><b style="color:#E87C1E;letter-spacing:.06em;">GATE:</b> 50,000 verified profiles; scheme cycle −30%; pilot screening &gt;80% of schools.</div>
-      </div>
-      <div data-reveal data-delay="140" style="background:#FFFFFF;border:1px solid #E3DCCF;border-top:7px solid #1E7A3C;border-radius:16px;padding:28px 30px;display:flex;flex-direction:column;">
-        <b style="font-size:19px;color:#0B2E59;">Phase 2 · Benefits &amp; Scale</b>
-        <em style="font-style:normal;font-size:12.5px;color:#E87C1E;font-weight:700;margin:4px 0 14px;letter-spacing:.08em;">MONTHS 9–18</em>
-        <span style="font-size:14.5px;color:#5B6675;line-height:1.7;">Sports Card launch (M14) · Jobs aggregator (M15) · Events (M8) + CSR exchange (M17) · Coaches (M9) + assets (M11) · National School App rollout</span>
-        <div style="margin-top:18px;background:#F1F5FA;border-radius:10px;padding:12px 14px;font-size:13px;color:#0B2E59;line-height:1.5;"><b style="color:#E87C1E;letter-spacing:.06em;">GATE:</b> 1 lakh+ cards issued; 500+ jobs listed; all national events on platform.</div>
-      </div>
-      <div data-reveal data-delay="210" style="background:#FFFFFF;border:1px solid #E3DCCF;border-top:7px solid #7A2E7E;border-radius:16px;padding:28px 30px;display:flex;flex-direction:column;">
-        <b style="font-size:19px;color:#0B2E59;">Phase 3 · Intelligence</b>
-        <em style="font-style:normal;font-size:12.5px;color:#E87C1E;font-weight:700;margin:4px 0 14px;letter-spacing:.08em;">MONTHS 18–30</em>
-        <span style="font-size:14.5px;color:#5B6675;line-height:1.7;">AI talent engine full strength · State Excellence Index (M19) · Marks for Sports pilot (M16) · Academy accreditation (M12) · Injury network (M13) + open data</span>
-        <div style="margin-top:18px;background:#F1F5FA;border-radius:10px;padding:12px 14px;font-size:13px;color:#0B2E59;line-height:1.5;"><b style="color:#E87C1E;letter-spacing:.06em;">GATE:</b> index published quarterly; marks pilot with ≥2 boards; AI shortlists adopted.</div>
-      </div>
-    </div>
-  </div>
-</section>
+<div id="site-footer"></div>
 
-<!-- KPI BAND -->
-<section style="background:linear-gradient(160deg,#0B2E59,#123E75);padding:100px 28px;">
-  <div style="max-width:1360px;margin:0 auto;">
-    <div data-reveal style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#F5A54A;"><span>The scoreboard</span></div>
-    <h2 data-reveal data-delay="80" style="font-family:Fraunces,serif;font-size:clamp(34px,4vw,52px);font-weight:800;color:#FFFFFF;line-height:1.08;margin:14px 0 56px;"><span>Success by Month 30</span></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:28px;">
-      <div data-reveal style="border-top:4px solid #E87C1E;padding-top:22px;"><b data-count="20" data-suffix="L+" style="display:block;font-family:Fraunces,serif;font-size:58px;color:#FFFFFF;line-height:1;">20L+</b><span style="display:block;font-size:14.5px;color:#9FB4CF;margin-top:12px;line-height:1.45;">children screened per year</span></div>
-      <div data-reveal data-delay="70" style="border-top:4px solid #E87C1E;padding-top:22px;"><b data-count="5" data-suffix="L+" style="display:block;font-family:Fraunces,serif;font-size:58px;color:#FFFFFF;line-height:1;">5L+</b><span style="display:block;font-size:14.5px;color:#9FB4CF;margin-top:12px;line-height:1.45;">active sports cards</span></div>
-      <div data-reveal data-delay="140" style="border-top:4px solid #E87C1E;padding-top:22px;"><b data-count="5000" data-suffix="+" style="display:block;font-family:Fraunces,serif;font-size:58px;color:#FFFFFF;line-height:1;">5,000+</b><span style="display:block;font-size:14.5px;color:#9FB4CF;margin-top:12px;line-height:1.45;">sports-quota hires</span></div>
-      <div data-reveal data-delay="210" style="border-top:4px solid #E87C1E;padding-top:22px;"><b data-count="500" data-prefix="₹" data-suffix="Cr+" style="display:block;font-family:Fraunces,serif;font-size:58px;color:#FFFFFF;line-height:1;">₹500Cr+</b><span style="display:block;font-size:14.5px;color:#9FB4CF;margin-top:12px;line-height:1.45;">CSR matched &amp; tracked</span></div>
-      <div data-reveal data-delay="280" style="border-top:4px solid #E87C1E;padding-top:22px;"><b data-count="50" data-prefix="−" data-suffix="%" style="display:block;font-family:Fraunces,serif;font-size:58px;color:#FFFFFF;line-height:1;">−50%</b><span style="display:block;font-size:14.5px;color:#9FB4CF;margin-top:12px;line-height:1.45;">scheme approval time</span></div>
-    </div>
-  </div>
-</section>
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  KB.mountChrome("index.html");
 
-<!-- NEXT STEPS -->
-<section id="next" style="background:#F7F4EE;padding:110px 28px;">
-  <div style="max-width:1360px;margin:0 auto;">
-    <div data-reveal style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#E87C1E;"><span>Immediate next steps · 30–60 days</span></div>
-    <h2 data-reveal data-delay="80" style="font-family:Fraunces,serif;font-size:clamp(34px,4vw,52px);font-weight:800;color:#0B2E59;line-height:1.08;margin:14px 0 48px;"><span>Seven Moves to Start Now</span></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(560px,1fr));gap:16px;">
-      <div data-reveal style="display:flex;gap:18px;align-items:flex-start;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:14px;padding:20px 24px;"><span style="font-family:Fraunces,serif;font-size:18px;font-weight:800;color:#FFFFFF;background:#0B2E59;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</span><span style="font-size:15px;line-height:1.6;color:#152233;"><b style="color:#0B2E59;">Request the SAI organisation structure</b> — org chart, sanctioned posts and nodal officers. Seeds M1.</span></div>
-      <div data-reveal data-delay="50" style="display:flex;gap:18px;align-items:flex-start;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:14px;padding:20px 24px;"><span style="font-family:Fraunces,serif;font-size:18px;font-weight:800;color:#FFFFFF;background:#0B2E59;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</span><span style="font-size:15px;line-height:1.6;color:#152233;"><b style="color:#0B2E59;">Seed the federation registry</b> — load the MYAS recognised-NSF list and NSF portal data into M2.</span></div>
-      <div data-reveal style="display:flex;gap:18px;align-items:flex-start;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:14px;padding:20px 24px;"><span style="font-family:Fraunces,serif;font-size:18px;font-weight:800;color:#FFFFFF;background:#0B2E59;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</span><span style="font-size:15px;line-height:1.6;color:#152233;"><b style="color:#0B2E59;">Run data evaluation #1</b> — the pro bono offer through the M20 framework: sample under NDA, pilot decision in 4–6 weeks.</span></div>
-      <div data-reveal data-delay="50" style="display:flex;gap:18px;align-items:flex-start;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:14px;padding:20px 24px;"><span style="font-family:Fraunces,serif;font-size:18px;font-weight:800;color:#FFFFFF;background:#0B2E59;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</span><span style="font-size:15px;line-height:1.6;color:#152233;"><b style="color:#0B2E59;">Open the NPCI conversation</b> — concept note for the co-branded RuPay card; shortlist issuing banks; draft benefit MoUs.</span></div>
-      <div data-reveal style="display:flex;gap:18px;align-items:flex-start;background:#FFFFFF;border:2px solid #E87C1E;border-radius:14px;padding:20px 24px;"><span style="font-family:Fraunces,serif;font-size:18px;font-weight:800;color:#FFFFFF;background:#E87C1E;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</span><span style="font-size:15px;line-height:1.6;color:#152233;"><b style="color:#0B2E59;">Prepare the Summit pack</b> — the Marks for Sports policy note plus the Jobs for Sports pledge programme, tabled as directed.</span></div>
-      <div data-reveal data-delay="50" style="display:flex;gap:18px;align-items:flex-start;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:14px;padding:20px 24px;"><span style="font-family:Fraunces,serif;font-size:18px;font-weight:800;color:#FFFFFF;background:#0B2E59;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">6</span><span style="font-size:15px;line-height:1.6;color:#152233;"><b style="color:#0B2E59;">Pick pilot geographies</b> — two states + two high-performing KIRTI districts for the screening and scout pilots.</span></div>
-      <div data-reveal style="display:flex;gap:18px;align-items:flex-start;background:#FFFFFF;border:1px solid #E3DCCF;border-radius:14px;padding:20px 24px;"><span style="font-family:Fraunces,serif;font-size:18px;font-weight:800;color:#FFFFFF;background:#0B2E59;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">7</span><span style="font-size:15px;line-height:1.6;color:#152233;"><b style="color:#0B2E59;">Stand up the design system</b> — approve the visual identity and component library so every module builds on one language.</span></div>
-      <div data-reveal data-delay="50" style="background:linear-gradient(120deg,#0B2E59,#123E75);color:#FFFFFF;border-radius:14px;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;"><span style="font-size:12px;font-weight:800;letter-spacing:.12em;color:#F5A54A;">WHY THESE SEVEN</span><span style="font-size:15px;line-height:1.55;margin-top:6px;">None needs the full platform to exist — each seeds a registry, a partnership or a pilot that Phase 0 builds on.</span></div>
-    </div>
-  </div>
-</section>
+  let pillars, modules, systems, questions, approvals, datasets, roadmap;
+  try {
+    [pillars, modules, systems, questions, approvals, datasets, roadmap] = await Promise.all(
+      ["pillars", "modules", "systems", "questions", "approvals", "datasets", "roadmap"].map(KB.data));
+  } catch (e) {
+    document.getElementById("hero-stats").outerHTML = KB.stateBlock("error", "Could not load platform data", e.message);
+    return;
+  }
 
-<!-- CLOSING -->
-<section style="position:relative;background:linear-gradient(165deg,#071E3D 0%,#0B2E59 50%,#123E75 100%);padding:150px 28px 120px;overflow:hidden;">
-  <div style="position:absolute;left:-180px;bottom:-200px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(232,124,30,.32),transparent 62%);animation:kbOrbB 16s ease-in-out infinite;"></div>
-  <div style="max-width:1100px;margin:0 auto;position:relative;">
-    <div data-reveal style="font-size:13px;font-weight:700;letter-spacing:.22em;color:#F5A54A;"><span>CLOSING POSITION</span></div>
-    <p data-reveal data-delay="100" style="font-family:Fraunces,serif;font-size:clamp(32px,4.4vw,54px);font-weight:600;line-height:1.3;color:#FFFFFF;margin:34px 0 34px;"><span>"The platform found me, funded me, carried my card, gave me my marks, and got me my job."</span></p>
-    <p data-reveal data-delay="200" style="font-size:18px;color:#C9D6E8;max-width:820px;line-height:1.65;margin:0 0 44px;"><span>Khelo Bharat succeeds the day an athlete in the smallest district says this sentence. Every module on this page exists to make it true — on one platform, with one identity, under one roof of trust.</span></p>
-    <a data-reveal data-delay="300" href="Khelo Bharat Client Deck.dc.html" style="display:inline-block;background:#E87C1E;color:#FFFFFF;font-size:15px;font-weight:700;padding:15px 34px;border-radius:28px;box-shadow:0 10px 30px rgba(232,124,30,.35);" style-hover="background:#F5A54A;transform:translateY(-2px);">Open the Presentation Deck ↗</a>
-  </div>
-</section>
+  /* Sticky section nav */
+  document.getElementById("page-nav-slot").outerHTML = KB.pageNav([
+    { id: "s-gaps", label: "The gaps" },
+    { id: "s-pillars", label: "Pillars" },
+    { id: "s-layers", label: "Three layers" },
+    { id: "s-ecosystem", label: "Integration map" },
+    { id: "s-modules", label: "20 modules" },
+    { id: "s-insights", label: "In numbers" },
+    { id: "s-roadmap", label: "Roadmap" },
+    { id: "s-decisions", label: "Decisions" }
+  ]);
 
-<!-- FOOTER + ECOSYSTEM TICKER -->
-<footer style="background:#050F20;padding:0;">
-  <div style="overflow:hidden;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);padding:20px 0;">
-    <div style="display:flex;gap:56px;width:max-content;animation:kbTicker 36s linear infinite;">
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">NSRS</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">PFMS</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">eOFFICE</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">KIRTI</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">FIT INDIA</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">CPGRAMS</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">DIGILOCKER</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">NADA</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">GATISHAKTI GIS</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">NPCI RUPAY</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">NATIONAL CSR eXCHANGE</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">NSRS</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">PFMS</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">eOFFICE</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">KIRTI</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">FIT INDIA</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">CPGRAMS</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">DIGILOCKER</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">NADA</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">GATISHAKTI GIS</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">NPCI RUPAY</span><span style="color:#E87C1E;">·</span>
-      <span style="font-size:14px;font-weight:700;color:#9FB4CF;letter-spacing:.14em;white-space:nowrap;">NATIONAL CSR eXCHANGE</span><span style="color:#E87C1E;">·</span>
-    </div>
-  </div>
-  <div style="max-width:1360px;margin:0 auto;padding:34px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
-    <span style="font-family:Fraunces,serif;font-weight:800;color:#FFFFFF;font-size:17px;">Khelo <em style="font-style:normal;color:#F5A54A;">Bharat</em> — Complete Interactive Blueprint</span>
-    <span style="font-size:13px;color:#5B6675;">Companion to the Khelo Bharat Master Blueprint · July 2026</span>
-  </div>
-</footer>
+  /* Hero stats — live from the registers */
+  const blocking = questions.questions.filter(q => q.blocking).length;
+  const verified = systems.systems.filter(s => s.verificationStatus === "verified").length;
+  document.getElementById("hero-stats").innerHTML = [
+    [pillars.pillars.length, "Pillars"],
+    [modules.modules.length, "Modules"],
+    [`${verified}/${systems.systems.length}`, "Systems verified"],
+    [approvals.approvals.length, "Approvals mapped"],
+    [datasets.datasets.length, "Datasets"],
+    [`${questions.questions.length} · ${blocking} blocking`, "Open questions"]
+  ].map(([v, l]) => `<div class="stat-tile on-dark" data-reveal><b>${v}</b><span>${l}</span></div>`).join("");
 
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;autoCycle&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;spotlightSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:6,&quot;min&quot;:3,&quot;max&quot;:15,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
-class Component extends DCLogic {
-  state = { filter: 0, sel: "M7" };
-
-  PILLARS = {
-    1: { name: "GOVERN", tag: "Rules & money", color: "#0B2E59", desc: "The administrative backbone: who is who, which federation is recognised, how schemes and files move, and how grievances get resolved." },
-    2: { name: "DISCOVER", tag: "Find talent", color: "#C05E12", desc: "The talent machine: screening games in every school, rewarded teacher-scouts, one lifetime athlete profile, and events that feed it automatically." },
-    3: { name: "DEVELOP", tag: "Grow talent", color: "#1E7A3C", desc: "Everything a discovered athlete needs to grow: coaches, facilities, equipment, quality academies and injury care." },
-    4: { name: "SUPPORT", tag: "The benefits engine", color: "#7A2E7E", desc: "The adoption engine: a card in the pocket, a job after sport, marks in education, and CSR support where it is needed most." },
-    5: { name: "SHOWCASE", tag: "Tell the story", color: "#B3541E", desc: "The verified public face of Indian sport: stories, galleries, laurels and the Hall of Fame." },
-    6: { name: "INTELLIGENCE", tag: "Decide better", color: "#14606B", desc: "The decision cockpit: national analytics, the State Sports Excellence Index, and a safe framework for data partnerships." }
-  };
-
-  MODULES = [
-    { code: "M1", pillar: 1, isNew: true, pattern: "registry", title: "Sports Organisation Directory", tag: "The routing table of the whole platform",
-      why: "Nobody today can answer \u201cwho is responsible for X in district Y\u201d from one screen. Every approval, escalation and inspection routes through this living directory \u2014 build it first.",
-      features: [["Interactive org chart", "Ministry down to a single training centre \u2014 roles, people, contacts."], ["Jurisdiction map", "Each officer's area powers automatic work routing."], ["Succession log", "Roles keep pending work through transfers \u2014 nothing lost."], ["Vacancy view", "Sanctioned vs filled posts; capacity gaps visible."]],
-      outcome: "Any user finds the right responsible officer in under 10 seconds \u2014 and every workflow routes itself." },
-    { code: "M2", pillar: 1, isNew: false, pattern: "registry", title: "Federation Registry & Compliance", tag: "The 2025 Governance Act's digital backbone",
-      why: "Recognition drives everything: whose results count, who selects athletes, who receives grants. The Act's Board, Tribunal and athlete commissions need this compliance backbone.",
-      features: [["Recognition status board", "Recognised, provisional, suspended \u2014 with dates and orders."], ["Compliance scorecard", "Elections, filings, safe-sport \u2014 traffic-light per federation."], ["Office bearer register", "Tenure limits and cooling-off per the Act."], ["Affiliation tree", "NSF \u2192 state \u2192 district, every result traceable."]],
-      outcome: "One trusted answer to \u201cis this federation recognised, and is it compliant?\u201d \u2014 for government, athletes and courts." },
-    { code: "M3", pillar: 1, isNew: false, pattern: "workflow", title: "Schemes, Grants & File Tracking", tag: "No athlete lost in paperwork",
-      why: "An athlete should never need to know which office holds their file. The platform shows the desk, days pending and next action \u2014 and shows leadership exactly where money slows down.",
-      features: [["Eligibility engine", "\u201cYou qualify for these 4 schemes \u2014 apply here.\u201d"], ["Application workflow", "DigiLocker documents, tracking, corrections \u2014 from a phone."], ["File & fund tracking", "eOffice status mirrored; PFMS sanction to utilisation."], ["Delay analytics", "Bottlenecks by desk and stage \u2014 fix process, not people."]],
-      outcome: "Scheme approval time cut in half, every rupee traceable \u2014 zero athletes lost in paperwork." },
-    { code: "M4", pillar: 1, isNew: false, pattern: "workflow", title: "Connect & Resolve", tag: "Communication + grievance that ends in resolution",
-      why: "Athletes need one channel they actually check; government needs to reach exactly the right audience in one click. And grievances need a path that ends in resolution, not silence.",
-      features: [["Targeted messaging", "\u201cAll boxing coaches in Haryana\u201d \u2014 one click, read receipts."], ["Case management", "Grievance ID, officer, SLA clock, status."], ["Validity filter", "Duplicates, RTI and sub-judice screened out."], ["Escalation matrix", "SLA breach moves the case up automatically."]],
-      outcome: "More than 90% of grievances resolved within SLA \u2014 and a channel people trust enough to read." },
-    { code: "M5", pillar: 2, isNew: true, pattern: "capture", title: "School Screening Games Network", tag: "Data flows up from where children live",
-      why: "Instead of teams travelling to collect data, DEOs, DSOs and PT teachers run standardised screening games at every school \u2014 the existing field workforce generates the data as normal work.",
-      features: [["Standard test battery", "Same simple tests nationwide, per age band."], ["Offline-first School App", "Scores, photos, 30-second videos; syncs later."], ["Auto-flagging", "Above-benchmark children surface on DSO dashboards."], ["Funnel view", "School \u2192 district \u2192 KIRTI/SAI trial \u2192 academy."]],
-      outcome: "20 lakh+ children assessed annually \u2014 talent flagged within days, not years." },
-    { code: "M6", pillar: 2, isNew: true, pattern: "profile", title: "PT Teacher Scout Programme", tag: "A national scout force of lakhs of teachers",
-      why: "M5 works only if teachers participate willingly and honestly. Recognition costs little but changes behaviour \u2014 and rewards are tied to verified quality, never raw volume.",
-      features: [["Scout profile & points", "Transparent ledger; progress outweighs volume."], ["Certificate engine", "QR-verifiable levels, signed by SAI/MYAS."], ["Discovery credit", "\u201cFirst scouted by\u201d \u2014 credited forever."], ["Accuracy gate", "DSO re-test agreement gates all rewards."]],
-      outcome: "A motivated national scout force \u2014 and \u201cfirst scouted by\u201d becoming a badge of honour." },
-    { code: "M7", pillar: 2, isNew: false, pattern: "profile", title: "Athlete 360 & AI Talent Engine", tag: "The heart of the platform",
-      why: "One lifetime profile per athlete on the NSRS ID \u2014 every other module reads or writes it. A verified Athlete 360 makes eligibility automatic and talent decisions evidence-based.",
-      features: [["Lifetime timeline", "Results, tests, camps, grants \u2014 one scrollable story."], ["Verification badges", "Every data point shows who verified it."], ["AI talent score \u2014 advisory", "Explainable factors; committees decide."], ["Consent centre & vault", "Athlete controls visibility; medical data sealed."]],
-      outcome: "One athlete, one story, zero repeated paperwork \u2014 selections explainable to anyone." },
-    { code: "M8", pillar: 2, isNew: true, pattern: "registry", title: "Event & Competition Management", tag: "The self-feeding data engine",
-      why: "Most achievements are born at events. When events run on the platform, results publish once and update every profile, laurel and ranking automatically \u2014 zero extra data entry.",
-      features: [["Sanction check", "Only recognised bodies (M2) host ranked events."], ["Online entries", "NSRS ID entry; eligibility auto-checked."], ["Results engine", "Live scoring or bulk upload; records auto-flagged."], ["National calendar", "One searchable calendar for every level."]],
-      outcome: "Every sanctioned result lands on the right athlete's profile within minutes of the finish line." },
-    { code: "M9", pillar: 3, isNew: false, pattern: "registry", title: "Coaches, Experts & Officials Registry", tag: "Talent without coaching is wasted",
-      why: "The National Sports Human Resource Registry: verified coaches, physios, dietitians and officials \u2014 matched to athletes, academies and events, with living outcome CVs.",
-      features: [["Verified expert profiles", "Credentials checked with issuing bodies."], ["Assignment engine", "Supply matched to athlete, camp, event demand."], ["Outcome linkage", "Athletes trained \u2014 a coach's living CV."], ["Safe-sport compliance", "Misconduct flags per the 2025 Act."]],
-      outcome: "Every serious athlete within reach of a verified coach \u2014 every good coach visible, busy, growing." },
-    { code: "M10", pillar: 3, isNew: false, pattern: "registry", title: "Infrastructure GIS & Utilisation", tag: "No child without a ground to play on",
-      why: "Facilities exist but sit unused \u2014 nobody knows they exist or nobody is accountable. A live GIS registry with readiness scores and a named officer per facility changes both.",
-      features: [["Facility master + GIS", "Nearest usable facility by sport, village to national."], ["Readiness score", "Five statuses with geo-tagged photo proof."], ["Booking & utilisation", "Measured, not guessed."], ["School\u2013facility linkage", "Reserved slots for playground-less schools."]],
-      outcome: "95% of facilities with fresh data, utilisation up 40% \u2014 no school child without a ground." },
-    { code: "M11", pillar: 3, isNew: false, pattern: "capture", title: "Asset Lifecycle Tracking", tag: "A chain of custody for every rupee of equipment",
-      why: "Equipment bought with public or CSR money routinely disappears or breaks silently. QR/RFID-tagged assets with logged movement end audit objections for good.",
-      features: [["Asset registry + QR tag", "Every major asset scannable; funding source recorded."], ["Movement log", "Issue, transfer, return, disposal \u2014 all scans."], ["Condition & audit", "Geo-tagged verification; formal loss workflow."], ["Funding linkage", "Each asset ties to its grant or CSR project."]],
-      outcome: "Every significant asset findable in seconds, every audit clean." },
-    { code: "M12", pillar: 3, isNew: true, pattern: "registry", title: "Academy Accreditation & Marketplace", tag: "Parents choose with confidence",
-      why: "Private academies train a huge share of Indian athletes but are unregulated and invisible. Star-rated accreditation raises standards; the marketplace connects talent to quality near home.",
-      features: [["Accreditation workflow", "Apply, inspect, star-rate, renew."], ["Public marketplace", "Search by sport, place, rating, fees."], ["Placement pipeline", "Scholarship athletes placed in accredited academies."], ["Continuous compliance", "M9 coaches + M10 facilities checked automatically."]],
-      outcome: "Good academies grow \u2014 and public money flows only to accredited quality." },
-    { code: "M13", pillar: 3, isNew: true, pattern: "profile", title: "Sports Science & Injury Network", tag: "Injuries end more careers than lack of talent",
-      why: "Early reporting, tele-consultation with SAI sports-science centres and guided rehab protect the state's investment in every athlete \u2014 and injury analytics drive prevention.",
-      features: [["Injury log & recovery", "Report, treat, return-to-play \u2014 sealed to medical roles."], ["Tele-sports-science", "Districts connected to SAI centres remotely."], ["Protocol library", "Video-first rehab guides, simple language."], ["Prevention analytics", "Anonymised heatmaps by sport, region, season."]],
-      outcome: "Careers saved by early care \u2014 and a country that knows where and why its athletes get hurt." },
-    { code: "M14", pillar: 4, isNew: true, pattern: "profile", title: "Khelo Bharat Sports Card", tag: "Identity + benefits + payments in one card",
-      why: "A co-branded RuPay card for verified athletes and coaches: daily tangible value, a verified audience for partners, and DBT rails so support money arrives directly and visibly.",
-      features: [["Tiered cards", "Blue \u2192 Silver \u2192 Gold \u2192 Platinum, auto-upgraded."], ["DBT rails", "Scholarships and stipends land on the card via PFMS."], ["Contracted benefits", "Lounges, transport, facilities, brands \u2014 all signed MoUs."], ["One-scan verification", "Gate, lounge or turnstile verifies instantly."]],
-      outcome: "5 lakh+ athletes carrying daily, visible proof that the nation backs them." },
-    { code: "M15", pillar: 4, isNew: true, pattern: "registry", title: "Jobs for Sports", tag: "Sport can secure a job \u2014 provably",
-      why: "Sports-quota recruitment exists but is scattered across dozens of PDFs. Aggregation plus QR-verifiable Sports CVs widens access and ends fake-certificate recruitment fraud.",
-      features: [["Vacancy aggregator", "Railways, PSUs, banks, police \u2014 one search."], ["Verified Sports CV", "Auto-built; every line carries its verifier."], ["Employer verification API", "Any achievement confirmed in seconds."], ["Career transition hub", "Coaching, officiating, management pathways."]],
-      outcome: "5,000+ verified sports-quota hires \u2014 \u201csport secures a future\u201d becomes a fact parents believe." },
-    { code: "M16", pillar: 4, isNew: true, pattern: "workflow", title: "Marks for Sports", tag: "The single biggest cultural unlock",
-      why: "Parents pull children from sport because it \u201ccosts marks\u201d. A ladder from attendance relaxation to NCrF credits and bonus marks flips the equation \u2014 boards credit what they can verify instantly.",
-      features: [["Achievement-to-credit ladder", "District = L1, state medal = L2, national = L3."], ["QR-verified certificates", "Only from sanctioned event results \u2014 forgery-proof."], ["Board & university API", "Instant verification at results and admissions."], ["Summit policy pack", "Ready note, jointly owned by MYAS and MoE."]],
-      outcome: "\u201cSport will cost you marks\u201d becomes \u201csport will earn you marks\u201d \u2014 nationwide." },
-    { code: "M17", pillar: 4, isNew: false, pattern: "registry", title: "CSR & Sponsorship Exchange", tag: "Every rupee traceable to a photo of the result",
-      why: "Corporates want to fund sport but cannot find verified needs; needs cannot find funders. The exchange closes the loop with full public transparency from pledge to completion proof.",
-      features: [["Corporate registry", "CSR focus, budgets, geographies, sports."], ["Verified need bank", "Vetted, priority-scored \u2014 no wish lists."], ["Matching engine", "Proposals with DPRs, budgets, KPIs."], ["Transparency dashboard", "Pledged \u2192 released \u2192 utilised \u2192 completed, public."]],
-      outcome: "\u20b9500 crore+ of sports CSR matched to verified needs, publicly traceable." },
-    { code: "M18", pillar: 5, isNew: false, pattern: "registry", title: "Media, Stories & Laurels", tag: "Sponsors find athletes before the podium",
-      why: "Rising athletes need visibility to attract sponsors and inspire their districts. Everything is consent-managed and moderated \u2014 nothing about a minor publishes without guardian consent.",
-      features: [["Athlete media profiles", "Verified, shareable public pages."], ["Laurels & Hall of Fame", "Straight from sanctioned results."], ["Consent & moderation", "Publish button disabled without consent."], ["Sponsor discovery", "Brands browse rising verified athletes."]],
-      outcome: "Every rising athlete discoverable and celebrated \u2014 before the podium, not after." },
-    { code: "M19", pillar: 6, isNew: true, pattern: "dashboard", title: "Analytics Command Centre & State Index", tag: "One honest scoreboard for Indian sport",
-      why: "What gets measured and ranked gets improved \u2014 the Aspirational Districts experience proved public indices move administrations. Index formulas are public, computed from live data.",
-      features: [["Command dashboards", "Minister to DSO \u2014 same shapes, right altitude."], ["State Excellence Index", "Transparent formulas, quarterly refresh."], ["Gap maps", "Talent density \u00d7 infrastructure supply."], ["Predictive views", "2030/2036 podium projections, dropout warnings."]],
-      outcome: "Decisions on live evidence \u2014 states competing to climb a public index." },
-    { code: "M20", pillar: 6, isNew: true, pattern: "workflow", title: "Data Partnership Framework", tag: "Fast but safe \u2014 weeks, not months",
-      why: "External datasets (starting with the pro bono offer on the table) can jump-start modules \u2014 but only after quality, legality and DPDP consent checks. A standard gate makes it repeatable.",
-      features: [["10-point scorecard", "Quality, legality, consent, uniqueness, uplift."], ["MoU template library", "Pro bono, commercial, research \u2014 pre-cleared."], ["Sandbox onboarding", "Tested in isolation before production."], ["Partnership register", "Every partner, scope, review date \u2014 auditable."]],
-      outcome: "The pro bono offer decided within 6 weeks \u2014 and a safe doorway for every future partner." }
+  /* Gaps → answers (concept content, labeled proposed) */
+  const GA = [
+    ["Sports data scattered across NSRS, Khelo India, KIRTI, state portals and paper files.", "One identity + one aggregation layer — every record attaches to one verified ID."],
+    ["Government funding is hard to trace; files move invisibly.", "Scheme workflows with live file tracking (eOffice) and money tracking (PFMS)."],
+    ["Grassroots talent doesn't know which schemes exist or how to reach them.", "An eligibility engine that tells each athlete “you qualify — apply here.”"],
+    ["CSR money can't find verified needs; needs can't find funders.", "A CSR exchange: verified need bank + matching + public impact tracking."],
+    ["Rising athletes are invisible to media, sponsors and their own communities.", "A verified, consent-managed showcase: profiles, laurels, public stories."],
+    ["Good data brings no daily value to the athlete — so nobody maintains it.", "A Benefits layer — card, jobs, marks. Value in the pocket keeps data alive."]
   ];
+  document.getElementById("gaps-grid").innerHTML = GA.map(([g, a]) => `
+    <div class="pillar-tile" data-reveal style="border-top-color:var(--alert)">
+      <span class="small" style="font-weight:800;letter-spacing:.1em;color:var(--alert)">GAP</span>
+      <span class="small" style="color:var(--grey)">${g}</span>
+      <span class="small" style="font-weight:800;letter-spacing:.1em;color:var(--green);margin-top:6px">ANSWER</span>
+      <span class="small" style="color:var(--ink)">${a}</span>
+    </div>`).join("");
 
-  selectModule(code) { this.touched = Date.now(); this.setState({ sel: code }); }
-  setFilter(p) { this.touched = Date.now(); this.setState({ filter: p }); }
+  /* Pillar tiles */
+  document.getElementById("pillar-grid").innerHTML = pillars.pillars.map(p => {
+    const mods = modules.modules.filter(m => m.pillar === p.id);
+    return `<a class="pillar-tile" data-reveal href="modules.html#p${p.id}" style="border-top-color:${p.color}">
+      <b style="font-family:var(--font-serif);font-size:21px;color:var(--navy)">${p.id} · ${KB.esc(p.name)}</b>
+      <span class="small" style="font-weight:700;letter-spacing:.08em;color:var(--saffron-deep);text-transform:uppercase">${KB.esc(p.tag)}</span>
+      <span class="small" style="color:var(--grey)">${KB.esc(p.description)}</span>
+      <span class="small" style="font-weight:700;color:var(--navy);margin-top:auto">${mods[0].id} — ${mods[mods.length - 1].id} · ${mods.length} modules →</span>
+    </a>`;
+  }).join("");
 
-  renderVals() {
-    const f = this.state.filter;
-    const selCode = this.state.sel;
-    const mods = this.MODULES.filter(m => !f || m.pillar === f).map(m => {
-      const on = m.code === selCode;
-      return {
-        code: m.code, title: m.title, tag: m.tag, isNew: !!m.isNew,
-        color: this.PILLARS[m.pillar].color,
-        pillarName: this.PILLARS[m.pillar].name,
-        select: () => this.selectModule(m.code),
-        cardBg: on ? "#0B2E59" : "#FFFFFF",
-        cardBorder: on ? "#0B2E59" : "#E3DCCF",
-        cardFg: on ? "#FFFFFF" : "#0B2E59",
-        cardSub: on ? "#C9D6E8" : "#5B6675"
-      };
-    });
-    const tabs = [0, 1, 2, 3, 4, 5, 6].map(p => ({
-      label: p === 0 ? "ALL 20" : p + " \u00b7 " + this.PILLARS[p].name,
-      click: () => this.setFilter(p),
-      bg: f === p ? "#0B2E59" : "transparent",
-      fg: f === p ? "#FFFFFF" : "#0B2E59",
-      bd: f === p ? "#0B2E59" : "#C9BFA9"
-    }));
-    const sel = this.MODULES.find(m => m.code === selCode) || this.MODULES[0];
-    const sp = this.PILLARS[sel.pillar];
-    return {
-      mods, tabs,
-      selCode: sel.code, selTitle: sel.title, selWhy: sel.why, selOutcome: sel.outcome,
-      selColor: sp.color, selPillar: "PILLAR " + sel.pillar + " \u00b7 " + sp.name, selNew: !!sel.isNew,
-      selFeatures: sel.features.map(x => ({ t: x[0], d: x[1] })),
-      isDashboard: sel.pattern === "dashboard", isProfile: sel.pattern === "profile",
-      isWorkflow: sel.pattern === "workflow", isRegistry: sel.pattern === "registry",
-      isCapture: sel.pattern === "capture",
-      patternLabel: sel.pattern.toUpperCase() + " PATTERN \u00b7 LIVE PREVIEW"
-    };
-  }
+  /* Ecosystem hub-spoke — all systems */
+  document.getElementById("eco-map").innerHTML = KB.hubSpoke("Khelo Bharat",
+    systems.systems.map(s => ({
+      label: s.name.split("—")[0].trim(),
+      cls: s.proposedRelationship,
+      verified: s.verificationStatus === "verified"
+    })), { aria: "Overall integration map: Khelo Bharat connected to twenty-three existing government systems" });
 
-  componentDidMount() {
-    this.touched = 0;
-    this.lastSpot = Date.now();
-    const els = document.querySelectorAll("[data-reveal]");
-    els.forEach(el => {
-      el.style.opacity = "0";
-      el.style.transform = "translateY(28px)";
-      el.style.transition = "opacity .85s cubic-bezier(.22,.61,.36,1), transform .85s cubic-bezier(.22,.61,.36,1)";
-    });
-    this.io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const d = +(e.target.getAttribute("data-delay") || 0);
-        e.target.style.transitionDelay = d + "ms";
-        e.target.style.opacity = "1";
-        e.target.style.transform = "none";
-        this.io.unobserve(e.target);
-      });
-    }, { threshold: 0.12 });
-    els.forEach(el => this.io.observe(el));
+  /* Module gallery grouped by pillar */
+  document.getElementById("module-gallery").innerHTML = pillars.pillars.map(p => {
+    const mods = modules.modules.filter(m => m.pillar === p.id);
+    return `<h3 style="margin:22px 0 10px;color:${p.color}">${p.id} · ${KB.esc(p.name)} <span class="small muted" style="font-weight:400">— ${KB.esc(p.tag)}</span></h3>
+    <div class="card-grid">${mods.map(m => `
+      <a class="card card-link" data-reveal href="module.html?m=${m.id}">
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">${KB.modCode(m.id, p.color)}${m.isNew ? '<span class="chip chip--new-module">New</span>' : ""}<code class="small muted">${KB.esc(m.pattern)}</code></div>
+        <h4 style="margin-top:8px">${KB.esc(m.title)}</h4>
+        <p class="small muted" style="margin:6px 0 0">${KB.esc(m.tag || m.what.slice(0, 110) + "…")}</p>
+      </a>`).join("")}</div>`;
+  }).join("");
 
-    const counters = document.querySelectorAll("[data-count]");
-    this.cio = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        this.cio.unobserve(e.target);
-        const el = e.target;
-        const num = parseFloat(el.getAttribute("data-count"));
-        const prefix = el.getAttribute("data-prefix") || "";
-        const suffix = el.getAttribute("data-suffix") || "";
-        const t0 = performance.now(), dur = 1500;
-        const tick = t => {
-          const p = Math.min(1, (t - t0) / dur);
-          const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = prefix + Math.round(num * eased).toLocaleString("en-IN") + suffix;
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      });
-    }, { threshold: 0.6 });
-    counters.forEach(el => this.cio.observe(el));
+  /* Charts */
+  document.getElementById("chart-approvals").innerHTML = KB.barChart(
+    pillars.pillars.map(p => {
+      const ids = modules.modules.filter(m => m.pillar === p.id).map(m => m.id);
+      return { label: `${p.id} · ${p.name}`, value: approvals.approvals.filter(a => ids.includes(a.module)).length, color: p.color };
+    }).concat([{ label: "Platform-wide", value: approvals.approvals.filter(a => a.module === "ALL").length, color: "#5B6675" }]));
 
-    this.layerIdx = 6;
-    this.applyLayerHighlight();
-    this.layerTimer = setInterval(() => {
-      if ((this.props.autoCycle ?? true) === false) return;
-      this.layerIdx = (this.layerIdx + 6) % 7;
-      this.applyLayerHighlight();
-    }, 2600);
+  const prio = ["critical", "high", "medium", "low"];
+  const prioColor = { critical: "#A33A17", high: "#C05E12", medium: "#0B2E59", low: "#5B6675" };
+  document.getElementById("chart-questions").innerHTML = KB.barChart(
+    prio.map(pr => ({ label: pr, value: questions.questions.filter(q => q.priority === pr).length, color: prioColor[pr] }))
+      .filter(i => i.value > 0));
 
-    this.spotTimer = setInterval(() => {
-      if ((this.props.autoCycle ?? true) === false) return;
-      const secs = (this.props.spotlightSeconds ?? 6) * 1000;
-      if (Date.now() - this.touched < 12000) return;
-      if (Date.now() - this.lastSpot < secs) return;
-      this.lastSpot = Date.now();
-      const panel = document.getElementById("module-panel");
-      if (panel) {
-        const r = panel.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > window.innerHeight) return;
-      }
-      const i = this.MODULES.findIndex(m => m.code === this.state.sel);
-      const next = this.MODULES[(i + 1) % this.MODULES.length];
-      if (this.state.filter && next.pillar !== this.state.filter) { this.setState({ filter: 0, sel: next.code }); }
-      else this.setState({ sel: next.code });
-    }, 500);
+  /* Roadmap strip */
+  document.getElementById("roadmap-strip").innerHTML = KB.flowTiles(
+    roadmap.phases.map(ph => `<b>${KB.esc(ph.id)} · ${KB.esc(ph.name)}:</b> ${KB.esc(ph.gate)}`));
 
-    this.onScroll = () => {
-      const wrap = document.getElementById("journey-track");
-      const line = document.getElementById("journey-line");
-      if (!wrap || !line) return;
-      const r = wrap.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const p = Math.min(1, Math.max(0, (vh * 0.75 - r.top) / r.height));
-      line.style.height = (p * 100) + "%";
-    };
-    window.addEventListener("scroll", this.onScroll, { passive: true });
-    this.onScroll();
-  }
+  /* Blocking decisions */
+  document.getElementById("blocking-list").innerHTML = questions.questions.filter(q => q.blocking).map(q => `
+    <a class="card card-link" data-reveal href="questions.html" style="display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center">
+      <b style="font-family:var(--font-serif);font-size:18px;color:var(--alert)">${KB.esc(q.id)}</b>
+      <span class="small">${KB.esc(q.question)}</span>
+      <span class="chip chip--decision-required">${KB.esc(q.module === "ALL" ? "Platform" : q.module)}</span>
+    </a>`).join("");
 
-  applyLayerHighlight() {
-    const idx = this.layerIdx;
-    document.querySelectorAll("[data-plate]").forEach(el => {
-      const i = +el.getAttribute("data-plate");
-      const on = i === idx;
-      el.style.transition = "all .6s cubic-bezier(.22,.61,.36,1)";
-      el.style.outline = on ? "3px solid #F5A54A" : "3px solid transparent";
-      el.style.filter = on ? "brightness(1.25)" : "brightness(1)";
-      el.style.boxShadow = on ? "0 34px 70px rgba(232,124,30,.4)" : "0 22px 44px rgba(2,10,24,.5)";
-      el.style.transform = el.getAttribute("data-base") + (on ? " translateZ(30px)" : "");
-    });
-    document.querySelectorAll("[data-layerrow]").forEach(el => {
-      const i = +el.getAttribute("data-layerrow");
-      const on = i === idx;
-      el.style.transition = "all .5s ease";
-      el.style.background = on ? "rgba(232,124,30,.14)" : "rgba(255,255,255,.03)";
-      el.style.borderColor = on ? "#E87C1E" : "rgba(255,255,255,.1)";
-      el.style.transform = on ? "translateX(8px)" : "translateX(0)";
-    });
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.layerTimer);
-    clearInterval(this.spotTimer);
-    window.removeEventListener("scroll", this.onScroll);
-    if (this.io) this.io.disconnect();
-    if (this.cio) this.cio.disconnect();
-  }
-}
+  KB.reveal();
+});
 </script>
 </body>
 </html>

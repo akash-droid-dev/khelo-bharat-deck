@@ -86,8 +86,25 @@ document.addEventListener("DOMContentLoaded", async () => {
       <h1>${KB.esc(mod.title)}</h1>
       <p class="lede">${KB.esc(mod.what)}</p>
       ${mod.origin ? `<p class="small" style="color:#9FB4CF;margin-top:12px">Origin: ${KB.esc(mod.origin)}</p>` : ""}
+      <div class="stat-tiles" style="margin-top:22px;max-width:640px">
+        <div class="stat-tile on-dark"><b>${modIntegrations.length}</b><span>System links</span></div>
+        <div class="stat-tile on-dark"><b>${modApprovals.length}</b><span>Approvals</span></div>
+        <div class="stat-tile on-dark"><b>${modDatasets.length}</b><span>Datasets</span></div>
+        <div class="stat-tile on-dark"><b>${modQuestions.filter(q => q.module === mod.id).length}</b><span>Open questions</span></div>
+      </div>
     </div>
   </div>
+
+  ${KB.pageNav([
+    { id: "s-purpose", label: "Overview" },
+    { id: "s-flow", label: "Journey" },
+    { id: "s-map", label: "Integration map" },
+    { id: "s-layers", label: "Three layers" },
+    { id: "s-caps", label: "Screens" },
+    { id: "s-risks", label: "Risks" },
+    { id: "s-status", label: "Status" },
+    { id: "s-related", label: "Related" }
+  ])}
 
   <div class="wrap">
     <div id="crumbs"></div>
@@ -126,6 +143,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       <h3 style="margin:26px 0 10px">Layer 1 · Existing systems this module touches</h3>
       ${modIntegrations.length ? `
+      <div id="s-map" data-reveal style="margin-bottom:16px">
+        ${KB.hubSpoke(mod.id, modIntegrations.map(i => {
+          const s = systems.systems.find(x => x.id === i.system);
+          return { label: s.name.split("—")[0].trim(), cls: i.class, verified: s.verificationStatus === "verified" };
+        }), { aria: `Integration map: how ${mod.id} connects to existing government systems` })}
+        <p class="small muted" style="margin-top:8px">How ${KB.esc(mod.id)} connects to the existing ecosystem — line colour is the proposed integration class; a green dot marks a source-verified system. Details below.</p>
+      </div>
       <div style="display:grid;gap:12px">${modIntegrations.map(i => {
         const s = systems.systems.find(x => x.id === i.system);
         return `<div class="card">
@@ -215,17 +239,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       : planned("Question bank", "No questions recorded against this module yet — the module-specific bank is authored in Phase 2.")}
     </section>
 
-    <section class="mod-section" aria-labelledby="s-flow">
-      <h2 id="s-flow"><span class="section-num">12</span>End-to-End Workflow</h2>
-      <ol class="flow-list">${mod.flow.map(step => `<li>${KB.escKeepBold(step)}</li>`).join("")}</ol>
+    <section class="mod-section" id="s-flow" aria-labelledby="s-flow-h">
+      <h2 id="s-flow-h"><span class="section-num">12</span>End-to-End Journey</h2>
+      <p class="muted small" style="margin-bottom:14px">The module's workflow as a step-by-step flow — each tile is one stage of the journey.</p>
+      <div data-reveal>${KB.flowTiles(mod.flow)}</div>
     </section>
 
-    <section class="mod-section" aria-labelledby="s-caps">
-      <h2 id="s-caps"><span class="section-num">—</span>Key Capabilities &amp; Screens</h2>
+    <section class="mod-section" id="s-caps" aria-labelledby="s-caps-h">
+      <h2 id="s-caps-h"><span class="section-num">—</span>Key Capabilities &amp; Screens</h2>
       <div class="kv-grid">${mod.features.map(f => `<div class="kv"><b>${KB.esc(f.title)}</b><span>${KB.esc(f.detail)}</span></div>`).join("")}</div>
       ${mod.screens.length ? `
-      <h3 style="margin:22px 0 10px">Screens to build <span class="small muted">(pattern: ${KB.esc(mod.pattern)})</span></h3>
-      <div class="kv-grid">${mod.screens.map(s => `<div class="kv"><b>${KB.esc(s.name)}</b><span>${KB.esc(s.description)}</span></div>`).join("")}</div>` : ""}
+      <h3 style="margin:26px 0 12px">Screen concepts <span class="small muted">(primary pattern: ${KB.esc(mod.pattern)})</span></h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;align-items:start">
+        <div data-reveal>${KB.wireframe(mod.pattern, mod.id + " · " + mod.pattern + " pattern")}</div>
+        <div class="screen-tiles" data-reveal>${mod.screens.map(s => `<div class="screen-tile"><b>${KB.esc(s.name)}</b><p>${KB.esc(s.description)}</p></div>`).join("")}</div>
+      </div>` : ""}
     </section>
 
     <section class="mod-section" aria-labelledby="s-risks">
@@ -254,6 +282,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           <div style="display:flex;gap:10px;align-items:center">${KB.modCode(m.id, p.color)}<span class="pillar-chip" style="color:${p.color}">${KB.esc(p.name)}</span></div>
           <h4 style="margin-top:8px">${KB.esc(m.title)}</h4></a>`;
       }).join("")}</div>
+      ${(() => {
+        const all = modules.modules;
+        const i = all.findIndex(m => m.id === mod.id);
+        const prev = all[i - 1], next = all[i + 1];
+        return `<div class="mod-pager">
+          ${prev ? `<a href="module.html?m=${prev.id}"><span class="dir">← Previous</span><br><span class="t">${prev.id} · ${KB.esc(prev.title)}</span></a>` : "<span></span>"}
+          ${next ? `<a class="next" href="module.html?m=${next.id}"><span class="dir">Next →</span><br><span class="t">${next.id} · ${KB.esc(next.title)}</span></a>` : "<span></span>"}
+        </div>`;
+      })()}
       <p style="margin-top:18px"><a href="modules.html">← All twenty modules</a></p>
     </section>
   </div>`;
@@ -263,6 +300,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     { href: "modules.html", label: "Modules" },
     { label: `${mod.id} · ${mod.title}` }
   ]);
+  KB.reveal();
 });
 </script>
 </body>
