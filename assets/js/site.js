@@ -102,6 +102,118 @@
 
     stateBlock(kind, title, detail) {
       return `<div class="state${kind === "error" ? " state--error" : ""}" role="${kind === "error" ? "alert" : "status"}"><b>${KB.esc(title)}</b>${KB.esc(detail || "")}</div>`;
+    },
+
+    /* ---------- Visual components (dependency-free) ---------- */
+
+    reveal() {
+      const els = document.querySelectorAll("[data-reveal]");
+      if (!("IntersectionObserver" in window)) { els.forEach(e => e.classList.add("in")); return; }
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+      }, { threshold: 0.12 });
+      els.forEach(e => io.observe(e));
+    },
+
+    /* Sticky in-page section nav with scrollspy. sections: [{id,label}] */
+    pageNav(sections) {
+      const nav = `<nav class="page-nav" aria-label="Page sections"><ul>${
+        sections.map(s => `<li><a href="#${s.id}">${KB.esc(s.label)}</a></li>`).join("")}</ul></nav>`;
+      queueMicrotask(() => {
+        const links = [...document.querySelectorAll(".page-nav a")];
+        const map = new Map(sections.map(s => [s.id, links.find(a => a.getAttribute("href") === "#" + s.id)]));
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(en => {
+            if (en.isIntersecting) {
+              links.forEach(a => a.classList.remove("active"));
+              const a = map.get(en.target.id);
+              if (a) a.classList.add("active");
+            }
+          });
+        }, { rootMargin: "-20% 0px -70% 0px" });
+        sections.forEach(s => { const el = document.getElementById(s.id); if (el) io.observe(el); });
+      });
+      return nav;
+    },
+
+    /* Numbered tile flow from modules.json `flow` strings (with <b> labels). */
+    flowTiles(steps) {
+      return `<div class="flow-tiles">${
+        steps.map(s => `<div class="flow-tile">${KB.escKeepBold(s)}</div>`).join("")}</div>`;
+    },
+
+    /* Horizontal bar chart. items: [{label, value, color}] */
+    barChart(items, max) {
+      const m = max || Math.max(...items.map(i => i.value), 1);
+      return `<div class="bar-chart">${items.map(i => `
+        <div class="bar-row">
+          <span>${KB.esc(i.label)}</span>
+          <span class="track"><span class="fill" style="width:${Math.round(100 * i.value / m)}%;${i.color ? `background:${KB.esc(i.color)}` : ""}"></span></span>
+          <span class="val">${KB.esc(i.value)}</span>
+        </div>`).join("")}</div>`;
+    },
+
+    /* Hub-and-spoke SVG: module/platform at centre, systems around.
+       nodes: [{label, cls (integration class), verified (bool)}] */
+    INT_COLORS: {
+      "direct-integration": "#C05E12", "data-exchange": "#0B2E59", "federated-access": "#7A2E7E",
+      "workflow-coordination": "#1E7A3C", "reporting-consolidation": "#14606B", "referral": "#B3541E",
+      "future-integration": "#8a7a55", "manual-import": "#5B6675", "single-sign-on": "#334d6b", "none": "#9FB4CF"
+    },
+
+    hubSpoke(centerLabel, nodes, opts = {}) {
+      const W = 760, H = Math.max(400, 130 + nodes.length * 34);
+      const cx = W / 2, cy = H / 2;
+      const rx = W / 2 - 130, ry = H / 2 - 46;
+      const pts = nodes.map((n, i) => {
+        const a = -Math.PI / 2 + (2 * Math.PI * i) / nodes.length;
+        return { ...n, x: cx + rx * Math.cos(a), y: cy + ry * Math.sin(a) };
+      });
+      const lines = pts.map(p => {
+        const c = KB.INT_COLORS[p.cls] || "#9FB4CF";
+        const dash = p.cls === "future-integration" || p.cls === "none" ? ' stroke-dasharray="5 5"' : "";
+        return `<line x1="${cx}" y1="${cy}" x2="${p.x}" y2="${p.y}" stroke="${c}" stroke-width="2.2" opacity=".75"${dash}/>`;
+      }).join("");
+      const nodeEls = pts.map(p => {
+        const c = KB.INT_COLORS[p.cls] || "#9FB4CF";
+        const anchor = p.x < cx - 8 ? "end" : p.x > cx + 8 ? "start" : "middle";
+        const tx = p.x + (anchor === "end" ? -14 : anchor === "start" ? 14 : 0);
+        const badge = p.verified ? `<circle cx="${p.x + 8}" cy="${p.y - 8}" r="4.5" fill="#1E7A3C"/>` : "";
+        return `<g><circle cx="${p.x}" cy="${p.y}" r="9" fill="${c}"/>${badge}
+          <text x="${tx}" y="${p.y + 4}" text-anchor="${anchor}" font-size="12.5" font-weight="600" fill="#152233">${KB.esc(p.label)}</text></g>`;
+      }).join("");
+      const usedClasses = [...new Set(nodes.map(n => n.cls))];
+      const legend = `<div class="viz-legend">${usedClasses.map(c =>
+        `<span><i style="background:${KB.INT_COLORS[c] || "#9FB4CF"}"></i>${KB.esc(c)}</span>`).join("")}
+        <span><i style="background:#1E7A3C;border-radius:50%"></i>verified system</span></div>`;
+      return `<div class="hub-wrap"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${KB.esc(opts.aria || `Integration map for ${centerLabel}`)}">
+        ${lines}
+        <circle cx="${cx}" cy="${cy}" r="52" fill="#0B2E59"/>
+        <circle cx="${cx}" cy="${cy}" r="52" fill="none" stroke="#F5A54A" stroke-width="2" opacity=".6"/>
+        <text x="${cx}" y="${cy + 5}" text-anchor="middle" font-size="15" font-weight="800" fill="#fff" font-family="Fraunces,serif">${KB.esc(centerLabel)}</text>
+        ${nodeEls}
+      </svg>${legend}</div>`;
+    },
+
+    /* Stylised screen wireframe per module pattern. */
+    wireframe(pattern, title) {
+      const bars = h => h.map(([v, cls]) => `<i class="${cls || ""}" style="height:${v}%"></i>`).join("");
+      const rows = n => Array.from({ length: n }, (_, i) =>
+        `<div class="wf-row"><i></i><span><u></u><u></u></span><s class="${i % 3 === 1 ? "g" : ""}">${i % 3 === 1 ? "OK" : "VIEW"}</s></div>`).join("");
+      const BODIES = {
+        dashboard: `<div class="wf-kpis"><div class="wf-kpi"><b>2.1L</b><span>records</span></div><div class="wf-kpi"><b>86%</b><span>on time</span></div><div class="wf-kpi"><b>14</b><span>flagged</span></div><div class="wf-kpi"><b>#3</b><span>rank</span></div></div>
+          <div class="wf-bars">${bars([[62], [88, "hi"], [47], [71], [58], [93, "ok"], [66], [79]])}</div>${rows(2)}`,
+        registry: `<div class="wf-field"><u style="width:55%"></u></div>${rows(4)}`,
+        profile: `<div class="wf-profile"><div class="wf-avatar">A</div><div class="wf-rows">${rows(3)}</div></div>
+          <div class="wf-steps"><b>✓</b><i></i><b>✓</b><i></i><b class="cur">3</b><i></i><b class="pend">4</b></div>`,
+        workflow: `<div class="wf-steps"><b>✓</b><i></i><b>✓</b><i></i><b class="cur">3</b><i></i><b class="pend">4</b><i></i><b class="pend">5</b></div>${rows(3)}`,
+        capture: `<div class="wf-form"><div class="wf-field"><u></u></div><div class="wf-field"><u style="width:52%"></u></div><div class="wf-field"><u style="width:44%"></u></div><div class="wf-btn"></div></div>
+          <div class="wf-kpis" style="grid-template-columns:repeat(2,1fr)"><div class="wf-kpi"><b>Offline</b><span>sync ready</span></div><div class="wf-kpi"><b>12</b><span>queued</span></div></div>`
+      };
+      return `<div class="wireframe"><div class="wf-window">
+        <div class="wf-bar"><i></i><i></i><i></i><span>${KB.esc(title || pattern + " pattern")}</span></div>
+        <div class="wf-body">${BODIES[pattern] || BODIES.registry}</div>
+      </div><div class="wf-caption"><b>Screen concept</b> — illustrative wireframe of the module's primary ${KB.esc(pattern)} pattern; not a built product.</div></div>`;
     }
   };
 
