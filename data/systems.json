@@ -64,7 +64,8 @@
       "usedByModules": [
         "M3",
         "M14",
-        "M17"
+        "M17",
+        "M19"
       ],
       "proposedRelationship": "data-exchange",
       "relationshipNote": "Proposed mirror of sanction-to-utilisation status against scheme applications.",
@@ -303,7 +304,8 @@
       "owner": "DPIIT / BISAG-N",
       "purpose": "National GIS platform for infrastructure planning.",
       "usedByModules": [
-        "M10"
+        "M10",
+        "M19"
       ],
       "proposedRelationship": "data-exchange",
       "relationshipNote": "Facility layer proposed on national GIS base.",
@@ -480,7 +482,8 @@
       "owner": "MeitY (legislation)",
       "purpose": "Personal data protection law: consent, purpose limitation, children's data.",
       "usedByModules": [
-        "ALL"
+        "ALL",
+        "M20"
       ],
       "proposedRelationship": "none",
       "relationshipNote": "Compliance obligation across every module; consent vault and guardian consent are design responses.",
@@ -612,6 +615,57 @@
       "facts": [
         "ABDM (abdm.gov.in) provides ABHA IDs and a consent-manager architecture for health-record exchange.",
         "Detailed source capture pending — added during M13 authoring; health-data handling is stricter than DPDP baseline."
+      ]
+    },
+    {
+      "id": "S21",
+      "name": "NCS — National Career Service",
+      "owner": "Ministry of Labour & Employment",
+      "purpose": "National job-matching portal connecting seekers, employers and career centres.",
+      "usedByModules": [
+        "M15"
+      ],
+      "proposedRelationship": "data-exchange",
+      "relationshipNote": "Proposed channel for sports-sector and sports-quota vacancies to reach athletes, and for platform-verified sports credentials to strengthen applications.",
+      "apiConfirmed": false,
+      "verificationStatus": "partially-verified",
+      "sources": [],
+      "facts": [
+        "Established MoLE portal (ncs.gov.in); detailed source capture pending — added during M15 authoring."
+      ]
+    },
+    {
+      "id": "S22",
+      "name": "MCA CSR framework & National CSR portal",
+      "owner": "Ministry of Corporate Affairs",
+      "purpose": "Companies Act Schedule VII CSR framework ('training to promote rural sports, nationally recognised sports…') and CSR disclosure portal.",
+      "usedByModules": [
+        "M17"
+      ],
+      "proposedRelationship": "workflow-coordination",
+      "relationshipNote": "Proposed alignment: exchange-listed needs map to Schedule VII categories; funded projects reconcile with statutory CSR disclosures.",
+      "apiConfirmed": false,
+      "verificationStatus": "partially-verified",
+      "sources": [],
+      "facts": [
+        "Schedule VII of the Companies Act 2013 explicitly includes promotion of rural and nationally recognised sports; csr.gov.in hosts national CSR data. Source capture pending — added during M17 authoring."
+      ]
+    },
+    {
+      "id": "S23",
+      "name": "OGD — Open Government Data platform (data.gov.in / NDSAP)",
+      "owner": "MeitY / NIC",
+      "purpose": "National open-data platform under the National Data Sharing and Accessibility Policy.",
+      "usedByModules": [
+        "M20"
+      ],
+      "proposedRelationship": "reporting-consolidation",
+      "relationshipNote": "Proposed publication channel for anonymised, aggregate sports datasets under the open-data framework.",
+      "apiConfirmed": false,
+      "verificationStatus": "partially-verified",
+      "sources": [],
+      "facts": [
+        "data.gov.in is the established NDSAP platform; source capture pending — added during M20 authoring."
       ]
     }
   ]

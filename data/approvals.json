@@ -796,6 +796,407 @@
       "riskIfDelayed": "Injured grassroots athletes keep falling out of sport for lack of a care pathway.",
       "escalation": "MYAS sports division",
       "evidence": "proposed"
+    },
+    {
+      "id": "A-M14-1",
+      "module": "M14",
+      "name": "Co-branded card programme approval",
+      "entity": "NPCI + selected issuing bank(s) + MYAS",
+      "purpose": "Establish the Khelo Bharat RuPay co-brand: bank selection, product construct, cost model.",
+      "prerequisites": [
+        "Bank selection process",
+        "Programme business case"
+      ],
+      "output": "Co-brand agreement",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "The Benefits pillar's flagship stays a mock-up; adoption engine never starts.",
+      "escalation": "NPCI via MYAS",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M14-2",
+      "module": "M14",
+      "name": "Tier & entitlement policy",
+      "entity": "MYAS",
+      "purpose": "Define which verified achievements map to Bronze/Silver/Gold tiers and what each tier unlocks.",
+      "prerequisites": [
+        "Verification chain live (A-M7-4)",
+        "Q42 tier-integrity rules"
+      ],
+      "output": "Tier policy order",
+      "dependsOn": [
+        "A-M7-4"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Tiers without verification integrity invite gaming; benefits leak.",
+      "escalation": "Joint Secretary (Sports)",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M14-3",
+      "module": "M14",
+      "name": "Concession & benefit MoUs (per partner)",
+      "entity": "Railways, state transport, AAI/lounges, SAI facilities, brands; CSD access is a separate government policy ask",
+      "purpose": "Each real-world benefit needs its own MoU with entitlement-verification hooks.",
+      "prerequisites": [
+        "A-M14-2 tier policy",
+        "Partner pipeline"
+      ],
+      "output": "Benefit MoUs",
+      "dependsOn": [
+        "A-M14-2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "A card that unlocks nothing is plastic; partner benefits ARE the product.",
+      "escalation": "MYAS benefits programme office",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M14-4",
+      "module": "M14",
+      "name": "Financial-product compliance review",
+      "entity": "Issuing bank (RBI-regulated); platform boundary review by MYAS legal",
+      "purpose": "Confirm the platform never becomes a payment system: KYC, transactions and balances stay with the bank.",
+      "prerequisites": [
+        "A-M14-1 construct",
+        "Q41 minor-account model"
+      ],
+      "output": "Compliance boundary memo",
+      "dependsOn": [
+        "A-M14-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Regulatory exposure; minors' banking rules violated by design accident.",
+      "escalation": "Bank compliance / MYAS legal",
+      "evidence": "assumption"
+    },
+    {
+      "id": "A-M15-1",
+      "module": "M15",
+      "name": "Sports-quota verification protocol adoption",
+      "entity": "Railways Sports Promotion Board, DPE/PSUs, state police boards",
+      "purpose": "Recruiters formally accept platform-verified sports records in place of attested certificates.",
+      "prerequisites": [
+        "Verification chain live",
+        "Q43 answered (rule-change need)"
+      ],
+      "output": "Recruiter adoption orders",
+      "dependsOn": [
+        "A-M7-4"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Athletes keep couriering attested photocopies; the module is a job board only.",
+      "escalation": "Railway Board / DPE via MYAS",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M15-2",
+      "module": "M15",
+      "name": "NCS integration approval",
+      "entity": "Ministry of Labour & Employment",
+      "purpose": "Exchange sports-sector vacancies and consented candidate profiles with the National Career Service.",
+      "prerequisites": [
+        "S21 verification completed",
+        "Data-exchange spec"
+      ],
+      "output": "NCS integration arrangement",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Sports employment stays a silo; post-career reach shrinks.",
+      "escalation": "MoLE NCS division",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M15-3",
+      "module": "M15",
+      "name": "Employer onboarding framework",
+      "entity": "MYAS legal",
+      "purpose": "Terms for private employers: credential access scope, non-discrimination, data handling.",
+      "prerequisites": [
+        "A-P2"
+      ],
+      "output": "Employer terms + vetting checklist",
+      "dependsOn": [
+        "A-P2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Private-sector jobs (the volume) can't onboard safely.",
+      "escalation": "MYAS legal",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M16-1",
+      "module": "M16",
+      "name": "Board pilot commitments",
+      "entity": "CBSE and/or state boards; universities via UGC channels",
+      "purpose": "At least one board commits to piloting marks/credit recognition for verified sports achievement (answers Q9).",
+      "prerequisites": [
+        "Evidence standard (A-M16-3)",
+        "Delhi sports-credit precedent documented"
+      ],
+      "output": "Board pilot orders",
+      "dependsOn": [
+        "A-M16-3"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "M16 is inert — the whole module waits on this decision.",
+      "escalation": "Board chairpersons → MoE",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M16-2",
+      "module": "M16",
+      "name": "NCrF credit-mapping approval",
+      "entity": "UGC / NCVET with MoE",
+      "purpose": "Approve the mapping of sports achievement levels to NCrF credit points.",
+      "prerequisites": [
+        "Q45 answered (qualifying achievements)",
+        "A-M16-1 pilot scope"
+      ],
+      "output": "Credit-mapping schedule",
+      "dependsOn": [
+        "A-M16-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Each board invents its own mapping — incompatible credits.",
+      "escalation": "UGC NCrF cell",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M16-3",
+      "module": "M16",
+      "name": "Evidence-standard adoption",
+      "entity": "SAI + boards jointly",
+      "purpose": "Define which platform verifications qualify as credit evidence: sanctioned event + federation sign-off + DigiLocker certificate.",
+      "prerequisites": [
+        "A-M8-1",
+        "A-M7-4",
+        "A-M8-3"
+      ],
+      "output": "Evidence rulebook",
+      "dependsOn": [
+        "A-M8-1",
+        "A-M7-4"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Marks incentive without the fraud firewall creates a fake-certificate market (Q46).",
+      "escalation": "SAI records + board academic units",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M17-1",
+      "module": "M17",
+      "name": "Verified-need certification standard",
+      "entity": "State departments (DSO ground checks)",
+      "purpose": "Every need in the bank carries a government verification: site-checked, quantified, prioritised.",
+      "prerequisites": [
+        "Need taxonomy",
+        "DSO field workflow"
+      ],
+      "output": "Certification standard",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Corporates won't fund an unverified wishlist — the exchange's core asset is trust.",
+      "escalation": "State SPOCs",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M17-2",
+      "module": "M17",
+      "name": "MCA CSR-framework alignment",
+      "entity": "Ministry of Corporate Affairs",
+      "purpose": "Confirm exchange-mediated funding qualifies under Schedule VII and how it reconciles with CSR disclosures (Q47).",
+      "prerequisites": [
+        "S22 verification completed",
+        "Category mapping draft"
+      ],
+      "output": "Alignment guidance",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Corporate legal teams block participation without CSR-credit certainty.",
+      "escalation": "MCA CSR cell via MYAS",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M17-3",
+      "module": "M17",
+      "name": "Funds-flow model approval",
+      "entity": "MYAS with finance/legal review",
+      "purpose": "Decide the model per Q48: platform as matchmaker + tracker (funds flow corporate → implementing agency directly), or any custodial role.",
+      "prerequisites": [
+        "Q48 decision",
+        "Legal review of custodial implications"
+      ],
+      "output": "Funds-flow policy",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Ambiguity here is a corruption-headline risk; must precede any pledge.",
+      "escalation": "MYAS IFD + legal",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M18-1",
+      "module": "M18",
+      "name": "Publicity-consent framework (incl. minors)",
+      "entity": "MYAS legal (DPDP) ",
+      "purpose": "Consent standard for showcasing athletes publicly — separate consent scope from data processing; guardian consent + withdrawal for minors (Q49).",
+      "prerequisites": [
+        "A-P2"
+      ],
+      "output": "Publicity-consent design",
+      "dependsOn": [
+        "A-P2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "A minor showcased without proper consent is a legal and ethical failure with press attention guaranteed.",
+      "escalation": "MYAS legal",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M18-2",
+      "module": "M18",
+      "name": "DD Sports / PIB content partnership",
+      "entity": "Prasar Bharati; PIB",
+      "purpose": "Editorial pipeline from verified athlete stories to broadcast and press channels.",
+      "prerequisites": [
+        "A-M18-1",
+        "Content-pack format"
+      ],
+      "output": "Content partnership MoU",
+      "dependsOn": [
+        "A-M18-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Stories stay on the platform; the visibility promise underdelivers.",
+      "escalation": "Prasar Bharati programming via MYAS",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M18-3",
+      "module": "M18",
+      "name": "Laurels & Hall of Fame criteria",
+      "entity": "MYAS with federation consultation",
+      "purpose": "Objective criteria for laurels and Hall of Fame induction, with a dispute path.",
+      "prerequisites": [
+        "Verification chain live"
+      ],
+      "output": "Honours rulebook",
+      "dependsOn": [
+        "A-M7-4"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Contested honours become public controversies on a government platform.",
+      "escalation": "MYAS sports division",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M19-1",
+      "module": "M19",
+      "name": "State Excellence Index methodology approval",
+      "entity": "MYAS with NITI Aayog consultation and state sign-off",
+      "purpose": "Indicator set, weights, data-quality gates (Q51) — agreed BEFORE anyone is ranked.",
+      "prerequisites": [
+        "KPI register",
+        "State consultation round"
+      ],
+      "output": "Published methodology",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "A contested ranking poisons state cooperation across every module.",
+      "escalation": "Secretary (Sports) / NITI Aayog",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M19-2",
+      "module": "M19",
+      "name": "Index publication policy",
+      "entity": "MYAS",
+      "purpose": "What is public (scores, trends) vs government-only (raw sub-indicators) — answers Q10.",
+      "prerequisites": [
+        "A-M19-1"
+      ],
+      "output": "Publication policy",
+      "dependsOn": [
+        "A-M19-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Publication-by-default risks political blowback; secrecy-by-default kills accountability.",
+      "escalation": "MYAS",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M19-3",
+      "module": "M19",
+      "name": "Command-centre operating mandate",
+      "entity": "MYAS (owner per Q52)",
+      "purpose": "Who runs the analytics command centre, with what access to cross-module data.",
+      "prerequisites": [
+        "Q52 decision",
+        "Governance model (R-series roles)"
+      ],
+      "output": "Operating mandate",
+      "dependsOn": [],
+      "status": "not-started",
+      "riskIfDelayed": "Dashboards without an owner decay into wallpaper.",
+      "escalation": "Secretary (Sports)",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M20-1",
+      "module": "M20",
+      "name": "Anonymisation & data-sharing standard",
+      "entity": "MYAS legal with MeitY guidance",
+      "purpose": "Aggregation floors, k-anonymity thresholds, children's-data prohibitions (Q53) for every extract.",
+      "prerequisites": [
+        "A-P2",
+        "Re-identification risk assessment"
+      ],
+      "output": "Data-sharing standard",
+      "dependsOn": [
+        "A-P2"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "One re-identified minor athlete ends the open-data programme permanently.",
+      "escalation": "MYAS legal → MeitY",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M20-2",
+      "module": "M20",
+      "name": "Partnership agreement template",
+      "entity": "MYAS legal",
+      "purpose": "Standard terms for research/pro-bono partners: scope, security vetting (Q54), publication rights, revocation.",
+      "prerequisites": [
+        "A-M20-1"
+      ],
+      "output": "Agreement template + vetting checklist",
+      "dependsOn": [
+        "A-M20-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Each partnership negotiates from scratch; inconsistent protections.",
+      "escalation": "MYAS legal",
+      "evidence": "proposed"
+    },
+    {
+      "id": "A-M20-3",
+      "module": "M20",
+      "name": "Open-data publication approval",
+      "entity": "MYAS as data owner; MeitY/NIC (data.gov.in)",
+      "purpose": "Approve the first anonymised aggregate datasets for NDSAP publication.",
+      "prerequisites": [
+        "A-M20-1",
+        "Dataset shortlist"
+      ],
+      "output": "Publication approvals",
+      "dependsOn": [
+        "A-M20-1"
+      ],
+      "status": "not-started",
+      "riskIfDelayed": "Open-data promise stays rhetorical.",
+      "escalation": "MYAS data governance",
+      "evidence": "proposed"
     }
   ]
 }

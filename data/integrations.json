@@ -16,7 +16,14 @@
       "M10",
       "M11",
       "M12",
-      "M13"
+      "M13",
+      "M14",
+      "M15",
+      "M16",
+      "M17",
+      "M18",
+      "M19",
+      "M20"
     ]
   },
   "integrations": [
@@ -592,6 +599,257 @@
       "gaps": "Same NSRS dependency as all identity modules.",
       "dependencies": [
         "A-M7-1"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M14",
+      "system": "S11",
+      "class": "direct-integration",
+      "why": "The card IS a co-branded RuPay product — NPCI and an issuing bank are the delivery mechanism (verified precedent in S11 facts).",
+      "dataFlow": "Tier entitlement state → issuing bank; card lifecycle events ← bank (never transaction data).",
+      "kbValueAdd": "Government benefits ride existing payment infrastructure instead of a new card scheme.",
+      "gaps": "A government-athlete co-brand has no direct precedent; bank selection process undefined.",
+      "dependencies": [
+        "A-M14-1"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M14",
+      "system": "S1",
+      "class": "data-exchange",
+      "why": "Card tiers derive from the verified athlete profile — no verified identity, no card.",
+      "dataFlow": "Verified achievement level (M7) → tier eligibility computation.",
+      "kbValueAdd": "The card becomes the physical token of the digital identity — the adoption engine.",
+      "gaps": "Depends on A-M7-1 and the verification chain.",
+      "dependencies": [
+        "A-M7-1",
+        "A-M14-2"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M14",
+      "system": "S12",
+      "class": "data-exchange",
+      "why": "Scholarships already flow via DBT — landing them in the card-linked account closes the benefits loop.",
+      "dataFlow": "DBT credit confirmations → cardholder benefit timeline.",
+      "kbValueAdd": "One place where the athlete sees money, entitlements and usage.",
+      "gaps": "Shares S12's partially-verified status.",
+      "dependencies": [
+        "A-M3-2"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M14",
+      "system": "S2",
+      "class": "reporting-consolidation",
+      "why": "Benefit-programme spend reporting reconciles against PFMS releases.",
+      "dataFlow": "Programme spend aggregates ← PFMS references.",
+      "kbValueAdd": "The Benefits layer stays auditable.",
+      "gaps": "Same PFMS access dependency.",
+      "dependencies": [
+        "A-M3-2"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M15",
+      "system": "S1",
+      "class": "data-exchange",
+      "why": "Sports-quota recruitment runs on claimed sports careers — the registry makes those claims verifiable in one lookup.",
+      "dataFlow": "Consented credential snapshot (verified results, laurels) → employer application view.",
+      "kbValueAdd": "Kills the attested-photocopy economy in sports-quota recruitment.",
+      "gaps": "Employers must formally accept digital verification (Q43).",
+      "dependencies": [
+        "A-M15-1"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M15",
+      "system": "S21",
+      "class": "data-exchange",
+      "why": "NCS is the national job-matching rail — sports vacancies should flow through it, not around it.",
+      "dataFlow": "Sports-sector vacancies ↔ NCS listings; athlete profiles → NCS candidate pool (consented).",
+      "kbValueAdd": "Athletes reach the whole employment ecosystem, not just sports quotas.",
+      "gaps": "S21 partially verified; integration path unexplored.",
+      "dependencies": [
+        "A-M15-2"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M15",
+      "system": "S5",
+      "class": "direct-integration",
+      "why": "Recruitment document packs (certificates, IDs) assemble from DigiLocker instead of couriered attestations.",
+      "dataFlow": "Issued documents shared to employers with candidate consent.",
+      "kbValueAdd": "Verification effort per candidate drops from weeks to seconds.",
+      "gaps": "Employer-side acceptance workflows needed.",
+      "dependencies": [
+        "A-M3-4"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M16",
+      "system": "S13",
+      "class": "workflow-coordination",
+      "why": "NCrF explicitly creditises sports (verified) — M16 operationalises that mapping for verified achievements.",
+      "dataFlow": "Achievement level (verified chain) → NCrF credit mapping → board/university award.",
+      "kbValueAdd": "Turns a policy possibility into an administrable process with evidence standards.",
+      "gaps": "Credit-point mapping for sports levels not yet defined by any board (Q9, Q45).",
+      "dependencies": [
+        "A-M16-1",
+        "A-M16-2"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M16",
+      "system": "S14",
+      "class": "data-exchange",
+      "why": "Credits must land in the student's Academic Bank of Credits via APAAR to count.",
+      "dataFlow": "Awarded sports credits → ABC via APAAR linkage (consented).",
+      "kbValueAdd": "Sports achievement becomes part of the permanent academic record.",
+      "gaps": "ABC write-path for non-academic issuers unconfirmed.",
+      "dependencies": [
+        "A-M5-4",
+        "A-M16-2"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M16",
+      "system": "S5",
+      "class": "direct-integration",
+      "why": "The evidence for a credit claim is a DigiLocker-verifiable certificate from M8.",
+      "dataFlow": "Event certificates (D-M8-5) → credit-claim evidence.",
+      "kbValueAdd": "Boards verify claims without paper committees.",
+      "gaps": "Requires M8 issuer path live.",
+      "dependencies": [
+        "A-M8-3"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M16",
+      "system": "S17",
+      "class": "none",
+      "why": "Credit-worthy results must come from events sanctioned by recognised bodies — the NSGA recognition chain is the fraud firewall.",
+      "dataFlow": "Recognition state (M2) gates which results qualify.",
+      "kbValueAdd": "Marks-for-sports without a fake-tournament industry.",
+      "gaps": "Depends on M2 and A-M8-1 being live first.",
+      "dependencies": [
+        "A-M8-1"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M17",
+      "system": "S22",
+      "class": "workflow-coordination",
+      "why": "CSR sports funding is lawful under Schedule VII — the exchange must map needs to those categories and reconcile with CSR disclosures.",
+      "dataFlow": "Need categories → Schedule VII mapping; funded-project records → disclosure references.",
+      "kbValueAdd": "Corporates get audit-ready CSR documentation; government sees where CSR actually lands.",
+      "gaps": "S22 partially verified; MCA guidance on platform-mediated CSR unexplored (Q47).",
+      "dependencies": [
+        "A-M17-2"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M17",
+      "system": "S2",
+      "class": "reporting-consolidation",
+      "why": "Where CSR co-funds government projects, the public-money side reconciles via PFMS.",
+      "dataFlow": "Co-funded project references ← PFMS (read-only).",
+      "kbValueAdd": "Blended-funding projects stay transparent on both sides.",
+      "gaps": "Same PFMS dependency.",
+      "dependencies": [
+        "A-M3-2"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M18",
+      "system": "S1",
+      "class": "data-exchange",
+      "why": "Every story and laurel anchors to a verified identity and verified achievements — no fabricated heroes.",
+      "dataFlow": "Verified profile + laurels (M7) → consented showcase content.",
+      "kbValueAdd": "Media trust: every claim on a profile traces to a verifier.",
+      "gaps": "Consent framework for minors in media (Q49).",
+      "dependencies": [
+        "A-M18-1"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M18",
+      "system": "S5",
+      "class": "data-exchange",
+      "why": "Laurels backed by DigiLocker-verifiable certificates are publishable without manual checks.",
+      "dataFlow": "Certificate references → laurel verification state.",
+      "kbValueAdd": "The Laurels wall is self-verifying.",
+      "gaps": "Requires M8 issuance live.",
+      "dependencies": [
+        "A-M8-3"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M19",
+      "system": "S2",
+      "class": "reporting-consolidation",
+      "why": "Spend-vs-outcome analytics need the money side — PFMS aggregates per scheme and geography.",
+      "dataFlow": "PFMS aggregates → command-centre spend dashboards.",
+      "kbValueAdd": "'What did the money produce' becomes answerable per district.",
+      "gaps": "Aggregation level PFMS will share is undefined.",
+      "dependencies": [
+        "A-M3-2"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M19",
+      "system": "S10",
+      "class": "reporting-consolidation",
+      "why": "Infrastructure analytics overlay the facility layer on GatiShakti base layers (population, connectivity).",
+      "dataFlow": "Facility + utilisation aggregates ↔ NMP planning layers.",
+      "kbValueAdd": "Gap maps: where talent density meets facility deserts.",
+      "gaps": "Depends on A-M10-1 engagement.",
+      "dependencies": [
+        "A-M10-1"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M20",
+      "system": "S23",
+      "class": "reporting-consolidation",
+      "why": "Anonymised aggregate datasets belong on the national open-data platform under NDSAP.",
+      "dataFlow": "Approved anonymised extracts → data.gov.in publication.",
+      "kbValueAdd": "Researchers and startups build on sports data without bespoke agreements.",
+      "gaps": "S23 partially verified; publication approval path pending.",
+      "dependencies": [
+        "A-M20-3"
+      ],
+      "evidence": "proposed"
+    },
+    {
+      "module": "M20",
+      "system": "S16",
+      "class": "none",
+      "why": "DPDP bounds everything M20 does — anonymisation standards, purpose limitation, and children's-data prohibitions.",
+      "dataFlow": "None — governing constraint on every extract.",
+      "kbValueAdd": "—",
+      "gaps": "Re-identification risk standard undefined (Q53).",
+      "dependencies": [
+        "A-M20-1",
+        "A-P2"
       ],
       "evidence": "proposed"
     }

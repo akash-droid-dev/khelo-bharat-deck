@@ -161,6 +161,41 @@
       "level": "central",
       "description": "Runs the Ayushman Bharat Digital Mission: ABHA IDs and consent-based health-record exchange.",
       "evidence": "partially-verified"
+    },
+    {
+      "id": "ST22",
+      "name": "Ministry of Railways & transport authorities",
+      "level": "central",
+      "description": "Largest sports employer (Railways Sports Promotion Board); travel-concession counterpart for the Sports Card.",
+      "evidence": "verified"
+    },
+    {
+      "id": "ST23",
+      "name": "PSU & uniformed-service recruiters (DPE coordination, state police sports boards)",
+      "level": "public-sector-partner",
+      "description": "Sports-quota employers: ONGC, BPCL, SAIL, banks, paramilitary and state police sports boards.",
+      "evidence": "verified"
+    },
+    {
+      "id": "ST24",
+      "name": "Ministry of Corporate Affairs (CSR framework)",
+      "level": "central",
+      "description": "Owns Schedule VII CSR categories and national CSR disclosure.",
+      "evidence": "verified"
+    },
+    {
+      "id": "ST25",
+      "name": "Prasar Bharati (DD Sports) & PIB",
+      "level": "central",
+      "description": "Public broadcaster and government press bureau — the media channels for athlete stories.",
+      "evidence": "verified"
+    },
+    {
+      "id": "ST26",
+      "name": "NITI Aayog",
+      "level": "central",
+      "description": "Government think tank with established state-index methodology practice (e.g., SDG India Index).",
+      "evidence": "verified"
     }
   ],
   "moduleRoles": [
@@ -712,6 +747,236 @@
       "operationalResponsibility": "Keep prohibited-list guidance current.",
       "escalation": "NADA DG",
       "proposedAccess": "Content provider",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M14",
+      "stakeholder": "ST14",
+      "dataResponsibility": "Card issuance, KYC, transaction rails (bank-held; never on platform).",
+      "approvalResponsibility": "Co-brand programme approval (A-M14-1).",
+      "operationalResponsibility": "Issue and service cards.",
+      "escalation": "NPCI product team / bank programme office",
+      "proposedAccess": "Issuing partner",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M14",
+      "stakeholder": "ST1",
+      "dataResponsibility": "Tier policy: which verified achievements map to which card tier.",
+      "approvalResponsibility": "Tier & entitlement policy (A-M14-2); concession MoUs (A-M14-3).",
+      "operationalResponsibility": "Own the benefits programme.",
+      "escalation": "Joint Secretary (Sports)",
+      "proposedAccess": "Programme owner",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M14",
+      "stakeholder": "ST22",
+      "dataResponsibility": "Travel-concession entitlement verification hooks.",
+      "approvalResponsibility": "Concession MoU counterpart.",
+      "operationalResponsibility": "Honour card entitlements in booking systems.",
+      "escalation": "Railway Board sports cell",
+      "proposedAccess": "Benefit partner",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M14",
+      "stakeholder": "ST2",
+      "dataResponsibility": "Facility-access entitlements at SAI centres.",
+      "approvalResponsibility": "Facility-access policy for cardholders.",
+      "operationalResponsibility": "Honour access at centres.",
+      "escalation": "SAI centre administration",
+      "proposedAccess": "Benefit partner",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M15",
+      "stakeholder": "ST22",
+      "dataResponsibility": "Railways sports-quota vacancies and recruitment outcomes.",
+      "approvalResponsibility": "Accept platform-verified sports records in recruitment (A-M15-1).",
+      "operationalResponsibility": "Post vacancies; run recruitment.",
+      "escalation": "Railways Sports Promotion Board",
+      "proposedAccess": "Employer (quota recruiter)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M15",
+      "stakeholder": "ST23",
+      "dataResponsibility": "PSU/police sports-quota vacancies and outcomes.",
+      "approvalResponsibility": "Adopt the verification protocol per recruiter.",
+      "operationalResponsibility": "Post vacancies; run recruitment.",
+      "escalation": "DPE / state home departments",
+      "proposedAccess": "Employer (quota recruiter)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M15",
+      "stakeholder": "ST2",
+      "dataResponsibility": "Verification of sports careers cited in applications.",
+      "approvalResponsibility": "Verification SLA commitment.",
+      "operationalResponsibility": "Respond to verification requests.",
+      "escalation": "SAI records division",
+      "proposedAccess": "Verifier",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M16",
+      "stakeholder": "ST13",
+      "dataResponsibility": "Board/university credit policies; APAAR/ABC credit rails.",
+      "approvalResponsibility": "Board pilot commitments (A-M16-1); NCrF mapping (A-M16-2).",
+      "operationalResponsibility": "Award credits per policy.",
+      "escalation": "Board chairpersons → MoE",
+      "proposedAccess": "Policy owner (education side)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M16",
+      "stakeholder": "ST2",
+      "dataResponsibility": "Verified achievement records underlying credit claims.",
+      "approvalResponsibility": "Evidence-standard sign-off (A-M16-3).",
+      "operationalResponsibility": "Verification responses to boards.",
+      "escalation": "SAI records division",
+      "proposedAccess": "Verifier",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M16",
+      "stakeholder": "ST8",
+      "dataResponsibility": "Sanctioned-event results that qualify for credits (School Games Federation prominent).",
+      "approvalResponsibility": "Adopt sanctioning + verification chain.",
+      "operationalResponsibility": "Timely result sign-off.",
+      "escalation": "Federation secretary",
+      "proposedAccess": "Result verifier",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M17",
+      "stakeholder": "ST24",
+      "dataResponsibility": "Schedule VII classification guidance; CSR disclosure alignment.",
+      "approvalResponsibility": "CSR-framework alignment (A-M17-2).",
+      "operationalResponsibility": "None (policy owner).",
+      "escalation": "MCA CSR cell",
+      "proposedAccess": "Policy reference",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M17",
+      "stakeholder": "ST17",
+      "dataResponsibility": "Pledges, funding commitments, impact expectations.",
+      "approvalResponsibility": "Accept exchange terms.",
+      "operationalResponsibility": "Fund and monitor projects.",
+      "escalation": "Corporate CSR committees",
+      "proposedAccess": "Funder",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M17",
+      "stakeholder": "ST6",
+      "dataResponsibility": "Ground verification that listed needs are real (photos, site checks).",
+      "approvalResponsibility": "Need certification (A-M17-1).",
+      "operationalResponsibility": "Verify within SLA; confirm delivery milestones.",
+      "escalation": "State SPOC",
+      "proposedAccess": "Need verifier (district)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M17",
+      "stakeholder": "ST5",
+      "dataResponsibility": "State-level need pipelines and implementing-agency lists.",
+      "approvalResponsibility": "State endorsement of need bank entries.",
+      "operationalResponsibility": "Coordinate implementation.",
+      "escalation": "State sports secretary",
+      "proposedAccess": "Need owner (state scope)",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M18",
+      "stakeholder": "ST25",
+      "dataResponsibility": "Broadcast/coverage of athlete stories; PIB releases.",
+      "approvalResponsibility": "Content partnership (A-M18-2).",
+      "operationalResponsibility": "Produce and air stories.",
+      "escalation": "Prasar Bharati programming",
+      "proposedAccess": "Media partner",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M18",
+      "stakeholder": "ST8",
+      "dataResponsibility": "Laurel verification (honours, records) for their sport.",
+      "approvalResponsibility": "Verify laurels before publication.",
+      "operationalResponsibility": "Respond to laurel checks.",
+      "escalation": "Federation secretary",
+      "proposedAccess": "Laurel verifier",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M18",
+      "stakeholder": "ST1",
+      "dataResponsibility": "Hall of Fame criteria and governance.",
+      "approvalResponsibility": "Laurels/Hall of Fame policy (A-M18-3); publicity-consent framework (A-M18-1).",
+      "operationalResponsibility": "Own the honours programme.",
+      "escalation": "MYAS sports division",
+      "proposedAccess": "Programme owner",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M19",
+      "stakeholder": "ST1",
+      "dataResponsibility": "KPI definitions; command-centre operations.",
+      "approvalResponsibility": "Index methodology (A-M19-1) and publication policy (A-M19-2).",
+      "operationalResponsibility": "Run the command centre (pending Q52).",
+      "escalation": "Secretary (Sports)",
+      "proposedAccess": "Owner",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M19",
+      "stakeholder": "ST26",
+      "dataResponsibility": "Index methodology consultation (established state-index practice).",
+      "approvalResponsibility": "Methodology endorsement.",
+      "operationalResponsibility": "None (advisory).",
+      "escalation": "NITI Aayog vertical",
+      "proposedAccess": "Methodology advisor",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M19",
+      "stakeholder": "ST5",
+      "dataResponsibility": "State data feeding the index; contest/appeal on scores.",
+      "approvalResponsibility": "State consultation sign-off on methodology.",
+      "operationalResponsibility": "Improve data completeness.",
+      "escalation": "State sports secretaries",
+      "proposedAccess": "Index subject + data supplier",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M20",
+      "stakeholder": "ST12",
+      "dataResponsibility": "Data-governance alignment (DPDP, NDSAP).",
+      "approvalResponsibility": "Open-data publication alignment (A-M20-3).",
+      "operationalResponsibility": "None (framework owner).",
+      "escalation": "MeitY data governance",
+      "proposedAccess": "Policy reference",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M20",
+      "stakeholder": "ST1",
+      "dataResponsibility": "Data-sharing policy; partnership approvals.",
+      "approvalResponsibility": "Anonymisation standard & agreement template (A-M20-1, A-M20-2).",
+      "operationalResponsibility": "Own the partnership programme.",
+      "escalation": "MYAS legal",
+      "proposedAccess": "Owner",
+      "evidence": "proposed"
+    },
+    {
+      "module": "M20",
+      "stakeholder": "ST18",
+      "dataResponsibility": "Research use of anonymised extracts under agreements.",
+      "approvalResponsibility": "Sign partnership agreements.",
+      "operationalResponsibility": "Publish findings; report usage.",
+      "escalation": "Partnership review board",
+      "proposedAccess": "Research partner (scoped)",
       "evidence": "proposed"
     }
   ]
