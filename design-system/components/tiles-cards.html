@@ -1,0 +1,56 @@
+<!-- @dsCard group="Components" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khelo Bharat — Pillar tiles & module cards</title><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0B2E59; --navy-2:#123E75; --navy-deep:#071E3D; --ink:#152233;
+  --saffron:#E87C1E; --saffron-2:#F5A54A; --saffron-deep:#C05E12;
+  --green:#1E7A3C; --paper:#F7F4EE; --paper-2:#F0EBE0; --card:#FFFFFF;
+  --line:#E3DCCF; --grey:#5B6675; --grey-2:#9FB4CF; --alert:#A33A17;
+  --p1:#0B2E59; --p2:#C05E12; --p3:#1E7A3C; --p4:#7A2E7E; --p5:#B3541E; --p6:#14606B;
+  --radius:14px; --radius-lg:20px;
+  --shadow:0 2px 10px rgba(11,46,89,.06); --shadow-lg:0 20px 46px rgba(11,46,89,.13);
+  --font-serif:'Fraunces',Georgia,'Times New Roman',serif; --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;padding:28px}
+h1,h2,h3,h4{font-family:var(--font-serif);color:var(--navy);font-weight:800;line-height:1.12}
+.small{font-size:13px}.muted{color:var(--grey)}
+
+.chip{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.05em;border-radius:14px;padding:3px 12px;border:1px solid transparent}
+.chip--verified{background:#E7F3EB;color:#1E7A3C;border-color:#BCDcc8}
+.chip--partially-verified{background:#FDF3E3;color:#9A6A11;border-color:#EED9AC}
+.chip--proposed{background:#EAF0F8;color:#0B2E59;border-color:#C7D6EA}
+.chip--assumption{background:#F3EDF8;color:#7A2E7E;border-color:#DCC8E8}
+.chip--decision-required{background:#FBEAE4;color:#A33A17;border-color:#EFC5B5}
+.chip--planned{background:#F0EBE0;color:#5B6675;border-color:#E3DCCF}
+.chip--new-module{background:#FDEBD7;color:#9A5511;border-color:#F2D4AC}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.pillar-tile{display:flex;flex-direction:column;gap:8px;background:var(--card);border:1px solid var(--line);border-top:6px solid var(--navy);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);text-decoration:none;color:inherit}
+.mod-code{font:800 14px var(--font-serif);color:#fff;border-radius:8px;padding:3px 10px;display:inline-block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+h4{margin-top:8px;font-size:16px}
+</style></head><body>
+
+<div class="card-grid">
+<a class="pillar-tile" style="border-top-color:#C05E12" href="#">
+  <b style="font-family:var(--font-serif);font-size:21px;color:var(--navy)">2 · Discover</b>
+  <span class="small" style="font-weight:700;letter-spacing:.08em;color:var(--saffron-deep);text-transform:uppercase">Find talent</span>
+  <span class="small muted">Screening games in every school, rewarded teacher-scouts, one lifetime athlete profile, self-feeding events.</span>
+  <span class="small" style="font-weight:700;color:var(--navy)">M5 — M8 · 4 modules →</span>
+</a>
+<div class="card">
+  <div style="display:flex;gap:8px;align-items:center"><span class="mod-code" style="background:#C05E12">M7</span><span class="chip chip--new-module">New</span><code class="small muted">profile</code></div>
+  <h4>Athlete 360 Profile &amp; AI Talent Engine</h4>
+  <p class="small muted" style="margin-top:6px">One verified lifetime profile — every result, assessment and benefit on a single timeline.</p>
+</div>
+<div class="card" style="display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center">
+  <b style="font-family:var(--font-serif);font-size:18px;color:var(--alert)">Q39</b>
+  <span class="small">Are athlete injury records held in ABDM-linked systems, or platform-native — and who is the health-data fiduciary?</span>
+  <span class="chip chip--decision-required">M13</span>
+</div>
+</div>
+
+</body></html>

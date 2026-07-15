@@ -1,0 +1,44 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khelo Bharat — Colour tokens</title><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0B2E59; --navy-2:#123E75; --navy-deep:#071E3D; --ink:#152233;
+  --saffron:#E87C1E; --saffron-2:#F5A54A; --saffron-deep:#C05E12;
+  --green:#1E7A3C; --paper:#F7F4EE; --paper-2:#F0EBE0; --card:#FFFFFF;
+  --line:#E3DCCF; --grey:#5B6675; --grey-2:#9FB4CF; --alert:#A33A17;
+  --p1:#0B2E59; --p2:#C05E12; --p3:#1E7A3C; --p4:#7A2E7E; --p5:#B3541E; --p6:#14606B;
+  --radius:14px; --radius-lg:20px;
+  --shadow:0 2px 10px rgba(11,46,89,.06); --shadow-lg:0 20px 46px rgba(11,46,89,.13);
+  --font-serif:'Fraunces',Georgia,'Times New Roman',serif; --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;padding:28px}
+h1,h2,h3,h4{font-family:var(--font-serif);color:var(--navy);font-weight:800;line-height:1.12}
+.small{font-size:13px}.muted{color:var(--grey)}
+
+h2{margin:18px 0 10px;font-size:20px}
+.row{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.sw{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;box-shadow:var(--shadow)}
+.sw i{display:block;height:56px;border-radius:8px;margin-bottom:8px;border:1px solid rgba(0,0,0,.06)}
+.sw b{display:block;font-size:13px}.sw code{font-size:11.5px;color:var(--grey)}
+.sw span{display:block}
+</style></head><body>
+
+<h2>Brand core</h2><div class="row">
+<div class="sw"><i style="background:#071E3D"></i><b>Navy deep</b><code>#071E3D</code><span class="small muted">--navy-deep</span></div><div class="sw"><i style="background:#0B2E59"></i><b>Navy</b><code>#0B2E59</code><span class="small muted">--navy</span></div><div class="sw"><i style="background:#123E75"></i><b>Navy 2</b><code>#123E75</code><span class="small muted">--navy-2</span></div>
+<div class="sw"><i style="background:#E87C1E"></i><b>Saffron</b><code>#E87C1E</code><span class="small muted">--saffron</span></div><div class="sw"><i style="background:#F5A54A"></i><b>Saffron 2</b><code>#F5A54A</code><span class="small muted">--saffron-2</span></div><div class="sw"><i style="background:#C05E12"></i><b>Saffron deep</b><code>#C05E12</code><span class="small muted">--saffron-deep</span></div>
+<div class="sw"><i style="background:#1E7A3C"></i><b>Green</b><code>#1E7A3C</code><span class="small muted">--green</span></div><div class="sw"><i style="background:#A33A17"></i><b>Alert</b><code>#A33A17</code><span class="small muted">--alert</span></div></div>
+<h2>Surfaces &amp; text</h2><div class="row">
+<div class="sw"><i style="background:#F7F4EE"></i><b>Paper</b><code>#F7F4EE</code><span class="small muted">--paper</span></div><div class="sw"><i style="background:#F0EBE0"></i><b>Paper 2</b><code>#F0EBE0</code><span class="small muted">--paper-2</span></div><div class="sw"><i style="background:#FFFFFF"></i><b>Card</b><code>#FFFFFF</code><span class="small muted">--card</span></div>
+<div class="sw"><i style="background:#E3DCCF"></i><b>Line</b><code>#E3DCCF</code><span class="small muted">--line</span></div><div class="sw"><i style="background:#152233"></i><b>Ink</b><code>#152233</code><span class="small muted">--ink</span></div><div class="sw"><i style="background:#5B6675"></i><b>Grey</b><code>#5B6675</code><span class="small muted">--grey</span></div><div class="sw"><i style="background:#9FB4CF"></i><b>Grey 2 (on dark)</b><code>#9FB4CF</code><span class="small muted">--grey-2</span></div></div>
+<h2>Pillar identities (P1–P6)</h2><div class="row">
+<div class="sw"><i style="background:#0B2E59"></i><b>Govern</b><code>#0B2E59</code><span class="small muted">--p1</span></div><div class="sw"><i style="background:#C05E12"></i><b>Discover</b><code>#C05E12</code><span class="small muted">--p2</span></div><div class="sw"><i style="background:#1E7A3C"></i><b>Develop</b><code>#1E7A3C</code><span class="small muted">--p3</span></div>
+<div class="sw"><i style="background:#7A2E7E"></i><b>Support</b><code>#7A2E7E</code><span class="small muted">--p4</span></div><div class="sw"><i style="background:#B3541E"></i><b>Showcase</b><code>#B3541E</code><span class="small muted">--p5</span></div><div class="sw"><i style="background:#14606B"></i><b>Intelligence</b><code>#14606B</code><span class="small muted">--p6</span></div></div>
+<h2>Integration-class colours (maps &amp; diagrams)</h2><div class="row">
+<div class="sw"><i style="background:#C05E12"></i><b>direct-integration</b><code>#C05E12</code><span class="small muted"></span></div><div class="sw"><i style="background:#0B2E59"></i><b>data-exchange</b><code>#0B2E59</code><span class="small muted"></span></div><div class="sw"><i style="background:#7A2E7E"></i><b>federated-access</b><code>#7A2E7E</code><span class="small muted"></span></div>
+<div class="sw"><i style="background:#1E7A3C"></i><b>workflow-coordination</b><code>#1E7A3C</code><span class="small muted"></span></div><div class="sw"><i style="background:#14606B"></i><b>reporting-consolidation</b><code>#14606B</code><span class="small muted"></span></div><div class="sw"><i style="background:#B3541E"></i><b>referral</b><code>#B3541E</code><span class="small muted"></span></div>
+<div class="sw"><i style="background:#8a7a55"></i><b>future-integration</b><code>#8a7a55</code><span class="small muted"></span></div><div class="sw"><i style="background:#5B6675"></i><b>manual-import</b><code>#5B6675</code><span class="small muted"></span></div></div>
+
+</body></html>

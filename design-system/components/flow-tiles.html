@@ -1,0 +1,37 @@
+<!-- @dsCard group="Components" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khelo Bharat — Journey flow tiles</title><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0B2E59; --navy-2:#123E75; --navy-deep:#071E3D; --ink:#152233;
+  --saffron:#E87C1E; --saffron-2:#F5A54A; --saffron-deep:#C05E12;
+  --green:#1E7A3C; --paper:#F7F4EE; --paper-2:#F0EBE0; --card:#FFFFFF;
+  --line:#E3DCCF; --grey:#5B6675; --grey-2:#9FB4CF; --alert:#A33A17;
+  --p1:#0B2E59; --p2:#C05E12; --p3:#1E7A3C; --p4:#7A2E7E; --p5:#B3541E; --p6:#14606B;
+  --radius:14px; --radius-lg:20px;
+  --shadow:0 2px 10px rgba(11,46,89,.06); --shadow-lg:0 20px 46px rgba(11,46,89,.13);
+  --font-serif:'Fraunces',Georgia,'Times New Roman',serif; --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;padding:28px}
+h1,h2,h3,h4{font-family:var(--font-serif);color:var(--navy);font-weight:800;line-height:1.12}
+.small{font-size:13px}.muted{color:var(--grey)}
+
+.flow-tiles{display:flex;flex-wrap:wrap;gap:10px;counter-reset:step}
+.flow-tile{position:relative;flex:1 1 220px;max-width:320px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px 16px 52px;box-shadow:var(--shadow);font-size:14px;line-height:1.5}
+.flow-tile::before{counter-increment:step;content:counter(step);position:absolute;left:14px;top:14px;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font:800 13px/26px var(--font-serif);text-align:center}
+.flow-tile::after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--saffron-deep);font-weight:800;z-index:1}
+.flow-tile:last-child::after{content:none}
+.flow-tile b{color:var(--navy)}
+</style></head><body>
+
+<div class="flow-tiles">
+<div class="flow-tile"><b>Screen:</b> a child stands out in the school screening games; guardian consent is captured first.</div>
+<div class="flow-tile"><b>Identify:</b> a Khelo India ID attaches the result to one lifetime profile.</div>
+<div class="flow-tile"><b>Assess:</b> KIRTI Talent Assessment Centre confirms the signal.</div>
+<div class="flow-tile"><b>Support:</b> the eligibility engine surfaces schemes — apply in one tap.</div>
+<div class="flow-tile"><b>Track:</b> file and money movement mirror eOffice and PFMS.</div>
+</div>
+
+</body></html>

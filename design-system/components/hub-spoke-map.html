@@ -1,0 +1,34 @@
+<!-- @dsCard group="Data viz" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khelo Bharat — Integration map (hub &amp; spoke)</title><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0B2E59; --navy-2:#123E75; --navy-deep:#071E3D; --ink:#152233;
+  --saffron:#E87C1E; --saffron-2:#F5A54A; --saffron-deep:#C05E12;
+  --green:#1E7A3C; --paper:#F7F4EE; --paper-2:#F0EBE0; --card:#FFFFFF;
+  --line:#E3DCCF; --grey:#5B6675; --grey-2:#9FB4CF; --alert:#A33A17;
+  --p1:#0B2E59; --p2:#C05E12; --p3:#1E7A3C; --p4:#7A2E7E; --p5:#B3541E; --p6:#14606B;
+  --radius:14px; --radius-lg:20px;
+  --shadow:0 2px 10px rgba(11,46,89,.06); --shadow-lg:0 20px 46px rgba(11,46,89,.13);
+  --font-serif:'Fraunces',Georgia,'Times New Roman',serif; --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;padding:28px}
+h1,h2,h3,h4{font-family:var(--font-serif);color:var(--navy);font-weight:800;line-height:1.12}
+.small{font-size:13px}.muted{color:var(--grey)}
+
+.hub-wrap{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:18px;box-shadow:var(--shadow);max-width:820px}
+.hub-wrap svg{display:block;width:100%;height:auto}
+.viz-legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:12px;color:var(--grey)}
+.viz-legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+</style></head><body>
+
+<h3 style="margin:0 0 12px">Module integration map — M7 · Athlete 360</h3>
+<div class="hub-wrap"><svg viewBox="0 0 760 400" role="img" aria-label="Integration map for M7"><line x1="380.0" y1="200.0" x2="380" y2="46" stroke="#C05E12" stroke-width="2.2" opacity=".75"/><line x1="380.0" y1="200.0" x2="597" y2="123" stroke="#0B2E59" stroke-width="2.2" opacity=".75"/><line x1="380.0" y1="200.0" x2="597" y2="277" stroke="#7A2E7E" stroke-width="2.2" opacity=".75"/><line x1="380.0" y1="200.0" x2="380" y2="354" stroke="#7A2E7E" stroke-width="2.2" opacity=".75"/><line x1="380.0" y1="200.0" x2="163" y2="277" stroke="#0B2E59" stroke-width="2.2" opacity=".75"/><line x1="380.0" y1="200.0" x2="163" y2="123" stroke="#0B2E59" stroke-width="2.2" opacity=".75"/>
+<circle cx="380.0" cy="200.0" r="52" fill="#0B2E59"/><circle cx="380.0" cy="200.0" r="52" fill="none" stroke="#F5A54A" stroke-width="2" opacity=".6"/>
+<text x="380.0" y="205.0" text-anchor="middle" font-size="15" font-weight="800" fill="#fff" font-family="Fraunces,serif">M7</text><g><circle cx="380" cy="46" r="9" fill="#C05E12"/><circle cx="388" cy="38" r="4.5" fill="#1E7A3C"/><text x="380" y="50" text-anchor="middle" font-size="12.5" font-weight="600" fill="#152233">NSRS</text></g><g><circle cx="597" cy="123" r="9" fill="#0B2E59"/><circle cx="605" cy="115" r="4.5" fill="#1E7A3C"/><text x="611" y="127" text-anchor="start" font-size="12.5" font-weight="600" fill="#152233">KIRTI</text></g><g><circle cx="597" cy="277" r="9" fill="#7A2E7E"/><circle cx="605" cy="269" r="4.5" fill="#1E7A3C"/><text x="611" y="281" text-anchor="start" font-size="12.5" font-weight="600" fill="#152233">Aadhaar / APAAR</text></g><g><circle cx="380" cy="354" r="9" fill="#7A2E7E"/><circle cx="388" cy="346" r="4.5" fill="#1E7A3C"/><text x="380" y="358" text-anchor="middle" font-size="12.5" font-weight="600" fill="#152233">NADA</text></g><g><circle cx="163" cy="277" r="9" fill="#0B2E59"/><circle cx="171" cy="269" r="4.5" fill="#1E7A3C"/><text x="149" y="281" text-anchor="end" font-size="12.5" font-weight="600" fill="#152233">Khelo India / TOPS</text></g><g><circle cx="163" cy="123" r="9" fill="#0B2E59"/><circle cx="171" cy="115" r="4.5" fill="#1E7A3C"/><text x="149" y="127" text-anchor="end" font-size="12.5" font-weight="600" fill="#152233">Fit India</text></g></svg>
+<div class="viz-legend"><span><i style="background:#C05E12"></i>direct-integration</span><span><i style="background:#0B2E59"></i>data-exchange</span><span><i style="background:#7A2E7E"></i>federated-access</span><span><i style="background:#1E7A3C;border-radius:50%"></i>verified system</span></div></div>
+<p class="small muted" style="margin-top:10px">Line colour = proposed integration class · green dot = source-verified system · dashed = future / constraint-only.</p>
+
+</body></html>

@@ -1,0 +1,36 @@
+<!-- @dsCard group="Type" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khelo Bharat — Typography</title><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0B2E59; --navy-2:#123E75; --navy-deep:#071E3D; --ink:#152233;
+  --saffron:#E87C1E; --saffron-2:#F5A54A; --saffron-deep:#C05E12;
+  --green:#1E7A3C; --paper:#F7F4EE; --paper-2:#F0EBE0; --card:#FFFFFF;
+  --line:#E3DCCF; --grey:#5B6675; --grey-2:#9FB4CF; --alert:#A33A17;
+  --p1:#0B2E59; --p2:#C05E12; --p3:#1E7A3C; --p4:#7A2E7E; --p5:#B3541E; --p6:#14606B;
+  --radius:14px; --radius-lg:20px;
+  --shadow:0 2px 10px rgba(11,46,89,.06); --shadow-lg:0 20px 46px rgba(11,46,89,.13);
+  --font-serif:'Fraunces',Georgia,'Times New Roman',serif; --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;padding:28px}
+h1,h2,h3,h4{font-family:var(--font-serif);color:var(--navy);font-weight:800;line-height:1.12}
+.small{font-size:13px}.muted{color:var(--grey)}
+
+.spec{display:grid;gap:18px}
+.spec>div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;box-shadow:var(--shadow)}
+.spec code{font-size:11.5px;color:var(--grey);display:block;margin-bottom:6px}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--saffron-deep)}
+</style></head><body>
+
+<div class="spec">
+<div><code>Display · Fraunces 800 · clamp(30–46px)</code><h1 style="font-size:46px">One Nation. One Sports Platform.</h1></div>
+<div><code>H2 · Fraunces 800 · clamp(24–32px)</code><h2 style="font-size:32px">Six Pillars, Twenty Modules</h2></div>
+<div><code>H3 · Fraunces 800 · 21px</code><h3>Layer 1 · Existing systems this module touches</h3></div>
+<div><code>Kicker · Inter 800 · 12px caps tracked</code><span class="kicker">Complete platform blueprint · evidence-labeled</span></div>
+<div><code>Body · Inter 400 · 16/1.6</code><p style="max-width:70ch">Khelo Bharat unifies India's sports ecosystem — talent discovery, funding, facilities, benefits and analytics — on one verified identity.</p></div>
+<div><code>Small · Inter · 13px</code><p class="small muted">No API is assumed to exist merely because a portal exists. Every relationship is a proposed design, not an approved integration.</p></div>
+</div>
+
+</body></html>
