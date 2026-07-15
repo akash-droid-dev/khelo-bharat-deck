@@ -1,0 +1,36 @@
+<!-- @dsCard group="Data viz" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khelo Bharat — Bar chart</title><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0B2E59; --navy-2:#123E75; --navy-deep:#071E3D; --ink:#152233;
+  --saffron:#E87C1E; --saffron-2:#F5A54A; --saffron-deep:#C05E12;
+  --green:#1E7A3C; --paper:#F7F4EE; --paper-2:#F0EBE0; --card:#FFFFFF;
+  --line:#E3DCCF; --grey:#5B6675; --grey-2:#9FB4CF; --alert:#A33A17;
+  --p1:#0B2E59; --p2:#C05E12; --p3:#1E7A3C; --p4:#7A2E7E; --p5:#B3541E; --p6:#14606B;
+  --radius:14px; --radius-lg:20px;
+  --shadow:0 2px 10px rgba(11,46,89,.06); --shadow-lg:0 20px 46px rgba(11,46,89,.13);
+  --font-serif:'Fraunces',Georgia,'Times New Roman',serif; --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;padding:28px}
+h1,h2,h3,h4{font-family:var(--font-serif);color:var(--navy);font-weight:800;line-height:1.12}
+.small{font-size:13px}.muted{color:var(--grey)}
+
+.bar-chart{display:grid;gap:8px;max-width:560px}
+.bar-row{display:grid;grid-template-columns:minmax(110px,180px) 1fr 44px;gap:10px;align-items:center;font-size:13px}
+.bar-row .track{background:var(--paper-2);border-radius:8px;height:18px;overflow:hidden}
+.bar-row .fill{height:100%;border-radius:8px;background:var(--navy)}
+.bar-row .val{font-weight:800;color:var(--navy);text-align:right}
+h3{margin:0 0 12px}
+</style></head><body>
+
+<h3>Approvals required, by pillar</h3>
+<div class="bar-chart">
+<div class="bar-row"><span>1 · Govern</span><span class="track"><span class="fill" style="width:87%;background:#0B2E59"></span></span><span class="val">13</span></div><div class="bar-row"><span>2 · Discover</span><span class="track"><span class="fill" style="width:93%;background:#C05E12"></span></span><span class="val">14</span></div><div class="bar-row"><span>3 · Develop</span><span class="track"><span class="fill" style="width:100%;background:#1E7A3C"></span></span><span class="val">15</span></div>
+<div class="bar-row"><span>4 · Support</span><span class="track"><span class="fill" style="width:87%;background:#7A2E7E"></span></span><span class="val">13</span></div><div class="bar-row"><span>5 · Showcase</span><span class="track"><span class="fill" style="width:20%;background:#B3541E"></span></span><span class="val">3</span></div><div class="bar-row"><span>6 · Intelligence</span><span class="track"><span class="fill" style="width:40%;background:#14606B"></span></span><span class="val">6</span></div>
+<div class="bar-row"><span>Platform-wide</span><span class="track"><span class="fill" style="width:13%;background:#5B6675"></span></span><span class="val">2</span></div>
+</div>
+
+</body></html>

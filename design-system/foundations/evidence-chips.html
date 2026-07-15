@@ -1,0 +1,47 @@
+<!-- @dsCard group="Status" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khelo Bharat — Evidence & status chips</title><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0B2E59; --navy-2:#123E75; --navy-deep:#071E3D; --ink:#152233;
+  --saffron:#E87C1E; --saffron-2:#F5A54A; --saffron-deep:#C05E12;
+  --green:#1E7A3C; --paper:#F7F4EE; --paper-2:#F0EBE0; --card:#FFFFFF;
+  --line:#E3DCCF; --grey:#5B6675; --grey-2:#9FB4CF; --alert:#A33A17;
+  --p1:#0B2E59; --p2:#C05E12; --p3:#1E7A3C; --p4:#7A2E7E; --p5:#B3541E; --p6:#14606B;
+  --radius:14px; --radius-lg:20px;
+  --shadow:0 2px 10px rgba(11,46,89,.06); --shadow-lg:0 20px 46px rgba(11,46,89,.13);
+  --font-serif:'Fraunces',Georgia,'Times New Roman',serif; --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;padding:28px}
+h1,h2,h3,h4{font-family:var(--font-serif);color:var(--navy);font-weight:800;line-height:1.12}
+.small{font-size:13px}.muted{color:var(--grey)}
+
+.chip{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.05em;border-radius:14px;padding:3px 12px;border:1px solid transparent}
+.chip--verified{background:#E7F3EB;color:#1E7A3C;border-color:#BCDcc8}
+.chip--partially-verified{background:#FDF3E3;color:#9A6A11;border-color:#EED9AC}
+.chip--proposed{background:#EAF0F8;color:#0B2E59;border-color:#C7D6EA}
+.chip--assumption{background:#F3EDF8;color:#7A2E7E;border-color:#DCC8E8}
+.chip--decision-required{background:#FBEAE4;color:#A33A17;border-color:#EFC5B5}
+.chip--planned{background:#F0EBE0;color:#5B6675;border-color:#E3DCCF}
+.chip--new-module{background:#FDEBD7;color:#9A5511;border-color:#F2D4AC}
+
+.set{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:var(--shadow);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+p{margin:14px 0 8px;font-weight:700;color:var(--navy)}
+</style></head><body>
+
+<p>Evidence labels — every claim on the platform carries one:</p>
+<div class="set">
+<span class="chip chip--verified">Verified</span>
+<span class="chip chip--partially-verified">Partially verified</span>
+<span class="chip chip--proposed">Proposed</span>
+<span class="chip chip--assumption">Assumption</span>
+<span class="chip chip--decision-required">Decision required</span>
+<span class="chip chip--planned">Planned</span>
+<span class="chip chip--new-module">New module</span>
+</div>
+<p>Usage rule:</p>
+<p class="small muted" style="font-weight:400">Verified = existence/ownership confirmed against a cited official source. Proposed = Khelo Bharat design awaiting government confirmation. Never present proposed integrations as approved.</p>
+
+</body></html>
