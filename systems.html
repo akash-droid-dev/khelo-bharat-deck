@@ -13,13 +13,18 @@
 <div id="site-header"></div>
 
 <main id="main">
-  <div class="wrap">
-    <div id="crumbs"></div>
-    <section>
+  <div class="page-hero">
+    <div class="orb orb--a"></div>
+    <div class="orb orb--b"></div>
+    <div class="wrap" style="position:relative">
       <span class="kicker">Ecosystem integration hub</span>
       <h1>Existing Systems, Verified</h1>
       <p class="sub">Khelo Bharat unifies — it does not replace working government platforms. Every system below was verified against the cited official sources on the access date shown. <strong>Proposed relationships are Khelo Bharat design, not approved integrations</strong>, and no API is assumed to exist merely because a portal exists.</p>
-
+    </div>
+  </div>
+  <div class="wrap">
+    <div id="crumbs"></div>
+    <section>
       <div class="filter-row" role="group" aria-label="Filter systems" id="sys-filters">
         <button class="filter-btn" data-f="all" aria-pressed="true">All systems</button>
         <button class="filter-btn" data-f="verified" aria-pressed="false">Verified</button>
@@ -27,6 +32,11 @@
         <button class="filter-btn" data-f="api" aria-pressed="false">Public API documented</button>
       </div>
 
+      <h2 style="margin:6px 0 12px">How the platform connects</h2>
+      <p class="muted small" style="margin-bottom:14px">Every proposed relationship uses one of these integration classes — the same colours used on every map across the site.</p>
+      <div class="class-cards" id="class-cards" style="margin-bottom:34px"></div>
+
+      <h2 style="margin:0 0 12px">The register</h2>
       <div id="sys-list" style="display:grid;gap:16px" aria-live="polite">
         <div class="state" role="status"><b>Loading register…</b>Reading the verified systems register.</div>
       </div>
@@ -52,6 +62,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     listEl.innerHTML = KB.stateBlock("error", "Could not load the systems register", e.message);
     return;
   }
+
+  const CLASS_DESC = {
+    "direct-integration": "Two-way API integration — the deepest tie, used only where APIs are confirmed or formally requested.",
+    "data-exchange": "Periodic structured data flow, usually read-only mirrors of an authoritative source.",
+    "federated-access": "The source keeps its data; the platform gets consent-gated, minimal-disclosure views.",
+    "workflow-coordination": "No data pipe — processes are aligned so the two systems don't duplicate or contradict each other.",
+    "reporting-consolidation": "Aggregates flow into dashboards and indices; source systems remain untouched.",
+    "referral": "Users are handed to the existing system at the right step, with context.",
+    "future-integration": "Valuable but not yet feasible — parked with a named dependency.",
+    "none": "A constraint or framework (like the DPDP Act) that shapes design without exchanging data."
+  };
+  document.getElementById("class-cards").innerHTML = Object.entries(CLASS_DESC).map(([cls, desc], i) =>
+    `<div class="class-card" data-reveal data-delay="${i * 50}" style="--bar:${KB.INT_COLORS[cls] || "#9FB4CF"}">
+      <b>${KB.esc(cls)}</b><p>${KB.esc(desc)}</p>
+    </div>`).join("");
+  KB.reveal();
 
   let filter = "all";
   const filters = document.getElementById("sys-filters");
