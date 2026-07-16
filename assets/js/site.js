@@ -112,7 +112,11 @@
       const io = new IntersectionObserver(entries => {
         entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
       }, { threshold: 0.12 });
-      els.forEach(e => io.observe(e));
+      els.forEach((e, i) => {
+        const d = e.dataset.delay ?? (e.parentElement && e.parentElement.children.length > 2 ? (i % 6) * 60 : 0);
+        if (d) e.style.transitionDelay = `${d}ms`;
+        io.observe(e);
+      });
     },
 
     /* Sticky in-page section nav with scrollspy. sections: [{id,label}] */
@@ -169,28 +173,34 @@
         const a = -Math.PI / 2 + (2 * Math.PI * i) / nodes.length;
         return { ...n, x: cx + rx * Math.cos(a), y: cy + ry * Math.sin(a) };
       });
-      const lines = pts.map(p => {
+      const lines = pts.map((p, i) => {
         const c = KB.INT_COLORS[p.cls] || "#9FB4CF";
-        const dash = p.cls === "future-integration" || p.cls === "none" ? ' stroke-dasharray="5 5"' : "";
-        return `<line x1="${cx}" y1="${cy}" x2="${p.x}" y2="${p.y}" stroke="${c}" stroke-width="2.2" opacity=".75"${dash}/>`;
+        const still = p.cls === "future-integration" || p.cls === "none";
+        return `<line x1="${cx}" y1="${cy}" x2="${p.x}" y2="${p.y}" stroke="${c}" stroke-width="2.2" opacity=".85" stroke-dasharray="6 8"${still ? "" : ` style="animation:kbFlow ${1.2 + (i % 4) * .15}s linear infinite"`}/>`;
       }).join("");
       const nodeEls = pts.map(p => {
         const c = KB.INT_COLORS[p.cls] || "#9FB4CF";
         const anchor = p.x < cx - 8 ? "end" : p.x > cx + 8 ? "start" : "middle";
-        const tx = p.x + (anchor === "end" ? -14 : anchor === "start" ? 14 : 0);
-        const badge = p.verified ? `<circle cx="${p.x + 8}" cy="${p.y - 8}" r="4.5" fill="#1E7A3C"/>` : "";
-        return `<g><circle cx="${p.x}" cy="${p.y}" r="9" fill="${c}"/>${badge}
-          <text x="${tx}" y="${p.y + 4}" text-anchor="${anchor}" font-size="12.5" font-weight="600" fill="#152233">${KB.esc(p.label)}</text></g>`;
+        const tx = p.x + (anchor === "end" ? -16 : anchor === "start" ? 16 : 0);
+        const badge = p.verified ? `<circle cx="${p.x + 9}" cy="${p.y - 9}" r="5" fill="#1E7A3C"/>` : "";
+        return `<g><circle cx="${p.x}" cy="${p.y}" r="11" fill="${c}"/>${badge}
+          <text x="${tx}" y="${p.y + 4}" text-anchor="${anchor}" font-size="13" font-weight="700" fill="#152233">${KB.esc(p.label)}</text></g>`;
       }).join("");
       const usedClasses = [...new Set(nodes.map(n => n.cls))];
-      const legend = `<div class="viz-legend">${usedClasses.map(c =>
+      const legend = `<div class="viz-legend" style="border-top:1px solid var(--paper-2);padding-top:12px">${usedClasses.map(c =>
         `<span><i style="background:${KB.INT_COLORS[c] || "#9FB4CF"}"></i>${KB.esc(c)}</span>`).join("")}
-        <span><i style="background:#1E7A3C;border-radius:50%"></i>verified system</span></div>`;
+        <span><i style="background:#1E7A3C;border-radius:50%"></i>source-verified system</span></div>`;
+      const small = String(centerLabel).length <= 4;
+      const centerText = small
+        ? `<text x="${cx}" y="${cy + 6}" text-anchor="middle" font-size="20" font-weight="800" fill="#fff" font-family="Fraunces,serif">${KB.esc(centerLabel)}</text>`
+        : `<text x="${cx}" y="${cy - 4}" text-anchor="middle" font-size="11" font-weight="800" fill="#F5A54A" letter-spacing="1" font-family="Inter,sans-serif">VERIFIED</text>
+           <text x="${cx}" y="${cy + 16}" text-anchor="middle" font-size="15" font-weight="800" fill="#fff" font-family="Fraunces,serif">${KB.esc(centerLabel)}</text>`;
       return `<div class="hub-wrap"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${KB.esc(opts.aria || `Integration map for ${centerLabel}`)}">
         ${lines}
-        <circle cx="${cx}" cy="${cy}" r="52" fill="#0B2E59"/>
-        <circle cx="${cx}" cy="${cy}" r="52" fill="none" stroke="#F5A54A" stroke-width="2" opacity=".6"/>
-        <text x="${cx}" y="${cy + 5}" text-anchor="middle" font-size="15" font-weight="800" fill="#fff" font-family="Fraunces,serif">${KB.esc(centerLabel)}</text>
+        <circle class="pulse" cx="${cx}" cy="${cy}" r="60" fill="none" stroke="#F5A54A" stroke-width="2" style="transform-box:fill-box;transform-origin:center;animation:kbPulse 2.8s ease-out infinite"/>
+        <circle cx="${cx}" cy="${cy}" r="54" fill="#0B2E59"/>
+        <circle cx="${cx}" cy="${cy}" r="54" fill="none" stroke="#F5A54A" stroke-width="2" opacity=".55"/>
+        ${centerText}
         ${nodeEls}
       </svg>${legend}</div>`;
     },
